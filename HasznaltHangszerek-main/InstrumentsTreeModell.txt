@@ -1,0 +1,73 @@
+Hangszerek
+│
+├── 🎻 Húros hangszerek
+│   ├── Pengetős hangszerek
+│   │   ├── Akusztikus gitár
+│   │   ├── Elektromos gitár
+│   │   ├── Basszusgitár
+│   │   ├── Ukulele
+│   │   ├── Mandolin
+│   │   ├── Banjo
+│   │   ├── Lant
+│   │   └── Citera (népi hangszer)
+│   ├── Vonós hangszerek
+│   │   ├── Hegedű
+│   │   ├── Brácsa
+│   │   ├── Gordonka (cselló)
+│   │   └── Nagybőgő
+│   └── Egyéb húrosok
+│       └── Hárfa
+
+├── 🎶 Fúvós hangszerek
+│   ├── Fa fúvósok
+│   │   ├── Fuvola
+│   │   ├── Pikoló
+│   │   ├── Klarinét
+│   │   ├── Szaxofon
+│   │   ├── Oboa
+│   │   ├── Fagott
+│   │   └── Furulya (népi hangszer is lehet)
+│   ├── Rézfúvósok
+│   │   ├── Trombita
+│   │   ├── Harsona
+│   │   ├── Kürt
+│   │   └── Tuba
+│   └── Népi fúvós hangszerek
+│       ├── Duda
+│       ├── Pánsíp
+│       └── Tilinkó
+
+├── 🥁 Ütős hangszerek
+│   ├── Dobok
+│   │   ├── Dobkészletek
+│   │   ├── Elektromos dobok
+│   │   └── Kézi dobok (pl. bongó, djembe, conga, keretes dob)
+│   ├── Cintányérok
+│   ├── Ritmushangszerek
+│   │   ├── Csörgődob
+│   │   ├── Maracas
+│   │   ├── Tamburin
+│   │   ├── Shaker
+│   │   └── Guiro
+│   └── Hangolt ütősök
+│       ├── Xilofon
+│       ├── Vibrafon
+│       ├── Harangjáték
+│       └── Kalimba
+
+├── 🎹 Billentyűs hangszerek
+│   ├── Zongora
+│   ├── Digitális zongora
+│   ├── Csembaló
+│   ├── Orgona
+│   └── MIDI billentyűzet
+
+├── 🔌 Elektronikus hangszerek
+│   ├── Szintetizátor
+│   ├── Drum machine
+│   ├── Sampler
+│   ├── Groovebox
+│   ├── Theremin
+│   ├── Loop station
+│   └── Egyéb digitális hangszerek
+
