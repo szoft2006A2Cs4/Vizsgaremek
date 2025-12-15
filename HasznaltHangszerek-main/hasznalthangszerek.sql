@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 17, 2025 at 04:25 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2025. Dec 15. 12:21
+-- Kiszolgáló verziója: 9.9.0
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hasznalthangszerek`
+-- Adatbázis: `haszbalthangszerek`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Tábla szerkezet ehhez a táblához `category`
 --
 
 CREATE TABLE `category` (
@@ -32,7 +32,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `category`
+-- A tábla adatainak kiíratása `category`
 --
 
 INSERT INTO `category` (`cname`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `category` (`cname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instrument`
+-- Tábla szerkezet ehhez a táblához `instrument`
 --
 
 CREATE TABLE `instrument` (
@@ -59,7 +59,7 @@ CREATE TABLE `instrument` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `instrument`
+-- A tábla adatainak kiíratása `instrument`
 --
 
 INSERT INTO `instrument` (`iid`, `uid`, `iname`, `cost`, `scname`, `description`, `sold`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `instrument` (`iid`, `uid`, `iname`, `cost`, `scname`, `description`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderinfo`
+-- Tábla szerkezet ehhez a táblához `orderinfo`
 --
 
 CREATE TABLE `orderinfo` (
@@ -101,31 +101,30 @@ CREATE TABLE `orderinfo` (
   `deliveryCity` varchar(50) NOT NULL,
   `deliveryStreet` varchar(50) NOT NULL,
   `deliveryPC` int(11) NOT NULL,
-  `sid` int(11) NOT NULL,
   `cid` int(11) NOT NULL,
   `iid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `orderinfo`
+-- A tábla adatainak kiíratása `orderinfo`
 --
 
-INSERT INTO `orderinfo` (`oid`, `dateOfPurchase`, `deliveryCity`, `deliveryStreet`, `deliveryPC`, `sid`, `cid`, `iid`) VALUES
-(1, '2025-09-15', 'Budapest', 'Váci utca 12', 1056, 1, 2, 1),
-(2, '2025-01-16', 'Szeged', 'Kárász utca 7', 6720, 2, 3, 2),
-(3, '2025-01-17', 'Debrecen', 'Piac utca 2', 4024, 3, 4, 3),
-(4, '2025-05-18', 'Budapest', 'Andrássy út 45', 1061, 4, 5, 4),
-(5, '2025-09-19', 'Pécs', 'Jókai tér 3', 7621, 5, 6, 5),
-(6, '2025-08-20', 'Győr', 'Széchenyi tér 4', 9021, 6, 7, 6),
-(7, '2025-05-21', 'Sopron', 'Fő tér 1', 9400, 7, 8, 7),
-(8, '2025-10-22', 'Miskolc', 'Búza tér 6', 3525, 8, 9, 8),
-(9, '2025-11-23', 'Budapest', 'Mester utca 18', 1095, 9, 10, 9),
-(10, '2025-12-24', 'Szombathely', 'Alma utca 5', 9700, 10, 1, 10);
+INSERT INTO `orderinfo` (`oid`, `dateOfPurchase`, `deliveryCity`, `deliveryStreet`, `deliveryPC`, `cid`, `iid`) VALUES
+(1, '2025-09-15', 'Budapest', 'Váci utca 12', 1056, 2, 1),
+(2, '2025-01-16', 'Szeged', 'Kárász utca 7', 6720, 3, 2),
+(3, '2025-01-17', 'Debrecen', 'Piac utca 2', 4024, 4, 3),
+(4, '2025-05-18', 'Budapest', 'Andrássy út 45', 1061, 5, 4),
+(5, '2025-09-19', 'Pécs', 'Jókai tér 3', 7621, 6, 5),
+(6, '2025-08-20', 'Győr', 'Széchenyi tér 4', 9021, 7, 6),
+(7, '2025-05-21', 'Sopron', 'Fő tér 1', 9400, 8, 7),
+(8, '2025-10-22', 'Miskolc', 'Búza tér 6', 3525, 9, 8),
+(9, '2025-11-23', 'Budapest', 'Mester utca 18', 1095, 10, 9),
+(10, '2025-12-24', 'Szombathely', 'Alma utca 5', 9700, 1, 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subcategory`
+-- Tábla szerkezet ehhez a táblához `subcategory`
 --
 
 CREATE TABLE `subcategory` (
@@ -134,7 +133,7 @@ CREATE TABLE `subcategory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `subcategory`
+-- A tábla adatainak kiíratása `subcategory`
 --
 
 INSERT INTO `subcategory` (`scname`, `cname`) VALUES
@@ -191,7 +190,7 @@ INSERT INTO `subcategory` (`scname`, `cname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Tábla szerkezet ehhez a táblához `user`
 --
 
 CREATE TABLE `user` (
@@ -207,7 +206,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Dumping data for table `user`
+-- A tábla adatainak kiíratása `user`
 --
 
 INSERT INTO `user` (`uid`, `uname`, `email`, `pnumber`, `password`, `review`, `postalcode`, `city`, `streetHnum`) VALUES
@@ -224,17 +223,17 @@ INSERT INTO `user` (`uid`, `uname`, `email`, `pnumber`, `password`, `review`, `p
 (11, 'puskaspeter', 'puskas.peti@example.com', 36, 'encryptedPassword10', 5, 1012, 'Budapest', 'Futball utca 10');
 
 --
--- Indexes for dumped tables
+-- Indexek a kiírt táblákhoz
 --
 
 --
--- Indexes for table `category`
+-- A tábla indexei `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`cname`);
 
 --
--- Indexes for table `instrument`
+-- A tábla indexei `instrument`
 --
 ALTER TABLE `instrument`
   ADD PRIMARY KEY (`iid`),
@@ -242,55 +241,54 @@ ALTER TABLE `instrument`
   ADD KEY `fk_instrument_user` (`uid`);
 
 --
--- Indexes for table `orderinfo`
+-- A tábla indexei `orderinfo`
 --
 ALTER TABLE `orderinfo`
   ADD PRIMARY KEY (`oid`),
-  ADD UNIQUE KEY `sid` (`sid`),
   ADD UNIQUE KEY `cid` (`cid`),
   ADD UNIQUE KEY `iid` (`iid`);
 
 --
--- Indexes for table `subcategory`
+-- A tábla indexei `subcategory`
 --
 ALTER TABLE `subcategory`
   ADD PRIMARY KEY (`scname`),
   ADD KEY `fk_subcategory_category` (`cname`);
 
 --
--- Indexes for table `user`
+-- A tábla indexei `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`uid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- A kiírt táblák AUTO_INCREMENT értéke
 --
 
 --
--- AUTO_INCREMENT for table `instrument`
+-- AUTO_INCREMENT a táblához `instrument`
 --
 ALTER TABLE `instrument`
   MODIFY `iid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `orderinfo`
+-- AUTO_INCREMENT a táblához `orderinfo`
 --
 ALTER TABLE `orderinfo`
   MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Constraints for dumped tables
+-- Megkötések a kiírt táblákhoz
 --
 
 --
--- Constraints for table `instrument`
+-- Megkötések a táblához `instrument`
 --
 ALTER TABLE `instrument`
   ADD CONSTRAINT `fk_instrument_subcategory` FOREIGN KEY (`scname`) REFERENCES `subcategory` (`scname`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -298,15 +296,14 @@ ALTER TABLE `instrument`
   ADD CONSTRAINT `instrument_ibfk_2` FOREIGN KEY (`scname`) REFERENCES `subcategory` (`scname`);
 
 --
--- Constraints for table `orderinfo`
+-- Megkötések a táblához `orderinfo`
 --
 ALTER TABLE `orderinfo`
   ADD CONSTRAINT `orderinfo_ibfk_1` FOREIGN KEY (`iid`) REFERENCES `instrument` (`iid`),
-  ADD CONSTRAINT `orderinfo_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `user` (`uid`),
   ADD CONSTRAINT `orderinfo_ibfk_3` FOREIGN KEY (`cid`) REFERENCES `user` (`uid`);
 
 --
--- Constraints for table `subcategory`
+-- Megkötések a táblához `subcategory`
 --
 ALTER TABLE `subcategory`
   ADD CONSTRAINT `fk_subcategory_category` FOREIGN KEY (`cname`) REFERENCES `category` (`cname`) ON DELETE CASCADE ON UPDATE CASCADE;
