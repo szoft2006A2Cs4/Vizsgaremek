@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "HH_Api.Controllers.UserController",
+    "Method": "GetUserList",
+    "RelativePath": "api/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
