@@ -21,5 +21,11 @@ namespace HH_Api.Controllers
         {
             return Ok(await _context.Users.ToListAsync());
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            return Ok(await _context.Users.FirstOrDefaultAsync(u => u.Id == id));
+        }
     }
 }
