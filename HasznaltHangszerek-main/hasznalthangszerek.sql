@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Dec 15. 12:21
+-- Létrehozás ideje: 2026. Jan 07. 10:01
 -- Kiszolgáló verziója: 9.9.0
 -- PHP verzió: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `haszbalthangszerek`
+-- Adatbázis: `hasznalthangszerek`
 --
 
 -- --------------------------------------------------------
@@ -101,7 +101,6 @@ CREATE TABLE `orderinfo` (
   `deliveryCity` varchar(50) NOT NULL,
   `deliveryStreet` varchar(50) NOT NULL,
   `deliveryPC` int(11) NOT NULL,
-  `cid` int(11) NOT NULL,
   `iid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -109,17 +108,17 @@ CREATE TABLE `orderinfo` (
 -- A tábla adatainak kiíratása `orderinfo`
 --
 
-INSERT INTO `orderinfo` (`oid`, `dateOfPurchase`, `deliveryCity`, `deliveryStreet`, `deliveryPC`, `cid`, `iid`) VALUES
-(1, '2025-09-15', 'Budapest', 'Váci utca 12', 1056, 2, 1),
-(2, '2025-01-16', 'Szeged', 'Kárász utca 7', 6720, 3, 2),
-(3, '2025-01-17', 'Debrecen', 'Piac utca 2', 4024, 4, 3),
-(4, '2025-05-18', 'Budapest', 'Andrássy út 45', 1061, 5, 4),
-(5, '2025-09-19', 'Pécs', 'Jókai tér 3', 7621, 6, 5),
-(6, '2025-08-20', 'Győr', 'Széchenyi tér 4', 9021, 7, 6),
-(7, '2025-05-21', 'Sopron', 'Fő tér 1', 9400, 8, 7),
-(8, '2025-10-22', 'Miskolc', 'Búza tér 6', 3525, 9, 8),
-(9, '2025-11-23', 'Budapest', 'Mester utca 18', 1095, 10, 9),
-(10, '2025-12-24', 'Szombathely', 'Alma utca 5', 9700, 1, 10);
+INSERT INTO `orderinfo` (`oid`, `dateOfPurchase`, `deliveryCity`, `deliveryStreet`, `deliveryPC`, `iid`) VALUES
+(1, '2025-09-15', 'Budapest', 'Váci utca 12', 1056, 1),
+(2, '2025-01-16', 'Szeged', 'Kárász utca 7', 6720, 2),
+(3, '2025-01-17', 'Debrecen', 'Piac utca 2', 4024, 3),
+(4, '2025-05-18', 'Budapest', 'Andrássy út 45', 1061, 4),
+(5, '2025-09-19', 'Pécs', 'Jókai tér 3', 7621, 5),
+(6, '2025-08-20', 'Győr', 'Széchenyi tér 4', 9021, 6),
+(7, '2025-05-21', 'Sopron', 'Fő tér 1', 9400, 7),
+(8, '2025-10-22', 'Miskolc', 'Búza tér 6', 3525, 8),
+(9, '2025-11-23', 'Budapest', 'Mester utca 18', 1095, 9),
+(10, '2025-12-24', 'Szombathely', 'Alma utca 5', 9700, 10);
 
 -- --------------------------------------------------------
 
@@ -245,7 +244,6 @@ ALTER TABLE `instrument`
 --
 ALTER TABLE `orderinfo`
   ADD PRIMARY KEY (`oid`),
-  ADD UNIQUE KEY `cid` (`cid`),
   ADD UNIQUE KEY `iid` (`iid`);
 
 --
@@ -299,8 +297,7 @@ ALTER TABLE `instrument`
 -- Megkötések a táblához `orderinfo`
 --
 ALTER TABLE `orderinfo`
-  ADD CONSTRAINT `orderinfo_ibfk_1` FOREIGN KEY (`iid`) REFERENCES `instrument` (`iid`),
-  ADD CONSTRAINT `orderinfo_ibfk_3` FOREIGN KEY (`cid`) REFERENCES `user` (`uid`);
+  ADD CONSTRAINT `orderinfo_ibfk_1` FOREIGN KEY (`iid`) REFERENCES `instrument` (`iid`);
 
 --
 -- Megkötések a táblához `subcategory`
