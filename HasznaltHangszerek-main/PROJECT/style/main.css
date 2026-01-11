@@ -1,3 +1,8 @@
+:root {
+  --header-height: 80px;
+  --intro-extra-space: 200px;
+}
+
 * {
   font-family: "Celinda";
 }
@@ -12,9 +17,9 @@ main {
   grid-template-areas:
     "header header header"
     "nav nav nav"
+    "div div div"
     "article article section"
     "footer footer footer";
-  height: 100vh;
   margin: 0;
 }
 header {
@@ -42,11 +47,34 @@ nav {
   display: flex;
   justify-content: space-evenly;
 }
+
+#introduction {
+  grid-area: div;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background-image: url("../pictures/introduction.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #f5e6c8;
+  font-size: xx-large;
+  text-align: center;
+  padding-top: 144px;
+  box-sizing: border-box;
+}
+#introduction > h1, h3 {
+  padding: 40px 40px 40px 40px;
+}
 article {
   grid-area: article;
   background-color: #ead7ce;
   font-size: 30px;
   overflow-y: scroll;
+  margin-top: calc(100vh - (var(--header-height) + var(--intro-extra-space)));
 }
 #nav-bar {
   display: flex;
@@ -59,6 +87,7 @@ article {
 section {
   grid-area: section;
   background-color: #d4c4bc;
+  margin-top: calc(100vh - (var(--header-height) + var(--intro-extra-space)));
 }
 footer {
   background-color: #5a5958;

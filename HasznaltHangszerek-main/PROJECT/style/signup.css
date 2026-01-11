@@ -16,7 +16,7 @@ body {
   background-image: url(../pictures/pexels-yesimcolak-30816642.jpg);
   background-size: cover;
   background-position: left;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 .wrapper {
