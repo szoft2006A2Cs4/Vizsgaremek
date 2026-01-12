@@ -13,23 +13,16 @@ namespace HH_Api.Model
         public DateTime DateOfPurchase { get; set; }
 
         [Column("deliveryCity")]
-        public string DeliveryCity { get; set; }
+        public string? DeliveryCity { get; set; }
 
         [Column("deliveryStreet")]
-        public string DeliveryStreet { get; set; }
+        public string? DeliveryStreet { get; set; }
 
         [Column("deliveryPC")]
         public int DeliveryPC { get; set; }
 
-        [Column("cid")]
-        public int CId { get; set; }
-
         [Column("iid")]
         public int IId { get; set; }
-
-
-        [ForeignKey(nameof(CId))]
-        public User? Customer { get; set; }
 
         [ForeignKey(nameof(IId))]
         public Instrument? Instrument { get; set; }

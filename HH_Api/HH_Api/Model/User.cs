@@ -10,27 +10,27 @@ namespace HH_Api.Model
         public int Id { get; set; }
 
         [Column("uname")]
-        public int Name { get; set; }
+        public required string Name { get; set; }
 
         [Column("email")]
-        public int Email { get; set; }
+        public string? Email { get; set; }
 
         [Column("pnumber")]
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         [Column("password")]
-        public int Password { get; set; }
+        public string? Password { get; set; }
 
         [Column("review")]
-        public int Review { get; set; }
+        public float Review { get; set; }
 
         [Column("postalcode")]
         public int PostalCode { get; set; }
 
         [Column("city")]
-        public int City { get; set; }
+        public string? City { get; set; }
 
         [Column("streetHnum")]
-        public int StreetHouseNumber { get; set; }
+        public string? StreetHouseNumber { get; set; }
     }
 }

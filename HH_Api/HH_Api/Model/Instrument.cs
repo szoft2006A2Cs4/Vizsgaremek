@@ -9,13 +9,13 @@ namespace HH_Api.Model
         public int Id { get; set; }
 
         [Column("iname")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Column("cost")]
         public int Cost { get; set; }
 
         [Column("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Column("sold")]
         public bool Sold { get; set; }
@@ -24,7 +24,7 @@ namespace HH_Api.Model
         public int UId { get; set; }
 
         [Column("scname")]
-        public int SCName { get; set; }
+        public string? SCName { get; set; }
 
 
         [ForeignKey(nameof(UId))]
