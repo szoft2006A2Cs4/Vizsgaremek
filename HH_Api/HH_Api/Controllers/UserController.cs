@@ -1,7 +1,5 @@
 ﻿using HH_Api.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,7 +31,7 @@ namespace HH_Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] User user)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
         {
             var oldUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (oldUser == null) return NotFound("A keresett felhasználó nem található!");
@@ -48,8 +46,8 @@ namespace HH_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] User user)
         {
-            var u = await _context.Users.FirstOrDefaultAsync(us => us.Name == user.Name);
-            if (u != null) return Conflict();
+            var email = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+            if (email != null) return Conflict("Ezzel az email-címmel már létezik felhasználó!");
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Created($"{Request.GetDisplayUrl()}/{user.Id}" ,user);

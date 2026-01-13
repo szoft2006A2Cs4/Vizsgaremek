@@ -24,6 +24,8 @@ namespace HH_Api.Model
         [Column("iid")]
         public int IId { get; set; }
 
+
+
         [ForeignKey(nameof(IId))]
         public Instrument? Instrument { get; set; }
     }
