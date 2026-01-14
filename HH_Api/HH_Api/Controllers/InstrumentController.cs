@@ -46,6 +46,8 @@ namespace HH_Api.Controllers
             return Created($"{Request.GetDisplayUrl()}/{instrument.Id}", instrument);
         }
 
+        // TODO
         // PATCH: api/Instrument
+        // GET: GetBySpecifiedAttribute
     }
 }

@@ -36,5 +36,9 @@ namespace HH_Api.Controllers
             if (instrument != null) return Ok(instrument);
             else return NotFound();
         }
+
+        // TODO
+        // PATCH (?)
+        // POST: CreateOrder
     }
 }
