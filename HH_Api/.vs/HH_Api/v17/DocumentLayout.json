@@ -1,13 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
+  "WorkspaceRootPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\auth\\tokenmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\auth\\tokenmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\auth\\passwordhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\auth\\passwordhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\hh_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\hh_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -23,23 +35,62 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TokenManager.cs",
+              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Auth\\TokenManager.cs",
+              "RelativeDocumentMoniker": "HH_Api\\Auth\\TokenManager.cs",
+              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Auth\\TokenManager.cs",
+              "RelativeToolTip": "HH_Api\\Auth\\TokenManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T08:30:27.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PasswordHandler.cs",
+              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Auth\\PasswordHandler.cs",
+              "RelativeDocumentMoniker": "HH_Api\\Auth\\PasswordHandler.cs",
+              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Auth\\PasswordHandler.cs",
+              "RelativeToolTip": "HH_Api\\Auth\\PasswordHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T08:30:08.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HH_Api",
+              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+              "RelativeDocumentMoniker": "HH_Api\\HH_Api.csproj",
+              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+              "RelativeToolTip": "HH_Api\\HH_Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-22T08:29:22.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
+              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "HH_Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
               "RelativeToolTip": "HH_Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwB0AAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-30T19:34:29.971Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
               "RelativeDocumentMoniker": "HH_Api\\Program.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
+              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
               "RelativeToolTip": "HH_Api\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

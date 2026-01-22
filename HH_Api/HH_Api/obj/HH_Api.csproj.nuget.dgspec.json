@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nb_szoft2006\\Downloads\\Vizsgaremek-main\\HH_Api\\HH_Api\\HH_Api.csproj": {}
+    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nb_szoft2006\\Downloads\\Vizsgaremek-main\\HH_Api\\HH_Api\\HH_Api.csproj": {
+    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nb_szoft2006\\Downloads\\Vizsgaremek-main\\HH_Api\\HH_Api\\HH_Api.csproj",
+        "projectUniqueName": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
         "projectName": "HH_Api",
-        "projectPath": "C:\\Users\\nb_szoft2006\\Downloads\\Vizsgaremek-main\\HH_Api\\HH_Api\\HH_Api.csproj",
-        "packagesPath": "C:\\Users\\nb_szoft2006\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nb_szoft2006\\Downloads\\Vizsgaremek-main\\HH_Api\\HH_Api\\obj\\",
+        "projectPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+        "packagesPath": "C:\\Users\\sd_szoft2006\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nb_szoft2006\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sd_szoft2006\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[8.0.22, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.15.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.22, )"
@@ -68,6 +72,14 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.15.0, )"
+            },
+            "System.Security.Claims": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
