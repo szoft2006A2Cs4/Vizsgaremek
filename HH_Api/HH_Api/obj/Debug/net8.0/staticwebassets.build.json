@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"C8x2ivOFHHDbHRoMQcCbNSQPa1Vrb5+CECCYGw0GAZE=","Source":"HH_Api","BasePath":"_content/HH_Api","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "LVSA8s3QcLg+yRnHijFj8sIUee1Gf9q7rO88WW00nVw=",
+  "Source": "HH_Api",
+  "BasePath": "_content/HH_Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
