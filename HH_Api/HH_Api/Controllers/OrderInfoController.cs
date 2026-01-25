@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HH_Api.Controllers
 {
@@ -17,6 +18,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/OrderInfo
+        [Authorize(Policy = "OrderInfo.Read")]
         [HttpGet]
         public async Task<IActionResult> GetOrderInfoList()
         {
@@ -24,6 +26,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/OrderInfo/5
+        [Authorize(Policy = "OrderInfo.Read")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderInfo(int id)
         {

@@ -1,7 +1,9 @@
 ﻿using HH_Api.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using HH_Api.Auth;
 
 namespace HH_Api.Controllers
 {
@@ -15,13 +17,15 @@ namespace HH_Api.Controllers
         {
             _context = context;
         }
-
+        
+        [Authorize(Policy = "User.Read")]
         [HttpGet]
         public async Task<IActionResult> GetUserList()
         {
             return Ok(await _context.Users.ToListAsync());
         }
 
+        [Authorize(Policy = "User.Read")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
@@ -30,6 +34,7 @@ namespace HH_Api.Controllers
             else return NotFound("A megadott azonosítóval felhasználó nem található!");
         }
 
+        [Authorize(Policy = "User.Update")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
         {
@@ -43,16 +48,22 @@ namespace HH_Api.Controllers
             return Ok("Adatok sikeres frissítése!");
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] User user)
         {
+            if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Name) || string.IsNullOrEmpty(user.Password)) return BadRequest("Hibás vagy hiányzó adatok!");
+            if (string.IsNullOrEmpty(user.Role)) user.Role = "User";
+            else user.Role = char.ToUpper(user.Role[0]) + user.Role.Substring(1).ToLower();
             var email = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
             if (email != null) return Conflict("Ezzel az email-címmel már létezik felhasználó!");
+            user.Password = PasswordHandler.HashPassword(user.Password);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Created($"{Request.GetDisplayUrl()}/{user.Id}" ,user);
         }
 
+        [Authorize(Policy = "User.Delete")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -1,7 +1,8 @@
 ﻿using HH_Api.Model;
-using System.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace HH_Api.Auth
 {
@@ -53,30 +54,20 @@ namespace HH_Api.Auth
         {
             var claims = new List<Claim>
             {
-                // Az email címet mint a felhasználó "nevét" tároljuk el.
                 new (ClaimTypes.Name, user.Email)
             };
             foreach (var permission in _rolesPermissions[user.Role!])
             {
-                // A felhasználó szerepköréhez tartozó jogosultságokat mint "engedélyeket"
-                // tároljuk el.
                 claims.Add(new Claim("permission", permission));
             }
-
-            // A token aláírása a titkos kulcsból létrehozott "credentials" adatokkal történik.
+            
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            // A token tartalmazza
             var token = new JwtSecurityToken(
-                // a kibocsátót,
                 issuer: _issuer,
-                // a célközönséget,
                 audience: _audience,
-                // a fent összegyűjtött állításokat,
                 claims: claims,
-                // a lejárat időpontját,
                 expires: DateTime.Now.AddHours(1),
-                // és az aláíráshoz szükséges hitelesítési adatokat.
                 signingCredentials: creds
             );
 

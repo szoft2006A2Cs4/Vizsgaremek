@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HH_Api.Controllers
 {
@@ -17,6 +18,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Subcategory
+        [Authorize(Policy = "SubCategory.Create")]
         [HttpGet]
         public async Task<IActionResult> GetSubCategoryList()
         {
@@ -24,6 +26,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Subcategory/5
+        [Authorize(Policy = "SubCategory.Create")]
         [HttpGet("{name}")]
         public async Task<IActionResult> GetSubCategory(string name)
         {

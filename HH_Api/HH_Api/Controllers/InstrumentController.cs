@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HH_Api.Controllers
 {
@@ -18,6 +19,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Instrument
+        [Authorize(Policy = "Instrument.Read")]
         [HttpGet]
         public async Task<IActionResult> GetInstrumentList()
         {
@@ -25,6 +27,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Instrument/5
+        [Authorize(Policy = "Instrument.Read")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetInstrument(int id)
         {
@@ -38,6 +41,7 @@ namespace HH_Api.Controllers
         }
 
         // POST: api/Instrument
+        [Authorize(Policy = "Instrument.Create")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Instrument instrument)
         {

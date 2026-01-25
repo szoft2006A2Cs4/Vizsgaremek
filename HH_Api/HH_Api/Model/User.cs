@@ -32,5 +32,11 @@ namespace HH_Api.Model
 
         [Column("streetHnum")]
         public string? StreetHouseNumber { get; set; }
+        
+        [Column("Token")]
+        public string? Role { get; set; }
+        
+        [Column("Token")]
+        public string? Token { get; set; }
     }
 }

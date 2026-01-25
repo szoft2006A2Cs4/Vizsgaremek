@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HH_Api.Controllers
 {
@@ -17,6 +18,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Category
+        [Authorize(Policy = "Category.Read")]
         [HttpGet]
         public async Task<IActionResult> GetCategoryList()
         {
@@ -24,6 +26,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Category/5
+        [Authorize(Policy = "Category.Read")]
         [HttpGet("{name}")]
         public async Task<IActionResult> GetCategory(string name)
         {
