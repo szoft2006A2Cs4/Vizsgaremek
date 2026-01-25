@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\HH_Api",
-    "\\HH_Api\\HH_Api",
-    "\\HH_Api\\HH_Api\\Auth"
+    "\\HH_Api\\HH_Api"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api\\Auth\\TokenManager.cs",
+  "SelectedNode": "\\HH_Api\\HH_Api\\appsettings.Development.json",
   "PreviewInSolutionExplorer": false
 }
