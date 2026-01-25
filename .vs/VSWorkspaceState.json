@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\HH_Api",
+    "\\HH_Api\\HH_Api",
+    "\\HH_Api\\HH_Api\\Auth"
+  ],
+  "SelectedNode": "\\HH_Api\\HH_Api\\Auth\\TokenManager.cs",
+  "PreviewInSolutionExplorer": false
+}

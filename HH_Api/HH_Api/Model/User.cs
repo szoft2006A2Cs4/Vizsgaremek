@@ -33,10 +33,10 @@ namespace HH_Api.Model
         [Column("streetHnum")]
         public string? StreetHouseNumber { get; set; }
         
-        [Column("Token")]
+        [Column("role")]
         public string? Role { get; set; }
         
-        [Column("Token")]
+        [Column("token")]
         public string? Token { get; set; }
     }
 }
