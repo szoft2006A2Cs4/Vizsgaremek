@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 07. 10:01
--- Kiszolgáló verziója: 9.9.0
+-- Létrehozás ideje: 2026. Jan 26. 10:58
+-- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `hasznalthangszerek`
+-- Adatbázis: `hh`
 --
 
 -- --------------------------------------------------------
@@ -58,37 +58,6 @@ CREATE TABLE `instrument` (
   `sold` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `instrument`
---
-
-INSERT INTO `instrument` (`iid`, `uid`, `iname`, `cost`, `scname`, `description`, `sold`) VALUES
-(1, 2, 'Yamaha DGX-670', 1200000, 'Zongora', 'Digitális zongora beépített metronómmal és USB-csatlakozóval.', 1),
-(2, 4, 'Johannus Opus 150', 2000000, 'Orgona', 'Klasszikus templomi orgona 2 manuállal.', 1),
-(3, 3, 'AKAI MPK Mini MK3', 150000, 'MIDI billentyűzet', 'USB-s MIDI billentyűzet 61 billentyűvel.', 1),
-(4, 5, 'Yamaha U3', 950000, 'Zongora', 'Yamaha akusztikus zongora, kiváló hangzással.', 1),
-(5, 1, 'AW3', 850000, 'Csembaló', 'Régi stílusú barokk csembaló, díszes kivitelben.', 1),
-(6, 6, 'Roland TR-8S', 400000, 'Drum machine', 'Elektronikus dobmodul mintavételező funkcióval.', 1),
-(7, 7, 'Novation Circuit', 550000, 'Groovebox', 'Groovebox – szekvencer és szintetizátor egyben.', 1),
-(8, 8, 'Boss RC-505', 250000, 'Loop station', 'Loop station élő felvételhez és effektezéshez.', 1),
-(9, 9, 'Akai MPC One', 600000, 'Sampler', 'Professzionális Sampler DJ-k és producerek számára.', 1),
-(10, 10, 'Korg Minilogue', 1300000, 'Szintetizátor', 'Analóg szintetizátor, 4 hang polifónia.', 1),
-(11, 1, 'Moog Etherwave', 800000, 'Theremin', 'Theremin – érintés nélküli elektronikus hangszer.', 0),
-(12, 2, 'Magyar Duda 1', 90000, 'Duda', 'Klasszikus magyar duda, fából és bőrből.', 0),
-(13, 3, 'Yamaha YFG-811', 450000, 'Fagott', 'Fa fagott ezüst kulcsokkal.', 0),
-(14, 4, 'Aulos 302B', 35000, 'Furulya', 'Műanyag furulya kezdőknek.', 0),
-(15, 5, 'Yamaha YFL-222', 250000, 'Fuvola', 'Ezüst fuvola koncert minőségben.', 0),
-(16, 6, 'Bach Stradivarius', 380000, 'Harsona', 'Réz harsona, puha hangzással.', 0),
-(17, 7, 'Buffet Crampon E11', 120000, 'Klarinét', 'Klarinét, B-hangolású.', 0),
-(18, 8, 'Yamaha YHR-567', 300000, 'Kürt', 'Kürt, francia típusú.', 0),
-(19, 9, 'Loree OB-301', 400000, 'Oboa', 'Oboa fából, sötét tónusú hanggal.', 0),
-(20, 10, 'Pánsíp Maker', 60000, 'Pánsíp', 'Kézzel faragott pánsíp, 12 síppal.', 0),
-(21, 1, 'Yamaha YPC-32', 70000, 'Pikoló', 'Kis méretű pikoló, fuvolistáknak.', 0),
-(22, 2, 'Selmer AS42', 280000, 'Szaxofon', 'Szaxofon alt típus, arany színben.', 0),
-(23, 3, 'Tilinkó 5', 40000, 'Tilinkó', 'Népzenei tilinkó, fenyőfából.', 0),
-(24, 4, 'Bach TR-300', 350000, 'Trombita', 'Réztrombita jazz zenére optimalizált.', 0),
-(25, 5, 'Conn 20K', 500000, 'Tuba', 'Tuba – mély rézfúvós hangszer.', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -103,22 +72,6 @@ CREATE TABLE `orderinfo` (
   `deliveryPC` int(11) NOT NULL,
   `iid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `orderinfo`
---
-
-INSERT INTO `orderinfo` (`oid`, `dateOfPurchase`, `deliveryCity`, `deliveryStreet`, `deliveryPC`, `iid`) VALUES
-(1, '2025-09-15', 'Budapest', 'Váci utca 12', 1056, 1),
-(2, '2025-01-16', 'Szeged', 'Kárász utca 7', 6720, 2),
-(3, '2025-01-17', 'Debrecen', 'Piac utca 2', 4024, 3),
-(4, '2025-05-18', 'Budapest', 'Andrássy út 45', 1061, 4),
-(5, '2025-09-19', 'Pécs', 'Jókai tér 3', 7621, 5),
-(6, '2025-08-20', 'Győr', 'Széchenyi tér 4', 9021, 6),
-(7, '2025-05-21', 'Sopron', 'Fő tér 1', 9400, 7),
-(8, '2025-10-22', 'Miskolc', 'Búza tér 6', 3525, 8),
-(9, '2025-11-23', 'Budapest', 'Mester utca 18', 1095, 9),
-(10, '2025-12-24', 'Szombathely', 'Alma utca 5', 9700, 10);
 
 -- --------------------------------------------------------
 
@@ -201,25 +154,18 @@ CREATE TABLE `user` (
   `review` float NOT NULL,
   `postalcode` int(11) NOT NULL,
   `city` varchar(100) NOT NULL,
-  `streetHnum` varchar(100) NOT NULL
+  `streetHnum` varchar(100) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `token` varchar(1024) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `user`
 --
 
-INSERT INTO `user` (`uid`, `uname`, `email`, `pnumber`, `password`, `review`, `postalcode`, `city`, `streetHnum`) VALUES
-(1, 'Dodo', 'dodo39766@gmail.com', 2147483647, 'enctriptedPasswordKöcsög', 5, 9700, 'Szombathely', 'Bogáti út 70'),
-(2, 'tothgabi', 'toth.gabi@example.com', 36, 'encryptedPassword1', 5, 1011, 'Budapest', 'Vörösmarty utca 12'),
-(3, 'majka', 'majka@example.com', 36, 'encryptedPassword2', 4, 1061, 'Budapest', 'Andrássy út 45'),
-(4, 'radicsgigi', 'radics.gigi@example.com', 36, 'encryptedPassword3', 5, 6720, 'Szeged', 'Kárász utca 7'),
-(5, 'ordognora', 'ordog.nora@example.com', 36, 'encryptedPassword4', 4, 4024, 'Debrecen', 'Piac utca 2'),
-(6, 'rubintreka', 'rubint.reka@example.com', 36, 'encryptedPassword5', 5, 1095, 'Budapest', 'Mester utca 18'),
-(7, 'konczzsuzsa', 'koncz.zsuzsa@example.com', 36, 'encryptedPassword6', 5, 7621, 'Pécs', 'Jókai tér 3'),
-(8, 'pressergabor', 'presser.gabor@example.com', 36, 'encryptedPassword7', 5, 9021, 'Győr', 'Széchenyi tér 4'),
-(9, 'torokadam', 'torok.adam@example.com', 36, 'encryptedPassword8', 4, 9400, 'Sopron', 'Fő tér 1'),
-(10, 'lljunior', 'll.junior@example.com', 36, 'encryptedPassword9', 3, 3525, 'Miskolc', 'Búza tér 6'),
-(11, 'puskaspeter', 'puskas.peti@example.com', 36, 'encryptedPassword10', 5, 1012, 'Budapest', 'Futball utca 10');
+INSERT INTO `user` (`uid`, `uname`, `email`, `pnumber`, `password`, `review`, `postalcode`, `city`, `streetHnum`, `role`, `token`) VALUES
+(1, 'Dodo', 'simon.dominik@hbsz.edu.hu', 306015420, 's2nTHSiywAIw++CkuOqU/Q==.oo5tkodA8DDSfRtqaoKSJTA23xdlOCijOBWloahMHyQ=', 5, 9700, 'Szombathely', 'Bogáti út 70', 'Admin', NULL),
+(2, 'Czibi', 'czibók.bence@hbsz.edu.hu', 301234567, 'Th80l+sJoQiVdWVZAvNChA==.0F/tfWsW04TRO2re9SAZ/UW9czK4TiICOCQyzudw8n0=', 5, 9754, 'Pecöl', 'József Attila utca 2', 'User', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -279,7 +225,7 @@ ALTER TABLE `orderinfo`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Megkötések a kiírt táblákhoz
