@@ -63,9 +63,9 @@ namespace HH_Api
         
         private static void AddJwtAuthentication(WebApplicationBuilder builder)
         {
-            var secretKey = builder.Configuration["Auth:Jwt:Key"] ?? throw new ArgumentNullException("builder.Configuration[\"Auth:Jwt:Key\"]");
-            var issuer = builder.Configuration["Auth:Jwt:Issuer"] ?? throw new ArgumentNullException("builder.Configuration[\"Auth:Jwt:Issuer\"]");
-            var audience = builder.Configuration["Auth:Jwt:Audience"] ?? throw new ArgumentNullException("builder.Configuration[\"Auth:Jwt:Audience\"]");
+            var secretKey = builder.Configuration["Auth:Jwt:Key"];
+            var issuer = builder.Configuration["Auth:Jwt:Issuer"];
+            var audience = builder.Configuration["Auth:Jwt:Audience"]; 
             if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
             {
                 throw new ApplicationException("Authentication konfiguráció hiányzik");

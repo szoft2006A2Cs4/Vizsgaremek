@@ -8111,23 +8111,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dodo3\\.nuget\\packages\\": {},
-    "D:\\MicrosoftVisualStudio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\sd_szoft2006\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+      "projectUniqueName": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
       "projectName": "HH_Api",
-      "projectPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
-      "packagesPath": "C:\\Users\\dodo3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\obj\\",
+      "projectPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+      "packagesPath": "C:\\Users\\sd_szoft2006\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\MicrosoftVisualStudio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\dodo3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sd_szoft2006\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8219,7 +8219,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
