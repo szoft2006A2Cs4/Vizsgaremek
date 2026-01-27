@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Jan 26. 10:58
--- Kiszolgáló verziója: 10.4.32-MariaDB
+-- Létrehozás ideje: 2026. Jan 27. 10:48
+-- Kiszolgáló verziója: 9.9.0
 -- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -165,7 +165,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`uid`, `uname`, `email`, `pnumber`, `password`, `review`, `postalcode`, `city`, `streetHnum`, `role`, `token`) VALUES
 (1, 'Dodo', 'simon.dominik@hbsz.edu.hu', 306015420, 's2nTHSiywAIw++CkuOqU/Q==.oo5tkodA8DDSfRtqaoKSJTA23xdlOCijOBWloahMHyQ=', 5, 9700, 'Szombathely', 'Bogáti út 70', 'Admin', NULL),
-(2, 'Czibi', 'czibók.bence@hbsz.edu.hu', 301234567, 'Th80l+sJoQiVdWVZAvNChA==.0F/tfWsW04TRO2re9SAZ/UW9czK4TiICOCQyzudw8n0=', 5, 9754, 'Pecöl', 'József Attila utca 2', 'User', NULL);
+(2, 'Czibi', 'czibók.bence@hbsz.edu.hu', 301234567, 'Th80l+sJoQiVdWVZAvNChA==.0F/tfWsW04TRO2re9SAZ/UW9czK4TiICOCQyzudw8n0=', 5, 9754, 'Pecöl', 'József Attila utca 2', 'User', NULL),
+(17, 'Németh Balázs', 'nemeth.balazs@hbsz.edu.hu', 301234567, 'aTVWSCBL3lDQnErGPCnAmQ==.4WBe4nzLhfNGiU/fCrde4tqKbDy0uox91YIAjM4NscA=', 5, 9756, 'Bozzai', 'Petőfi Sándor u. 67', 'Guest', 'string');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -225,7 +226,7 @@ ALTER TABLE `orderinfo`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Megkötések a kiírt táblákhoz
