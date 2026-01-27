@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/HH_Api.props" />
-</Project>
