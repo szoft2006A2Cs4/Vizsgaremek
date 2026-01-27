@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace HH_Api.Controllers
 {
@@ -39,9 +40,15 @@ namespace HH_Api.Controllers
             if (instrument != null) return Ok(instrument);
             else return NotFound();
         }
-
-        // TODO
-        // PATCH (?)
-        // POST: CreateOrder
+        
+        // POST: api/OrderIndio
+        [Authorize(Policy = "OrderInfo.Create")]
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] OrderInfo orderinfo)
+        {
+            _context.OrderInfos.Add(orderinfo);
+            await _context.SaveChangesAsync();
+            return Created($"{Request.GetDisplayUrl()}/{orderinfo.Id}", orderinfo);
+        }
     }
 }

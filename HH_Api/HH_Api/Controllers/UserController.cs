@@ -73,8 +73,5 @@ namespace HH_Api.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
-
-        // TODO
-        // AUTENTICATE: User Management
     }
 }

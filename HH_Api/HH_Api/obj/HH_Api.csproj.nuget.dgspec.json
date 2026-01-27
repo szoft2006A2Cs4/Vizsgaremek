@@ -1,32 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {}
+    "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/HH_Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
+    "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/HH_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+        "projectUniqueName": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/HH_Api.csproj",
         "projectName": "HH_Api",
-        "projectPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
-        "packagesPath": "C:\\Users\\sd_szoft2006\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\obj\\",
+        "projectPath": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/HH_Api.csproj",
+        "packagesPath": "/Users/dodo/.nuget/packages/",
+        "outputPath": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sd_szoft2006\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/dodo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,8 +38,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -109,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.409/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
