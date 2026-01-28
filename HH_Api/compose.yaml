@@ -1,0 +1,7 @@
+﻿services:
+  hh_api:
+    image: hh_api
+    build:
+      context: .
+      dockerfile: HH_Api/Dockerfile
+
