@@ -18,7 +18,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Subcategory
-        [Authorize(Policy = "SubCategory.Create")]
+        [Authorize(Policy = "SubCategory.Read")]
         [HttpGet]
         public async Task<IActionResult> GetSubCategoryList()
         {
@@ -26,7 +26,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Subcategory/5
-        [Authorize(Policy = "SubCategory.Create")]
+        [Authorize(Policy = "SubCategory.Read")]
         [HttpGet("{name}")]
         public async Task<IActionResult> GetSubCategory(string name)
         {

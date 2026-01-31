@@ -44,7 +44,7 @@ namespace HH_Api.Controllers
         // POST: api/OrderIndio
         [Authorize(Policy = "OrderInfo.Create")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] OrderInfo orderinfo)
+        public async Task<IActionResult> CreateOrderInfo([FromBody] OrderInfo orderinfo)
         {
             _context.OrderInfos.Add(orderinfo);
             await _context.SaveChangesAsync();

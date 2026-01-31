@@ -55,6 +55,42 @@ internal static class DbContextHelper
                 Token = ""
             }
             ]);
+        context.Categories.AddRange(
+            [
+                new Category
+                {
+                    Name = "test1"
+                },
+                new Category
+                {
+                    Name = "test2"
+                },
+                new Category
+                {
+                    Name = "test1"
+                }
+            ]);
+        context.SubCategories.AddRange(
+            [
+                new Subcategory
+                {
+                    Name= "test1",
+                    Category = new Category{Name = "01"},
+                    CName = "01"
+                },
+                new Subcategory
+                {
+                    Name = "test2",
+                    Category = new Category{Name = "02"},
+                    CName = "02"
+                },
+                new Subcategory
+                {
+                    Name = "test3",
+                    Category = new Category{Name = "03"},
+                    CName = "02"
+                }
+            ]);
         return context;
     }
 }

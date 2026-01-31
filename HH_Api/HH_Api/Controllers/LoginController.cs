@@ -15,9 +15,6 @@ namespace HH_Api.Controllers
             private Context _context;
             private readonly TokenManager _tokenManager;
 
-            // A tokenManager objektum azért elérhető itt, mert a program.cs-ben az AddSingleton() metódussal
-            // felvettük az API szolgáltatásai közé. Az EntityFramework miatt kicsit eltérően, speciálisabban
-            // kellett felvennük a Context objektumot, amely az adatbázis kontextusunkat írja le.
             public LoginController(Context context, TokenManager tokenManager)
             {
                 _context = context;

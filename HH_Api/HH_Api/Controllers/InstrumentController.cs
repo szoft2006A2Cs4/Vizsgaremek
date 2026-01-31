@@ -43,7 +43,7 @@ namespace HH_Api.Controllers
         // POST: api/Instrument
         [Authorize(Policy = "Instrument.Create")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Instrument instrument)
+        public async Task<IActionResult> CreateInstrument([FromBody] Instrument instrument)
         {
             _context.Instruments.Add(instrument);
             await _context.SaveChangesAsync();
@@ -53,5 +53,6 @@ namespace HH_Api.Controllers
         // TODO
         // PATCH: api/Instrument
         // GET: GetBySpecifiedAttribute
+        //DELETE: api/Instrument
     }
 }

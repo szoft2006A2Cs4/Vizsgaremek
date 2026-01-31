@@ -50,7 +50,7 @@ namespace HH_Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] User user)
+        public async Task<IActionResult> CreateUser([FromBody] User user)
         {
             if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Name) || string.IsNullOrEmpty(user.Password)) return BadRequest("Hibás vagy hiányzó adatok!");
             if (string.IsNullOrEmpty(user.Role)) user.Role = "User";
@@ -65,7 +65,7 @@ namespace HH_Api.Controllers
 
         [Authorize(Policy = "User.Delete")]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (user == null) NotFound("A megadott azonosítóval felhasználó nem található!");
