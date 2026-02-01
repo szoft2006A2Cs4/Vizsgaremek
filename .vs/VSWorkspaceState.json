@@ -2,8 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\HH_Api",
-    "\\HH_Api\\HH_Api",
-    "\\HH_Api\\HH_Api\\Controllers"
+    "\\HH_Api\\HH_Api"
   ],
   "SelectedNode": "\\HH_Api\\HH_Api.sln",
   "PreviewInSolutionExplorer": false
