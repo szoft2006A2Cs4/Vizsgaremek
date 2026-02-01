@@ -29,9 +29,9 @@ namespace HH_Api.Auth
 
         public TokenManager(ConfigurationManager configuration)
         {
-            _secretKey = configuration["Auth:JWT:Key"]!;
-            _issuer = configuration["Auth:JWT:Issuer"]!;
-            _audience = configuration["Auth:JWT:Audience"]!;
+            _secretKey = configuration["Auth:Jwt:Key"]!;
+            _issuer = configuration["Auth:Jwt:Issuer"]!;
+            _audience = configuration["Auth:Jwt:Audience"]!;
             
             foreach (var role in configuration.GetSection("Auth:Roles")?.GetChildren() ?? [])
             {
