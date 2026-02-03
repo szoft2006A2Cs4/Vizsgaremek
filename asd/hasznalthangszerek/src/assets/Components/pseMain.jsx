@@ -1,10 +1,7 @@
-export default function pseMain() {
+export default function PseMain() {
   return (
     <main>
-      <article>
-        article
-        <img src="pictures/pexels-j-r-907961520-22807062.jpg" />
-      </article>
+      <article>article</article>
       <section>section</section>
     </main>
   );
