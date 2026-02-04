@@ -1,23 +1,23 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./index.css";
-import Header from "./assets/Components/Header";
-import Nav from "./assets/Components/Nav";
-import Introduction from "./assets/Components/Introduction";
-import PseMain from "./assets/Components/pseMain";
-import Footer from "./assets/Components/Footer";
-import Login from "./assets/Components/Login";
+import Login from "./assets/components/Login";
+import Home from "./assets/components/Home";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <Header />
-      <Nav />
-      <Introduction />
-      <PseMain />
-      <Footer />
+      <BrowserRouter id="browserRouter">
+        <Link to="/" className="browserRouter">
+          Home
+        </Link>
+        <Link to="/login" className="browserRouter">
+          Bejelentkezés
+        </Link>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

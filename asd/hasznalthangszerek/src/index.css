@@ -10,6 +10,10 @@
 body {
   margin: 0;
 }
+.browserRouter {
+  position: absolute;
+  left: -999em;
+}
 main {
   display: grid;
   grid-template-rows: 0.2fr 0.1fr 2fr;
@@ -91,6 +95,7 @@ section {
   margin-top: calc(100vh - (var(--header-height) + var(--intro-extra-space)));
 }
 footer {
+  grid-area: footer;
   background-color: #5a5958;
   color: rgba(248, 227, 227, 0.5);
   text-align: center;
@@ -99,7 +104,7 @@ footer {
 }
 @font-face {
   font-family: "Celinda";
-  src: url(../fonts/Celinda.otf);
+  src: url(./assets/fonts/Celinda.otf);
 }
 #phone {
   display: none;
@@ -162,6 +167,7 @@ footer {
     height: 100%;
   }
   footer {
+    grid-area: footer;
     background-color: #5a5958;
     color: rgba(248, 227, 227, 0.5);
     text-align: center;
