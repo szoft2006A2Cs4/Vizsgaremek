@@ -1,4 +1,7 @@
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "../style/register.css";
+import Register from "./Register";
 
 export default function Login() {
   return (
@@ -43,7 +46,7 @@ export default function Login() {
         </form>
       </center>
       <p>
-        Új itt? <a href="signup.html">Regisztráció</a>
+        Új itt? <Link to="/register">Regisztráció</Link>
       </p>
     </div>
   );
