@@ -5,14 +5,14 @@ import Register from "./Register";
 
 export default function Login() {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <h1>Bejelentkezés</h1>
       <p id="error-message"></p>
       <center>
         <form id="signup-form">
-          <div class="incorrect"></div>
+          <div className="incorrect"></div>
           <div>
-            <label for="email-input">
+            <label htmlFor="email-input">
               <span>@</span>
             </label>
             <input
@@ -23,7 +23,7 @@ export default function Login() {
             />
           </div>
           <div>
-            <label for="password-input">
+            <label htmlFor="password-input">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"

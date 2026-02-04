@@ -149,3 +149,23 @@ form div.incorrect input {
 #error-message {
   color: #f06272;
 }
+
+.instructions {
+  border-radius: 0.5rem;
+  background: #f06272;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: 0px;
+  width: 400px;
+  text-align: left;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
