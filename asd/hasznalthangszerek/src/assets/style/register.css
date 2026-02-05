@@ -150,6 +150,10 @@ form div.incorrect input {
   color: #f06272;
 }
 
+#successful {
+  color: lawngreen;
+}
+
 .instructions {
   border-radius: 0.5rem;
   background: #f06272;
@@ -159,10 +163,6 @@ form div.incorrect input {
   bottom: 0px;
   width: 400px;
   text-align: left;
-}
-
-.instructions > svg {
-  margin-right: 0.25rem;
 }
 
 .offscreen {
