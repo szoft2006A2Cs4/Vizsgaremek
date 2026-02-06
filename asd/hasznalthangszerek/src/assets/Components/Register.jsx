@@ -13,7 +13,8 @@ import axios from "../scripts/axios";
 const USER_REGEX =
   /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+(?:[- ][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#@$!%_-]){8,24}$/;
+const PWD_REGEX =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&]{8,24}$/;
 
 const Register = () => {
   const userRef = useRef();
@@ -145,7 +146,7 @@ const Register = () => {
       return;
     }
     if (phone === "" || phone == null) {
-      setErrMsg("Hiba történt: A telefonszám szükséges szükséges!");
+      setErrMsg("Hiba történt: A telefonszám szükséges!");
       //errors++;
       phoneInput.parentElement.classList.add("incorrect");
       return;
@@ -174,7 +175,12 @@ const Register = () => {
       passwordInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (!pwd.match(PWD_REGEX)) {
+    if (!PWD_REGEX.test(pwd)) {
+      if (pwd.length < 8 || pwd.length > 24) {
+        setErrMsg("Hossz");
+      } else if (pwd.length < 8 || pwd.length > 24) {
+        setErrMsg("Hossz");
+      }
       setErrMsg("Hiba történt: A jelszó nem felel meg a követelményeknek!");
       //errors++;
       passwordInput.parentElement.classList.add("incorrect");
@@ -196,7 +202,22 @@ const Register = () => {
     } else {
       try {
         //FOLYTATNI !!!
-      } catch (err) {}
+        const response = await axios.post(baseURL + "/api/User", {
+          Name: user,
+          Email: email,
+          PhoneNumber: phone,
+          Password: pwd,
+          Review: 0.0,
+          PostalCode: postal,
+          City: city,
+          StreetHouseNumber: address,
+          Role: user,
+          Token: "",
+        });
+        console.log(response.data);
+      } catch (err) {
+        console.log("Hiba: " + err.response?.data || err.message);
+      }
     }
   };
 
