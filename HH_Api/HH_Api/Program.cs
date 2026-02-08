@@ -29,10 +29,17 @@ namespace HH_Api
                      dbBuilder.UseMySQL(connectionString);
                  });
             AddJwtAuthentication(builder);
-            
-            builder.AddPolicy("AllowReactApp", policy => {policy.WithOrigins("http://localhost:5173/").AllowAnyMethod().AllowAnyHeader();});
-            app.UseRouting();
-            app.UseCors("AllowReactApp");
+
+            builder.Services.AddCors(options => 
+            { 
+                options.AddPolicy("AllowReactApp", 
+                    policy => 
+                    { 
+                        policy.WithOrigins("http://localhost:5173/")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader(); 
+                    }); 
+            });
 
             builder.Services.AddControllers()
                 .AddJsonOptions(o =>
@@ -41,8 +48,12 @@ namespace HH_Api
                 });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            
+
             var app = builder.Build();
+
+            app.UseRouting();
+            app.UseCors("AllowReactApp");
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

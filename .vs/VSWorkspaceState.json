@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\HH_Api",
-    "\\HH_Api\\HH_Api"
+    "\\HH_Api\\HH_Api",
+    "\\HH_Api\\HH_Api\\Model"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api.sln",
+  "SelectedNode": "\\HH_Api\\HH_Api\\Model\\User.cs",
   "PreviewInSolutionExplorer": false
 }

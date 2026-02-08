@@ -1,14 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\nb_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\",
+  "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\nb_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\nb_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\hh_api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\nb_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Model\\User.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Model\\User.cs",
-              "ToolTip": "C:\\Users\\nb_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\Model\\User.cs",
-              "RelativeToolTip": "HH_Api\\Model\\User.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAowBIAAAAtAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
+              "RelativeDocumentMoniker": "HH_Api\\Program.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
+              "RelativeToolTip": "HH_Api\\Program.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAIwDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T07:37:12.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\nb_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "HH_Api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\nb_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.Development.json",
-              "RelativeToolTip": "HH_Api\\appsettings.Development.json",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-01T12:18:33.666Z",
+              "WhenOpened": "2026-02-08T12:20:41.398Z",
               "EditorCaption": ""
             }
           ]
