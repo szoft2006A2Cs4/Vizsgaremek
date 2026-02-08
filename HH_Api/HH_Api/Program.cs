@@ -30,6 +30,10 @@ namespace HH_Api
                  });
             AddJwtAuthentication(builder);
             
+            builder.AddPolicy("AllowReactApp", policy => {policy.WithOrigins("http://localhost:5173/").AllowAnyMethod().AllowAnyHeader();});
+            app.UseRouting();
+            app.UseCors("AllowReactApp");
+
             builder.Services.AddControllers()
                 .AddJsonOptions(o =>
                 {
