@@ -11,10 +11,10 @@ import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
 
 const USER_REGEX =
-  /^[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+(?:[- ][A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]+)*$/;
+  /^[A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)+$/;
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const PWD_REGEX =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&]{8,24}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$!%*#?&_-]).{8,24}$/;
+const REGISTER_URL = "api/User";
 
 const Register = () => {
   const userRef = useRef();
@@ -133,6 +133,12 @@ const Register = () => {
       usernameInput.parentElement.classList.add("incorrect");
       return;
     }
+    if (!user.match(USER_REGEX)) {
+      setErrMsg(`Hiba történt: A név nem megfelelő formátumú!`);
+      //errosr++;
+      usernameInput.parentElement.classList.add("incorrect");
+      return;
+    }
     if (email === "" || email == null) {
       setErrMsg("Hiba történt: Az email szükséges!");
       //errors++;
@@ -176,11 +182,18 @@ const Register = () => {
       return;
     }
     if (!PWD_REGEX.test(pwd)) {
-      if (pwd.length < 8 || pwd.length > 24) {
-        setErrMsg("Hossz");
-      } else if (pwd.length < 8 || pwd.length > 24) {
-        setErrMsg("Hossz");
-      }
+      // if (pwd.length < 8 || pwd.length > 24) {
+      //   setErrMsg("Hossz (8-24 karakter)");
+      // } else if (!/[0-9]/.test(pwd)) {
+      //   setErrMsg("Kell legalább egy szám");
+      // } else if (!/[A-Z]/.test(pwd)) {
+      //   setErrMsg("Kell legalább egy nagybetű");
+      // } else if (!/[@$!%*?&_-]/.test(pwd)) {
+      //   // Figyelj, hogy ugyanazok legyenek a jelek!
+      //   setErrMsg("Kell legalább egy speciális karakter");
+      // } else {
+      //   setErrMsg("Tiltott karaktert használsz!");
+      // }
       setErrMsg("Hiba történt: A jelszó nem felel meg a követelményeknek!");
       //errors++;
       passwordInput.parentElement.classList.add("incorrect");
@@ -201,22 +214,29 @@ const Register = () => {
       repasswordInput.parentElement.classList.add("incorrect");
     } else {
       try {
-        //FOLYTATNI !!!
-        const response = await axios.post(baseURL + "/api/User", {
+        const userData = {
           Name: user,
           Email: email,
-          PhoneNumber: phone,
+          PhoneNumber: Number(phone),
           Password: pwd,
-          Review: 0.0,
-          PostalCode: postal,
+          PostalCode: parseInt(postal),
           City: city,
           StreetHouseNumber: address,
-          Role: user,
-          Token: "",
-        });
-        console.log(response.data);
+          Role: "User",
+        };
+        const response = await axios.post(REGISTER_URL, userData);
+
+        console.log("Szerver válasza: ", response.data);
+        setSuccess(true);
       } catch (err) {
-        console.log("Hiba: " + err.response?.data || err.message);
+        if (err.response?.status === 409) {
+          setErrMsg("Ezzel az email-címmel már létezik felhasználó!");
+        } else if (err.response?.status === 400) {
+          setErrMsg("Hibás vagy hiányzó adatok!");
+        } else {
+          setErrMsg("Hálózati hiba vagy a szerver nem elérhető.");
+        }
+        errRef.current.focus();
       }
     }
   };
