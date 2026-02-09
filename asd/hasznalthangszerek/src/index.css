@@ -50,8 +50,8 @@ nav {
   grid-column: 1 /4;
   grid-row: 2;
   background-color: #77625c;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: min-content auto;
 }
 
 #introduction {
@@ -59,7 +59,7 @@ nav {
   grid-row: 3;
   min-height: 100vh;
   width: 100%;
-  background-image: url("./assets/img/introduction.jpg");
+  background-image: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1770118159/introduction_mdmxem.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -135,10 +135,6 @@ button:hover {
   height: 50%;
 }
 
-.Links {
-  display: none;
-}
-
 button > a {
   color: black;
 }
@@ -149,6 +145,21 @@ button:hover > a {
   font-size: larger;
   text-decoration: none;
   border: none;
+}
+
+#logo-icon {
+  width: 250px;
+  height: auto;
+}
+
+#nav-spacing {
+  display: flex;
+  justify-content: space-evenly;
+  grid-column: 2;
+}
+
+#logo {
+  grid-column: 1;
 }
 
 #phone {
