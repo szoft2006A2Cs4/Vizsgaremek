@@ -5,13 +5,13 @@
   --input-color: wheat;
 }
 
-html {
+.regist-container html {
   font-size: 12pt;
   color: var(--text-color);
   text-align: center;
 }
 
-body {
+.regist-container body {
   min-height: 100vh;
   background-image: url(../img/pexels-yesimcolak-30816642.jpg);
   background-size: cover;
@@ -19,7 +19,7 @@ body {
   overflow: hidden;
 }
 
-.wrapper {
+.regist-container .wrapper {
   box-sizing: border-box;
   background-color: var(--base-color);
   height: 100vh;
@@ -31,13 +31,13 @@ body {
   justify-content: center;
 }
 
-h1 {
+.regist-container h1 {
   font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-form {
+.regist-container form {
   width: min(400px, 100%);
   margin-top: 20px;
   margin-bottom: 50px;
@@ -48,13 +48,13 @@ form {
   gap: 10px;
 }
 
-form > div {
+.regist-container form > div {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-form label {
+.regist-container form label {
   flex-shrink: 0;
   height: 50px;
   width: 50px;
@@ -70,7 +70,7 @@ form label {
   font-weight: 500;
 }
 
-form input {
+.regist-container form input {
   box-sizing: border-box;
   flex-grow: 1;
   min-width: 0;
@@ -84,24 +84,24 @@ form input {
   transition: 150ms ease;
 }
 
-form input:hover {
+.regist-container form input:hover {
   border-color: var(--accent-color);
 }
 
-form input:focus {
+.regist-container form input:focus {
   outline: none;
   border-color: var(--text-color);
 }
 
-div:has(input:focus) > label {
+.regist-container div:has(input:focus) > label {
   background-color: var(--text-color);
 }
 
-form input::placeholder {
+.regist-container form input::placeholder {
   color: var(--accent-color);
 }
 
-form button {
+.regist-container form button {
   margin-top: 10px;
   border: none;
   border-radius: 1000px;
@@ -114,21 +114,21 @@ form button {
   cursor: pointer;
 }
 
-form button:hover {
+.regist-container form button:hover {
   background-color: var(--text-color);
 }
 
-form button:focus {
+.regist-container form button:focus {
   outline: none;
   background-color: var(--text-color);
 }
 
-a {
+.regist-container a {
   text-decoration: none;
   color: var(--accent-color);
 }
 
-a:hover {
+.regist-container a:hover {
   text-decoration: underline;
 }
 
@@ -138,23 +138,23 @@ a:hover {
   }
 }
 
-form div.incorrect label {
+.regist-container form div.incorrect label {
   background-color: #f06272;
 }
 
-form div.incorrect input {
+.regist-container form div.incorrect input {
   border-color: #f06272;
 }
 
-#error-message {
+.regist-container #error-message {
   color: #f06272;
 }
 
-#successful {
+.regist-container #successful {
   color: lawngreen;
 }
 
-.instructions {
+.regist-container .instructions {
   border-radius: 0.5rem;
   background: #f06272;
   color: #fff;
@@ -165,7 +165,7 @@ form div.incorrect input {
   text-align: left;
 }
 
-.offscreen {
+.regist-container .offscreen {
   position: absolute;
   left: -9999px;
 }
