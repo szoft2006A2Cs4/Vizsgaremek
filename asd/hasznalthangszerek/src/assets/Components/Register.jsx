@@ -5,7 +5,6 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Login from "./Login";
 import "../style/register.css";
 import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
@@ -311,6 +310,7 @@ const Register = () => {
       {success ? (
         <div className="wrapper">
           <h1 id="successful">A regisztráció sikeres!</h1>
+          <br />
           <p>
             <Link to="/login">Bejelentkezés</Link>
           </p>
