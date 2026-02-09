@@ -7,14 +7,14 @@ import Home from "./assets/components/Home";
 function App() {
   return (
     <>
-      <BrowserRouter id="browserRouter">
-        <Link to="/" className="browserRouter">
+      <BrowserRouter>
+        <Link to="/" className="Links">
           Home
         </Link>
-        <Link to="/login" className="browserRouter">
+        <Link to="/login" className="Links">
           Bejelentkezés
         </Link>
-        <Link to="/register" className="browserRouter">
+        <Link to="/register" className="Links">
           Regisztráció
         </Link>
         <Routes>

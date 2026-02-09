@@ -307,7 +307,7 @@ const Register = () => {
   }
 
   return (
-    <div className="regist-container">
+    <>
       {success ? (
         <div className="wrapper">
           <h1 id="successful">A regisztráció sikeres!</h1>
@@ -529,7 +529,7 @@ const Register = () => {
           </p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
