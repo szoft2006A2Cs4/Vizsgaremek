@@ -5,7 +5,6 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Login from "./Login";
 import "../style/register.css";
 import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
@@ -246,17 +245,24 @@ const Register = () => {
       } catch (err) {
         if (err.response?.status === 409) {
           setErrMsg("Ezzel az email-címmel már létezik felhasználó!");
+          for (let x of allInputs) {
+            x.removeAttribute("disabled");
+          }
+          submitButton.removeAttribute("disabled");
         } else if (err.response?.status === 400) {
           setErrMsg("Hibás vagy hiányzó adatok!");
+          for (let x of allInputs) {
+            x.removeAttribute("disabled");
+          }
+          submitButton.removeAttribute("disabled");
         } else {
           setErrMsg("Hálózati hiba vagy a szerver nem elérhető.");
+          for (let x of allInputs) {
+            x.removeAttribute("disabled");
+          }
+          submitButton.removeAttribute("disabled");
         }
         errRef.current.focus();
-
-        for (let x of allInputs) {
-          x.setAttribute("disabled", false);
-        }
-        submitButton.setAttribute("disabled", false);
       }
     }
   };
@@ -311,6 +317,7 @@ const Register = () => {
       {success ? (
         <div className="wrapper">
           <h1 id="successful">A regisztráció sikeres!</h1>
+          <br />
           <p>
             <Link to="/login">Bejelentkezés</Link>
           </p>
