@@ -36,7 +36,7 @@ body {
   overflow-y: auto;
 }
 
-header {
+/* header {
   display: grid;
   grid-column: 1/4;
   grid-row: 1;
@@ -44,14 +44,14 @@ header {
   text-align: center;
   line-height: 4rem;
   font-size: xx-large;
-}
+} */
 
 nav {
   grid-column: 1 /4;
   grid-row: 2;
   background-color: #77625c;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: min-content auto;
 }
 
 #introduction {
@@ -59,7 +59,7 @@ nav {
   grid-row: 3;
   min-height: 100vh;
   width: 100%;
-  background-image: url("./assets/img/introduction.jpg");
+  background-image: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1770118159/introduction_mdmxem.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -135,24 +135,87 @@ button:hover {
   height: 50%;
 }
 
-.Links {
-  display: none;
-}
-
 button > a {
+  font-size: larger;
   color: black;
 }
 
 button:hover > a {
   color: wheat;
   border: 2px solid wheat;
-  font-size: larger;
+  font-size: x-large;
   text-decoration: none;
   border: none;
 }
 
+#logo-icon {
+  width: 250px;
+  height: auto;
+}
+
+#nav-spacing {
+  display: flex;
+  justify-content: space-evenly;
+  grid-column: 2;
+}
+
+#logo {
+  grid-column: 1;
+}
+
 #phone {
   display: none;
+}
+
+#aboutUs {
+  background-image: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1770650661/aboutUsBGP_n5gosh.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+#aboutUs-main {
+  background-color: rgba(238, 210, 123, 0.5);
+  min-height: 100vh;
+  width: 100vw;
+}
+
+#aboutUs-Introtext {
+  position: relative;
+  top: 100px;
+}
+
+#aboutUs-Creatortext {
+  position: relative;
+  top: 260px;
+}
+
+#userCard-grid {
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: auto max-content;
+  align-items: center;
+  justify-content: start;
+}
+
+#user-icon {
+  border-radius: 20px;
+  height: auto;
+  width: 20%;
+  grid-column: 1;
+  grid-row: 1/3;
+}
+
+#userCard-name {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#userCard-text {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 @font-face {
