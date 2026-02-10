@@ -5,6 +5,7 @@ import Register from "./Register";
 import AuthContext from "../scripts/AuthProvider";
 import axios from "../scripts/axios";
 
+const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const LOGIN_URL = "api/Login";
 
 const Login = () => {
@@ -26,8 +27,31 @@ const Login = () => {
   }, [email, pwd]);
 
   const handleSubmit = async (e) => {
+    const emailInput = document.getElementById("email-input");
+    const pwdInput = document.getElementById("password-input");
+    const submitButton = document.getElementById("submit-button");
     e.preventDefault();
 
+    if (email === "" || email == null) {
+      setErrMsg("Hiba történt: Az email szükséges!");
+      //errors++;
+      emailInput.parentElement.classList.add("incorrect");
+      return;
+    } else if (!email.match(EMAIL_REGEX)) {
+      setErrMsg("Nem megfelelő email cím formátum!");
+      //errors++;
+      emailInput.parentElement.classList.add("incorrect");
+      return;
+    } else if (pwd === "" || pwd == null) {
+      setErrMsg("Hiba: A jelszó szükséges!");
+      //errors++;
+      pwdInput.parentElement.classList.add("incorrect");
+      return;
+    }
+
+    emailInput.setAttribute("disabled", true);
+    pwdInput.setAttribute("disabled", true);
+    submitButton.setAttribute("disabled", true);
     try {
       const userData = {
         Email: email,
@@ -43,17 +67,56 @@ const Login = () => {
       setSuccess(true);
     } catch (err) {
       if (!err.response) {
-        setErrMsg("A szerver nem válaszol!");
-      } else if (err.response.status === 400) {
-        setErrMsg("Hiányzó email cím vagy jelszó!");
-      } else if (err.response.status === 404) {
-        setErrMsg("Az alábbi adatokkal felhasználó nem található!");
+        emailInput.removeAttribute("disabled");
+        pwdInput.removeAttribute("disabled");
+        submitButton.removeAttribute("disabled");
+        setErrMsg("Hiba: A szerver nem válaszol!");
+      } else if (err.response?.status === 400) {
+        emailInput.removeAttribute("disabled");
+        pwdInput.removeAttribute("disabled");
+        submitButton.removeAttribute("disabled");
+        setErrMsg("Hiba: Hiányzó email cím vagy jelszó!");
+      } else if (err.response?.status === 404) {
+        emailInput.removeAttribute("disabled");
+        pwdInput.removeAttribute("disabled");
+        submitButton.removeAttribute("disabled");
+        setErrMsg("Hiba: A megadott adatokkal felhasználó nem található!");
+      } else if (err.response?.status === 401) {
+        emailInput.removeAttribute("disabled");
+        pwdInput.removeAttribute("disabled");
+        submitButton.removeAttribute("disabled");
+        setErrMsg("Hiba: A megadott adatokkal felhasználó nem található!");
       } else {
-        setErrMsg("Bejelentkezés sikertelen!");
+        emailInput.removeAttribute("disabled");
+        pwdInput.removeAttribute("disabled");
+        submitButton.removeAttribute("disabled");
+        setErrMsg("Hiba: Bejelentkezés sikertelen!");
       }
       errRef.current.focus();
     }
   };
+
+  function setIncorrectClass() {
+    const emailInput = document.getElementById("email-input");
+    const pwdInput = document.getElementById("password-input");
+    const allInputs = [emailInput, pwdInput];
+
+    allInputs.forEach((input) => {
+      if (input.parentElement.classList.contains("incorrect")) {
+        input.parentElement.classList.remove("incorrect");
+      }
+    });
+  }
+
+  function showPassword() {
+    let x = document.getElementById("password-input");
+    const type = x.type === "password" ? "text" : "password";
+    // const lock =
+    //   x.type === "password"
+    //     ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8e3eD"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>`
+    //     : `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8e3eD"><path d="M536.5-303.5Q560-327 560-360t-23.5-56.5Q513-440 480-440t-56.5 23.5Q400-393 400-360t23.5 56.5Q447-280 480-280t56.5-23.5ZM240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h280v-80q0-83 58.5-141.5T720-920q83 0 141.5 58.5T920-720h-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80h120q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Z"/></svg>`;
+    x.type = type;
+  }
 
   return (
     <>
@@ -91,12 +154,15 @@ const Login = () => {
                   placeholder="Email"
                   ref={userRef}
                   autoComplete="off"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setIncorrectClass();
+                    setEmail(e.target.value);
+                  }}
                   value={email}
                 />
               </div>
               <div>
-                <label htmlFor="password-input">
+                <label htmlFor="password-input" onClick={showPassword}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -112,11 +178,16 @@ const Login = () => {
                   name="password"
                   id="password-input"
                   placeholder="Jelszó"
-                  onChange={(e) => setPwd(e.target.value)}
+                  onChange={(e) => {
+                    setIncorrectClass();
+                    setPwd(e.target.value);
+                  }}
                   value={pwd}
                 />
               </div>
-              <button type="submit">Bejelentkezés</button>
+              <button type="submit" id="submit-button">
+                Bejelentkezés
+              </button>
             </form>
           </center>
           <p>

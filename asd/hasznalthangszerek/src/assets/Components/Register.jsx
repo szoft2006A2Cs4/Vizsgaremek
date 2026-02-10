@@ -245,17 +245,24 @@ const Register = () => {
       } catch (err) {
         if (err.response?.status === 409) {
           setErrMsg("Ezzel az email-címmel már létezik felhasználó!");
+          for (let x of allInputs) {
+            x.removeAttribute("disabled");
+          }
+          submitButton.removeAttribute("disabled");
         } else if (err.response?.status === 400) {
           setErrMsg("Hibás vagy hiányzó adatok!");
+          for (let x of allInputs) {
+            x.removeAttribute("disabled");
+          }
+          submitButton.removeAttribute("disabled");
         } else {
           setErrMsg("Hálózati hiba vagy a szerver nem elérhető.");
+          for (let x of allInputs) {
+            x.removeAttribute("disabled");
+          }
+          submitButton.removeAttribute("disabled");
         }
         errRef.current.focus();
-
-        for (let x of allInputs) {
-          x.setAttribute("disabled", false);
-        }
-        submitButton.setAttribute("disabled", false);
       }
     }
   };

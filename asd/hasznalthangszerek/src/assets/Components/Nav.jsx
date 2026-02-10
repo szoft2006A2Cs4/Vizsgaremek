@@ -1,7 +1,5 @@
 import search from "../img/search_icon.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import App from "../../App";
-import Login from "./Login";
 
 export default function Nav() {
   return (
