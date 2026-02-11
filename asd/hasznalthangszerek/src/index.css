@@ -107,7 +107,7 @@ footer {
   grid-column: 1 /4;
   grid-row: 5;
   background-color: #5a5958;
-  color: rgba(248, 227, 227, 0.5);
+  color: #77625c;
   text-align: center;
   font-size: medium;
 }
@@ -166,7 +166,7 @@ button:hover > a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 0.5px;
 }
 
 .footer-social-media__icon {
@@ -184,19 +184,20 @@ button:hover > a {
   font-size: x-small;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  width: 30%;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  width: 25%;
 }
 
-.footer-info__name, .footer-info__email, .footer-info__number {
-  margin-bottom: 10px;
+.footer-info__email, .footer-info__name, .footer-info__number {
+  margin-bottom: 0%;
 }
 
-.footer-info__name, .footer-info__returns {
+.footer-info__email, .footer-info__returns {
   text-align: start;
 }
 
-.footer-info__email, .footer-info__terms {
+.footer-info__name, .footer-info__terms {
   text-align: center;
 }
 

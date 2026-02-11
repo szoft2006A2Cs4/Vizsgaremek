@@ -10,25 +10,24 @@ export default function Footer() {
       </section>
       <section className="footer-info" >
         <section className="footer-info-left" >
-          <section className="footer-info__name">
-              Használt Hangszerek
+          <section className="footer-info__email">
+              hhproject67@gmail.com
           </section>
           <section className="footer-info__returns">
-            Ide még kell valami
+            Rólunk
             <br />
             Ide is
           </section>
         </section>
         <section className="footer-info-center">
-          <section className="footer-info__email">
-              hhproject67@gmail.com
+          <section className="footer-info__name">
+              Használt Hangszerek
           </section>
           <section className="footer-info__terms">
-            Ide még kell valami
+            Általános Szerződési Feltételek
             <br />
-            Ide is
+            Visszaküldési szabályzat
           </section>
-        </section>
         </section>
         <section className="footer-info-right">
           <section className="footer-info__number">
@@ -39,6 +38,7 @@ export default function Footer() {
             <br />
             <Link to="/register">Regisztrálás</Link>
           </section>
+        </section>
         </section>
         <hr className="footer-seperator" />
         </section>
