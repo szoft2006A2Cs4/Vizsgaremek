@@ -36,16 +36,6 @@ body {
   overflow-y: auto;
 }
 
-/* header {
-  display: grid;
-  grid-column: 1/4;
-  grid-row: 1;
-  background-color: #fbf6ef;
-  text-align: center;
-  line-height: 4rem;
-  font-size: xx-large;
-} */
-
 nav {
   grid-column: 1 /4;
   grid-row: 2;
@@ -172,50 +162,106 @@ button:hover > a {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  display: grid;
+  grid-template-rows: min-content min-content min-content;
+  width: 100%;
+  height: auto;
   min-height: 100vh;
-  width: 100vw;
+}
+
+#aboutUs > nav {
+  grid-row: 1;
 }
 
 #aboutUs-main {
   background-color: rgba(238, 210, 123, 0.5);
   min-height: 100vh;
   width: 100vw;
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: min-content max-content;
 }
 
 #aboutUs-Introtext {
-  position: relative;
-  top: 100px;
+  grid-row: 1;
+  margin-top: 180px;
 }
 
 #aboutUs-Creatortext {
-  position: relative;
-  top: 260px;
-}
-
-#userCard-grid {
-  display: grid;
-  grid-template-columns: auto min-content;
-  grid-template-rows: auto max-content;
-  align-items: center;
-  justify-content: start;
-}
-
-#user-icon {
-  border-radius: 20px;
-  height: auto;
-  width: 20%;
-  grid-column: 1;
-  grid-row: 1/3;
-}
-
-#userCard-name {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-#userCard-text {
-  grid-column: 2;
+  margin-top: 100px;
+  margin-bottom: 180px;
   grid-row: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#aboutUs > footer {
+  grid-row: 3;
+}
+
+.card {
+  width: 400px;
+  height: 464px;
+  background: #77625c;
+  border-radius: 15px;
+  box-shadow: 1px 5px 60px 0px rgba(90, 89, 88, 0.5);
+}
+
+.card .card-border-top {
+  width: 60%;
+  height: 3%;
+  background: #ead7ce;
+  margin: auto;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.card span {
+  font-weight: 600;
+  color: #fbf6ef;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.card .job {
+  font-weight: 400;
+  color: #d4c4bc;
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 12px;
+}
+
+.card .img {
+  width: 270px;
+  height: 350px;
+  background: #d4c4bc;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.card button {
+  padding: 8px 45px;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+  margin-top: 2px;
+  background: #5a5958;
+  color: wheat;
+  font-weight: 600;
+  transition: 150ms ease;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: #77625c;
+  color: #fbf6ef;
+  border: 1px solid #ead7ce;
 }
 
 @font-face {
