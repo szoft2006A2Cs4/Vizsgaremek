@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../style/register.css";
-import Register from "./Register";
 import AuthContext from "../scripts/AuthProvider";
 import axios from "../scripts/axios";
+import Loading from "./Loading";
 
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const LOGIN_URL = "api/Login";
@@ -17,6 +17,7 @@ const Login = () => {
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -49,9 +50,11 @@ const Login = () => {
       return;
     }
 
-    emailInput.setAttribute("disabled", true);
-    pwdInput.setAttribute("disabled", true);
-    submitButton.setAttribute("disabled", true);
+    // emailInput.setAttribute("disabled", true);
+    // pwdInput.setAttribute("disabled", true);
+    // submitButton.setAttribute("disabled", true);
+    setIsLoading(true);
+
     try {
       const userData = {
         Email: email,
@@ -93,6 +96,8 @@ const Login = () => {
         setErrMsg("Hiba: Bejelentkezés sikertelen!");
       }
       errRef.current.focus();
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -116,6 +121,10 @@ const Login = () => {
     //     ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8e3eD"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>`
     //     : `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8e3eD"><path d="M536.5-303.5Q560-327 560-360t-23.5-56.5Q513-440 480-440t-56.5 23.5Q400-393 400-360t23.5 56.5Q447-280 480-280t56.5-23.5ZM240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h280v-80q0-83 58.5-141.5T720-920q83 0 141.5 58.5T920-720h-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80h120q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Z"/></svg>`;
     x.type = type;
+  }
+
+  if (isLoading) {
+    return <Loading></Loading>;
   }
 
   return (

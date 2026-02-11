@@ -38,7 +38,7 @@ namespace HH_Api
                         policy.WithOrigins("http://localhost:5173")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .allowCredentials();
+                        .AllowCredentials();
                     });
             });
 
