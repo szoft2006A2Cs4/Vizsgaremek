@@ -123,9 +123,9 @@ const Login = () => {
     x.type = type;
   }
 
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
+  // if (isLoading) {
+  //   return <Loading></Loading>;
+  // }
 
   return (
     <>
@@ -139,6 +139,7 @@ const Login = () => {
         </div>
       ) : (
         <div className="wrapper">
+          {isLoading ? <Loading /> : <></>}
           <h1>Bejelentkezés</h1>
           {/* <p id="error-message"></p> */}
           <p

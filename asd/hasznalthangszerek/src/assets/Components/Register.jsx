@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../style/register.css";
 import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
+import Loading from "./Loading";
 
 const USER_REGEX =
   /^[A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)+$/;
@@ -53,6 +54,8 @@ const Register = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -192,18 +195,6 @@ const Register = () => {
       return;
     }
     if (!PWD_REGEX.test(pwd)) {
-      // if (pwd.length < 8 || pwd.length > 24) {
-      //   setErrMsg("Hossz (8-24 karakter)");
-      // } else if (!/[0-9]/.test(pwd)) {
-      //   setErrMsg("Kell legalább egy szám");
-      // } else if (!/[A-Z]/.test(pwd)) {
-      //   setErrMsg("Kell legalább egy nagybetű");
-      // } else if (!/[@$!%*?&_-]/.test(pwd)) {
-      //   // Figyelj, hogy ugyanazok legyenek a jelek!
-      //   setErrMsg("Kell legalább egy speciális karakter");
-      // } else {
-      //   setErrMsg("Tiltott karaktert használsz!");
-      // }
       setErrMsg("Hiba történt: A jelszó nem felel meg a követelményeknek!");
       //errors++;
       passwordInput.parentElement.classList.add("incorrect");
@@ -223,10 +214,7 @@ const Register = () => {
       passwordInput.parentElement.classList.add("incorrect");
       repasswordInput.parentElement.classList.add("incorrect");
     } else {
-      for (let x of allInputs) {
-        x.setAttribute("disabled", true);
-      }
-      submitButton.setAttribute("disabled", true);
+      setIsLoading(true);
       try {
         const userData = {
           Name: user,
@@ -263,6 +251,8 @@ const Register = () => {
           submitButton.removeAttribute("disabled");
         }
         errRef.current.focus();
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -324,8 +314,8 @@ const Register = () => {
         </div>
       ) : (
         <div className="wrapper">
+          {isLoading ? <Loading /> : <></>}
           <h1>Regisztráció</h1>
-          {/* <p id="error-message"></p> */}
           <p
             ref={errRef}
             id="error-message"

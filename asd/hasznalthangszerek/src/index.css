@@ -264,6 +264,18 @@ button:hover > a {
   border: 1px solid #ead7ce;
 }
 
+#loadingContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  opacity: 0.7;
+  position: fixed;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @font-face {
   font-family: "Celinda";
   src: url(./assets/fonts/Celinda.otf);
