@@ -30,15 +30,16 @@ namespace HH_Api
                  });
             AddJwtAuthentication(builder);
 
-            builder.Services.AddCors(options => 
-            { 
-                options.AddPolicy("AllowReactApp", 
-                    policy => 
-                    { 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    policy =>
+                    {
                         policy.WithOrigins("http://localhost:5173")
                         .AllowAnyMethod()
-                        .AllowAnyHeader(); 
-                    }); 
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
             });
 
             builder.Services.AddControllers()
@@ -69,18 +70,18 @@ namespace HH_Api
                 app.Logger.LogDebug($"*** Authorization: {auth}");
                 return next();
             });
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
         }
-        
+
         private static void AddJwtAuthentication(WebApplicationBuilder builder)
         {
             var secretKey = builder.Configuration["Auth:Jwt:Key"];
             var issuer = builder.Configuration["Auth:Jwt:Issuer"];
-            var audience = builder.Configuration["Auth:Jwt:Audience"]; 
+            var audience = builder.Configuration["Auth:Jwt:Audience"];
             if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
             {
                 throw new ApplicationException("Authentication konfiguráció hiányzik");
@@ -89,7 +90,7 @@ namespace HH_Api
 
             var tokenManager = new TokenManager(builder.Configuration);
             builder.Services.AddSingleton(tokenManager);
-            
+
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -103,7 +104,7 @@ namespace HH_Api
                         ValidAudience = audience,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                     };
-                    
+
                     options.Events = new JwtBearerEvents
                     {
                         OnTokenValidated = async context =>
