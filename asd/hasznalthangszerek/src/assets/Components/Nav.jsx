@@ -1,7 +1,11 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
+import { useContext } from "react";
+import AuthContext from "../scripts/AuthProvider";
 
-export default function Nav({ logIn }) {
+export default function Nav() {
+  const { auth } = useContext(AuthContext);
+  const loggedIn = auth.user;
   return (
     <nav>
       <Link to="/" id="logo">
@@ -24,13 +28,11 @@ export default function Nav({ logIn }) {
           <SearchInput></SearchInput>
         </div>
 
-        {!logIn ? (
-          <button>
-            <Link to="/login">Bejelentkezés</Link>
-          </button>
+        {!loggedIn ? (
+          <p>Be vagy jelentkezve</p>
         ) : (
           <button>
-            <Link to="/login">nem</Link>
+            <Link to="/login">Bejelentkezés</Link>
           </button>
         )}
       </div>

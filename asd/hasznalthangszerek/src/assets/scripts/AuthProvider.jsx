@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "./axios";
+import Loading from "../Components/Loading";
 
 const AuthContext = createContext({});
 
@@ -14,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
         setAuth({
           user: resp.data.email,
-          roles: resp.data.roles,
+          role: resp.data.role,
           permissions: resp.data.permissions,
         });
       } catch (err) {
@@ -25,6 +26,10 @@ export const AuthProvider = ({ children }) => {
     };
     verify();
   }, []);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, loading }}>

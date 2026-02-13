@@ -6,7 +6,7 @@ import PseMain from "./pseMain";
 function Home() {
   return (
     <>
-      <Nav logIn={false} />
+      <Nav />
       <Introduction />
       <PseMain />
     </>

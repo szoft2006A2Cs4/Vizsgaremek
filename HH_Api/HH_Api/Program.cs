@@ -116,32 +116,35 @@ namespace HH_Api
 
 
                         OnTokenValidated = async context =>
-                        {
-                            var email = context.Principal?.FindFirst(ClaimTypes.Name)?.Value;
-                            if (!string.IsNullOrEmpty(email))
-                            {
-                                var dbContext = context.HttpContext.RequestServices.GetService<Context>() ??
-                                                throw new ApplicationException("Kritikus hiba: Db kontextus nem elérhető!");
+						{
+							var email = context.Principal?.FindFirst(ClaimTypes.Name)?.Value;
+							if (!string.IsNullOrEmpty(email))
+							{
+								var dbContext = context.HttpContext.RequestServices.GetService<Context>() ??
+												throw new ApplicationException("Kritikus hiba: Db kontextus nem elérhető!");
 
-                                var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
-                                if (user != null)
-                                {
-                                    if (user.Token != null)
-                                    {
-                                        var token = (context.SecurityToken as JsonWebToken)?.EncodedToken;
-                                        if (user.Token != token)
-                                        {
-                                            user.Token = token;
-                                            await dbContext.SaveChangesAsync();
-                                        }
-                                        return;
-                                    }
-                                    else context.Fail("Érvénytelen token: lezárt kapcsolat");
-                                }
-                                else context.Fail("Ismeretlen felhasználó");
-                            }
-                            else context.Fail("Érvénytelen token: azonosítás nem lehetséges");
-                        }
+								var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+								
+								if (user == null || string.IsNullOrEmpty(user.Token)) 
+								{
+									context.Fail("Érvénytelen token vagy lezárt munkamenet.");
+									return;
+								}
+
+								var currentToken = context.SecurityToken as JsonWebToken;
+								var encodedToken = currentToken?.EncodedToken;
+
+								if (user.Token != encodedToken)
+								{
+									context.Fail("A token már nem érvényes (máshol jelentkeztek be).");
+									return;
+								}
+							}
+							else 
+							{
+								context.Fail("Érvénytelen azonosító.");
+							}
+						}
                     };
                 });
             builder.Services.AddAuthorization(options =>
