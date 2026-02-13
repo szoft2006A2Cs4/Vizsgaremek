@@ -53,7 +53,34 @@ namespace HH_Api.Controllers
                 if (user == null) return Unauthorized();
                 user.Token = null;
                 await _context.SaveChangesAsync();
+				Response.Cookies.Delete("jwt", new CookieOptions{
+					HttpOnly = true,
+					Secure = true,
+					SameSite = SameSiteMode.None
+				});
                 return Ok();
             }
+			
+			[Authorize]
+			[HttpGet("me")]
+			public async Task<IActionResult> GetCurrentUser()
+			{
+				var email = User.FindFirst(ClaimTypes.Name)?.Value;
+				
+				if (string.IsNullOrEmpty(email)) return Unauthorized();
+
+				var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+				if (user == null) return Unauthorized();
+
+				var userRole = user.Role ?? "User"; 
+				var permissions = _tokenManager.GetPermissionsForRole(userRole);
+
+
+				return Ok(new { 
+					email = user.Email, 
+					role = userRole,
+					permissions = permissions 
+				});
+			}
         }
     }

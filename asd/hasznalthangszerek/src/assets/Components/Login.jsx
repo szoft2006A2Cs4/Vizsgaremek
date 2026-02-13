@@ -62,37 +62,21 @@ const Login = () => {
       };
       const response = await axios.post(LOGIN_URL, userData);
       console.log("Szerver válasza: ", response.data);
-      const accessToken = response.data.accessToken;
       const roles = response.data.roles;
-      setAuth({ email, pwd, roles, accessToken });
+      setAuth({ email, pwd, roles });
       setEmail("");
       setPwd("");
       setSuccess(true);
     } catch (err) {
       if (!err.response) {
-        emailInput.removeAttribute("disabled");
-        pwdInput.removeAttribute("disabled");
-        submitButton.removeAttribute("disabled");
         setErrMsg("Hiba: A szerver nem válaszol!");
       } else if (err.response?.status === 400) {
-        emailInput.removeAttribute("disabled");
-        pwdInput.removeAttribute("disabled");
-        submitButton.removeAttribute("disabled");
         setErrMsg("Hiba: Hiányzó email cím vagy jelszó!");
       } else if (err.response?.status === 404) {
-        emailInput.removeAttribute("disabled");
-        pwdInput.removeAttribute("disabled");
-        submitButton.removeAttribute("disabled");
         setErrMsg("Hiba: A megadott adatokkal felhasználó nem található!");
       } else if (err.response?.status === 401) {
-        emailInput.removeAttribute("disabled");
-        pwdInput.removeAttribute("disabled");
-        submitButton.removeAttribute("disabled");
         setErrMsg("Hiba: A megadott adatokkal felhasználó nem található!");
       } else {
-        emailInput.removeAttribute("disabled");
-        pwdInput.removeAttribute("disabled");
-        submitButton.removeAttribute("disabled");
         setErrMsg("Hiba: Bejelentkezés sikertelen!");
       }
       errRef.current.focus();

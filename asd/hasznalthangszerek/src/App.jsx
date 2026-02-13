@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./index.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Login from "./assets/Components/Login";
 import Register from "./assets/Components/Register";
 import Home from "./assets/Components/Home";

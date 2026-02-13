@@ -1,20 +1,34 @@
 import { createContext, useEffect, useState } from "react";
+import axios from "./axios";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(() => {
-    const savedAuth = localStorage.getItem("user_auth");
-    return savedAuth ? JSON.parse(savedAuth) : {};
-  });
+  const [auth, setAuth] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem("user_auth", JSON.stringify(auth));
-  }, [auth]);
+    const verify = async () => {
+      try {
+        const resp = await axios.get("api/login/me");
+
+        setAuth({
+          user: resp.data.email,
+          roles: resp.data.roles,
+          permissions: resp.data.permissions,
+        });
+      } catch (err) {
+        setAuth({});
+      } finally {
+        setLoading(false);
+      }
+    };
+    verify();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
-      {children}
+    <AuthContext.Provider value={{ auth, setAuth, loading }}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 };
