@@ -35,7 +35,7 @@ namespace HH_Api
                 options.AddPolicy("AllowReactApp",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:5173", "https://dolphin-app-v9aox.ondigitalocean.app/")
+                        policy.WithOrigins("http://localhost:5173", "https://dolphin-app-v9aox.ondigitalocean.app")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
