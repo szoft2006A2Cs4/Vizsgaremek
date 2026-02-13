@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../style/register.css";
 import AuthContext from "../scripts/AuthProvider";
 import axios from "../scripts/axios";
@@ -10,6 +10,8 @@ const LOGIN_URL = "api/Login";
 
 const Login = () => {
   const { setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const userRef = useRef();
   const errRef = useRef();
 
@@ -60,13 +62,17 @@ const Login = () => {
         Email: email,
         Password: pwd,
       };
-      const response = await axios.post(LOGIN_URL, userData);
+      const response = await axios.post(LOGIN_URL, userData, {
+        withCredentials: true,
+      });
+
       console.log("Szerver válasza: ", response.data);
       const roles = response.data.roles;
-      setAuth({ email, pwd, roles });
+      setAuth({ user: email, roles });
       setEmail("");
       setPwd("");
       setSuccess(true);
+      navigate("/", { replace: true });
     } catch (err) {
       if (!err.response) {
         setErrMsg("Hiba: A szerver nem válaszol!");
@@ -116,10 +122,6 @@ const Login = () => {
       {success ? (
         <div className="wrapper">
           <h1 id="successful">Sikeres bejelentkezés!</h1>
-          <br />
-          <p>
-            <Link to="/">Vissza a főoldalra!</Link>
-          </p>
         </div>
       ) : (
         <div className="wrapper">

@@ -337,6 +337,49 @@ button:hover > a {
   justify-content: center;
 }
 
+.UserDropDown {
+  position: absolute;
+  z-index: 20;
+  top: 4.5rem;
+  right: 1.5rem;
+  width: min-content;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #756460;
+  border: 3px solid white;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.UserDropDown-icons-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserDropDown::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem;
+  right: 1.1rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: #756460;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+}
+
+.userAvatar {
+  width: 80px;
+  border-radius: 50%;
+  object-fit: fill;
+  border: 1px solid black;
+}
+
 @font-face {
   font-family: "Celinda";
   src: url(./assets/fonts/Celinda.otf);

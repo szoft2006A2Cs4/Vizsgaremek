@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../scripts/AuthProvider";
+import UserDropDown from "./UserDropDown";
 
 export default function Nav() {
   const { auth, loading } = useContext(AuthContext);
+  const [openProf, setOpenProf] = useState(true);
   if (loading) return null;
   const loggedIn = !auth.user;
   return (
@@ -30,7 +32,7 @@ export default function Nav() {
         </div>
 
         {!loggedIn ? (
-          <p>Be vagy jelentkezve</p>
+          !openProf && <UserDropDown />
         ) : (
           <button>
             <Link to="/login">Bejelentkezés</Link>
