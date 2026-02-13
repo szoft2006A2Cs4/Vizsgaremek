@@ -198,7 +198,6 @@ button:hover > a {
 
 .footer-column a:hover {
   color: #c7a17a;
-
 }
 
 .footer-column p {
@@ -218,6 +217,8 @@ button:hover > a {
   border-top: 1px solid #444;
   font-size: 13px;
   opacity: 0.7;
+}
+
 #aboutUs {
   background-image: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1770650661/aboutUsBGP_n5gosh.jpg");
   background-size: cover;
@@ -419,4 +420,3 @@ button:hover > a {
     transform: none;
   }
 }
-
