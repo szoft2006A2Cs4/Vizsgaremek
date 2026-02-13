@@ -4,8 +4,9 @@ import { useContext } from "react";
 import AuthContext from "../scripts/AuthProvider";
 
 export default function Nav() {
-  const { auth } = useContext(AuthContext);
-  const loggedIn = auth.user;
+  const { auth, loading } = useContext(AuthContext);
+  if (loading) return null;
+  const loggedIn = !auth.user;
   return (
     <nav>
       <Link to="/" id="logo">

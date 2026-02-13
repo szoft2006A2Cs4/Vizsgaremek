@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
           permissions: resp.data.permissions,
         });
       } catch (err) {
-        setAuth({});
+        setAuth({ user: null, role: null, permissions: [] });
       } finally {
         setLoading(false);
       }
