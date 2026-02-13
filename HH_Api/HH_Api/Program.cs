@@ -47,27 +47,25 @@ namespace HH_Api
                 {
                     o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
 
             var app = builder.Build();
 
             app.UseRouting();
             app.UseCors("AllowReactApp");
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
             app.UseHttpsRedirection();
 
             app.Use((context, next) =>
             {
-                var auth = context.Request.Headers.Authorization;
-                app.Logger.LogDebug($"*** Authorization: {auth}");
+                var token = context.Request.Cookies["jwt"];
+                if (!string.IsNullOrEmpty(token))
+                {
+                    app.Logger.LogDebug($"*** Token: {token}");
+                }
+                else
+                {
+                    app.Logger.LogDebug("*** Token Not Found");
+                }
                 return next();
             });
 
@@ -107,6 +105,16 @@ namespace HH_Api
 
                     options.Events = new JwtBearerEvents
                     {
+                        OnMessageReceived = context =>
+                        {
+                            if (context.Request.Cookies.TryGetValue("jwt", out var token))
+                            {
+                                context.Token = token;
+                            }
+                            return Task.CompletedTask;
+                        },
+
+
                         OnTokenValidated = async context =>
                         {
                             var email = context.Principal?.FindFirst(ClaimTypes.Name)?.Value;
@@ -143,33 +151,6 @@ namespace HH_Api
                     options.AddPolicy(permission, policy => policy.RequireClaim("permission", permission));
                 }
             });
-            builder.Services.AddSwaggerGen(
-                options =>
-                {
-                    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                    {
-                        Name = "Authorization",
-                        In = ParameterLocation.Header,
-                        Type = SecuritySchemeType.Http,
-                        Scheme = "Bearer",
-                        BearerFormat = "JWT"
-                    });
-
-                    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                    {
-                        {
-                            new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
-                                }
-                            },
-                            Array.Empty<string>()
-                        }
-                    });
-                });
         }
     }
 }

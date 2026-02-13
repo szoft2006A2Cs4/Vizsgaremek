@@ -1,8 +1,7 @@
-import search from "../img/search_icon.png";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
 
-export default function Nav() {
+export default function Nav({ logIn }) {
   return (
     <nav>
       <Link to="/" id="logo">
@@ -25,9 +24,15 @@ export default function Nav() {
           <SearchInput></SearchInput>
         </div>
 
-        <button>
-          <Link to="/login">Bejelentkezés</Link>
-        </button>
+        {!logIn ? (
+          <button>
+            <Link to="/login">Bejelentkezés</Link>
+          </button>
+        ) : (
+          <button>
+            <Link to="/login">nem</Link>
+          </button>
+        )}
       </div>
     </nav>
   );

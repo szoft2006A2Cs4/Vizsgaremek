@@ -30,7 +30,17 @@ namespace HH_Api.Controllers
                 var token = _tokenManager.GenerateToken(user);
                 user.Token = token;
                 await _context.SaveChangesAsync();
-                return Ok(token);
+
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Expires = DateTime.UtcNow.AddHours(24)
+            };
+
+                Response.Cookies.Append("jwt", token, cookieOptions);
+                return Ok(new {resp = "Sikeres Bejelentkezés"});
             }
 
             [Authorize]
