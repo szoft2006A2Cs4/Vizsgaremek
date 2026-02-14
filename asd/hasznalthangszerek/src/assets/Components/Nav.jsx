@@ -3,6 +3,7 @@ import SearchInput from "./SearchInput";
 import { useContext, useState } from "react";
 import AuthContext from "../scripts/AuthProvider";
 import UserDropDown from "./UserDropDown";
+import Avatar from "./Avatar";
 
 export default function Nav() {
   const { auth, loading } = useContext(AuthContext);
@@ -32,7 +33,10 @@ export default function Nav() {
         </div>
 
         {!loggedIn ? (
-          !openProf && <UserDropDown />
+          <>
+            <Avatar onClick={() => setOpenProf(!openProf)} />
+            {openProf && <UserDropDown />}
+          </>
         ) : (
           <button>
             <Link to="/login">Bejelentkezés</Link>
