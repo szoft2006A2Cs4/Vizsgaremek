@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 
 export default function Nav() {
   const { auth, loading } = useContext(AuthContext);
-  const [openProf, setOpenProf] = useState(true);
+  const [openProf, setOpenProf] = useState(false);
   if (loading) return null;
   const loggedIn = !auth.user;
   return (
@@ -34,7 +34,12 @@ export default function Nav() {
 
         {!loggedIn ? (
           <>
-            <Avatar onClick={() => setOpenProf(!openProf)} />
+            <Avatar
+              onClick={() => setOpenProf(!openProf)}
+              src={
+                "https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
+              }
+            />
             {openProf && <UserDropDown />}
           </>
         ) : (

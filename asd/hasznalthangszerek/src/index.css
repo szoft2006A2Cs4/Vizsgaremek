@@ -340,9 +340,9 @@ button:hover > a {
 .UserDropDown {
   position: absolute;
   z-index: 20;
-  top: 4.5rem;
-  right: 14rem;
-  width: min-content;
+  top: 4.75rem;
+  right: 13rem;
+  width: 8rem;
   padding: 15px;
   border-radius: 15px;
   background-color: #756460;
@@ -358,6 +358,15 @@ button:hover > a {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: large;
+}
+
+.UserDropDown-icons-cont:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  transform: scale(1.3);
 }
 
 .UserDropDown::before {
@@ -369,15 +378,27 @@ button:hover > a {
   height: 20px;
   transform: rotate(45deg);
   background-color: #756460;
-  border-left: 1px solid white;
-  border-top: 1px solid white;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
 }
 
 .userAvatar {
-  width: 80px;
-  border-radius: 50%;
-  object-fit: fill;
-  border: 1px solid black;
+  width: 3rem;
+}
+
+.UserDropDown-Items {
+  color: black;
+  text-decoration: none;
+}
+
+.UserDropDown-Items:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Logout:hover {
+  color: red;
 }
 
 @font-face {
