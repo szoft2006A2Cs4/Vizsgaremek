@@ -1,13 +1,16 @@
 import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
+import React, { useContext } from "react";
 
-const Drawer_ = () => {
+const Drawer_ = ({ open, setOpen, catList }) => {
   return (
-    <Drawer.Root placement={"start"} size={"md"}>
-      <Drawer.Trigger asChild>
-        <Button variant="outline" size="sm">
-          Open Drawer
-        </Button>
-      </Drawer.Trigger>
+    <Drawer.Root
+      placement={"start"}
+      size="sm"
+      onOpenChange={(e) => {
+        setOpen(e.open);
+      }}
+      open={open}
+    >
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner padding="3">
@@ -16,15 +19,15 @@ const Drawer_ = () => {
             display="flex"
             flexDirection="column"
             maxH="calc(100vh - 32px)"
+            bg="#77625c"
           >
             <Drawer.Header>
-              <Drawer.Title>Drawer Title</Drawer.Title>
+              <Drawer.Title>Összes kategória</Drawer.Title>
             </Drawer.Header>
             <Drawer.Body>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
+              {catList.map((e) => (
+                <p>e</p>
+              ))}
             </Drawer.Body>
             <Drawer.Footer></Drawer.Footer>
             <Drawer.CloseTrigger asChild>
