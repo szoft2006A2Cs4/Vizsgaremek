@@ -19,7 +19,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Instrument
-        [Authorize(Policy = "Instrument.Read")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetInstrumentList()
         {

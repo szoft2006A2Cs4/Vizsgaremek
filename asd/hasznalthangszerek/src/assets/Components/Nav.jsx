@@ -12,20 +12,28 @@ export default function Nav() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const categoryURL = "api/Category";
   const [isLoading, setIsLoading] = useState(false);
-  var response = [];
+  const [categories, setCategories] = useState([]);
 
   const handleGetCat = async () => {
     setIsLoading(true);
     try {
-      response = await axios.get(categoryURL, {
+      const response = await axios.get(categoryURL, {
         withCredentials: true,
       });
+      setCategories(response.data);
       debugger;
     } catch (err) {
       console.log(err.response);
     } finally {
       setAuth({});
       setIsLoading(false);
+    }
+  };
+
+  const handleDrawer = () => {
+    setIsDrawerOpen(true);
+    if (categories.length === 0) {
+      handleGetCat();
     }
   };
 
@@ -42,7 +50,7 @@ export default function Nav() {
       </Link>
 
       <div id="nav-spacing">
-        <button onClick={() => setIsDrawerOpen(true)}>
+        <button onClick={handleDrawer}>
           <a>Összes kategória</a>
         </button>
 
@@ -74,7 +82,8 @@ export default function Nav() {
       <Drawer_
         open={isDrawerOpen}
         setOpen={setIsDrawerOpen}
-        catList={response.data}
+        catList={categories}
+        //isLoading={isLoading}
       />
     </nav>
   );

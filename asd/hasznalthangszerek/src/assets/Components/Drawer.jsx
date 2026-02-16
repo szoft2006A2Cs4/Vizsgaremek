@@ -1,15 +1,13 @@
 import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
 import React, { useContext } from "react";
 
-const Drawer_ = ({ open, setOpen, catList }) => {
+const Drawer_ = ({ open, setOpen, catList = [] /*isLoading */ }) => {
   return (
     <Drawer.Root
-      placement={"start"}
-      size="sm"
-      onOpenChange={(e) => {
-        setOpen(e.open);
-      }}
       open={open}
+      onOpenChange={(e) => setOpen(e.open)}
+      size="sm"
+      placement="start"
     >
       <Portal>
         <Drawer.Backdrop />
