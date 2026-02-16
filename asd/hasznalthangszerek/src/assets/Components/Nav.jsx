@@ -5,6 +5,7 @@ import AuthContext from "../scripts/AuthProvider";
 import UserDropDown from "./UserDropDown";
 import Avatar from "./Avatar";
 import Drawer_ from "./Drawer";
+import axios from "../scripts/axios";
 
 export default function Nav() {
   const { auth, loading } = useContext(AuthContext);
@@ -21,11 +22,9 @@ export default function Nav() {
         withCredentials: true,
       });
       setCategories(response.data);
-      debugger;
     } catch (err) {
       console.log(err.response);
     } finally {
-      setAuth({});
       setIsLoading(false);
     }
   };

@@ -342,8 +342,8 @@ button:hover > a {
 .UserDropDown {
   position: absolute;
   z-index: 20;
-  top: 4.75rem;
-  right: 7.5rem;
+  top: 7.5%;
+  right: 10.5%;
   width: 8rem;
   padding: 15px;
   border-radius: 15px;
@@ -399,8 +399,32 @@ button:hover > a {
   cursor: pointer;
 }
 
-.Logout:hover {
-  color: red;
+.Logout:hover a {
+  color: #e7bf6c;
+}
+
+.Logout:hover img {
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1771255781/logout_hover_lpacjr_ypxsux.svg");
+}
+
+.Drawer-title {
+  font-size: xx-large;
+}
+
+.Drawer-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.Drawer-links {
+  color: black;
+}
+
+.Drawer-links:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @font-face {

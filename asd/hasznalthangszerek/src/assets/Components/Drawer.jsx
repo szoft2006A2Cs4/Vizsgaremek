@@ -18,13 +18,21 @@ const Drawer_ = ({ open, setOpen, catList = [] /*isLoading */ }) => {
             flexDirection="column"
             maxH="calc(100vh - 32px)"
             bg="#77625c"
+            color="black"
+            fontSize="110%"
           >
             <Drawer.Header>
-              <Drawer.Title>Összes kategória</Drawer.Title>
+              <Drawer.Title className="Drawer-title">
+                Összes kategória
+              </Drawer.Title>
             </Drawer.Header>
-            <Drawer.Body>
+            <Drawer.Body className="Drawer-body">
               {catList.map((e) => (
-                <p>e</p>
+                <div key={e.id}>
+                  <a className="Drawer-links">
+                    <h3>{e.name}</h3>
+                  </a>
+                </div>
               ))}
             </Drawer.Body>
             <Drawer.Footer></Drawer.Footer>
