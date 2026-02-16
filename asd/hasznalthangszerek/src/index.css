@@ -335,13 +335,15 @@ button:hover > a {
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
 }
 
 .UserDropDown {
   position: absolute;
   z-index: 20;
   top: 4.75rem;
-  right: 13rem;
+  right: 7.5rem;
   width: 8rem;
   padding: 15px;
   border-radius: 15px;
