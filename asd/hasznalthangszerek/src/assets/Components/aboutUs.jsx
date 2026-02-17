@@ -12,10 +12,14 @@ export default function AboutUs() {
           <h1>Rólunk</h1>
 
           <h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            incidunt, nobis commodi tempora pariatur placeat necessitatibus,
-            debitis, eum molestiae cupiditate quos repudiandae repellat esse
-            voluptatum quibusdam amet iusto quasi? Quia!
+            Üdvözlünk nálunk! Weboldalunk ötlete egy egyszerű, de bosszantó
+            problémából született: egyik csapattársunk hiába keresett egy
+            megbízható, kifejezetten használt hangszerekre szakosodott
+            platformot, nem talált olyat, ami minden igényt kielégített volna.
+            Ekkor döntöttünk úgy, hogy a saját kezünkbe vesszük az irányítást.
+            Célunk, hogy egy olyan közösségi teret hozzunk létre, ahol a
+            hangszerek gazdát cserélhetnek, és ahol minden zenész – a kezdőtől a
+            profiig – megtalálhatja következő kedvenc darabját.
           </h3>
         </div>
 
