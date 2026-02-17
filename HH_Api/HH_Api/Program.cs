@@ -30,15 +30,16 @@ namespace HH_Api
                  });
             AddJwtAuthentication(builder);
 
-            builder.Services.AddCors(options => 
-            { 
-                options.AddPolicy("AllowReactApp", 
-                    policy => 
-                    { 
-                        policy.WithOrigins("http://localhost:5173")
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:5173", "https://dolphin-app-v9aox.ondigitalocean.app")
                         .AllowAnyMethod()
-                        .AllowAnyHeader(); 
-                    }); 
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
             });
 
             builder.Services.AddControllers()
@@ -46,41 +47,39 @@ namespace HH_Api
                 {
                     o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
 
             var app = builder.Build();
 
             app.UseRouting();
             app.UseCors("AllowReactApp");
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
             app.UseHttpsRedirection();
 
             app.Use((context, next) =>
             {
-                var auth = context.Request.Headers.Authorization;
-                app.Logger.LogDebug($"*** Authorization: {auth}");
+                var token = context.Request.Cookies["jwt"];
+                if (!string.IsNullOrEmpty(token))
+                {
+                    app.Logger.LogDebug($"*** Token: {token}");
+                }
+                else
+                {
+                    app.Logger.LogDebug("*** Token Not Found");
+                }
                 return next();
             });
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
         }
-        
+
         private static void AddJwtAuthentication(WebApplicationBuilder builder)
         {
             var secretKey = builder.Configuration["Auth:Jwt:Key"];
             var issuer = builder.Configuration["Auth:Jwt:Issuer"];
-            var audience = builder.Configuration["Auth:Jwt:Audience"]; 
+            var audience = builder.Configuration["Auth:Jwt:Audience"];
             if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
             {
                 throw new ApplicationException("Authentication konfiguráció hiányzik");
@@ -89,7 +88,7 @@ namespace HH_Api
 
             var tokenManager = new TokenManager(builder.Configuration);
             builder.Services.AddSingleton(tokenManager);
-            
+
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -103,36 +102,49 @@ namespace HH_Api
                         ValidAudience = audience,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                     };
-                    
+
                     options.Events = new JwtBearerEvents
                     {
-                        OnTokenValidated = async context =>
+                        OnMessageReceived = context =>
                         {
-                            var email = context.Principal?.FindFirst(ClaimTypes.Name)?.Value;
-                            if (!string.IsNullOrEmpty(email))
+                            if (context.Request.Cookies.TryGetValue("jwt", out var token))
                             {
-                                var dbContext = context.HttpContext.RequestServices.GetService<Context>() ??
-                                                throw new ApplicationException("Kritikus hiba: Db kontextus nem elérhető!");
-
-                                var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
-                                if (user != null)
-                                {
-                                    if (user.Token != null)
-                                    {
-                                        var token = (context.SecurityToken as JsonWebToken)?.EncodedToken;
-                                        if (user.Token != token)
-                                        {
-                                            user.Token = token;
-                                            await dbContext.SaveChangesAsync();
-                                        }
-                                        return;
-                                    }
-                                    else context.Fail("Érvénytelen token: lezárt kapcsolat");
-                                }
-                                else context.Fail("Ismeretlen felhasználó");
+                                context.Token = token;
                             }
-                            else context.Fail("Érvénytelen token: azonosítás nem lehetséges");
-                        }
+                            return Task.CompletedTask;
+                        },
+
+
+                        OnTokenValidated = async context =>
+						{
+							var email = context.Principal?.FindFirst(ClaimTypes.Name)?.Value;
+							if (!string.IsNullOrEmpty(email))
+							{
+								var dbContext = context.HttpContext.RequestServices.GetService<Context>() ??
+												throw new ApplicationException("Kritikus hiba: Db kontextus nem elérhető!");
+
+								var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+								
+								if (user == null || string.IsNullOrEmpty(user.Token)) 
+								{
+									context.Fail("Érvénytelen token vagy lezárt munkamenet.");
+									return;
+								}
+
+								var currentToken = context.SecurityToken as JsonWebToken;
+								var encodedToken = currentToken?.EncodedToken;
+
+								if (user.Token != encodedToken)
+								{
+									context.Fail("A token már nem érvényes (máshol jelentkeztek be).");
+									return;
+								}
+							}
+							else 
+							{
+								context.Fail("Érvénytelen azonosító.");
+							}
+						}
                     };
                 });
             builder.Services.AddAuthorization(options =>
@@ -142,33 +154,6 @@ namespace HH_Api
                     options.AddPolicy(permission, policy => policy.RequireClaim("permission", permission));
                 }
             });
-            builder.Services.AddSwaggerGen(
-                options =>
-                {
-                    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                    {
-                        Name = "Authorization",
-                        In = ParameterLocation.Header,
-                        Type = SecuritySchemeType.Http,
-                        Scheme = "Bearer",
-                        BearerFormat = "JWT"
-                    });
-
-                    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                    {
-                        {
-                            new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
-                                }
-                            },
-                            Array.Empty<string>()
-                        }
-                    });
-                });
         }
     }
 }

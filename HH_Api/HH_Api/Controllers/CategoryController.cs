@@ -18,7 +18,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Category
-        [Authorize(Policy = "Category.Read")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetCategoryList()
         {
@@ -26,7 +26,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/Category/5
-        [Authorize(Policy = "Category.Read")]
+        [AllowAnonymous]
         [HttpGet("{name}")]
         public async Task<IActionResult> GetCategory(string name)
         {

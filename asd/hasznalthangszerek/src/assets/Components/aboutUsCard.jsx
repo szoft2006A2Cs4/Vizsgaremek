@@ -1,18 +1,12 @@
-import { useState } from "react";
-
-export default function aboutUsCard({ img, name }) {
+export default function aboutUsCard({ img, name, subTitle }) {
   return (
-    <span>
-      <div id="userCard-grid">
-        <img src={img} id="user-icon" />
-        <h2 id="userCard-name">{name}</h2>
-        <h4 id="userCard-text">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia
-          soluta sit minima nulla iusto culpa, magni consequuntur, est, maiores
-          sapiente laboriosam consequatur autem atque odit quos voluptates error
-          odio dolor.
-        </h4>
-      </div>
-    </span>
+    <div className="card">
+      <div className="card-border-top"></div>
+      <img src={img} className="img" />
+
+      <span>{name}</span>
+      <p className="job">{subTitle}</p>
+      <button> Click</button>
+    </div>
   );
 }

@@ -50,6 +50,13 @@ namespace HH_Api.Auth
             }  
             
         }
+		
+		public List<string> GetPermissionsForRole(string role)
+        {
+            if (string.IsNullOrEmpty(role)) return new List<string>();
+            return _rolesPermissions.TryGetValue(role, out var permissions) ? permissions : new List<string>();
+        }
+		
         public string GenerateToken(User user)
         {
             var claims = new List<Claim>
