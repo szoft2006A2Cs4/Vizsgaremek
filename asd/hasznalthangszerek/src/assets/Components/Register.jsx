@@ -15,6 +15,7 @@ const REGISTER_URL = "api/User";
 const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
+  const pwdInputRef = useRef();
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -52,7 +53,6 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isBlur, setIsBlur] = useState(true);
 
   useEffect(() => {
     userRef.current.focus();
@@ -459,7 +459,7 @@ const Register = () => {
                   onBlur={() => setAddressFocus(false)}
                 />
               </div>
-              <div>
+              <div style={{ position: "relative" }}>
                 <label id="password-label" onClick={showPassword}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -472,6 +472,7 @@ const Register = () => {
                   </svg>
                 </label>
                 <input
+                  ref={pwdInputRef}
                   type="password"
                   name="password"
                   id="password-input"
@@ -489,7 +490,7 @@ const Register = () => {
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
-                <PasswordPopUp isopen={pwdFocus} />
+                <PasswordPopUp isopen={pwdFocus} anchorRef={pwdInputRef} />
               </div>
               <div>
                 <label id="repassword-label" onClick={showRePassword}>
