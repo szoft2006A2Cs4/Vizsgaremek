@@ -74,7 +74,7 @@ main {
   display: grid;
   grid-column: 1 / 4;
   grid-row: 4;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 3fr 1fr;
   position: relative;
   z-index: 10;
   background-color: #ead7ce;
@@ -86,7 +86,7 @@ article {
   grid-row: 1 / 2;
   background-color: #ead7ce;
   /* padding: 50px; */
-  min-height: 800px;
+  /* min-height: min-content; */
 }
 
 article > * {
