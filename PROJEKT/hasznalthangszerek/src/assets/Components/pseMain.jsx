@@ -1,11 +1,11 @@
 import Footer from "./Footer";
 import ArticleAds from "./ArticleAds";
 
-export default function PseMain() {
+export default function PseMain(data) {
   return (
     <main>
       <article>
-        <ArticleAds />
+        <ArticleAds data={data} />
       </article>
       <section>section</section>
       <Footer />

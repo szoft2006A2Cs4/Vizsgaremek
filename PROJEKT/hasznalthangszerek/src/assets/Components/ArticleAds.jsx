@@ -32,11 +32,11 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
   );
 });
 
-const Demo = () => {
+const Demo = (data) => {
   return (
     <Carousel.Root
       id="carousel-root"
-      slideCount={items.length}
+      slideCount={6}
       width="full"
       maxW="100%"
       mx="0"
