@@ -1,9 +1,12 @@
 import Footer from "./Footer";
+import ArticleAds from "./ArticleAds";
 
-export default function PseMain() {
+export default function PseMain(data) {
   return (
     <main>
-      <article>article</article>
+      <article style={{ overflowY: "none" }}>
+        <ArticleAds data={data} />
+      </article>
       <section>section</section>
       <Footer />
     </main>
