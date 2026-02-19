@@ -83,15 +83,18 @@ main {
 article {
   display: flex;
   align-items: center;
+  justify-content: center;
   grid-row: 1 / 2;
   background-color: #ead7ce;
-  /* padding: 50px; */
-  /* min-height: min-content; */
+  overflow: hidden;
+  padding: 2rem 0;
 }
 
 article > * {
-  width: 100vw;
-  margin-top: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1rem;
+  margin-inline: auto;
 }
 
 section {

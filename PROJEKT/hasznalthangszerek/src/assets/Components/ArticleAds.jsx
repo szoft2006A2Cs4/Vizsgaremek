@@ -2,6 +2,7 @@ import {
   AspectRatio,
   Box,
   Carousel,
+  Heading,
   IconButton,
   Image,
 } from "@chakra-ui/react";
@@ -22,67 +23,97 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
     <IconButton
       {...props}
       ref={ref}
-      size="xs"
+      size="md"
       variant="outline"
       rounded="full"
       position="absolute"
       zIndex="1"
-      bg="bg"
+      bg="white"
+      color="black"
+      top="50%"
+      transform="translateY(-50%)"
     />
   );
 });
 
-const Demo = (data) => {
+const Demo = () => {
   return (
-    <Carousel.Root
-      id="carousel-root"
-      slideCount={6}
-      width="full"
-      maxW="100%"
-      mx="0"
-      h="full"
-      gap="4"
-      position="relative"
-      colorPalette="white"
-    >
-      <Carousel.Control gap="4" width="full" position="relative">
-        <Carousel.PrevTrigger asChild>
-          <ActionButton insetStart="4">
-            <LuArrowLeft />
-          </ActionButton>
-        </Carousel.PrevTrigger>
+    // Kijavítva: maxW="7xl" ad egy kellemes maximális szélességet nagy monitorokon,
+    // px pedig ad neki bal-jobb távolságot kisebbeken. Az overflow="hidden" eltűnt innen!
+    <Box width="100%" maxW="7xl" mx="auto" px={{ base: 4, md: 8 }} py="8">
+      <Heading
+        as="h1"
+        size="2xl"
+        textAlign="center"
+        textTransform="uppercase"
+        mb="6" // Adunk egy kis extra helyet a cím és a kép között
+      >
+        Carousel Cím
+      </Heading>
 
-        <Carousel.ItemGroup width="full">
-          {items.map((src, index) => (
-            <Carousel.Item key={index} index={index}>
-              <AspectRatio ratio={16 / 9} maxH="72vh" w="full">
-                <Image
-                  src={src}
-                  alt={`Product ${index + 1}`}
-                  objectFit="contain"
-                />
-              </AspectRatio>
-            </Carousel.Item>
-          ))}
-        </Carousel.ItemGroup>
+      <Carousel.Root
+        id="carousel-root"
+        slideCount={6}
+        width="100%"
+        height="auto"
+        gap="0"
+        position="relative"
+        colorPalette="white"
+        overflow="hidden" // Az overflow kizárólag a carouselre vonatkozzon, ne a címre!
+        borderRadius="md" // Kicsit kerekített sarkok, jól néz ki, ha nem ér ki a széléig
+      >
+        <Carousel.Control width="100%" position="relative">
+          <Carousel.PrevTrigger asChild>
+            <ActionButton insetStart="4">
+              <LuArrowLeft />
+            </ActionButton>
+          </Carousel.PrevTrigger>
 
-        <Carousel.NextTrigger asChild>
-          <ActionButton insetEnd="4">
-            <LuArrowRight />
-          </ActionButton>
-        </Carousel.NextTrigger>
+          <Carousel.ItemGroup width="100%" height="100%">
+            {items.map((src, index) => (
+              <Carousel.Item
+                key={index}
+                index={index}
+                flex="0 0 100%"
+                width="100%"
+              >
+                <AspectRatio ratio={16 / 9} width="100%">
+                  <Image
+                    src={src}
+                    alt={`Product ${index + 1}`}
+                    objectFit="cover"
+                    width="100%"
+                    height="100%"
+                  />
+                </AspectRatio>
+              </Carousel.Item>
+            ))}
+          </Carousel.ItemGroup>
 
-        <Box position="absolute" bottom="6" width="full">
-          <Carousel.Indicators
-            transition="width 0.2s ease-in-out"
-            transformOrigin="center"
-            opacity="0.5"
-            boxSize="2"
-            _current={{ width: "10", bg: "colorPalette.subtle", opacity: 1 }}
-          />
-        </Box>
-      </Carousel.Control>
-    </Carousel.Root>
+          <Carousel.NextTrigger asChild>
+            <ActionButton insetEnd="4">
+              <LuArrowRight />
+            </ActionButton>
+          </Carousel.NextTrigger>
+
+          <Box
+            position="absolute"
+            bottom="6"
+            width="100%"
+            display="flex"
+            justifyContent="center"
+          >
+            <Carousel.Indicators
+              transition="width 0.2s ease-in-out"
+              transformOrigin="center"
+              opacity="0.5"
+              boxSize="2"
+              _current={{ width: "10", bg: "colorPalette.subtle", opacity: 1 }}
+            />
+          </Box>
+        </Carousel.Control>
+      </Carousel.Root>
+    </Box>
   );
 };
 
