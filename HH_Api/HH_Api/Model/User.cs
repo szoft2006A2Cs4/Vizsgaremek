@@ -38,5 +38,8 @@ namespace HH_Api.Model
         
         [Column("token")]
         public string? Token { get; set; }
+        
+        [Column("ImageId")]
+        public string ImageId{get;set;}
     }
 }
