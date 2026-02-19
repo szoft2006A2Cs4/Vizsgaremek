@@ -39,7 +39,30 @@ export default function Nav() {
   if (loading) return null;
   const loggedIn = !auth.user;
 
-  return (
+  return !loggedIn ? (
+    <nav>
+      <Link to="/" id="logo">
+        <img
+          id="logo-icon"
+          src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1770638077/logo_joyyt1.png"
+        />
+      </Link>
+
+      <div id="nav-spacing">
+        <div id="nav-bar">
+          <SearchInput></SearchInput>
+        </div>
+
+        <Avatar
+          onClick={() => setOpenProf(!openProf)}
+          src={
+            "https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
+          }
+        />
+        {openProf && <UserDropDown />}
+      </div>
+    </nav>
+  ) : (
     <nav>
       <Link to="/" id="logo">
         <img
@@ -61,21 +84,9 @@ export default function Nav() {
           <SearchInput></SearchInput>
         </div>
 
-        {!loggedIn ? (
-          <>
-            <Avatar
-              onClick={() => setOpenProf(!openProf)}
-              src={
-                "https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
-              }
-            />
-            {openProf && <UserDropDown />}
-          </>
-        ) : (
-          <button>
-            <Link to="/login">Bejelentkezés</Link>
-          </button>
-        )}
+        <button>
+          <Link to="/login">Bejelentkezés</Link>
+        </button>
       </div>
 
       <Drawer_

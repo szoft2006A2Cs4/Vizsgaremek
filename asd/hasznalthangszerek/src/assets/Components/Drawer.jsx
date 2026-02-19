@@ -11,12 +11,10 @@ const Drawer_ = ({ open, setOpen, catList = [] /*isLoading */ }) => {
     >
       <Portal>
         <Drawer.Backdrop />
-        <Drawer.Positioner padding="3">
+        <Drawer.Positioner>
           <Drawer.Content
-            rounded="md"
             display="flex"
             flexDirection="column"
-            maxH="calc(100vh - 32px)"
             bg="#77625c"
             color="black"
             fontSize="110%"

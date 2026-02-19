@@ -58,6 +58,7 @@ namespace HH_Api.Controllers
             var email = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
             if (email != null) return Conflict("Ezzel az email-címmel már létezik felhasználó!");
             user.Password = PasswordHandler.HashPassword(user.Password);
+            user.ImageId = $"{user.Name}{user.Id}";
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Created($"{Request.GetDisplayUrl()}/{user.Id}" ,user);

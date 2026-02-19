@@ -1,14 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import {
-  faCheck,
-  faTimes,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../style/register.css";
 import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
 import Loading from "./Loading";
+import PasswordPopUp from "./PasswordPopUp";
+import { Popover } from "@chakra-ui/react";
 
 const USER_REGEX =
   /^[A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)+$/;
@@ -19,6 +15,7 @@ const REGISTER_URL = "api/User";
 const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
+  const pwdInputRef = useRef();
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -462,7 +459,7 @@ const Register = () => {
                   onBlur={() => setAddressFocus(false)}
                 />
               </div>
-              <div>
+              <div style={{ position: "relative" }}>
                 <label id="password-label" onClick={showPassword}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -475,12 +472,17 @@ const Register = () => {
                   </svg>
                 </label>
                 <input
+                  ref={pwdInputRef}
                   type="password"
                   name="password"
                   id="password-input"
                   placeholder="Jelszó"
                   onChange={(e) => {
-                    setIncorrectClass();
+                    if (
+                      e.target.parentElement.classList.contains("incorrect")
+                    ) {
+                      e.target.parentElement.classList.remove("incorrect");
+                    }
                     setPwd(e.target.value);
                   }}
                   aria-invalid={validPwd ? "false" : "true"}
@@ -488,6 +490,7 @@ const Register = () => {
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
+                <PasswordPopUp isopen={pwdFocus} anchorRef={pwdInputRef} />
               </div>
               <div>
                 <label id="repassword-label" onClick={showRePassword}>
