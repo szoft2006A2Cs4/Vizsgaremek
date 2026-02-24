@@ -286,10 +286,6 @@ const Register = () => {
   function showPassword() {
     let x = document.getElementById("password-input");
     const type = x.type === "password" ? "text" : "password";
-    // const lock =
-    //   x.type === "password"
-    //     ? `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8e3eD"><path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z"/></svg>`
-    //     : `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8e3eD"><path d="M536.5-303.5Q560-327 560-360t-23.5-56.5Q513-440 480-440t-56.5 23.5Q400-393 400-360t23.5 56.5Q447-280 480-280t56.5-23.5ZM240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h280v-80q0-83 58.5-141.5T720-920q83 0 141.5 58.5T920-720h-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80h120q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Z"/></svg>`;
     x.type = type;
   }
 
@@ -303,7 +299,9 @@ const Register = () => {
     <>
       {success ? (
         <div className="wrapper">
-          <h1 id="successful">A regisztráció sikeres!</h1>
+          <h1 id="successful" className="register-h1">
+            A regisztráció sikeres!
+          </h1>
           <br />
           <p>
             <Link to="/login">Bejelentkezés</Link>
@@ -312,7 +310,7 @@ const Register = () => {
       ) : (
         <div className="wrapper">
           {isLoading ? <Loading /> : <></>}
-          <h1>Regisztráció</h1>
+          <h1 className="register-h1">Regisztráció</h1>
           <p
             ref={errRef}
             id="error-message"
@@ -322,9 +320,13 @@ const Register = () => {
             {errMsg}
           </p>
           <center>
-            <form id="signup-form" onSubmit={handleSubmit}>
+            <form
+              id="signup-form"
+              onSubmit={handleSubmit}
+              className="register-form "
+            >
               <div>
-                <label htmlFor="username-input">
+                <label htmlFor="username-input" className="register-label">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -353,7 +355,7 @@ const Register = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email-input">
+                <label htmlFor="email-input" className="register-label">
                   <span>@</span>
                 </label>
                 <input
@@ -373,7 +375,7 @@ const Register = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phone">
+                <label htmlFor="phone" className="register-label">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -401,7 +403,7 @@ const Register = () => {
                 />
               </div>
               <div>
-                <label htmlFor="x">
+                <label htmlFor="x" className="register-label">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -460,7 +462,11 @@ const Register = () => {
                 />
               </div>
               <div style={{ position: "relative" }}>
-                <label id="password-label" onClick={showPassword}>
+                <label
+                  id="password-label"
+                  onClick={showPassword}
+                  className="register-label"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -493,7 +499,11 @@ const Register = () => {
                 <PasswordPopUp isopen={pwdFocus} anchorRef={pwdInputRef} />
               </div>
               <div>
-                <label id="repassword-label" onClick={showRePassword}>
+                <label
+                  id="repassword-label"
+                  onClick={showRePassword}
+                  className="register-label"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"

@@ -4,6 +4,7 @@ import Login from "./assets/Components/Login";
 import Register from "./assets/Components/Register";
 import Home from "./assets/Components/Home";
 import AboutUs from "./assets/Components/aboutUs";
+import UpLoad from "./assets/Components/UpLoad";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/allCaregories" element={<></>} />
-          <Route path="/aboutUs" element={<AboutUs></AboutUs>} />
+          <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/upLoad" element={<UpLoad />} />
         </Routes>
       </BrowserRouter>
     </>

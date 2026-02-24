@@ -437,6 +437,40 @@ button:hover > a {
   cursor: pointer;
 }
 
+#UpLoad-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.UpLoad-btn {
+  font-size: large;
+}
+
+.UpLoad-btn:hover {
+  color: #e7bf6c;
+  font-size: larger;
+}
+
+#UpLoad-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#UpLoad-comboField {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.UpLoad-comboInputs {
+  width: 15em;
+}
+
 @font-face {
   font-family: "Celinda";
   src: url(./assets/fonts/Celinda.otf);

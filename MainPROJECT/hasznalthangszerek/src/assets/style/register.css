@@ -31,13 +31,13 @@ html {
   justify-content: center;
 }
 
-h1 {
+.register-h1 {
   font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-form {
+.register-form {
   width: min(400px, 100%);
   margin-top: 20px;
   margin-bottom: 50px;
@@ -48,13 +48,13 @@ form {
   gap: 10px;
 }
 
-form > div {
+.register-form > div {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-form label {
+.register-form label {
   flex-shrink: 0;
   height: 50px;
   width: 50px;
@@ -70,7 +70,7 @@ form label {
   font-weight: 500;
 }
 
-form input {
+.register-form input {
   box-sizing: border-box;
   flex-grow: 1;
   min-width: 0;
@@ -84,24 +84,24 @@ form input {
   transition: 150ms ease;
 }
 
-form input:hover {
+.register-form input:hover {
   border-color: var(--accent-color);
 }
 
-form input:focus {
+.register-form input:focus {
   outline: none;
   border-color: var(--text-color);
 }
 
-div:has(input:focus) > label {
+div:has(input:focus) > .register-label {
   background-color: var(--text-color);
 }
 
-form input::placeholder {
+.register-form input::placeholder {
   color: var(--accent-color);
 }
 
-form button {
+.register-form button {
   margin-top: 10px;
   border: none;
   border-radius: 1000px;
@@ -114,11 +114,11 @@ form button {
   cursor: pointer;
 }
 
-form button:hover {
+.register-form button:hover {
   background-color: var(--text-color);
 }
 
-form button:focus {
+.register-form button:focus {
   outline: none;
   background-color: var(--text-color);
 }
@@ -138,11 +138,11 @@ a:hover {
   }
 }
 
-form div.incorrect label {
+.register-form div.incorrect label {
   background-color: #f06272;
 }
 
-form div.incorrect input {
+.register-form div.incorrect input {
   border-color: #f06272;
 }
 
