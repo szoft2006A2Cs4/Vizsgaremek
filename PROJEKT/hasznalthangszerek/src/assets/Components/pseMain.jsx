@@ -8,8 +8,8 @@ export default function PseMain(data) {
       <article style={{ overflowY: "none" }}>
         <ArticleAds data={data} />
       </article>
-      <section style={{ overflowY: "none" }}>
-        <SectionAds />
+      <section>
+        <SectionAds data={data} />
       </section>
       <Footer />
     </main>

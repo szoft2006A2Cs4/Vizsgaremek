@@ -87,13 +87,13 @@ article {
   grid-row: 1 / 2;
   background-color: #ead7ce;
   overflow: hidden;
-  padding: 2rem 0;
+  padding: 0;
+  margin: 0;
 }
 
 article > * {
-  width: 100%;
   max-width: 2000px;
-  margin-top: 1rem;
+  height: auto;
   margin-inline: auto;
 }
 

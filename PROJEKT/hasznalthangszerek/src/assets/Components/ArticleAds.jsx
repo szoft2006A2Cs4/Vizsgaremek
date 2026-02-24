@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
+import "../../index.css";
 
 const items = [
   "https://images.unsplash.com/photo-1656433031375-5042f5afe894?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2371",
@@ -36,15 +37,17 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
   );
 });
 
-const Demo = () => {
+const ArticleAds = () => {
   return (
-    <Box width="100%" mx="auto" px={{ base: 4, md: 8 }} py="8">
+    <Box width="100%" mx="auto" px={{ base: 4, md: 8 }} py="0" mt="0">
       <Heading
         as="h1"
         fontSize={{ base: "2rem", md: "3.5rem", lg: "4.5rem" }}
         textAlign="center"
         textTransform="uppercase"
-        mb="8"
+        mb="6"
+        mt="0"
+        pt="0"
       >
         Kiemelt hirdetéseink
       </Heading>
@@ -116,4 +119,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default ArticleAds;

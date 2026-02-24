@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import "../../index.css";
 
 const SectionAds = () => {
   return (
@@ -58,7 +59,7 @@ const PropertyCard = ({ data }) => (
       />
       {data.favorite && (
         <Badge pos="absolute" top="3" insetStart="3" size="md" fontSize="sm">
-          Népszerű eladó
+          Megbízható eladó
         </Badge>
       )}
     </Box>
