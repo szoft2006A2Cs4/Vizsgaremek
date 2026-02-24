@@ -92,7 +92,7 @@ article {
 
 article > * {
   width: 100%;
-  max-width: 1200px;
+  max-width: 2000px;
   margin-top: 1rem;
   margin-inline: auto;
 }

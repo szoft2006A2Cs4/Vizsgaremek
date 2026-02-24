@@ -38,17 +38,15 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
 
 const Demo = () => {
   return (
-    // Kijavítva: maxW="7xl" ad egy kellemes maximális szélességet nagy monitorokon,
-    // px pedig ad neki bal-jobb távolságot kisebbeken. Az overflow="hidden" eltűnt innen!
-    <Box width="100%" maxW="7xl" mx="auto" px={{ base: 4, md: 8 }} py="8">
+    <Box width="100%" mx="auto" px={{ base: 4, md: 8 }} py="8">
       <Heading
         as="h1"
-        size="2xl"
+        fontSize={{ base: "2rem", md: "3.5rem", lg: "4.5rem" }}
         textAlign="center"
         textTransform="uppercase"
-        mb="6" // Adunk egy kis extra helyet a cím és a kép között
+        mb="8"
       >
-        Carousel Cím
+        Kiemelt hirdetéseink
       </Heading>
 
       <Carousel.Root
@@ -59,8 +57,9 @@ const Demo = () => {
         gap="0"
         position="relative"
         colorPalette="white"
-        overflow="hidden" // Az overflow kizárólag a carouselre vonatkozzon, ne a címre!
-        borderRadius="md" // Kicsit kerekített sarkok, jól néz ki, ha nem ér ki a széléig
+        overflow="hidden"
+        borderRadius="md"
+        autoplay="true"
       >
         <Carousel.Control width="100%" position="relative">
           <Carousel.PrevTrigger asChild>

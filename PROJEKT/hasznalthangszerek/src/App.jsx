@@ -4,6 +4,7 @@ import Login from "./assets/Components/Login";
 import Register from "./assets/Components/Register";
 import Home from "./assets/Components/Home";
 import AboutUs from "./assets/Components/aboutUs";
+import axios from "./assets/scripts/axios";
 
 function App() {
   return (
