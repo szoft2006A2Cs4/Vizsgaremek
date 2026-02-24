@@ -5,14 +5,17 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-
         <div className="footer-column">
           <h3>Kapcsolat</h3>
-          <p>hhproject67@gmail.com</p>
+          <Link to="/contactUs">hasznalthangszerek01@gmail.com</Link>
           <p>06301234567</p>
-          <a href="https://www.instagram.com/hasznalthangszerek/" target="_blank" className="social-link">
-          
-          <FaInstagram className="social-icon" /> Instagram</a>
+          <a
+            href="https://www.instagram.com/hasznalthangszerek/"
+            target="_blank"
+            className="social-link"
+          >
+            <FaInstagram className="social-icon" /> Instagram
+          </a>
         </div>
 
         <div className="footer-column center">
@@ -24,11 +27,10 @@ export default function Footer() {
 
         <div className="footer-column">
           <h3>Információ</h3>
-          
+
           <p>Általános Szerződési Feltételek</p>
           <p>Visszaküldési szabályzat</p>
         </div>
-
       </div>
 
       <div className="footer-bottom">

@@ -4,6 +4,7 @@ import Login from "./assets/Components/Login";
 import Register from "./assets/Components/Register";
 import Home from "./assets/Components/Home";
 import AboutUs from "./assets/Components/aboutUs";
+import Contact from "./assets/Components/Contact";
 import axios from "./assets/scripts/axios";
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/allCaregories" element={<></>} />
-          <Route path="/aboutUs" element={<AboutUs></AboutUs>} />
+          <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/contactUs" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </>

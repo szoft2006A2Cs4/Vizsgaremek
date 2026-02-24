@@ -9,11 +9,11 @@ html {
   font-size: 12pt;
   color: var(--text-color);
   text-align: center;
+  background-image: url(../img/pexels-yesimcolak-30816642.jpg);
 }
 
 #root {
   min-height: 100vh;
-  background-image: url(../img/pexels-yesimcolak-30816642.jpg);
   background-size: cover;
   background-position: left;
   overflow: hidden;
@@ -95,6 +95,7 @@ form input:focus {
 
 div:has(input:focus) > label {
   background-color: var(--text-color);
+  color: var(--base-color);
 }
 
 form input::placeholder {

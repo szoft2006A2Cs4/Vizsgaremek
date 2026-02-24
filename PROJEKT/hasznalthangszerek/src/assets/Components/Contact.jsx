@@ -1,6 +1,14 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import styled from "styled-components";
+import {
+  Field,
+  Fieldset,
+  Input,
+  Textarea,
+  Stack,
+  Button,
+} from "@chakra-ui/react";
+import { send } from "vite";
 
 const Contact = () => {
   const form = useRef();
@@ -9,69 +17,59 @@ const Contact = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form.current, {
-        publicKey: "YOUR_PUBLIC_KEY",
+      .sendForm("hasznalthangszerek", "messagetemplate", form.current, {
+        publicKey: "u8I9aEohwoXlxEDHy",
       })
       .then(
-        () => {
-          console.log("SUCCESS!");
+        (result) => {
+          console.log(result.text);
+          console.log("Üzenet elküldve");
+          e.target.reset();
         },
         (error) => {
-          console.log("FAILED...", error.text);
+          console.log(error.text);
         },
       );
   };
 
   return (
-    <StyledContactForm>
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" />
-        <label>Email</label>
-        <input type="email" name="user_email" />
-        <label>Message</label>
-        <textarea name="message" />
-        <input type="submit" value="Send" />
-      </form>
-    </StyledContactForm>
+    <Fieldset.Root
+      width="100%"
+      size="xl"
+      bg="white"
+      display="flex"
+      alignSelf="center"
+      onSubmit={sendEmail}
+    >
+      <Stack>
+        <Fieldset.Legend>Üzenjen nekünk!</Fieldset.Legend>
+        <Fieldset.HelperText>
+          Please provide your contact details below.
+        </Fieldset.HelperText>
+      </Stack>
+
+      <Fieldset.Content width="xl" padding="0">
+        <Field.Root>
+          <Field.Label>Név</Field.Label>
+          <Input name="user_name" />
+        </Field.Root>
+
+        <Field.Root>
+          <Field.Label>Email cím</Field.Label>
+          <Input name="email" type="user_email" />
+        </Field.Root>
+
+        <Field.Root>
+          <Field.Label>Üzenet</Field.Label>
+          <Textarea name="message" />
+        </Field.Root>
+      </Fieldset.Content>
+
+      <Button type="submit" alignSelf="center" variant="surface">
+        Submit
+      </Button>
+    </Fieldset.Root>
   );
 };
 
 export default Contact;
-
-const StyledContactForm = styled.div`
-  width: 400px;
-
-  form {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
-    font-size: 16px;
-
-    input {
-      width: 100%;
-      height: 35px;
-      padding: 7px;
-      outline: none;
-      border-radius: 5px;
-      border: 1px solid rgb(220, 220, 220);
-
-      &:focus {
-        border: 1px solid rgba(0, 206, 158, 1);
-      }
-    }
-
-    label {
-      margin-top: 1rem;
-    }
-
-    input[type="submit"] {
-      margin-top: 2rem;
-      cursor: pointer;
-      background: rgb(249, 105, 14);
-      color: white;
-      border: none;
-    }
-  }
-`;
