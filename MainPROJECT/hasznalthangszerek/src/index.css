@@ -440,12 +440,30 @@ button:hover > a {
 #UpLoad-page {
   height: 100vh;
   width: 100vw;
-  display: flex;
 
-  align-items: center;
+  display: flex;
   justify-content: center;
+  position: relative;
+  top: 4rem;
+  z-index: 50;
 }
 
+#UpLoad-layout {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-rows: max-content max-content;
+  justify-items: center;
+}
+
+.UpLoad-firstMain {
+  grid-row: 1;
+}
+
+.UpLoad-secondMain {
+  grid-row: 2;
+}
 .UpLoad-btn {
   font-size: large;
 }
@@ -453,22 +471,86 @@ button:hover > a {
 .UpLoad-btn:hover {
   color: #e7bf6c;
   font-size: larger;
+  border: #e7bf6c 1px solid;
 }
 
 #UpLoad-field {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content min-content min-content min-content min-content;
+  gap: 10px;
+}
+
+#UpLoad-InsName {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.UpLoad-InsCat {
+  grid-row: 2;
+  grid-column: 1;
+  padding-bottom: 0.5rem;
 }
 
 #UpLoad-comboField {
   display: flex;
   flex-direction: row;
   gap: 3rem;
+  padding-top: 0.5rem;
+  grid-column: 1;
+}
+
+.UpLoad-cost {
+  grid-row: 3;
+  grid-column: 1;
 }
 
 .UpLoad-comboInputs {
   width: 15em;
+  border: 1px white solid;
+  border-radius: 15px;
+}
+
+.UpLoad-condition {
+  grid-row: 4;
+  grid-column: 1;
+  padding-top: 0.5rem;
+}
+
+.UpLoad-description {
+  grid-row: 1/4;
+  grid-column: 2;
+}
+
+.UpLoad-isPremium {
+  grid-row: 4;
+  grid-column: 2;
+
+  display: flex;
+  justify-content: center;
+}
+
+.UpLoad-footer {
+  grid-row: 5;
+  grid-column: 2;
+  display: flex;
+}
+
+.UpLoad-comboInputs:hover {
+  border: 1px solid #e7bf6c;
+  border-radius: 8px;
+}
+
+.UpLoad-comboInputs:hover button {
+  color: #e7bf6c;
+}
+
+.UpLoad-footer button:hover {
+  color: #e7bf6c;
+}
+
+.UpLoad-dialList {
+  padding-top: 0.5rem;
 }
 
 @font-face {
