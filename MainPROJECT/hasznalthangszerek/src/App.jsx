@@ -5,6 +5,7 @@ import Register from "./assets/Components/Register";
 import Home from "./assets/Components/Home";
 import AboutUs from "./assets/Components/aboutUs";
 import UpLoad from "./assets/Components/UpLoad";
+import Contact from "./assets/Components/Contact";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/allCaregories" element={<></>} />
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/upLoad" element={<UpLoad />} />
+          <Route path="/contactUs" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
+import "../../index.css";
 
 const items = [
   "https://images.unsplash.com/photo-1656433031375-5042f5afe894?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2371",
@@ -36,19 +37,21 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
   );
 });
 
-const Demo = () => {
+const ArticleAds = () => {
   return (
-    // Kijavítva: maxW="7xl" ad egy kellemes maximális szélességet nagy monitorokon,
-    // px pedig ad neki bal-jobb távolságot kisebbeken. Az overflow="hidden" eltűnt innen!
-    <Box width="100%" maxW="7xl" mx="auto" px={{ base: 4, md: 8 }} py="8">
+    <Box width="100%" mx="auto" px={{ base: 4, md: 8 }} py="0" mt="0">
       <Heading
         as="h1"
-        size="2xl"
+        fontSize={{ base: "2rem", md: "3.5rem", lg: "4.5rem" }}
         textAlign="center"
         textTransform="uppercase"
-        mb="6" // Adunk egy kis extra helyet a cím és a kép között
+        mb="6"
+        mt="0"
+        pt="0"
+        paddingTop="5"
+        paddingBottom="5"
       >
-        Carousel Cím
+        Kiemelt hirdetéseink
       </Heading>
 
       <Carousel.Root
@@ -59,8 +62,9 @@ const Demo = () => {
         gap="0"
         position="relative"
         colorPalette="white"
-        overflow="hidden" // Az overflow kizárólag a carouselre vonatkozzon, ne a címre!
-        borderRadius="md" // Kicsit kerekített sarkok, jól néz ki, ha nem ér ki a széléig
+        overflow="hidden"
+        borderRadius="md"
+        autoplay={{ delay: 6000 }}
       >
         <Carousel.Control width="100%" position="relative">
           <Carousel.PrevTrigger asChild>
@@ -117,4 +121,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default ArticleAds;
