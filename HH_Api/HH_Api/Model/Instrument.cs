@@ -26,7 +26,12 @@ namespace HH_Api.Model
         [Column("scname")]
         public string? SCName { get; set; }
 
+        [Column("IsPremium")]
+        public bool IsPremium { get; set; }
 
+        [Column("condition")]
+        public string? Condition { get; set; }
+        
         [ForeignKey(nameof(UId))]
         public User? Seller { get; set; }
 

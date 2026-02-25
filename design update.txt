@@ -1,0 +1,14 @@
+guest es bejelentkezett kent valo browseing teljes megkulonboztetese: 
+  guest: mezei alap layout guestjent rendeles hosszabb folyamat,
+  loggedin: atalakitott layout es konnyebb rendelesi folyamat.
+
+    Conditional rendering : 
+      guestHome.jsx - jelenlegi layout 
+        
+      userHome.jsx- Nav: menupontok leszedese, nagyobb lenyilos felajnalos kereso
+                    Carousel
+                    Section
+                    Omlesztett fo nezet
+                    Footer
+                
+    
