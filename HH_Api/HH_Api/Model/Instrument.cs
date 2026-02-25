@@ -28,6 +28,9 @@ namespace HH_Api.Model
 
         [Column("IsPremium")]
         public bool IsPremium { get; set; }
+
+        [Column("condition")]
+        public string? Condition { get; set; }
         
         [ForeignKey(nameof(UId))]
         public User? Seller { get; set; }

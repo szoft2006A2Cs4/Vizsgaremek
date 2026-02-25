@@ -3,6 +3,7 @@ import axios from "../scripts/axios";
 import AuthContext from "../scripts/AuthProvider";
 import Loading from "./Loading";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function UserDropDown() {
   const LOGOUT_URL = "api/login";
@@ -23,6 +24,12 @@ export default function UserDropDown() {
     }
   };
 
+  let navigate = useNavigate();
+
+  const handlePageRoutes = (route) => {
+    navigate(route);
+  };
+
   return (
     <>
       {isLoading ? (
@@ -40,6 +47,16 @@ export default function UserDropDown() {
           >
             <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771021364/logout_lpacjr.svg" />
             <a className="UserDropDown-Items">Kilépés</a>
+          </p>
+          <p
+            className="UserDropDown-icons-cont"
+            style={{ marginTop: "10px" }}
+            onClick={() => {
+              window.location.href = "/upLoad";
+            }}
+          >
+            <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771923483/upload_cdibf3.svg" />
+            <a className="UserDropDown-Items">Új hirdetés</a>
           </p>
         </div>
       )}
