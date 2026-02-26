@@ -169,7 +169,8 @@ button:hover > a {
 .footer {
   background-color: #1e1e1e;
   color: #f5f5f5;
-  padding: 60px 20px 20px;
+  margin: 60px 0px 0px 0px;
+  padding: 60px 0px 0px 0px;
 }
 
 .footer-container {
@@ -458,6 +459,9 @@ button:hover > a {
 
 .UpLoad-firstMain {
   grid-row: 1;
+  width: 62vw;
+  height: 64vh;
+  background-color: #ead7ce;
 }
 
 .UpLoad-secondMain {
@@ -477,7 +481,7 @@ button:hover > a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: min-content min-content min-content min-content min-content;
-  gap: 10px;
+  gap: 0px;
 }
 
 #UpLoad-InsName {
@@ -535,6 +539,10 @@ button:hover > a {
   display: flex;
 }
 
+.UpLoad-isPremium button:hover {
+  color: #e7bf6c;
+}
+
 .UpLoad-comboInputs:hover {
   border: 1px solid #e7bf6c;
   border-radius: 8px;
@@ -555,6 +563,15 @@ button:hover > a {
 @font-face {
   font-family: "Celinda";
   src: url(./assets/fonts/Celinda.otf);
+}
+
+@media (max-height: 1000px) {
+  .UpLoad-firstMain {
+    grid-row: 1;
+    width: 62vw;
+    height: 70vh;
+    background-color: #ead7ce;
+  }
 }
 
 @media (max-width: 768px) {

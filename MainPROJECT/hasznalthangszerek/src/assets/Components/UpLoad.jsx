@@ -146,13 +146,7 @@ export default function UpLoad({}) {
 
       <div id="UpLoad-page">
         <div id="UpLoad-layout">
-          <Card.Root
-            size="lg"
-            width="62vw"
-            height="68vh"
-            bg="#ead7ce"
-            className="UpLoad-firstMain"
-          >
+          <Card.Root size="lg" className="UpLoad-firstMain">
             <Card.Header>
               <Card.Title fontSize="2xl">Új hangszer feltöltése</Card.Title>
               <Card.Description>
@@ -168,6 +162,7 @@ export default function UpLoad({}) {
                 </Field.Root>
 
                 <div className="UpLoad-InsCat">
+                  <br />
                   <Field.Root>
                     <Field.Label fontSize="xl" paddingBottom="1rem">
                       Kategóriája és alkategóriája
@@ -413,6 +408,13 @@ export default function UpLoad({}) {
               >
                 <Card.Body gap="2" alignItems="center">
                   <FileUpload.Root
+                    accept={[
+                      "image/bmp",
+                      "image/heic",
+                      "image/jpeg",
+                      "image/png",
+                      "image/webp",
+                    ]}
                     alignItems="center"
                     maxFiles={10}
                     width="80%"
