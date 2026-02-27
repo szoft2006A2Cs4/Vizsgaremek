@@ -1,5 +1,7 @@
-using HH_Api.Controllers;
 using HH_Api.Auth;
+using HH_Api.Controllers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace TestProject1;
@@ -8,11 +10,20 @@ namespace TestProject1;
 public class LoginController_Test
 {
     LoginController? _sut;
+    DbContextHelper? _db;
 
     [TestInitialize]
     public void Initialize()
     {
-        _sut = new LoginController(DbContextHelper.CreateDbContext(), new TokenManager(new ConfigurationManager()));
+        //_db = new DbContextHelper();
+
+        //var httpContext = new DefaultHttpContext();
+
+        //_sut = new LoginController(_db.CreateDbContext());
+        //_sut.ControllerContext = new ControllerContext()
+        //{
+        //    HttpContext = httpContext
+        //};
     }
 
     #region Login

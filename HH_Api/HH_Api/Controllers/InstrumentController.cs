@@ -1,9 +1,10 @@
 ﻿using HH_Api.Model;
+using K4os.Compression.LZ4.Internal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 
 namespace HH_Api.Controllers
 {
@@ -37,7 +38,7 @@ namespace HH_Api.Controllers
                 .ThenInclude(c => c!.Category)
                 .FirstOrDefaultAsync(i => i.Id == id);
             if (instrument != null) return Ok(instrument);
-            else return NotFound();
+            else return NotFound("A megadott azonosítóval hangszer nem található!");
         }
 
         // POST: api/Instrument
@@ -50,9 +51,34 @@ namespace HH_Api.Controllers
             return Created($"{Request.GetDisplayUrl()}/{instrument.Id}", instrument);
         }
 
+
+        [Authorize(Policy = "Instrument.Update")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
+        {
+            var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+            if (oldIns == null) return NotFound("A keresett hangszer nem található!");
+            foreach (var propinfo in typeof(Instrument).GetProperties())
+            {
+                propinfo.SetValue(oldIns, propinfo.GetValue(ins));
+            }
+            await _context.SaveChangesAsync();
+            return Ok("Adatok sikeres frissítése!");
+        }
+
+        [Authorize(Policy = "Instrument.Delete")]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteInstrument(int id)
+        {
+            var ins = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+            if (ins == null) NotFound("A megadott azonosítóval hangszer nem található!");
+            _context.Instruments.Remove(ins!);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
         // TODO
         // PATCH: api/Instrument
         // GET: GetBySpecifiedAttribute
-        //DELETE: api/Instrument
     }
 }

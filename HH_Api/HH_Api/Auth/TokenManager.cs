@@ -61,7 +61,7 @@ namespace HH_Api.Auth
         {
             var claims = new List<Claim>
             {
-                new (ClaimTypes.Name, user.Email)
+                new (ClaimTypes.Name, user.Email!)
             };
             foreach (var permission in _rolesPermissions[user.Role!])
             {

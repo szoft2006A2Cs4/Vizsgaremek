@@ -3,8 +3,9 @@
     "",
     "\\HH_Api",
     "\\HH_Api\\HH_Api",
-    "\\HH_Api\\HH_Api\\Model"
+    "\\HH_Api\\HH_Api\\Model",
+    "\\HH_Api\\TestProject1"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api.sln",
+  "SelectedNode": "\\HH_Api\\TestProject1\\UserController.Test.cs",
   "PreviewInSolutionExplorer": false
 }
