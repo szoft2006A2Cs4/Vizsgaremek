@@ -11,29 +11,34 @@ public class LoginController_Test
 {
     LoginController? _sut;
     DbContextHelper? _db;
+    TokenManager? _tknMan;
+    ConfigurationManager? _config;
 
     [TestInitialize]
     public void Initialize()
     {
-        //_db = new DbContextHelper();
+        _config = new ConfigurationManager();
+        _db = new DbContextHelper();
+        _tknMan = new TokenManager(_config);
 
-        //var httpContext = new DefaultHttpContext();
+        var httpContext = new DefaultHttpContext();
 
-        //_sut = new LoginController(_db.CreateDbContext());
-        //_sut.ControllerContext = new ControllerContext()
-        //{
-        //    HttpContext = httpContext
-        //};
+        _sut = new LoginController(_db.CreateDbContext(), _tknMan);
+        _sut.ControllerContext = new ControllerContext()
+        {
+            HttpContext = httpContext
+        };
     }
 
     #region Login
     [TestMethod]
-    public void Login_ReturnOk()
+    public async Task Login_ReturnOk()
     {
 
     }
+
     [TestMethod]
-    public void Login_ReturnWrong()
+    public async Task Login_ReturnWrong()
     {
 
     }
