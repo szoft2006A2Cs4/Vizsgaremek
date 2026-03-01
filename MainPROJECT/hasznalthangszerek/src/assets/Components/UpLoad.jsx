@@ -20,7 +20,7 @@ import {
 import { InfoTip } from "@/components/ui/toggle-tip";
 import { LuUpload } from "react-icons/lu";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import axios from "../scripts/axios";
@@ -125,34 +125,66 @@ const radioOptions = [
   },
 ];
 
+class Instrument {
+  Id;
+  Name;
+  Cost;
+  Description;
+  Sold;
+  UId;
+  SCName;
+  IsPremium;
+  Condition;
+  Seller;
+  SubCategory;
+}
+
 export default function UpLoad() {
   const cloadName = "dknhbvrq9";
   const cloadPreset = "HasznaltHangszerek_UploadProducts";
 
   const url = `https://api.cloudinary.com/v1_1/${cloadName}/image/upload`;
 
-  const [insName, setInsName] = useState("")
+  const [insName, setInsName] = useState("");
+  const [userData, setUserData] = useState(null);
+  const [instrument, SetInstrument] = useState(null);
 
   const [selectedCat, SetSelectedCat] = useState(null);
   const [isNextAct, SetIsNextAct] = useState(false);
 
   const [upLoadedFiles, setUpLoadedFiles] = useState([]);
 
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      try {
+        const resp = await axios.get("api/login/me");
+        const email = resp.data.email;
 
+        const user = await axios.get(`api/user/${email}`);
+        setUserData(user.data);
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    };
+
+    getCurrentUser();
+  }, []);
 
   const upLoadFiles = async (files, preset, insname, imageId) => {
-      const cleanName = insname.split(" ").join("")
+    if (!imageId) return;
+
+    const cleanName = insname.split(" ").join("");
 
     for (let i = 0; i < files.length; i++) {
       const formData = new FormData();
       let file = files[i];
 
-
-      const fileName = `${}`
+      const fileName = `${cleanName}_${imageId}_${i}`;
 
       formData.append("file", file);
       formData.append("upload_preset", preset);
-      formData.append("public_id", )
+      formData.append("public_id", fileName);
 
       try {
         const resp = await fetch(url, {
@@ -160,7 +192,6 @@ export default function UpLoad() {
           body: formData,
         });
         const data = await resp.json();
-        console.log("Sikeres feltöltés: ", data);
       } catch (error) {
         console.log("Hiba a feltöltés során: ", error);
       }
@@ -197,7 +228,10 @@ export default function UpLoad() {
               <div id="UpLoad-field">
                 <Field.Root id="UpLoad-InsName">
                   <Field.Label fontSize="xl">Hangszer neve</Field.Label>
-                  <Input width="32vw" onChange={(e) => setInsName(e.target.value)}/>
+                  <Input
+                    width="32vw"
+                    onChange={(e) => setInsName(e.target.value)}
+                  />
                 </Field.Root>
 
                 <div className="UpLoad-InsCat">
@@ -459,7 +493,6 @@ export default function UpLoad() {
                     width="80%"
                     onFileChange={(details) => {
                       setUpLoadedFiles(details.acceptedFiles);
-                      console.log(details.acceptedFiles);
                     }}
                   >
                     <FileUpload.HiddenInput />
@@ -478,7 +511,14 @@ export default function UpLoad() {
                 <Card.Footer>
                   <Button
                     variant="surface"
-                    onClick={() => upLoadFiles(upLoadedFiles, cloadPreset)}
+                    onClick={() =>
+                      upLoadFiles(
+                        upLoadedFiles,
+                        cloadPreset,
+                        insName,
+                        userData.imageId,
+                      )
+                    }
                   >
                     Feltöltés
                   </Button>
