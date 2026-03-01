@@ -109,7 +109,7 @@ public sealed class UserController_Test
     [TestMethod]
     public async Task GetUser_ReturnOk()
     {
-        var result = await _sut!.GetUser(1) as OkObjectResult;
+        var result = await _sut!.GetUser("TestUser0@gmail.com") as OkObjectResult;
         Assert.IsNotNull(result);
         var user = result.Value as User;
         Assert.IsTrue(_db?.userList!.Contains(user!));
@@ -117,7 +117,7 @@ public sealed class UserController_Test
     [TestMethod]
     public async Task GetUser_ReturnWrong()
     {
-        var result = await _sut!.GetUser(999) as OkObjectResult;
+        var result = await _sut!.GetUser("asufdoasfasof") as OkObjectResult;
         Assert.IsNull(result);
         var user = result?.Value as User;
         Assert.IsFalse(_db?.userList!.Contains(user!));
@@ -139,10 +139,10 @@ public sealed class UserController_Test
     [TestMethod]
     public async Task UpdateUser_ReturnWrong()
     {
-        var result = await _sut!.GetUser(999) as OkObjectResult;
+        var result = await _sut!.GetUser("abrakadabraimununanan") as OkObjectResult;
         Assert.IsNull(result);
 
-        result = await _sut!.GetUser(1) as OkObjectResult;
+        result = await _sut!.GetUser("TestUser0@gmail.com") as OkObjectResult;
         Assert.IsNotNull(result);
 
         var user = result.Value as User;
@@ -199,7 +199,7 @@ public sealed class UserController_Test
     [TestMethod]
     public async Task DeleteUser_ReturnWrong()
     {
-        var result = await _sut!.GetUser(-1) as NotFoundObjectResult;
+        var result = await _sut!.GetUser("asfoaof") as NotFoundObjectResult;
         Assert.AreEqual(result!.Value,
             "A megadott azonosítóval felhasználó nem található!");
     }

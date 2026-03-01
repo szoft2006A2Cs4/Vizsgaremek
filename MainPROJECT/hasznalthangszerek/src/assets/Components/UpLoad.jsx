@@ -23,6 +23,7 @@ import { LuUpload } from "react-icons/lu";
 import { useMemo, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import axios from "../scripts/axios";
 
 const allCategories = {
   Billentyűs: [
@@ -124,9 +125,47 @@ const radioOptions = [
   },
 ];
 
-export default function UpLoad({}) {
+export default function UpLoad() {
+  const cloadName = "dknhbvrq9";
+  const cloadPreset = "HasznaltHangszerek_UploadProducts";
+
+  const url = `https://api.cloudinary.com/v1_1/${cloadName}/image/upload`;
+
+  const [insName, setInsName] = useState("")
+
   const [selectedCat, SetSelectedCat] = useState(null);
   const [isNextAct, SetIsNextAct] = useState(false);
+
+  const [upLoadedFiles, setUpLoadedFiles] = useState([]);
+
+
+
+  const upLoadFiles = async (files, preset, insname, imageId) => {
+      const cleanName = insname.split(" ").join("")
+
+    for (let i = 0; i < files.length; i++) {
+      const formData = new FormData();
+      let file = files[i];
+
+
+      const fileName = `${}`
+
+      formData.append("file", file);
+      formData.append("upload_preset", preset);
+      formData.append("public_id", )
+
+      try {
+        const resp = await fetch(url, {
+          method: "POST",
+          body: formData,
+        });
+        const data = await resp.json();
+        console.log("Sikeres feltöltés: ", data);
+      } catch (error) {
+        console.log("Hiba a feltöltés során: ", error);
+      }
+    }
+  };
 
   const categories = useMemo(
     () => createListCollection({ items: categoryKeys }),
@@ -158,7 +197,7 @@ export default function UpLoad({}) {
               <div id="UpLoad-field">
                 <Field.Root id="UpLoad-InsName">
                   <Field.Label fontSize="xl">Hangszer neve</Field.Label>
-                  <Input width="32vw" />
+                  <Input width="32vw" onChange={(e) => setInsName(e.target.value)}/>
                 </Field.Root>
 
                 <div className="UpLoad-InsCat">
@@ -418,6 +457,10 @@ export default function UpLoad({}) {
                     alignItems="center"
                     maxFiles={10}
                     width="80%"
+                    onFileChange={(details) => {
+                      setUpLoadedFiles(details.acceptedFiles);
+                      console.log(details.acceptedFiles);
+                    }}
                   >
                     <FileUpload.HiddenInput />
                     <FileUpload.Dropzone width="xl">
@@ -432,6 +475,14 @@ export default function UpLoad({}) {
                     <FileUpload.List alignItems="center" />
                   </FileUpload.Root>
                 </Card.Body>
+                <Card.Footer>
+                  <Button
+                    variant="surface"
+                    onClick={() => upLoadFiles(upLoadedFiles, cloadPreset)}
+                  >
+                    Feltöltés
+                  </Button>
+                </Card.Footer>
               </Card.Root>
             </>
           ) : (

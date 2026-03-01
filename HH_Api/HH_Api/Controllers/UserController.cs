@@ -26,10 +26,10 @@ namespace HH_Api.Controllers
         }
 
         [Authorize(Policy = "User.Read")]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetUser(string email)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user != null) return Ok(user);
             else return NotFound("A megadott azonosítóval felhasználó nem található!");
         }
