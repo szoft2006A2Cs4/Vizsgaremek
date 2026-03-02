@@ -560,6 +560,81 @@ button:hover > a {
   padding-top: 0.5rem;
 }
 
+#contact-div {
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  width: 100%;
+  background-color: var(--base-color);
+  margin: 10% 75%;
+  border: 8px solid var(--text-color);
+  border-radius: 10px;
+  padding: 5% 0%;
+}
+
+#contact-h1 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2% 5%;
+  margin: 0% 25%;
+}
+
+.contact-label {
+  flex-shrink: 0;
+  fill: var(--base-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.contact-input {
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  min-width: 0;
+  padding: 1em;
+  font: inherit;
+  border: 2px solid var(--input-color);
+  background-color: var(--input-color);
+  transition: 150ms ease;
+}
+.contact-input:hover {
+  border-color: var(--accent-color);
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+#contact-button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.85em 4em;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+#contact-button:hover {
+  background-color: var(--text-color);
+}
+#contact-button:focus {
+  outline: none;
+  background-color: var(--text-color);
+}
+
 @font-face {
   font-family: "Celinda";
   src: url(./assets/fonts/Celinda.otf);

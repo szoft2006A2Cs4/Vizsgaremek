@@ -1,94 +1,85 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
-import {
-  Field,
-  Fieldset,
-  Input,
-  Textarea,
-  Stack,
-  Button,
-} from "@chakra-ui/react";
+import Loading from "./Loading";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import { Button } from "@chakra-ui/react";
 
 const Contact = () => {
   const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const sendEmail = (e) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [msg, setMsg] = useState("");
+  const [isEmpty, setIsEmpty] = useState(true);
+
+  useEffect(() => {
+    setIsEmpty(name === "" || email === "" || msg === "");
+    console.log(isEmpty, name, email, msg);
+  }, [name, email, msg]);
+
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "hasznalthangszerek",
-        "messagetemplate",
-        form.current,
-        "u8I9aEohwoXlxEDHy",
-      )
+    setIsLoading(true);
+    await emailjs
+      .sendForm("hasznalthangszerek", "messagetemplate", form.current, {
+        publicKey: "u8I9aEohwoXlxEDHy",
+      })
       .then(
-        (result) => {
-          console.log(result.text);
-          alert("Üzenet sikeresen elküldve!");
-          e.target.reset();
+        () => {
+          alert("Sikerült :)");
+          console.log("SUCCESS!");
         },
         (error) => {
-          console.log(error.text);
-          alert("Hiba történt az küldés során.");
+          console.log("FAILED...", error.text);
         },
       );
+    setIsLoading(false);
   };
-
   return (
-    <Fieldset.Root
-      width="100%"
-      size="xl"
-      bg="white"
-      display="flex"
-      alignSelf="center"
-      onSubmit={sendEmail}
-    >
-      <Stack>
-        <Fieldset.Legend>Üzenjen nekünk!</Fieldset.Legend>
-        <Fieldset.HelperText>
-          Please provide your contact details below.
-        </Fieldset.HelperText>
-      </Stack>
+    <div id="contact-div">
+      {isLoading ? <Loading /> : <></>}
+      <h1 id="contact-h1">ÜZENJEN NEKÜNK!</h1>
+      <form id="contact-form" ref={form}>
+        <label className="contact-label">Név</label>
+        <input
+          className="contact-input"
+          type="text"
+          name="user_name"
+          placeholder="Név"
+          onChange={(e) => setName(e.target.value)}
+        />
 
-      <Fieldset.Content width="xl" padding="0">
-        <Field.Root>
-          <Field.Label>Név</Field.Label>
-          <Input name="user_name" />
-        </Field.Root>
+        <label className="contact-label">Email</label>
+        <input
+          className="contact-input"
+          type="text"
+          name="user_email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <Field.Root>
-          <Field.Label>Email cím</Field.Label>
-          <Input name="user_email" type="email" />
-        </Field.Root>
+        <label className="contact-label">Üzenet</label>
+        <textarea
+          className="contact-input"
+          rows={5}
+          name="message"
+          placeholder="Ide írhat üzenetet . . ."
+          onChange={(e) => setMsg(e.target.value)}
+        />
 
-        <Field.Root>
-          <Field.Label>Üzenet</Field.Label>
-          <Textarea name="message" />
-        </Field.Root>
-      </Fieldset.Content>
-
-      <Button
-        type="submit"
-        alignSelf="center"
-        variant="surface"
-        onClick={sendEmail}
-      >
-        Submit
-      </Button>
-
-      <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-      ></script>
-      <script type="text/javascript">
-        (function()
-        {emailjs.init({
-          publicKey: "u8I9aEohwoXlxEDHy",
-        })}
-        )();
-      </script>
-    </Fieldset.Root>
+        <Button
+          onClick={sendEmail}
+          id="contact-button"
+          disabled={isEmpty}
+          name="submit-button"
+        >
+          Küldés
+        </Button>
+      </form>
+    </div>
   );
 };
 

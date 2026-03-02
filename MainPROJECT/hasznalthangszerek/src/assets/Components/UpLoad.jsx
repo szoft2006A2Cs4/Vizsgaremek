@@ -20,7 +20,7 @@ import {
 import { InfoTip } from "@/components/ui/toggle-tip";
 import { LuUpload } from "react-icons/lu";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, use } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import axios from "../scripts/axios";
@@ -125,34 +125,38 @@ const radioOptions = [
   },
 ];
 
-class Instrument {
-  Id;
-  Name;
-  Cost;
-  Description;
-  Sold;
-  UId;
-  SCName;
-  IsPremium;
-  Condition;
-  Seller;
-  SubCategory;
-}
-
 export default function UpLoad() {
   const cloadName = "dknhbvrq9";
   const cloadPreset = "HasznaltHangszerek_UploadProducts";
 
   const url = `https://api.cloudinary.com/v1_1/${cloadName}/image/upload`;
 
-  const [insName, setInsName] = useState("");
   const [userData, setUserData] = useState(null);
-  const [instrument, SetInstrument] = useState(null);
 
-  const [selectedCat, SetSelectedCat] = useState(null);
   const [isNextAct, SetIsNextAct] = useState(false);
 
   const [upLoadedFiles, setUpLoadedFiles] = useState([]);
+
+  const [insName, setInsName] = useState("");
+  const [selectedCat, SetSelectedCat] = useState(null);
+  const [ins_Scat, setIns_Scat] = useState("");
+  const [ins_Price, setIns_Price] = useState(0);
+  const [ins_Condition, setIns_Condition] = useState("");
+  const [ins_Desc, setIns_Desc] = useState("");
+  const [ins_IsPrem, setIns_IsPrem] = useState("Nem");
+
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    setIsReady(
+      insName != "" &&
+        selectedCat != null &&
+        ins_Scat != "" &&
+        ins_Price != 0 &&
+        !isNaN(ins_Price) &&
+        ins_Condition != "",
+    );
+  }, [insName, selectedCat, ins_Scat, ins_Price, ins_Condition]);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -292,6 +296,9 @@ export default function UpLoad() {
                         className="UpLoad-comboInputs"
                         disabled={!selectedCat}
                         key={selectedCat}
+                        onValueChange={(details) =>
+                          setIns_Scat(details.value[0])
+                        }
                       >
                         <Select.HiddenSelect />
                         <Select.Control>
@@ -333,19 +340,11 @@ export default function UpLoad() {
 
                 <Field.Root className="UpLoad-cost">
                   <Field.Label fontSize="xl">Ár</Field.Label>
-                  <NumberInput.Root
-                    defaultValue="0"
-                    width="80"
-                    padding="0.5"
-                    formatOptions={{
-                      style: "currency",
-                      currency: "HUF",
-                      currencyDisplay: "code",
-                      currencySign: "accounting",
-                    }}
-                  >
+                  <NumberInput.Root defaultValue="0" width="80" padding="0.5">
                     <NumberInput.Control />
-                    <NumberInput.Input />
+                    <NumberInput.Input
+                      onChange={(e) => setIns_Price(parseInt(e.target.value))}
+                    />
                   </NumberInput.Root>
                 </Field.Root>
 
@@ -355,7 +354,11 @@ export default function UpLoad() {
                   <Field.Label fontSize="xl" paddingBottom="0.25rem">
                     Állapot
                   </Field.Label>
-                  <RadioGroup.Root defaultValue="1" variant="subtle">
+                  <RadioGroup.Root
+                    defaultValue="1"
+                    variant="subtle"
+                    onValueChange={(details) => setIns_Condition(details.value)}
+                  >
                     <Stack gap="1.5">
                       {radioOptions.map((opt) => (
                         <RadioGroup.Item
@@ -387,12 +390,15 @@ export default function UpLoad() {
                     resize="none"
                     variant="flushed"
                     placeholder="Írj egy minél részletesebb leírást!"
+                    onChange={(e) => setIns_Desc(e.target.value)}
                   />
                 </Field.Root>
 
                 <Field.Root className="UpLoad-isPremium">
                   <Field.Label fontSize="xl">Kiemelt hirdetés</Field.Label>
-                  <SegmentGroup.Root>
+                  <SegmentGroup.Root
+                    onValueChange={(details) => setIns_IsPrem(details.value)}
+                  >
                     <SegmentGroup.Indicator />
                     <SegmentGroup.Items items={["Nem", "Igen"]} />
                   </SegmentGroup.Root>
@@ -461,6 +467,7 @@ export default function UpLoad() {
                       size="2xl"
                       className="UpLoad-btn"
                       onClick={() => SetIsNextAct(true)}
+                      disabled={!isReady}
                     >
                       Következő
                     </Button>
