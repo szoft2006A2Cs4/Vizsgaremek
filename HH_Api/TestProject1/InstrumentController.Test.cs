@@ -38,7 +38,7 @@ public class InstrumentController_Test
             UId = 0,
             SCName = "test0",
             IsPremium = false,
-            Condition = "Jó",
+            Condition = "Jï¿½",
             Seller = _db!.userList![0],
             SubCategory = _db!.subcategoryList![0]
         };
@@ -122,7 +122,7 @@ public class InstrumentController_Test
     {
         var result = await _sut!.GetInstrument(-1) as NotFoundObjectResult;
         Assert.AreEqual(result!.Value,
-            "A megadott azonosítóval hangszer nem található!");
+            "A megadott azonosÃ­tÃ³val hangszer nem talÃ¡lhatÃ³!");
     }
     #endregion
 }

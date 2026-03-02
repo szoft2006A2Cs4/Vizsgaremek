@@ -40,7 +40,7 @@ public sealed class UserController_Test
             Email = "test@email.com",
             City = "Szombathely",
             PostalCode = 9700,
-            StreetHouseNumber = "Bogáti út 70",
+            StreetHouseNumber = "Bogï¿½ti ï¿½t 70",
             PhoneNumber = 301234567,
             Review = 0,
             ImageId = "",
@@ -174,7 +174,7 @@ public sealed class UserController_Test
             Email = "TestUser0@gmail.com",
             City = "Szombathely",
             PostalCode = 9700,
-            StreetHouseNumber = "Bogáti út 70",
+            StreetHouseNumber = "Bogï¿½ti ï¿½t 70",
             PhoneNumber = 123456789,
             Review = 0,
             ImageId = "",
@@ -201,7 +201,7 @@ public sealed class UserController_Test
     {
         var result = await _sut!.GetUser("asfoaof") as NotFoundObjectResult;
         Assert.AreEqual(result!.Value,
-            "A megadott azonosítóval felhasználó nem található!");
+            "A megadott azonosÃ­tÃ³val felhasznÃ¡lÃ³ nem talÃ¡lhatÃ³!");
     }
     #endregion
 }

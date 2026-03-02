@@ -9416,40 +9416,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dodo3\\.nuget\\packages\\": {},
-    "D:\\MicrosoftVisualStudio\\Shared\\NuGetPackages": {}
+    "/Users/dodo/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj",
+      "projectUniqueName": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/TestProject1/TestProject1.csproj",
       "projectName": "TestProject1",
-      "projectPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj",
-      "packagesPath": "C:\\Users\\dodo3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\obj\\",
+      "projectPath": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/TestProject1/TestProject1.csproj",
+      "packagesPath": "/Users/dodo/.nuget/packages/",
+      "outputPath": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/TestProject1/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\MicrosoftVisualStudio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\dodo3\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/dodo/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
-              "projectPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj"
+            "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/HH_Api.csproj": {
+              "projectPath": "/Users/dodo/Documents/GitHub/Vizsgaremek/HH_Api/HH_Api/HH_Api.csproj"
             }
           }
         }
@@ -9463,8 +9456,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -9515,7 +9507,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.409/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
