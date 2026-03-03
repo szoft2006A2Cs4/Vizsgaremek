@@ -30,6 +30,28 @@ body {
   min-height: 100vh;
 }
 
+.uni-button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.85em 4em;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.uni-button:hover {
+  background-color: var(--text-color);
+}
+
+.uni-button:focus {
+  outline: none;
+  background-color: var(--text-color);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -453,7 +475,7 @@ button:hover > a {
   scrollbar-width: none;
   display: grid;
   gap: 1.5rem;
-  grid-template-rows: max-content max-content;
+  grid-template-rows: max-content max-content max-content;
   justify-items: center;
 }
 
@@ -467,14 +489,9 @@ button:hover > a {
 .UpLoad-secondMain {
   grid-row: 2;
 }
-.UpLoad-btn {
-  font-size: large;
-}
 
-.UpLoad-btn:hover {
-  color: #e7bf6c;
-  font-size: larger;
-  border: #e7bf6c 1px solid;
+.UpLoad-thirdMain {
+  grid-row: 3;
 }
 
 #UpLoad-field {
@@ -537,6 +554,7 @@ button:hover > a {
   grid-row: 5;
   grid-column: 2;
   display: flex;
+  padding-bottom: 1rem;
 }
 
 .UpLoad-isPremium button:hover {
@@ -644,7 +662,7 @@ button:hover > a {
   .UpLoad-firstMain {
     grid-row: 1;
     width: 62vw;
-    height: 70vh;
+    height: 72vh;
     background-color: #ead7ce;
   }
 }

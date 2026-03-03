@@ -32,7 +32,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     const emailInput = document.getElementById("email-input");
     const pwdInput = document.getElementById("password-input");
-    const submitButton = document.getElementById("submit-button");
     e.preventDefault();
 
     if (email === "" || email == null) {
@@ -182,7 +181,7 @@ const Login = () => {
                   value={pwd}
                 />
               </div>
-              <button type="submit" id="submit-button">
+              <button type="submit" className="uni-button">
                 Bejelentkezés
               </button>
             </form>

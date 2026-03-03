@@ -133,12 +133,13 @@ export default function UpLoad() {
 
   const [userData, setUserData] = useState(null);
 
-  const [isNextAct, SetIsNextAct] = useState(false);
+  const [isNextAct, setIsNextAct] = useState(false);
+  const [isLastAct, setIsLastAct] = useState(false);
 
   const [upLoadedFiles, setUpLoadedFiles] = useState([]);
 
   const [insName, setInsName] = useState("");
-  const [selectedCat, SetSelectedCat] = useState(null);
+  const [selectedCat, setSelectedCat] = useState(null);
   const [ins_Scat, setIns_Scat] = useState("");
   const [ins_Price, setIns_Price] = useState(0);
   const [ins_Condition, setIns_Condition] = useState("");
@@ -254,7 +255,7 @@ export default function UpLoad() {
                         unmountOnExit={true}
                         className="UpLoad-comboInputs"
                         onValueChange={(details) =>
-                          SetSelectedCat(details.value[0])
+                          setSelectedCat(details.value[0])
                         }
                       >
                         <Select.HiddenSelect />
@@ -453,9 +454,8 @@ export default function UpLoad() {
                 <Field.Root className="UpLoad-footer" alignItems="flex-end">
                   <HStack>
                     <Button
-                      rounded="3xl"
                       size="2xl"
-                      className="UpLoad-btn"
+                      className="uni-button"
                       onClick={() => {
                         window.location.href = "/";
                       }}
@@ -463,10 +463,9 @@ export default function UpLoad() {
                       Mégse
                     </Button>
                     <Button
-                      rounded="3xl"
                       size="2xl"
-                      className="UpLoad-btn"
-                      onClick={() => SetIsNextAct(true)}
+                      className="uni-button"
+                      onClick={() => setIsNextAct(true)}
                       disabled={!isReady}
                     >
                       Következő
@@ -515,23 +514,47 @@ export default function UpLoad() {
                     <FileUpload.List alignItems="center" />
                   </FileUpload.Root>
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer justifyContent="flex-end">
                   <Button
-                    variant="surface"
-                    onClick={() =>
-                      upLoadFiles(
-                        upLoadedFiles,
-                        cloadPreset,
-                        insName,
-                        userData.imageId,
-                      )
-                    }
+                    className="uni-button"
+                    // disabled={upLoadFiles.length}
+                    onClick={() => {
+                      setIsLastAct(true);
+                    }}
                   >
-                    Feltöltés
+                    Áttekintés
                   </Button>
                 </Card.Footer>
               </Card.Root>
             </>
+          ) : (
+            <></>
+          )}
+          {isLastAct ? (
+            <Card.Root
+              className=".UpLoad-thirdMain"
+              size="md"
+              bg="#ead7ce"
+              width="50vw"
+              height="55vh"
+            >
+              <Card.Body></Card.Body>
+              <Card.Footer justifyContent="flex-end">
+                <Button
+                  className="uni-button"
+                  onClick={() => {
+                    upLoadFiles(
+                      upLoadedFiles,
+                      cloadPreset,
+                      insName,
+                      userData.imageId,
+                    );
+                  }}
+                >
+                  Befejezés
+                </Button>
+              </Card.Footer>
+            </Card.Root>
           ) : (
             <></>
           )}

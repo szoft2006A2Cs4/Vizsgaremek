@@ -122,7 +122,6 @@ const Register = () => {
     const addressInput = document.getElementById("address-input");
     const passwordInput = document.getElementById("password-input");
     const repasswordInput = document.getElementById("repassword-input");
-    const submitButton = document.getElementById("submit-button");
     const allInputs = [
       usernameInput,
       emailInput,
@@ -529,7 +528,7 @@ const Register = () => {
                   onBlur={() => setMatchFocus(false)}
                 />
               </div>
-              <button id="submit-button" type="submit">
+              <button className="uni-button" type="submit">
                 Regisztráció
               </button>
             </form>
