@@ -146,6 +146,8 @@ export default function UpLoad() {
   const [ins_Desc, setIns_Desc] = useState("");
   const [ins_IsPrem, setIns_IsPrem] = useState("Nem");
 
+  const [wholeIns, setWholeIns] = useState(null)
+
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -157,7 +159,23 @@ export default function UpLoad() {
         !isNaN(ins_Price) &&
         ins_Condition != "",
     );
-  }, [insName, selectedCat, ins_Scat, ins_Price, ins_Condition]);
+
+    setWholeIns(
+    {      
+      Id: 0,
+      Name: insName,
+      Cost: ins_Price,
+      Description: ins_Desc,
+      Sold: false,
+      UId: userData.Id,
+      SCName: ins_Scat,
+      IsPremium: ins_IsPrem,
+      Condition: ins_Condition,
+
+
+    }
+    )
+  }, [insName, selectedCat, ins_Scat, ins_Price, ins_Condition, ins_Desc, ins_IsPrem]);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -202,6 +220,10 @@ export default function UpLoad() {
       }
     }
   };
+
+  const createInstrument = () => {
+    axios.post("api/Instrument", {params: {wholeIns}})
+  }
 
   const categories = useMemo(
     () => createListCollection({ items: categoryKeys }),
