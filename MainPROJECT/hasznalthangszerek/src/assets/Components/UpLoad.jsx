@@ -20,10 +20,12 @@ import {
 import { InfoTip } from "@/components/ui/toggle-tip";
 import { LuUpload } from "react-icons/lu";
 
-import { useMemo, useState, useEffect, use } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import axios from "../scripts/axios";
+import Loading from "./Loading";
 
 const allCategories = {
   Billentyűs: [
@@ -129,6 +131,8 @@ export default function UpLoad() {
   const cloadName = "dknhbvrq9";
   const cloadPreset = "HasznaltHangszerek_UploadProducts";
 
+  const navigate = useNavigate();
+
   const url = `https://api.cloudinary.com/v1_1/${cloadName}/image/upload`;
 
   const [userData, setUserData] = useState(null);
@@ -146,9 +150,30 @@ export default function UpLoad() {
   const [ins_Desc, setIns_Desc] = useState("");
   const [ins_IsPrem, setIns_IsPrem] = useState("Nem");
 
-  const [wholeIns, setWholeIns] = useState(null)
-
   const [isReady, setIsReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [isUpLoadSuccess, setIsUpLoadSuccess] = useState(false);
+
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      setIsLoading(true);
+      try {
+        const resp = await axios.get("api/login/me");
+        const email = resp.data.email;
+
+        const user = await axios.get(`api/user/${email}`);
+        setUserData(user.data);
+      } catch (error) {
+        console.log(error);
+        throw error;
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getCurrentUser();
+  }, []);
 
   useEffect(() => {
     setIsReady(
@@ -159,43 +184,10 @@ export default function UpLoad() {
         !isNaN(ins_Price) &&
         ins_Condition != "",
     );
-
-    setWholeIns(
-    {      
-      Id: 0,
-      Name: insName,
-      Cost: ins_Price,
-      Description: ins_Desc,
-      Sold: false,
-      UId: userData.Id,
-      SCName: ins_Scat,
-      IsPremium: ins_IsPrem,
-      Condition: ins_Condition,
-
-
-    }
-    )
-  }, [insName, selectedCat, ins_Scat, ins_Price, ins_Condition, ins_Desc, ins_IsPrem]);
-
-  useEffect(() => {
-    const getCurrentUser = async () => {
-      try {
-        const resp = await axios.get("api/login/me");
-        const email = resp.data.email;
-
-        const user = await axios.get(`api/user/${email}`);
-        setUserData(user.data);
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
-    };
-
-    getCurrentUser();
-  }, []);
+  }, [insName, selectedCat, ins_Scat, ins_Price, ins_Condition]);
 
   const upLoadFiles = async (files, preset, insname, imageId) => {
-    if (!imageId) return;
+    if (!imageId || files.length == 0) return;
 
     const cleanName = insname.split(" ").join("");
 
@@ -221,9 +213,46 @@ export default function UpLoad() {
     }
   };
 
-  const createInstrument = () => {
-    axios.post("api/Instrument", {params: {wholeIns}})
-  }
+  const handleFinalSubmit = async () => {
+    if (!userData) return console.log("felh. adatok hianyoznak");
+    setIsLoading(true);
+
+    const insToUpLoad = {
+      Name: insName,
+      Cost: ins_Price,
+      Description: ins_Desc,
+      Sold: false,
+      UId: userData.id,
+      SCName: ins_Scat,
+      IsPremium: ins_IsPrem === "Igen",
+      Condition: ins_Condition,
+    };
+
+    console.log(insToUpLoad);
+    try {
+      await axios.post("api/Instrument", insToUpLoad, {
+        withCredentials: true,
+      });
+
+      if (upLoadedFiles.length > 0) {
+        await upLoadFiles(
+          upLoadedFiles,
+          cloadPreset,
+          insName,
+          userData.imageId,
+        );
+      }
+
+      setIsUpLoadSuccess(true);
+      setTimeout(() => {
+        navigate("/", { replace: true });
+        setIsUpLoadSuccess(false);
+      }, 4000);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
   const categories = useMemo(
     () => createListCollection({ items: categoryKeys }),
@@ -239,6 +268,7 @@ export default function UpLoad() {
 
   return (
     <div>
+      {isLoading ? <Loading /> : <></>}
       <Nav />
 
       <div id="UpLoad-page">
@@ -554,7 +584,7 @@ export default function UpLoad() {
           )}
           {isLastAct ? (
             <Card.Root
-              className=".UpLoad-thirdMain"
+              className="UpLoad-thirdMain"
               size="md"
               bg="#ead7ce"
               width="50vw"
@@ -564,13 +594,9 @@ export default function UpLoad() {
               <Card.Footer justifyContent="flex-end">
                 <Button
                   className="uni-button"
+                  disabled={isLoading}
                   onClick={() => {
-                    upLoadFiles(
-                      upLoadedFiles,
-                      cloadPreset,
-                      insName,
-                      userData.imageId,
-                    );
+                    handleFinalSubmit();
                   }}
                 >
                   Befejezés
@@ -580,6 +606,20 @@ export default function UpLoad() {
           ) : (
             <></>
           )}
+
+          <Dialog.Root open={isUpLoadSuccess} placement="center">
+            <Dialog.Backdrop />
+            <Dialog.Positioner>
+              <Dialog.Content>
+                <Dialog.Header>
+                  <Dialog.Title>A hangszer feltöltése sikeres!</Dialog.Title>
+                </Dialog.Header>
+                <Dialog.Body as="h2">
+                  Vissza irányítunk a főoldalra . . .
+                </Dialog.Body>
+              </Dialog.Content>
+            </Dialog.Positioner>
+          </Dialog.Root>
         </div>
       </div>
       <Footer />
