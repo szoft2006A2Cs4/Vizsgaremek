@@ -19,6 +19,7 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/upLoad" element={<UpLoad />} />
           <Route path="/contactUs" element={<Contact />} />
+          <Route path="/instruments" element={<CardView />} />
         </Routes>
       </BrowserRouter>
     </>
