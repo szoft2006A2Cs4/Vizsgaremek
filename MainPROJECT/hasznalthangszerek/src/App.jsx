@@ -6,6 +6,7 @@ import Home from "./assets/Components/Home";
 import AboutUs from "./assets/Components/aboutUs";
 import UpLoad from "./assets/Components/UpLoad";
 import Contact from "./assets/Components/Contact";
+import CardView from "./assets/Components/CardView";
 
 function App() {
   return (
