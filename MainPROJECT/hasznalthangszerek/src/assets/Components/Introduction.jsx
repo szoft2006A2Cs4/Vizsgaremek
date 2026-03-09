@@ -12,8 +12,10 @@ export default function Introduction() {
           a hozzád illő hangszert. Fedezd fel kínálatunkat, és adj új életet a
           zenének!
         </h3>
-        <Link to="/instruments" className="uni-button" />
       </div>
+      <button className="uni-button" disabled={false}>
+        <Link to="/instruments"> kattints</Link>
+      </button>
     </div>
   );
 }
