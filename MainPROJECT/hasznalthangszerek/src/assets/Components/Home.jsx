@@ -4,20 +4,30 @@ import Introduction from "./Introduction";
 import PseMain from "./pseMain";
 import Drawer from "./Drawer";
 import axios from "../scripts/axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../scripts/AuthProvider";
+import CatField from "./CatField";
 
 const instURL = "/api/Instrument";
+const catURL = "/api/Category";
 
 function Home() {
   const [instruments, setInstruments] = useState([]);
+  const [scats, setCats] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(instURL, {
+        const responseIns = await axios.get(instURL, {
           withCredentials: true,
         });
-        console.log(response.data);
-        setInstruments(response.data);
+
+        const responseCats = await axios.get(catURL, {
+          withCredentials: true,
+        });
+
+        setCats(responseCats.data);
+        setInstruments(responseIns.data);
       } catch (err) {
         console.log(err.response);
       }
@@ -25,13 +35,23 @@ function Home() {
     fetchData();
   }, []);
 
-  return (
-    <>
+  const { auth } = useContext(AuthContext);
+
+  const loggedIn = !auth.user;
+
+  return !loggedIn ? (
+    <div>
+      <Nav />
+      <CatField cats={scats} />
+      <PseMain data={instruments} />
+    </div>
+  ) : (
+    <div>
       <Nav />
       <Introduction />
       <PseMain data={instruments} />
       <Drawer />
-    </>
+    </div>
   );
 }
 

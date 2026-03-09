@@ -53,13 +53,15 @@ export default function Nav() {
           <SearchInput></SearchInput>
         </div>
 
-        <Avatar
-          onClick={() => setOpenProf(!openProf)}
-          src={
-            "https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
-          }
-        />
-        {openProf && <UserDropDown />}
+        <div className="avatar-drop-wrapper">
+          <Avatar
+            onClick={() => setOpenProf(!openProf)}
+            src={
+              "https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
+            }
+          />
+          {openProf && <UserDropDown />}
+        </div>
       </div>
     </nav>
   ) : (

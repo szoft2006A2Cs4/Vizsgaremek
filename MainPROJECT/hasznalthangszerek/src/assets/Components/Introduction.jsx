@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Introduction() {
+  const navigate = useNavigate();
+
   return (
     <div id="introduction">
       <div className="introduction-text">
@@ -13,8 +15,13 @@ export default function Introduction() {
           zenének!
         </h3>
       </div>
-      <button className="uni-button" disabled={false}>
-        <Link to="/instruments"> kattints</Link>
+      <button
+        className="uni-button"
+        onClick={() => {
+          navigate("/instruments", { replace: true });
+        }}
+      >
+        katt
       </button>
     </div>
   );

@@ -39,46 +39,50 @@ const Contact = () => {
     setIsLoading(false);
   };
   return (
-    <div id="contact-div">
-      {isLoading ? <Loading /> : <></>}
-      <h1 id="contact-h1">ÜZENJEN NEKÜNK!</h1>
-      <form id="contact-form" ref={form}>
-        <label className="contact-label">Név</label>
-        <input
-          className="contact-input"
-          type="text"
-          name="user_name"
-          placeholder="Név"
-          onChange={(e) => setName(e.target.value)}
-        />
+    <div id="contact-page">
+      <Nav />
+      <div id="contact-div">
+        {isLoading ? <Loading /> : <></>}
+        <h1 id="contact-h1">ÜZENJEN NEKÜNK!</h1>
+        <form id="contact-form" ref={form}>
+          <label className="contact-label">Név</label>
+          <input
+            className="contact-input"
+            type="text"
+            name="user_name"
+            placeholder="Név"
+            onChange={(e) => setName(e.target.value)}
+          />
 
-        <label className="contact-label">Email</label>
-        <input
-          className="contact-input"
-          type="text"
-          name="user_email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <label className="contact-label">Email</label>
+          <input
+            className="contact-input"
+            type="text"
+            name="user_email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <label className="contact-label">Üzenet</label>
-        <textarea
-          className="contact-input"
-          rows={5}
-          name="message"
-          placeholder="Ide írhat üzenetet . . ."
-          onChange={(e) => setMsg(e.target.value)}
-        />
+          <label className="contact-label">Üzenet</label>
+          <textarea
+            className="contact-input"
+            rows={5}
+            name="message"
+            placeholder="Ide írhat üzenetet . . ."
+            onChange={(e) => setMsg(e.target.value)}
+          />
 
-        <Button
-          onClick={sendEmail}
-          id="contact-button"
-          disabled={isEmpty}
-          name="submit-button"
-        >
-          Küldés
-        </Button>
-      </form>
+          <Button
+            onClick={sendEmail}
+            id="contact-button"
+            disabled={isEmpty}
+            name="submit-button"
+          >
+            Küldés
+          </Button>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 };
