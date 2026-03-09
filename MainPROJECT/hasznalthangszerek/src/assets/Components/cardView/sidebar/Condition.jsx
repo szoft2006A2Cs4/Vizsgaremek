@@ -1,7 +1,7 @@
 import React from "react";
 
-const Condition = () => {
+function Condition() {
   return <div></div>;
-};
+}
 
 export default Condition;
