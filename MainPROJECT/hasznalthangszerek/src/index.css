@@ -68,7 +68,7 @@ body {
 }
 
 nav {
-  grid-column: 1 /4;
+  grid-column: 1 / 4;
   grid-row: 2;
   background-color: #77625c;
   display: grid;
@@ -136,7 +136,6 @@ section {
 }
 
 footer {
-  /* grid-column: 1 /4; */
   grid-row: 5;
   background-color: #5a5958;
   color: #77625c;
@@ -506,7 +505,6 @@ button:hover > a {
 #UpLoad-page {
   height: 100vh;
   width: 100vw;
-
   display: flex;
   justify-content: center;
   position: relative;
@@ -589,7 +587,6 @@ button:hover > a {
 .UpLoad-isPremium {
   grid-row: 4;
   grid-column: 2;
-
   display: flex;
   justify-content: center;
 }
@@ -674,6 +671,7 @@ button:hover > a {
   background-color: var(--input-color);
   transition: 150ms ease;
 }
+
 .contact-input:hover {
   border-color: var(--accent-color);
 }
@@ -695,9 +693,11 @@ button:hover > a {
   text-transform: uppercase;
   cursor: pointer;
 }
+
 #contact-button:hover {
   background-color: var(--text-color);
 }
+
 #contact-button:focus {
   outline: none;
   background-color: var(--text-color);
@@ -713,21 +713,27 @@ button:hover > a {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  /* margin-left: 20rem;
-  margin-top: 2rem; */
-  z-index: -2;
+  align-items: space-evenly;
+  margin-left: 7.5%;
+  gap: 0.75rem;
+  z-index: 1;
 }
 
 .card {
-  margin: 1.25rem;
+  margin: 0;
   border: 2px solid var(--text-color);
-  padding: 1.25rem;
+  padding: 1rem;
   cursor: pointer;
+  width: 20rem;
+  flex-shrink: 0;
 }
 
 .card-img {
-  width: 13rem;
-  margin-bottom: 1rem;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
 }
 
 .card-title {
@@ -749,12 +755,16 @@ button:hover > a {
 .sidebar {
   width: 15%;
   position: fixed;
-  height: 100%;
+  top: var(--nav-height, 0px);
+  left: 0;
+  height: calc(100vh - var(--nav-height, 0px));
   border-right: 2px solid var(--text-color);
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .sidebar-items {
@@ -798,14 +808,16 @@ button:hover > a {
 }
 
 .checkmark::after {
-  contect: "";
+  content: "";
   position: absolute;
   display: none;
 }
 
 #testClassField {
-  display: grid;
-  grid-template-columns: min-content max max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .sidebar-label-container input:checked ~ .checkmark::after {
@@ -831,146 +843,124 @@ button:hover > a {
   src: url(./assets/fonts/Celinda.otf);
 }
 
-@media (max-height: 1000px) {
-  .UpLoad-firstMain {
-    grid-row: 1;
-    width: 62vw;
-    height: 72vh;
-    background-color: #ead7ce;
-  }
-}
-
 /* ============================================================
-   LAPTOP  (1025px – 1440px)
+   LAPTOP  (max-width: 1280px)
    ============================================================ */
-@media (min-width: 1025px) and (max-width: 1440px) {
+@media (max-width: 1280px) {
+  #root,
+  .home {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  nav {
+    grid-column: 1 / 3;
+  }
+
   #introduction {
-    font-size: 2.4vw;
+    grid-column: 1 / 3;
+    font-size: 2.6vw;
+    background-attachment: scroll;
   }
 
-  .introduction-text {
-    width: 75%;
+  main {
+    grid-column: 1 / 3;
   }
 
-  button {
+  #cardView {
+    grid-column: 1 / 3;
+  }
+
+  footer {
     font-size: 1.2vw;
   }
 
-  button:hover {
+  .footer-column h3 {
     font-size: 1.4vw;
+  }
+
+  .footer-column p {
+    font-size: 1.1vw;
+  }
+
+  .footer-logo {
+    font-size: 1.8vw;
+  }
+
+  .footer-bottom {
+    font-size: 1.1vw;
+  }
+
+  #contact-h1 {
+    font-size: 3.5vw;
+  }
+
+  .contact-label {
+    font-size: 1.6vw;
+  }
+
+  button {
+    font-size: 1.5vw;
   }
 
   button > a {
-    font-size: 1.4vw;
+    font-size: 1.5vw;
+  }
+
+  button:hover {
+    font-size: 1.7vw;
   }
 
   button:hover > a {
-    font-size: 1.6vw;
+    font-size: 1.9vw;
+  }
+
+  .sidebar {
+    width: 18%;
+  }
+
+  .sidebar-title {
+    font-size: 1.5vw;
+  }
+
+  .card span {
+    font-size: 1.2vw;
+  }
+
+  .card .job {
+    font-size: 0.9vw;
+  }
+
+  .UserDropDown-icons-cont,
+  .UserDropDown-icons-cont:hover {
+    font-size: 1.3vw;
+  }
+
+  .Drawer-title {
+    font-size: 2.2vw;
   }
 
   #logo-icon {
     width: 12em;
   }
 
-  .footer-column h3 {
-    font-size: 1.1vw;
-  }
-
-  .footer-logo {
-    font-size: 1.45vw;
-  }
-
-  .footer-column p {
-    font-size: 0.95vw;
-  }
-
-  .footer-bottom {
-    font-size: 0.9vw;
-  }
-
-  footer {
-    font-size: 1vw;
-  }
-
-  .card span {
-    font-size: 1vw;
-  }
-
-  .card .job {
-    font-size: 0.8vw;
-  }
-
-  #contact-h1 {
-    font-size: 3vw;
-  }
-
-  .contact-label {
-    font-size: 1.4vw;
-  }
-
-  .UserDropDown-icons-cont,
-  .UserDropDown-icons-cont:hover {
-    font-size: 1.15vw;
-  }
-
-  .Drawer-title {
-    font-size: 2vw;
-  }
-
-  .UpLoad-btn {
-    font-size: 1.15vw;
-  }
-
-  .UpLoad-btn:hover {
-    font-size: 1.3vw;
+  .UpLoad-firstMain {
+    width: 75vw;
+    height: 68vh;
   }
 }
 
 /* ============================================================
-   TABLET  (481px – 1024px)
+   TABLET  (max-width: 1024px)
    ============================================================ */
-@media (min-width: 481px) and (max-width: 1024px) {
-  /* --- Layout --- */
+@media (max-width: 1024px) {
+  #root,
   .home {
     grid-template-columns: 1fr;
   }
 
   nav {
-    grid-column: 1;
-    grid-template-columns: 1fr auto;
-    padding: 0.5rem 1rem;
-  }
-
-  #introduction {
-    display: none !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    visibility: hidden !important;
-    background: none !important;
-    position: absolute !important;
-    z-index: -1 !important;
-  }
-
-  main {
-    grid-column: 1;
-    grid-template-rows: auto;
-    height: auto;
-    min-height: unset;
-  }
-
-  section {
-    display: none;
-  }
-
-  article {
-    padding: 1rem;
-    height: auto;
-    align-items: flex-start;
-  }
-
-  /* --- Nav --- */
-  #logo-icon {
-    width: 9em;
+    grid-column: 1 / 2;
+    grid-template-columns: min-content 1fr min-content;
   }
 
   #nav-spacing {
@@ -981,141 +971,168 @@ button:hover > a {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    flex: 1;
-    justify-content: flex-end;
-    padding-right: 0.75rem;
+    padding-right: 1rem;
+    grid-column: 3;
   }
 
-  #mobile-search {
-    flex: 1;
-    max-width: 55vw;
+  #introduction {
+    grid-column: 1 / 2;
+    font-size: 3.5vw;
+    background-attachment: scroll;
+    min-height: 60vh;
   }
 
-  button {
-    font-size: 1.8vw;
-    line-height: 2.5rem;
-  }
-
-  button:hover {
-    font-size: 2.1vw;
-  }
-
-  button > a {
-    font-size: 2vw;
-  }
-
-  button:hover > a {
-    font-size: 2.3vw;
-  }
-
-  /* --- Introduction text --- */
   .introduction-text {
     width: 85%;
-    position: absolute; /* avoid layout issues with fixed on tablet */
+    position: absolute;
   }
 
-  /* --- Footer --- */
-  footer,
-  .footer {
+  main {
+    grid-column: 1 / 2;
+  }
+
+  #cardView {
+    grid-column: 1 / 2;
+  }
+
+  footer {
     font-size: 1.6vw;
-    padding: 2rem 1rem 1rem;
-    background-color: #1e1e1e;
-    color: #f5f5f5;
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
   }
 
   .footer-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    max-width: 100%;
-    width: 100%;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
   .footer-column h3 {
     font-size: 2vw;
   }
 
-  .footer-logo {
-    font-size: 2.2vw;
-    word-break: break-word;
+  .footer-column p {
+    font-size: 1.6vw;
   }
 
-  .footer-column p,
-  .footer-column a {
-    font-size: 1.5vw;
-    word-break: break-word;
+  .footer-logo {
+    font-size: 2.4vw;
   }
 
   .footer-bottom {
-    font-size: 1.4vw;
+    font-size: 1.5vw;
   }
 
-  /* --- Article: ArticleAds carousel (teljes szélesség) --- */
-  article {
-    padding: 1.5rem 1rem;
-    overflow: hidden;
-    max-width: 100%;
-    box-sizing: border-box;
+  #contact-div {
+    width: 70%;
+    margin: 8% auto;
   }
 
-  article > div,
-  article > div > div {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
+  #contact-h1 {
+    font-size: 4.5vw;
   }
 
-  /* --- Section: SectionAds carousel konténer --- */
-  section {
-    overflow: hidden;
-    max-width: 100%;
-    box-sizing: border-box;
+  .contact-label {
+    font-size: 2.2vw;
   }
 
-  /* Chakra Carousel item-group overflow fix */
-  section > div,
-  section > div > div {
-    max-width: 100% !important;
-    overflow: hidden !important;
+  button {
+    font-size: 2vw;
+    line-height: 2.5rem;
   }
 
-  /* Tableten 2 kártya: Chakra inline style override */
-  section [data-scope="carousel"][data-part="item"] {
-    flex: 0 0 calc(50% - 0.5rem) !important;
-    min-width: 0 !important;
-    max-width: calc(50% - 0.5rem) !important;
+  button > a {
+    font-size: 2vw;
   }
 
-  /* --- About Us --- */
-  #aboutUs {
-    background-attachment: scroll;
+  button:hover {
+    font-size: 2.3vw;
   }
 
-  #aboutUs-Introtext {
-    margin-top: 5rem;
+  button:hover > a {
+    font-size: 2.5vw;
   }
 
-  #aboutUs-Creatortext {
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-    gap: 2rem;
+  /* Sidebar – tablet toggle */
+  .mobile-sidebar-wrapper {
+    position: fixed;
+    left: -80%;
+    top: 0;
+    width: 65%;
+    height: 100%;
+    z-index: 100;
+    background-color: var(--base-color);
+    border-right: 2px solid var(--text-color);
+    transition: left 300ms ease;
+    overflow-y: auto;
+    padding-top: 4rem;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
   }
 
-  /* --- Cards --- */
+  .mobile-sidebar-wrapper.open {
+    left: 0;
+  }
+
+  .mobile-sidebar-wrapper .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    display: flex;
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
+
+  #sidebar-toggle-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+    line-height: unset;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1rem;
+    z-index: 101;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+
+  #sidebar-toggle-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  #sidebar-toggle-btn:hover {
+    border: none;
+    font-size: unset;
+    background-color: var(--text-color);
+  }
+
   .card {
     width: 20em;
-    height: 24em;
-    flex-shrink: 0;
+    height: auto;
   }
 
   .card .img {
-    width: 13em;
-    height: 17em;
+    width: 14em;
+    height: 18em;
   }
 
   .card span {
@@ -1126,23 +1143,44 @@ button:hover > a {
     font-size: 1.4vw;
   }
 
-  /* --- UserDropDown --- */
   .UserDropDown {
-    top: 9%;
-    right: 4%;
+    top: 5%;
+    right: 5%;
   }
 
   .UserDropDown-icons-cont,
   .UserDropDown-icons-cont:hover {
-    font-size: 1.8vw;
+    font-size: 2vw;
   }
 
-  /* --- Drawer --- */
   .Drawer-title {
     font-size: 3vw;
   }
 
-  /* --- Upload --- */
+  #logo-icon {
+    width: 10em;
+  }
+
+  #aboutUs-Introtext {
+    margin-top: 6rem;
+  }
+
+  #aboutUs-Creatortext {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  #UpLoad-page {
+    height: auto;
+    padding-bottom: 4rem;
+  }
+
+  .UpLoad-firstMain {
+    width: 88vw;
+    height: auto;
+    min-height: 50vh;
+  }
+
   #UpLoad-field {
     grid-template-columns: 1fr;
   }
@@ -1162,152 +1200,167 @@ button:hover > a {
     grid-column: 1;
   }
 
-  .UpLoad-btn {
-    font-size: 1.8vw;
-  }
-
-  .UpLoad-btn:hover {
-    font-size: 2vw;
-  }
-
   #UpLoad-comboField {
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
-  /* --- Contact --- */
-  #contact-div {
-    width: 70%;
-    max-width: 35em;
-    margin: 4% auto;
-    height: auto;
-    padding: 4%;
-  }
-
-  #contact-h1 {
-    font-size: 4vw;
-  }
-
-  #contact-form {
-    margin: 0 auto;
-    padding: 3% 3%;
+  .UpLoad-comboInputs {
     width: 100%;
-  }
-
-  .contact-label {
-    font-size: 2.2vw;
   }
 }
 
 /* ============================================================
-   TELEFON  (max-width: 480px)
+   PHONE  (max-width: 640px)
    ============================================================ */
-@media (max-width: 480px) {
-  /* --- Layout --- */
+@media (max-width: 640px) {
+  #root,
   .home {
     grid-template-columns: 1fr;
   }
 
   nav {
-    grid-column: 1;
-    grid-template-columns: 1fr auto;
-    padding: 0.5rem 0.75rem;
-  }
-
-  #introduction {
-    display: none !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    visibility: hidden !important;
-    background: none !important;
-    position: absolute !important;
-    z-index: -1 !important;
-  }
-
-  main {
-    grid-column: 1;
-    grid-template-rows: auto;
-    height: auto;
-    min-height: unset;
-  }
-
-  section {
-    display: none;
-  }
-
-  article {
-    padding: 0.75rem;
-    height: auto;
-    align-items: flex-start;
-  }
-
-  /* --- Article: ArticleAds carousel --- */
-  article {
-    padding: 1rem 0.75rem;
-    overflow: hidden;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  article > div,
-  article > div > div {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* --- Section: SectionAds carousel --- */
-  section {
-    overflow: hidden;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  section > div,
-  section > div > div {
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
-
-  /* Mobilon 1 kártya egyszerre */
-  section [data-scope="carousel"][data-part="item"] {
-    flex: 0 0 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-
-  /* --- Nav --- */
-  #logo-icon {
-    width: 7em;
+    grid-column: 1 / 2;
+    grid-template-columns: min-content 1fr min-content;
+    padding: 0.25rem 0.5rem;
   }
 
   #nav-spacing {
-    display: none; /* hamburger / drawer kezelendő JS oldalon */
+    display: none;
   }
 
   #phone {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex: 1;
-    justify-content: flex-end;
     padding-right: 0.5rem;
+    grid-column: 3;
   }
 
-  #mobile-search {
-    flex: 1;
-    max-width: 60vw;
+  #logo-icon {
+    width: 7.5em;
+  }
+
+  #introduction {
+    grid-column: 1 / 2;
+    font-size: 5vw;
+    background-attachment: scroll;
+    min-height: 50vh;
+  }
+
+  .introduction-text {
+    width: 90%;
+    position: absolute;
+  }
+
+  main {
+    grid-column: 1 / 2;
+    grid-template-rows: auto;
+  }
+
+  article {
+    padding: 1.5rem 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  #cardView {
+    grid-column: 1 / 2;
+  }
+
+  .card-container {
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .card {
+    width: calc(100vw - 2.5rem);
+    max-width: 22em;
+    height: auto;
+    margin: 0.75rem auto;
+  }
+
+  .card .img {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .card span {
+    font-size: 3.5vw;
+  }
+
+  .card .job {
+    font-size: 2.8vw;
+  }
+
+  footer {
+    font-size: 3vw;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-column h3 {
+    font-size: 4vw;
+  }
+
+  .footer-column p {
+    font-size: 3.2vw;
+  }
+
+  .footer-logo {
+    font-size: 5vw;
+  }
+
+  .footer-bottom {
+    font-size: 3vw;
+  }
+
+  .footer {
+    padding: 2.5rem 1rem 1rem;
+  }
+
+  #contact-div {
+    width: 90%;
+    margin: 10% auto;
+    border-width: 4px;
+    padding: 6% 4%;
+  }
+
+  #contact-h1 {
+    font-size: 7vw;
+  }
+
+  .contact-label {
+    font-size: 4vw;
+  }
+
+  .contact-input {
+    padding: 0.75em;
+    margin-bottom: 1rem;
+  }
+
+  #contact-button,
+  .uni-button {
+    padding: 0.75em 2.5em;
+    font-size: 4vw;
   }
 
   button {
     font-size: 3.5vw;
-    line-height: 2rem;
-  }
-
-  button:hover {
-    font-size: 4vw;
+    line-height: 2.5rem;
   }
 
   button > a {
+    font-size: 3.5vw;
+  }
+
+  button:hover {
     font-size: 4vw;
   }
 
@@ -1315,65 +1368,103 @@ button:hover > a {
     font-size: 4.5vw;
   }
 
-  /* --- Introduction text --- */
-  .introduction-text {
-    width: 92%;
-    position: absolute;
-    top: 50%;
+  /* Sidebar wrapper – kicsúszó animáció */
+  .mobile-sidebar-wrapper {
+    position: fixed;
+    left: -80%;
+    top: 0;
+    width: 75%;
+    height: 100%;
+    z-index: 100;
+    background-color: var(--base-color);
+    border-right: 2px solid var(--text-color);
+    transition: left 300ms ease;
+    overflow-y: auto;
+    padding-top: 4rem;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
   }
 
-  /* --- ArticleAds carousel cím --- */
-  article h1,
-  article [class*="heading"],
-  article [class*="Heading"] {
-    font-size: 5vw !important;
-    margin-bottom: 0.75rem !important;
+  .mobile-sidebar-wrapper.open {
+    left: 0;
   }
 
-  /* --- Footer --- */
-  footer,
-  .footer {
-    font-size: 3.5vw;
-    padding: 1.5rem 1rem 1rem;
-    background-color: #1e1e1e;
-    color: #f5f5f5;
+  /* A .sidebar maga ne legyen fixed mobilon – a wrapper pozicionálja */
+  .mobile-sidebar-wrapper .sidebar {
+    position: static;
     width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
+    height: auto;
+    border-right: none;
   }
 
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
+  /* Overlay */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
   }
 
-  .footer-column {
-    text-align: center;
+  .sidebar-overlay.open {
+    display: block;
   }
 
-  .footer-column h3 {
-    font-size: 3.5vw;
+  /* Lebegő toggle gomb */
+  #sidebar-toggle-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+    line-height: unset;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1rem;
+    z-index: 101;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border: none;
   }
 
-  .footer-logo {
+  #sidebar-toggle-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  #sidebar-toggle-btn:hover {
+    border: none;
+    font-size: unset;
+    background-color: var(--text-color);
+  }
+
+  .sidebar-title {
     font-size: 4vw;
-    word-break: break-word;
   }
 
-  .footer-column p,
-  .footer-column a {
-    font-size: 3vw;
+  .UserDropDown {
+    top: auto;
+    bottom: 5%;
+    right: 5%;
+    width: 7rem;
   }
 
-  .footer-bottom {
-    font-size: 2.5vw;
-    padding: 0.75rem 0;
+  .UserDropDown-icons-cont,
+  .UserDropDown-icons-cont:hover {
+    font-size: 4vw;
   }
 
-  /* --- About Us --- */
+  .Drawer-title {
+    font-size: 5vw;
+  }
+
   #aboutUs {
     background-attachment: scroll;
   }
@@ -1391,82 +1482,31 @@ button:hover > a {
     gap: 1.5rem;
   }
 
-  /* --- Cards --- */
-  .card {
-    width: 90vw;
-    height: auto;
-    padding-bottom: 1rem;
-  }
-
-  .card .img {
-    width: 75vw;
-    height: 55vw;
-  }
-
-  .card span {
-    font-size: 4vw;
-  }
-
-  .card .job {
-    font-size: 3.2vw;
-  }
-
-  /* --- UserDropDown --- */
-  .UserDropDown {
-    top: auto;
-    bottom: 1rem;
-    right: 1rem;
-    width: 7rem;
-  }
-
-  .UserDropDown-icons-cont,
-  .UserDropDown-icons-cont:hover {
-    font-size: 4vw;
-  }
-
-  /* --- Drawer --- */
-  .Drawer-title {
-    font-size: 5.5vw;
-  }
-
-  /* --- Upload --- */
   #UpLoad-page {
     height: auto;
-    min-height: 100vh;
-    top: 3rem;
-    padding: 0 0.75rem;
+    top: 2rem;
+    padding-bottom: 3rem;
   }
 
-  #UpLoad-layout {
-    width: 100%;
+  .UpLoad-firstMain {
+    width: 95vw;
+    height: auto;
+    min-height: 40vh;
   }
 
   #UpLoad-field {
     grid-template-columns: 1fr;
-    width: 100%;
   }
 
   #UpLoad-InsName,
   .UpLoad-InsCat,
   .UpLoad-cost,
-  .UpLoad-condition {
-    grid-column: 1;
-  }
-
-  .UpLoad-description {
-    grid-row: auto;
-    grid-column: 1;
-  }
-
-  .UpLoad-isPremium {
-    grid-row: auto;
-    grid-column: 1;
-  }
-
+  .UpLoad-condition,
+  .UpLoad-description,
+  .UpLoad-isPremium,
   .UpLoad-footer {
-    grid-row: auto;
     grid-column: 1;
-    justify-content: center;
+    grid-row: auto;
   }
 
   #UpLoad-comboField {
@@ -1477,41 +1517,31 @@ button:hover > a {
   .UpLoad-comboInputs {
     width: 100%;
   }
+}
 
-  .UpLoad-btn {
-    font-size: 3.5vw;
+/* ============================================================
+   HEIGHT OVERRIDE (eredeti)
+   ============================================================ */
+@media (max-height: 1000px) {
+  .UpLoad-firstMain {
+    width: 62vw;
+    height: 72vh;
+    background-color: #ead7ce;
   }
+}
 
-  .UpLoad-btn:hover {
-    font-size: 4vw;
-  }
-
-  /* --- Contact --- */
-  #contact-div {
-    margin: 2rem auto;
-    width: 92%;
-    max-width: none;
+@media (max-height: 1000px) and (max-width: 1024px) {
+  .UpLoad-firstMain {
+    width: 88vw;
     height: auto;
-    padding: 6% 4%;
-    border-width: 4px;
+    min-height: 50vh;
   }
+}
 
-  #contact-h1 {
-    font-size: 7vw;
-  }
-
-  #contact-form {
-    margin: 0 auto;
-    padding: 4% 2%;
-    width: 100%;
-  }
-
-  .contact-label {
-    font-size: 4vw;
-  }
-
-  #contact-button {
-    padding: 0.85em 2em;
-    font-size: 4vw;
+@media (max-height: 1000px) and (max-width: 640px) {
+  .UpLoad-firstMain {
+    width: 95vw;
+    height: auto;
+    min-height: 40vh;
   }
 }
