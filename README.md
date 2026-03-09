@@ -2,6 +2,8 @@
 
 
 Fejenkent: 11db hangszer legalabb 2db keppel 
+
+
 jelszavak: nev(elso nagybetu egyben) + 1 + !
 
         users
