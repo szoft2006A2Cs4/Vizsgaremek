@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Introduction() {
   return (
     <div id="introduction">
@@ -10,6 +12,7 @@ export default function Introduction() {
           a hozzád illő hangszert. Fedezd fel kínálatunkat, és adj új életet a
           zenének!
         </h3>
+        <Link to="/instruments" className="uni-button" />
       </div>
     </div>
   );
