@@ -1,8 +1,13 @@
-export default function catCard({ data }, imgsrc) {
+import { useNavigate } from "react-router-dom";
+
+export default function catCard({ data }) {
+
+  const navigte = useNavigate();
+
   return (
-    <div>
-      <img src={imgsrc} />
-      <h2>{data.name}</h2>
+    <div className="cat-card" onClick={() => navigte("\instruments", {replace: true})}>
+      <img src={data.ImgSRC} className="cat-card-imgs"/>
+      <h2>{data.Name}</h2>
     </div>
   );
 }

@@ -102,6 +102,16 @@ nav {
 #catField {
   background-color: #d4c4bc;
   height: max-content;
+  justify-content: space-evenly;
+}
+
+.cat-card:hover{
+  cursor: pointer;
+}
+
+.cat-card-imgs{
+  height: 3rem;
+  width: auto;
 }
 
 main {
@@ -529,7 +539,8 @@ button:hover > a {
 .UpLoad-firstMain {
   grid-row: 1;
   width: 62vw;
-  height: 64vh;
+  height: auto;
+  min-height: 64vh;
   background-color: #ead7ce;
 }
 
@@ -546,6 +557,7 @@ button:hover > a {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: min-content min-content min-content min-content min-content;
   gap: 0px;
+  height: 100%;
 }
 
 #UpLoad-InsName {
@@ -594,13 +606,15 @@ button:hover > a {
   grid-column: 2;
   display: flex;
   justify-content: center;
+  align-self: flex-end;
 }
 
 .UpLoad-footer {
-  grid-row: 5;
+  grid-row: 6;
   grid-column: 2;
   display: flex;
   padding-bottom: 1rem;
+  align-self: flex-end;
 }
 
 .UpLoad-isPremium button:hover {
@@ -863,6 +877,18 @@ button:hover > a {
 @font-face {
   font-family: "Celinda";
   src: url(./assets/fonts/Celinda.otf);
+}
+
+@media (max-width: 1280px) {
+  .UpLoad-firstMain {
+    width: 75vw;
+    height: auto;
+    min-height: auto;
+  }
+
+  #UpLoad-field {
+    grid-template-columns: 1fr 1fr; 
+  }
 }
 
 /* ============================================================
@@ -1546,8 +1572,9 @@ button:hover > a {
    ============================================================ */
 @media (max-height: 1000px) {
   .UpLoad-firstMain {
-    width: 62vw;
-    height: 72vh;
+    width: 65vw;
+    height: auto;
+    min-height: auto;
     background-color: #ead7ce;
   }
 }
