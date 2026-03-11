@@ -4,10 +4,10 @@ import React, { useContext, useState } from "react";
 const Drawer_ = ({ open, setOpen, sCatList = [] }) => {
   return (
     <Drawer.Root
-      open={open}
+      open={!open}
       onOpenChange={(e) => setOpen(e.open)}
       size="sm"
-      placement="start"
+      placement="end"
     >
       <Portal>
         <Drawer.Backdrop />

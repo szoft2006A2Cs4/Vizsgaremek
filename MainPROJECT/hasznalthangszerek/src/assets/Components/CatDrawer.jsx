@@ -1,22 +1,16 @@
 import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import SCatDrawer from "./SCatDrawer";
+import axios from "../scripts/axios";
 
 const Drawer_ = ({ open, setOpen, catList = [] }) => {
   const scatURl = "api/Subcategory";
 
-  const [sCatOpen, setSCatOpen] = useState(false);
-  const [isSDrawerOpen, setIsSDrawerOpen] = useState(false);
+  const [isSDrawerOpen, setIsSDrawerOpen] = useState(true);
 
-  const [filterOnClick, setFilterOnClick] = useState(false);
-  const [filterCond, setFilterCond] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   const [sCats, setSCats] = useState([]);
-
-  const setFilterDeps = (e) => {
-    setFilterCond(e.target.value);
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -32,15 +26,10 @@ const Drawer_ = ({ open, setOpen, catList = [] }) => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    setFilteredData(sCats.filter((val) => val.areas.includes(filterCond)));
-    console.log(filteredData);
-  }, [filterOnClick]);
-
   return (
     <>
       <Drawer.Root
-        open={open}
+        open={open && isSDrawerOpen}
         onOpenChange={(e) => setOpen(e.open)}
         size="sm"
         placement="start"
@@ -65,9 +54,11 @@ const Drawer_ = ({ open, setOpen, catList = [] }) => {
                   <div key={e.id}>
                     <a
                       className="Drawer-links"
-                      onClick={(e) => {
-                        setFilterDeps(e);
-                        setFilterOnClick(true);
+                      onClick={() => {
+                        setFilteredData(
+                          sCats.filter((val) => val.cName == e.name),
+                        );
+                        setIsSDrawerOpen(false);
                       }}
                     >
                       <h3>{e.name}</h3>
@@ -84,11 +75,11 @@ const Drawer_ = ({ open, setOpen, catList = [] }) => {
         </Portal>
       </Drawer.Root>
 
-      {sCatOpen ? (
+      {isSDrawerOpen ? (
         <SCatDrawer
-          open={isDrawerOpen}
-          setOpen={setIsDrawerOpen}
-          sCatList={categories}
+          open={isSDrawerOpen}
+          setOpen={setIsSDrawerOpen}
+          sCatList={filteredData}
         />
       ) : (
         <></>
