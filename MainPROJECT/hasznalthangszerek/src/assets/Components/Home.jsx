@@ -2,7 +2,7 @@ import "../../index.css";
 import Nav from "./Nav";
 import Introduction from "./Introduction";
 import PseMain from "./pseMain";
-import Drawer from "./Drawer";
+import Drawer from "./CatDrawer";
 import axios from "../scripts/axios";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../scripts/AuthProvider";

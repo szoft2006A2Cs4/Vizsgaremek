@@ -438,7 +438,7 @@ export default function UpLoad() {
                 <Field.Root className="UpLoad-description">
                   <Field.Label fontSize="xl">Leírás</Field.Label>
                   <Textarea
-                    w="22vw"
+                    w="100%"
                     h="100%"
                     resize="none"
                     variant="flushed"

@@ -105,11 +105,11 @@ nav {
   justify-content: space-evenly;
 }
 
-.cat-card:hover{
+.cat-card:hover {
   cursor: pointer;
 }
 
-.cat-card-imgs{
+.cat-card-imgs {
   height: 3rem;
   width: auto;
 }
@@ -887,7 +887,7 @@ button:hover > a {
   }
 
   #UpLoad-field {
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -1555,6 +1555,11 @@ button:hover > a {
   .UpLoad-footer {
     grid-column: 1;
     grid-row: auto;
+  }
+
+  .UpLoad-description {
+    min-width: 100%;
+    width: 100%;
   }
 
   #UpLoad-comboField {

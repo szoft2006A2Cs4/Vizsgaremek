@@ -1,7 +1,7 @@
 import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
-const Drawer_ = ({ open, setOpen, catList = [] /*isLoading */ }) => {
+const Drawer_ = ({ open, setOpen, sCatList = [] }) => {
   return (
     <Drawer.Root
       open={open}
@@ -21,11 +21,11 @@ const Drawer_ = ({ open, setOpen, catList = [] /*isLoading */ }) => {
           >
             <Drawer.Header>
               <Drawer.Title className="Drawer-title">
-                Összes kategória
+                Összes alkategória
               </Drawer.Title>
             </Drawer.Header>
             <Drawer.Body className="Drawer-body">
-              {catList.map((e) => (
+              {sCatList.map((e) => (
                 <div key={e.id}>
                   <a className="Drawer-links">
                     <h3>{e.name}</h3>
