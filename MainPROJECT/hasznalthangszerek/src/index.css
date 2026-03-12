@@ -168,6 +168,32 @@ button:hover {
   align-items: center;
 }
 
+#search-input-outer-cont {
+  position: relative;
+  background: linear-gradient(135deg, #ead7ce 0%, #d4c4bc 100%);
+  border-radius: 1000px;
+  padding: 4px;
+  display: grid;
+  place-content: center;
+  z-index: 0;
+  max-width: 250px;
+  margin: 0 10px;
+}
+
+#search-input-cont {
+  position: relative;
+  width: 100%;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #fbf6ef 0%, #f0e6dd 100%);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  border: 0;
+}
+
 #search {
   height: 50%;
 }
