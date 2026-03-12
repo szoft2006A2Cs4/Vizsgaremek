@@ -6,7 +6,7 @@ import axios from "../scripts/axios";
 const Drawer_ = ({ open, setOpen, catList = [] }) => {
   const scatURl = "api/Subcategory";
 
-  const [isSDrawerOpen, setIsSDrawerOpen] = useState(true);
+  const [isSDrawerOpen, setIsSDrawerOpen] = useState(false);
 
   const [filteredData, setFilteredData] = useState([]);
 
@@ -29,7 +29,7 @@ const Drawer_ = ({ open, setOpen, catList = [] }) => {
   return (
     <>
       <Drawer.Root
-        open={open && isSDrawerOpen}
+        open={open && !isSDrawerOpen}
         onOpenChange={(e) => setOpen(e.open)}
         size="sm"
         placement="start"
@@ -58,7 +58,7 @@ const Drawer_ = ({ open, setOpen, catList = [] }) => {
                         setFilteredData(
                           sCats.filter((val) => val.cName == e.name),
                         );
-                        setIsSDrawerOpen(false);
+                        setIsSDrawerOpen(true);
                       }}
                     >
                       <h3>{e.name}</h3>
