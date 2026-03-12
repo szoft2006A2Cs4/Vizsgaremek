@@ -23,14 +23,22 @@ function Card({ instrument }) {
 }
 
 function Instruments({ instruments }) {
-  return (
-    <>
+  if (instruments.length === 0) {
+    return (
       <section className="card-container">
-        {instruments.map((instrument) => (
-          <Card key={instrument.id} instrument={instrument} />
-        ))}
+        <div className="no-results">
+          <p>Nincs a szűrési feltételeknek megfelelő hangszer.</p>
+        </div>
       </section>
-    </>
+    );
+  }
+
+  return (
+    <section className="card-container">
+      {instruments.map((instrument) => (
+        <Card key={instrument.id} instrument={instrument} />
+      ))}
+    </section>
   );
 }
 

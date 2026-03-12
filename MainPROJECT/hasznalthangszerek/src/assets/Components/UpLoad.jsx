@@ -228,7 +228,6 @@ export default function UpLoad() {
       Condition: ins_Condition,
     };
 
-    console.log(insToUpLoad);
     try {
       await axios.post("api/Instrument", insToUpLoad, {
         withCredentials: true,

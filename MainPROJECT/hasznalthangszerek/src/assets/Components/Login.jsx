@@ -65,7 +65,6 @@ const Login = () => {
         withCredentials: true,
       });
 
-      console.log("Szerver válasza: ", response.data);
       const roles = response.data.roles;
       setAuth({ user: email, roles });
       setEmail("");

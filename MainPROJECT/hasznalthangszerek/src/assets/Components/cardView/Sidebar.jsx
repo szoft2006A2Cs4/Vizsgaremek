@@ -1,16 +1,31 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Category from "./sidebar/Category";
-import Subcategory from "./sidebar/Subcategory";
 import Price from "./sidebar/Price";
 import Condition from "./sidebar/Condition";
+import axios from "../../scripts/axios";
 
-function Sidebar() {
+const CAT_URL = "/api/Category";
+const SCAT_URL = "/api/Subcategory";
+
+function Sidebar({ onFilterChange, subcatList }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(
     () => window.matchMedia("(max-width: 1024px)").matches,
   );
+  const [catList, setCatList] = useState([]);
 
-  // Képernyőméret figyelése (mobil + tablet)
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(CAT_URL, { withCredentials: true });
+        setCatList(response.data);
+      } catch (err) {
+        console.log(err.response);
+      }
+    }
+    fetchData();
+  }, []);
+
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1024px)");
     const handler = (e) => {
@@ -21,7 +36,6 @@ function Sidebar() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  // ESC billentyűre bezárás
   useEffect(() => {
     if (!sidebarOpen) return;
     const handler = (e) => {
@@ -31,7 +45,6 @@ function Sidebar() {
     return () => document.removeEventListener("keydown", handler);
   }, [sidebarOpen]);
 
-  // Scroll zárolás
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? "hidden" : "";
     return () => {
@@ -44,12 +57,10 @@ function Sidebar() {
 
   return (
     <>
-      {/* Overlay – csak mobilon, nyitott állapotban */}
       {isMobile && sidebarOpen && (
         <div className="sidebar-overlay open" onClick={closeSidebar} />
       )}
 
-      {/* Sidebar wrapper mobilon, sima section desktopon */}
       <section
         className={
           isMobile
@@ -57,13 +68,15 @@ function Sidebar() {
             : "sidebar"
         }
       >
-        <Category />
-        <Subcategory />
-        <Price />
-        <Condition />
+        <Category
+          categories={catList}
+          subcategories={subcatList} // ← már propból jön
+          onFilterChange={onFilterChange}
+        />
+        <Price onFilterChange={onFilterChange} />
+        <Condition onFilterChange={onFilterChange} />
       </section>
 
-      {/* Lebegő toggle gomb – csak mobilon */}
       {isMobile && (
         <button
           id="sidebar-toggle-btn"

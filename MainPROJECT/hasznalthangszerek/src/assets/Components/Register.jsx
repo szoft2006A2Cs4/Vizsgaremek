@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
 import Loading from "./Loading";
 import PasswordPopUp from "./PasswordPopUp";
-import { Popover } from "@chakra-ui/react";
 
 const USER_REGEX =
   /^[A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)+$/;
@@ -60,50 +59,36 @@ const Register = () => {
 
   useEffect(() => {
     const result = USER_REGEX.test(user);
-    console.log(result);
-    console.log(user);
     setValidName(result);
   }, [user]);
 
   useEffect(() => {
     const result = EMAIL_REGEX.test(email);
-    console.log(result);
-    console.log(email);
     setValidEmail(result);
   }, [email]);
 
   useEffect(() => {
     const result = phone;
-    console.log(result);
-    console.log(phone);
     setValidPhone(result);
   }, [phone]);
 
   useEffect(() => {
     const result = postal;
-    console.log(result);
-    console.log(postal);
     setValidPostal(result);
   }, [postal]);
 
   useEffect(() => {
     const result = city;
-    console.log(result);
-    console.log(city);
     setValidCity(result);
   }, [city]);
 
   useEffect(() => {
     const result = address;
-    console.log(result);
-    console.log(address);
     setValidAddress(result);
   }, [address]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
-    console.log(result);
-    console.log(pwd);
     setValidPwd(result);
     const match = pwd === matchPwd;
     setValidMatch(match);
@@ -223,8 +208,6 @@ const Register = () => {
           Role: "User",
         };
         const response = await axios.post(REGISTER_URL, userData);
-
-        console.log("Szerver válasza: ", response.data);
         setSuccess(true);
       } catch (err) {
         if (err.response?.status === 409) {

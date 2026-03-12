@@ -74,8 +74,6 @@ nav {
 }
 
 #introduction {
-  grid-column: 1 / 4;
-  grid-row: 3;
   min-height: 100vh;
   width: 100%;
   background-image: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1770118159/introduction_mdmxem.jpg");
@@ -347,9 +345,9 @@ button:hover > a {
 }
 
 .card {
-  width: 25em;
+  width: 24em;
   height: 29em;
-  background: #77625c;
+  background: #fbf6ef;
   border-radius: 15px;
   box-shadow: 1px 5px 60px 0px rgba(90, 89, 88, 0.5);
 }
@@ -746,22 +744,30 @@ button:hover > a {
   grid-column: 1/4;
 }
 
+#testClassField {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: space-evenly;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex: 1;
+  min-height: 100vh;
   margin-left: 7.5%;
+  padding: 0.75rem;
   gap: 0.75rem;
   z-index: 1;
-}
-
-.card {
-  margin: 0;
-  border: 2px solid var(--text-color);
-  padding: 1rem;
-  cursor: pointer;
-  width: 20rem;
-  flex-shrink: 0;
+  background: #c9a9a1;
+  background: linear-gradient(
+    114deg,
+    rgb(201, 169, 161) 15%,
+    rgb(119, 98, 92) 100%
+  );
 }
 
 .card-img {
@@ -782,6 +788,17 @@ button:hover > a {
   align-items: center;
 }
 
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
 .sidebar-title {
   font-size: 1.146vw;
   font-weight: medium;
@@ -798,7 +815,6 @@ button:hover > a {
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: center;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -817,6 +833,7 @@ button:hover > a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  align-items: start;
 }
 
 .sidebar-label-container input {
@@ -835,25 +852,30 @@ button:hover > a {
   border-radius: 50%;
 }
 
-.sidebar-label-container:hover input ~ .checkmark {
+.checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: var(--accent-color);
+}
+
+.sidebar-label-container:hover input ~ .checkmark,
+.sidebar-label-container:hover input ~ .checkbox {
   background-color: #ccc;
 }
 
-.sidebar-label-container input:checked ~ .checkmark {
+.sidebar-label-container input:checked ~ .checkmark,
+.sidebar-label-container input:checked ~ .checkbox {
   background-color: var(--text-color);
 }
 
-.checkmark::after {
+.checkmark::after,
+.checkbox::after {
   content: "";
   position: absolute;
   display: none;
-}
-
-#testClassField {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
 }
 
 .sidebar-label-container input:checked ~ .checkmark::after {
@@ -867,6 +889,23 @@ button:hover > a {
   height: 0.438rem;
   border-radius: 50%;
   background-color: var(--base-color);
+}
+
+.filter-selector {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 5%;
+}
+
+.price-title {
+  margin-top: 1.25rem;
+}
+
+.sidebar-empty {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  padding-left: 0.5rem;
 }
 
 .line {
@@ -891,9 +930,6 @@ button:hover > a {
   }
 }
 
-/* ============================================================
-   LAPTOP  (max-width: 1280px)
-   ============================================================ */
 @media (max-width: 1280px) {
   #root,
   .home {
@@ -997,9 +1033,6 @@ button:hover > a {
   }
 }
 
-/* ============================================================
-   TABLET  (max-width: 1024px)
-   ============================================================ */
 @media (max-width: 1024px) {
   #root,
   .home {
@@ -1258,9 +1291,6 @@ button:hover > a {
   }
 }
 
-/* ============================================================
-   PHONE  (max-width: 640px)
-   ============================================================ */
 @media (max-width: 640px) {
   #root,
   .home {
@@ -1572,9 +1602,6 @@ button:hover > a {
   }
 }
 
-/* ============================================================
-   HEIGHT OVERRIDE (eredeti)
-   ============================================================ */
 @media (max-height: 1000px) {
   .UpLoad-firstMain {
     width: 65vw;

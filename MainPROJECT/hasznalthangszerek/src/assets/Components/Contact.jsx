@@ -16,7 +16,6 @@ const Contact = () => {
 
   useEffect(() => {
     setIsEmpty(name === "" || email === "" || msg === "");
-    console.log(isEmpty, name, email, msg);
   }, [name, email, msg]);
 
   const sendEmail = async (e) => {
@@ -30,7 +29,6 @@ const Contact = () => {
       .then(
         () => {
           alert("Sikerült :)");
-          console.log("SUCCESS!");
         },
         (error) => {
           console.log("FAILED...", error.text);
