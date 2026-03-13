@@ -28,6 +28,7 @@ function Home() {
 
         setCats(responseCats.data);
         setInstruments(responseIns.data);
+        console.log(responseIns.data[0]);
       } catch (err) {
         console.log(err.response);
       }

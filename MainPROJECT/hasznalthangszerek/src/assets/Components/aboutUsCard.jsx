@@ -1,6 +1,6 @@
 export default function aboutUsCard({ img, name, subTitle }) {
   return (
-    <div className="card">
+    <div className="aboutUs-card">
       <div className="card-border-top"></div>
       <img src={img} className="img" />
 

@@ -378,7 +378,15 @@ button:hover > a {
   box-shadow: 1px 5px 60px 0px rgba(90, 89, 88, 0.5);
 }
 
-.card .card-border-top {
+.aboutUs-card {
+  width: 24em;
+  height: 29em;
+  background: #77625c;
+  border-radius: 15px;
+  box-shadow: 1px 5px 60px 0px rgba(90, 89, 88, 0.5);
+}
+
+.aboutUs-card .card-border-top {
   width: 60%;
   height: 3%;
   background: #ead7ce;
@@ -386,7 +394,7 @@ button:hover > a {
   border-radius: 0px 0px 15px 15px;
 }
 
-.card span {
+.aboutUs-card span {
   font-weight: 600;
   color: #fbf6ef;
   text-align: center;
@@ -395,7 +403,7 @@ button:hover > a {
   font-size: 0.833333333333333vw;
 }
 
-.card .job {
+.aboutUs-card .job {
   font-weight: 400;
   color: #d4c4bc;
   display: block;
@@ -404,7 +412,7 @@ button:hover > a {
   font-size: 0.625vw;
 }
 
-.card .img {
+.aboutUs-card .img {
   width: 16.875em;
   height: 21.875em;
   background: #d4c4bc;
@@ -413,7 +421,7 @@ button:hover > a {
   margin-top: 1.563rem;
 }
 
-.card button {
+.aboutUs-card button {
   padding: 0.5em 2.8125em;
   display: block;
   margin: auto;
@@ -427,7 +435,7 @@ button:hover > a {
   cursor: pointer;
 }
 
-.card button:hover {
+.aboutUs-card button:hover {
   background: #77625c;
   color: #fbf6ef;
   border: 1px solid #ead7ce;
@@ -456,7 +464,7 @@ button:hover > a {
 
 .UserDropDown {
   position: absolute;
-  z-index: 20;
+  z-index: 550;
   top: calc(100% + 1rem);
   right: -10px;
   width: 10rem;
