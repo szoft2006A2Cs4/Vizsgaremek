@@ -168,30 +168,112 @@ button:hover {
   align-items: center;
 }
 
-#search-input-outer-cont {
+.middle {
   position: relative;
-  background: linear-gradient(135deg, #ead7ce 0%, #d4c4bc 100%);
-  border-radius: 1000px;
-  padding: 4px;
-  display: grid;
-  place-content: center;
-  z-index: 0;
-  max-width: 250px;
-  margin: 0 10px;
-}
-
-#search-input-cont {
-  position: relative;
-  width: 100%;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #fbf6ef 0%, #f0e6dd 100%);
-  padding: 5px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  height: 2.5vw;
+  width: 2.5vw;
+  min-height: 32px;
+  min-width: 32px;
+  transition: width 0.4s ease-in-out;
 }
 
-#search-input {
+.middle:has(.inclicked) {
+  width: 18vw;
+}
+
+.input {
+  position: absolute;
+  right: 0;
+  width: 2.7vw;
+  min-width: 32px;
+  height: 2.5vw;
+  min-height: 32px;
+  border-radius: 50%;
+  border: 0.3vw solid #f5e6c8;
+  outline: none;
+  background: transparent;
+  box-sizing: border-box;
+  transition:
+    width 0.4s ease-in-out,
+    border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  color: #f5e6c8;
+  font-size: 1vw;
+  padding: 0;
+  caret-color: #f5e6c8;
+}
+
+.input::placeholder {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.inclicked {
+  width: 18vw;
+  border-radius: 4px;
+  padding: 0 3vw 0 1vw;
+}
+
+.inclicked::placeholder {
+  opacity: 0.6;
+}
+
+.btn {
+  position: absolute;
+  right: 0;
+  top: 66%;
+  transform: translateY(-50%);
+  width: 2.5vw;
+  min-width: 32px;
+  height: 2.5vw;
+  min-height: 32px;
+  box-sizing: border-box;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  left: 12%;
+}
+
+.btn:hover {
   border: 0;
+  cursor: pointer;
+}
+
+.btn::before {
+  content: "";
+  width: 0.3vw;
+  min-width: 2px;
+  height: 1.5vw;
+  background: #f5e6c8;
+  position: absolute;
+  transform: rotate(-45deg);
+  bottom: 0vw;
+  right: 0.2vw;
+  transition: 0.3s ease;
+  top: 53%;
+}
+
+.close::before,
+.close::after {
+  content: "";
+  width: 0.3vw;
+  height: 1.6vw;
+  background: #f5e6c8;
+  position: absolute;
+  left: 572%;
+  top: 1%;
+}
+
+.close::before {
+  transform: rotate(45deg);
+}
+.close::after {
+  transform: rotate(-45deg);
 }
 
 #search {
