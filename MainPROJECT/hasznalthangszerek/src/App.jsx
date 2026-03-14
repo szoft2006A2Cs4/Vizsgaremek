@@ -33,9 +33,8 @@ function App() {
         });
 
         const insWithImgs = responseIns.data.map((ins) => {
-          console.log(ins);
+          // console.log(ins);
           const cleanName = ins.name.split(" ").join("");
-          const sellerName = ins.seller.name;
           const imageId = ins.seller.imageId;
           const count = ins.imageCount;
 
@@ -43,7 +42,7 @@ function App() {
 
           if (count > 0) {
             for (let i = 0; i < count; i++) {
-              const publicId = `${cleanName}_${sellerName}${imageId}_${i}`;
+              const publicId = `${cleanName}_${imageId}_${i}`;
               const encodedId = encodeURIComponent(publicId);
               imgs.push(
                 `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${encodedId}.jpg`,
