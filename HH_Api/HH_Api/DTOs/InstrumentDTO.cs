@@ -14,6 +14,7 @@ namespace HH_Api.DTOs
         public string? SCName { get; set; }
         public bool IsPremium { get; set; }
         public string? Condition { get; set; }
+        public int ImageCount { get; set; }
         public UserDTO? Seller { get; set; }
         public Subcategory? SubCategory { get; set; }
     }

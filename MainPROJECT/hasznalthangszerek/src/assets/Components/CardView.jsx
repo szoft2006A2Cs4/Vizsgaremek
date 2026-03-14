@@ -7,7 +7,7 @@ import Loading from "./Loading";
 
 const INS_URL = "/api/Instrument";
 
-export default function CardView() {
+export default function CardView({ data, loading }) {
   const [insList, setInsList] = useState([]);
   const [subcatList, setSubcatList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -75,7 +75,7 @@ export default function CardView() {
     "600 000 Ft felett": [600000, Infinity],
   };
 
-  const filteredInstruments = insList.filter((ins) => {
+  const filteredInstruments = data.filter((ins) => {
     if (!ins) return false;
     if (filters.category) {
       const subcat = subcatList.find((s) => s.name === ins.scName);
@@ -92,6 +92,8 @@ export default function CardView() {
     }
     return true;
   });
+
+  if (loading) return null;
 
   return (
     <div id="cardView">

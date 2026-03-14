@@ -128,12 +128,12 @@ const radioOptions = [
 ];
 
 export default function UpLoad() {
-  const cloadName = "dknhbvrq9";
-  const cloadPreset = "HasznaltHangszerek_UploadProducts";
+  const cloudName = "dknhbvrq9";
+  const cloudPreset = "HasznaltHangszerek_UploadProducts";
 
   const navigate = useNavigate();
 
-  const url = `https://api.cloudinary.com/v1_1/${cloadName}/image/upload`;
+  const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
   const [userData, setUserData] = useState(null);
 
@@ -190,6 +190,7 @@ export default function UpLoad() {
     if (!imageId || files.length == 0) return;
 
     const cleanName = insname.split(" ").join("");
+    let imgCount = 0;
 
     for (let i = 0; i < files.length; i++) {
       const formData = new FormData();
@@ -206,11 +207,15 @@ export default function UpLoad() {
           method: "POST",
           body: formData,
         });
-        const data = await resp.json();
+
+        if (resp.ok) {
+          imgCount++;
+        }
       } catch (error) {
         console.log("Hiba a feltöltés során: ", error);
       }
     }
+    return imgCount;
   };
 
   const handleFinalSubmit = async () => {
@@ -229,17 +234,26 @@ export default function UpLoad() {
     };
 
     try {
-      await axios.post("api/Instrument", insToUpLoad, {
+      const resp = await axios.post("api/Instrument", insToUpLoad, {
         withCredentials: true,
       });
 
+      const insId = resp.data.id;
+      let imageCount = 0;
+
       if (upLoadedFiles.length > 0) {
-        await upLoadFiles(
+        imageCount = await upLoadFiles(
           upLoadedFiles,
-          cloadPreset,
+          cloudPreset,
           insName,
           userData.imageId,
         );
+      }
+
+      if (imageCount > 0) {
+        await axios.patch(`api/Instrument/${insId}`, imageCount, {
+          withCredentials: true,
+        });
       }
 
       setIsUpLoadSuccess(true);

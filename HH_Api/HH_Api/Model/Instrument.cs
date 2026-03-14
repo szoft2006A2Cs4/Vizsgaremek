@@ -31,6 +31,9 @@ namespace HH_Api.Model
 
         [Column("condition")]
         public string? Condition { get; set; }
+
+        [Column("imageCount")]
+        public int ImageCount { get; set; }
         
         [ForeignKey(nameof(UId))]
         public User? Seller { get; set; }

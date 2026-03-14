@@ -55,8 +55,7 @@
               "RelativeToolTip": "HH_Api\\HH_Api\\Model\\Instrument.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T18:48:28.125Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-14T18:48:28.125Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T18:47:56.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-14T18:47:56.765Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "HH_Api\\HH_Api\\Model\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T18:47:50.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-14T18:47:50.24Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "HH_Api\\HH_Api\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-01T12:04:57.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-01T12:04:57.465Z"
             }
           ]
         },

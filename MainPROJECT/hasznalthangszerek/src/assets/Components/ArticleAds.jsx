@@ -13,63 +13,6 @@ import { forwardRef } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import "../../index.css";
 
-const items = [
-  {
-    src: "https://images.unsplash.com/photo-1656433031375-5042f5afe894?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=2371",
-    title: "Rado DiaStar óra",
-    price: "$320",
-    condition: "Kiváló állapot",
-    description: "Klasszikus design, eredeti dobozzal.",
-    location: "Budapest",
-    phone: "+36 30 123 4567",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1587466412525-87497b34fc88?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=2673",
-    title: "Vintage karóra",
-    price: "$180",
-    condition: "Jó állapot",
-    description: "Retro stílusú, működő szerkezettel.",
-    location: "Debrecen",
-    phone: "+36 20 987 6543",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1629581688635-5d88654e5bdd?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=2831",
-    title: "Luxus kronográf",
-    price: "$540",
-    condition: "Újszerű",
-    description: "Precíz mechanikus óra, dobozzal.",
-    location: "Győr",
-    phone: "+36 70 555 1234",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1661030420948-862787de0056?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=2370",
-    title: "Sport karóra",
-    price: "$210",
-    condition: "Használt",
-    description: "Vízálló, tartós szíjjal.",
-    location: "Pécs",
-    phone: "+36 30 444 7890",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1703505841379-2f863b201212?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=2371",
-    title: "Elegáns dress watch",
-    price: "$290",
-    condition: "Kiváló állapot",
-    description: "Vékony tok, bőr szíj.",
-    location: "Miskolc",
-    phone: "+36 20 333 2468",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1607776905497-b4f788205f6a?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=2370",
-    title: "Automata óra",
-    price: "$410",
-    condition: "Újszerű",
-    description: "Önfelhúzós mechanizmus, dobozzal.",
-    location: "Székesfehérvár",
-    phone: "+36 70 111 3579",
-  },
-];
-
 const ActionButton = forwardRef(function ActionButton(props, ref) {
   return (
     <IconButton
@@ -88,7 +31,8 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
   );
 });
 
-const ArticleAds = () => {
+const ArticleAds = ({ data, isLoading }) => {
+  if (isLoading || !data || !Array.isArray(data)) return null;
   return (
     <Box width="100%" mx="auto" px={{ base: 4, md: 8 }} py="0" mt="0">
       <Heading
@@ -103,11 +47,10 @@ const ArticleAds = () => {
         Kiemelt hirdetéseink
       </Heading>
 
-      {/* Desktop: carousel overlay-jel */}
       <Box display={{ base: "none", lg: "block" }}>
         <Carousel.Root
           id="carousel-root"
-          slideCount={items.length}
+          slideCount={data.length}
           width="100%"
           height="auto"
           gap="0"
@@ -125,7 +68,7 @@ const ArticleAds = () => {
             </Carousel.PrevTrigger>
 
             <Carousel.ItemGroup width="100%" height="100%">
-              {items.map((item, index) => (
+              {data.map((item, index) => (
                 <Carousel.Item
                   key={index}
                   index={index}
@@ -135,15 +78,14 @@ const ArticleAds = () => {
                   <Box position="relative" width="100%">
                     <AspectRatio ratio={16 / 9} width="100%">
                       <Image
-                        src={item.src}
-                        alt={item.title}
+                        src={item.imageUrls[0]}
+                        alt={item.name}
                         objectFit="cover"
                         width="100%"
                         height="100%"
                       />
                     </AspectRatio>
 
-                    {/* Bal alsó: név + ár */}
                     <Box
                       position="absolute"
                       bottom="6"
@@ -160,7 +102,7 @@ const ArticleAds = () => {
                         fontSize="3.6vw"
                         lineHeight="1.3"
                       >
-                        {item.title}
+                        {item.name}
                       </Text>
                       <Text
                         color="white"
@@ -168,11 +110,10 @@ const ArticleAds = () => {
                         fontSize="3vw"
                         mt="1"
                       >
-                        {item.price}
+                        {item.cost}
                       </Text>
                     </Box>
 
-                    {/* Jobb oldal: condition / description / location */}
                     <Box
                       position="absolute"
                       top="6"
@@ -216,11 +157,10 @@ const ArticleAds = () => {
                         Helyszín
                       </Text>
                       <Text color="white" fontSize="2.6vw">
-                        {item.location}
+                        {item.seller.city}
                       </Text>
                     </Box>
 
-                    {/* Jobb alsó: Részletek gomb + GSM */}
                     <Box
                       position="absolute"
                       bottom="6"
@@ -257,7 +197,7 @@ const ArticleAds = () => {
                         py="1"
                         borderRadius="md"
                       >
-                        {item.phone}
+                        {item.seller.phoneNumber}
                       </Text>
                     </Box>
                   </Box>
@@ -294,28 +234,27 @@ const ArticleAds = () => {
         </Carousel.Root>
       </Box>
 
-      {/* Tablet / Telefon: kártyarács */}
       <Box
         display={{ base: "grid", lg: "none" }}
         gridTemplateColumns="1fr 1fr"
         gap="4"
       >
-        {items.map((item, index) => (
+        {data.map((item, index) => (
           <Card.Root key={index} overflow="hidden">
             <Image
-              src={item.src}
-              alt={item.title}
+              src={item.imageUrls[0]}
+              alt={item.name}
               width="100%"
               height="35vw"
               objectFit="cover"
             />
             <Card.Body gap="1" p="3">
-              <Card.Title fontSize="3vw">{item.title}</Card.Title>
+              <Card.Title fontSize="3vw">{item.name}</Card.Title>
               <Card.Description fontSize="2.5vw">
                 {item.description}
               </Card.Description>
               <Text fontWeight="medium" fontSize="3vw" mt="1">
-                {item.price}
+                {item.cost}
               </Text>
             </Card.Body>
           </Card.Root>

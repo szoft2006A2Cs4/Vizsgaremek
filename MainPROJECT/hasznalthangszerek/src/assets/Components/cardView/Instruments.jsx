@@ -4,7 +4,7 @@ function Card({ instrument }) {
   return (
     <section className="card">
       <img
-        src="amba"
+        src={instrument.imageUrls[0]}
         alt=""
         className="card-img"
         //    hangszer képe ide

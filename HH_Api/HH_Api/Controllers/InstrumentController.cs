@@ -40,6 +40,7 @@ namespace HH_Api.Controllers
                     IsPremium = i.IsPremium,
                     Condition = i.Condition,
                     SubCategory = i.SubCategory,
+                    ImageCount = i.ImageCount,
 
                     Seller = i.Seller != null ? new UserDTO
                     {
@@ -94,6 +95,21 @@ namespace HH_Api.Controllers
             await _context.SaveChangesAsync();
             return Ok("Adatok sikeres frissítése!");
         }
+
+        [Authorize(Policy = "Instrument.Patch")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PatchImageCount(int id, [FromBody] int count)
+        {
+            var ins = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+
+            if (ins == null) return NotFound("Ilyen azonosítóval felhasználó nem található.");
+
+            ins.ImageCount = count;
+            await _context.SaveChangesAsync();
+
+            return Ok("Képek száma sikeresen frissítve.");
+        }
+
 
         [Authorize(Policy = "Instrument.Delete")]
         [HttpDelete("{id}")]
