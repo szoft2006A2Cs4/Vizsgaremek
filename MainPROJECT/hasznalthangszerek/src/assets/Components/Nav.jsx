@@ -82,13 +82,18 @@ export default function Nav() {
           <Link to="/aboutUs">Rólunk</Link>
         </button>
 
-        <div id="nav-bar">
+        <div id="nav-end">
           <SearchInput></SearchInput>
-        </div>
 
-        <button>
-          <Link to="/login">Bejelentkezés</Link>
-        </button>
+          <img
+            style={{ width: "3rem" }}
+            src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1773508709/shopping-cart_ueccam.svg"
+          />
+
+          <button>
+            <Link to="/login">Bejelentkezés</Link>
+          </button>
+        </div>
       </div>
 
       <Drawer_
