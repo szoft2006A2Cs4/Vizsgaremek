@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using HH_Api.DTOs;
 
 namespace HH_Api.Controllers
 {
@@ -24,7 +25,35 @@ namespace HH_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetInstrumentList()
         {
-            return Ok(await _context.Instruments.ToListAsync());
+            var ins = await _context.Instruments
+                .Include(s => s.SubCategory)
+                .Include(u => u.Seller)
+                .Select(i => new InstrumentDTO
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Cost = i.Cost,
+                    Description = i.Description,
+                    Sold = i.Sold,
+                    UId = i.UId,
+                    SCName = i.SCName,
+                    IsPremium = i.IsPremium,
+                    Condition = i.Condition,
+                    SubCategory = i.SubCategory,
+
+                    Seller = i.Seller != null ? new UserDTO
+                    {
+                        Id = i.Seller.Id,
+                        Name = i.Seller.Name,
+                        PhoneNumber = i.Seller.PhoneNumber,
+                        Review = i.Seller.Review,
+                        PostalCode = i.Seller.PostalCode,
+                        City = i.Seller.City,
+                        ImageId = i.Seller.ImageId
+                    } : null
+                }).ToListAsync();
+
+            return Ok(ins);
         }
 
         // GET: api/Instrument/5
