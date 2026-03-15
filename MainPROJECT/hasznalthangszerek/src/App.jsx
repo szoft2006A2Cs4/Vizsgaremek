@@ -33,7 +33,6 @@ function App() {
         });
 
         const insWithImgs = responseIns.data.map((ins) => {
-          // console.log(ins);
           const cleanName = ins.name.split(" ").join("");
           const imageId = ins.seller.imageId;
           const count = ins.imageCount;
