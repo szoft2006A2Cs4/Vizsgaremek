@@ -48,10 +48,12 @@ export default function Nav() {
         />
       </Link>
 
-      <div id="nav-spacing">
-        <div id="nav-bar">
-          <SearchInput></SearchInput>
-        </div>
+      <div id="nav-spacing-loggedIn">
+        <SearchInput></SearchInput>
+        <img
+          style={{ width: "3rem" }}
+          src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1773508709/shopping-cart_ueccam.svg"
+        />
 
         <div className="avatar-drop-wrapper">
           <Avatar

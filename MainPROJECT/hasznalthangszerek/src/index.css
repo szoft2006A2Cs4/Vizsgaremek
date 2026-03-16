@@ -287,6 +287,127 @@ button:hover > a {
   height: 50%;
 }
 
+/*#region Bejelentkezett kereso */
+
+#nav-spacing-loggedIn .middle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 1.75vw;
+  width: 1.75vw;
+  min-height: 32px;
+  min-width: 32px;
+  transition: width 0.4s ease-in-out;
+}
+
+#nav-spacing-loggedIn .middle:has(.inclicked) {
+  width: 18vw;
+}
+
+#nav-spacing-loggedIn .middle:has(.inclicked) .input {
+  width: 30vw;
+  min-width: none;
+  height: 7vh;
+  min-height: none;
+}
+
+#nav-spacing-loggedIn .input {
+  position: absolute;
+  right: 0;
+  width: 2.7vw;
+  min-width: 32px;
+  height: 2.5vw;
+  min-height: 32px;
+  border-radius: 50%;
+  border: 0.3vw solid black;
+  outline: none;
+  background: transparent;
+  box-sizing: border-box;
+  transition:
+    width 0.4s ease-in-out,
+    border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  color: #f5e6c8;
+  font-size: 1vw;
+  padding: 0;
+  caret-color: #f5e6c8;
+}
+
+#nav-spacing-loggedIn .input::placeholder {
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: #f5e6c8;
+}
+
+#nav-spacing-loggedIn .inclicked {
+  width: 18vw;
+  border-radius: 4px;
+  padding: 0 3vw 0 1vw;
+}
+
+#nav-spacing-loggedIn .inclicked::placeholder {
+  opacity: 0.6;
+}
+
+#nav-spacing-loggedIn .btn {
+  position: absolute;
+  right: 0;
+  top: 66%;
+  transform: translateY(-50%);
+  width: 2.5vw;
+  min-width: 32px;
+  height: 2.5vw;
+  min-height: 32px;
+  box-sizing: border-box;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  left: 12%;
+}
+
+#nav-spacing-loggedIn .btn:hover {
+  border: 0;
+  cursor: pointer;
+}
+
+#nav-spacing-loggedIn .btn::before {
+  content: "";
+  width: 0.3vw;
+  min-width: 2px;
+  height: 1.5vw;
+  background: black;
+  position: absolute;
+  transform: rotate(-45deg);
+  bottom: 0vw;
+  right: 38%;
+  transition: 0.3s ease;
+  top: 65%;
+}
+
+#nav-spacing-loggedIn .close::before,
+#nav-spacing-loggedIn .close::after {
+  content: "";
+  width: 0.3vw;
+  height: 1.6vw;
+  background: black;
+  position: absolute;
+  left: 572%;
+  top: 1%;
+}
+
+#nav-spacing-loggedIn .close::before {
+  transform: rotate(45deg);
+}
+
+#nav-spacing-loggedIn .close::after {
+  transform: rotate(-45deg);
+}
+
+/*#endregion Bejelentkezett kereso */
+
 /*#endregion Kereső*/
 
 /*#region Navigáció*/
@@ -313,6 +434,15 @@ button:hover > a {
 
 #logo {
   grid-column: 1;
+}
+
+#nav-spacing-loggedIn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  gap: 3rem;
+  padding-right: 3rem;
 }
 
 /*#endregion Navigáció*/
@@ -1774,6 +1904,46 @@ button:hover > a {
     height: auto;
     min-height: auto;
     background-color: #ead7ce;
+  }
+
+  .btn::before {
+    content: "";
+    width: 0.3vw;
+    min-width: 2px;
+    height: 1.5vw;
+    background: black;
+    position: absolute;
+    transition: 0.3s ease;
+    left: 80%;
+  }
+
+  .close::after {
+    content: "";
+    width: 0.3vw;
+    height: 1.6vw;
+    background: black;
+    position: absolute;
+    left: 545%;
+    top: 8%;
+  }
+
+  .close::before,
+  .close::after {
+    content: "";
+    width: 0.3vw;
+    height: 1.6vw;
+    background: black;
+    position: absolute;
+    left: 555%;
+    top: 5%;
+  }
+
+  .close::before {
+    transform: rotate(45deg);
+  }
+
+  .close::after {
+    transform: rotate(-45deg);
   }
 }
 
