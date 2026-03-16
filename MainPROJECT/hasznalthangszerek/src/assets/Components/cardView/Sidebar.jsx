@@ -2,29 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 import Category from "./sidebar/Category";
 import Price from "./sidebar/Price";
 import Condition from "./sidebar/Condition";
-import axios from "../../scripts/axios";
 
-const CAT_URL = "/api/Category";
-const SCAT_URL = "/api/Subcategory";
-
-function Sidebar({ onFilterChange, subcatList }) {
+function Sidebar({ onFilterChange, subcatList, cats, filters }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(
     () => window.matchMedia("(max-width: 1024px)").matches,
   );
-  const [catList, setCatList] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(CAT_URL, { withCredentials: true });
-        setCatList(response.data);
-      } catch (err) {
-        console.log(err.response);
-      }
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1024px)");
@@ -55,6 +38,12 @@ function Sidebar({ onFilterChange, subcatList }) {
   const toggleSidebar = useCallback(() => setSidebarOpen((prev) => !prev), []);
   const closeSidebar = useCallback(() => setSidebarOpen(false), []);
 
+  const catList = new Array();
+
+  for (var c of cats) {
+    catList.push(c);
+  }
+
   return (
     <>
       {isMobile && sidebarOpen && (
@@ -72,9 +61,10 @@ function Sidebar({ onFilterChange, subcatList }) {
           categories={catList}
           subcategories={subcatList} // ← már propból jön
           onFilterChange={onFilterChange}
+          filters={filters}
         />
-        <Price onFilterChange={onFilterChange} />
-        <Condition onFilterChange={onFilterChange} />
+        <Price onFilterChange={onFilterChange} filters={filters} />
+        <Condition onFilterChange={onFilterChange} filters={filters} />
       </section>
 
       {isMobile && (

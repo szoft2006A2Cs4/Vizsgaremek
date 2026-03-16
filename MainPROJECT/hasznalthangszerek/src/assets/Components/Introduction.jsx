@@ -15,14 +15,6 @@ export default function Introduction() {
           zenének!
         </h3>
       </div>
-      <button
-        className="uni-button"
-        onClick={() => {
-          navigate("/instruments", { replace: true });
-        }}
-      >
-        katt
-      </button>
     </div>
   );
 }

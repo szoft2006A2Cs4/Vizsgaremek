@@ -1025,7 +1025,6 @@ button:hover > a {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  grid-column: 1/4;
 }
 
 .card {
@@ -1917,7 +1916,7 @@ button:hover > a {
     background: black;
     position: absolute;
     transition: 0.3s ease;
-    left: 80%;
+    left: 60%;
   }
 
   .close::after {

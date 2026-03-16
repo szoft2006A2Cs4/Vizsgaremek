@@ -3,28 +3,17 @@ import React, { useContext, useEffect, useState } from "react";
 import SCatDrawer from "./SCatDrawer";
 import axios from "../scripts/axios";
 
-const Drawer_ = ({ open, setOpen, catList = [] }) => {
-  const scatURl = "api/Subcategory";
-
+const Drawer_ = ({ open, setOpen, catList, scats, loading }) => {
   const [isSDrawerOpen, setIsSDrawerOpen] = useState(false);
 
   const [filteredData, setFilteredData] = useState([]);
 
-  const [sCats, setSCats] = useState([]);
+  if (loading || catList === undefined) return null;
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(scatURl, {
-          withCredentials: true,
-        });
-        setSCats(response.data);
-      } catch (err) {
-        console.log(err.response);
-      }
-    }
-    fetchData();
-  }, []);
+  const cats = [];
+  for (var c of catList) {
+    cats.push(c);
+  }
 
   return (
     <>
@@ -50,18 +39,16 @@ const Drawer_ = ({ open, setOpen, catList = [] }) => {
                 </Drawer.Title>
               </Drawer.Header>
               <Drawer.Body className="Drawer-body">
-                {catList.map((e) => (
+                {cats.map((e) => (
                   <div key={e.id}>
                     <a
                       className="Drawer-links"
                       onClick={() => {
-                        setFilteredData(
-                          sCats.filter((val) => val.cName == e.name),
-                        );
+                        setFilteredData(scats.filter((val) => val.cName == e));
                         setIsSDrawerOpen(true);
                       }}
                     >
-                      <h3>{e.name}</h3>
+                      <h3>{e}</h3>
                     </a>
                   </div>
                 ))}

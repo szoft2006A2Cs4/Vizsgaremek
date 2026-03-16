@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CONDITIONS = [
   "újszerű",
@@ -9,13 +9,17 @@ const CONDITIONS = [
   "hibás-rossz",
 ];
 
-function Condition({ onFilterChange }) {
-  const [selected, setSelected] = useState([]);
+function Condition({ onFilterChange, filters }) {
+  const [selected, setSelected] = useState(filters?.conditions || []);
 
   const handleAll = () => {
     setSelected([]);
     onFilterChange("conditions", []);
   };
+
+  useEffect(() => {
+    setSelected(filters?.conditions || []);
+  }, [filters?.conditions]);
 
   const handleChange = (value) => {
     setSelected((prev) => {

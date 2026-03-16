@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../scripts/AuthProvider";
 import CatField from "./CatField";
 
-function Home({ instruments, scats, isLoading }) {
+function Home({ instruments, cats, scats, isLoading }) {
   const { auth } = useContext(AuthContext);
 
   const loggedIn = !auth.user;
@@ -16,12 +16,12 @@ function Home({ instruments, scats, isLoading }) {
   return !loggedIn ? (
     <div>
       <Nav />
-      <CatField cats={scats} />
+      <CatField cats={cats} />
       <PseMain data={instruments} />
     </div>
   ) : (
     <div>
-      <Nav />
+      <Nav cats={cats} scats={scats} loading={isLoading} />
       <Introduction />
       <PseMain data={instruments} isLoading={isLoading} />
       <Drawer />

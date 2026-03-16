@@ -6,9 +6,7 @@ import Instruments from "./cardView/Instruments";
 import Loading from "./Loading";
 import { useSearchParams } from "react-router-dom";
 
-export default function CardView({ data, loading }) {
-  const [subcatList, setSubcatList] = useState([]);
-
+export default function CardView({ data, loading, subcatList, cats }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -25,20 +23,6 @@ export default function CardView({ data, loading }) {
       window.removeEventListener("scroll", updateSidebarTop);
       window.removeEventListener("resize", updateSidebarTop);
     };
-  }, []);
-
-  useEffect(() => {
-    async function fetchSubcats() {
-      try {
-        const response = await axios.get("/api/Subcategory", {
-          withCredentials: true,
-        });
-        setSubcatList(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    fetchSubcats();
   }, []);
 
   if (loading || !data || subcatList.length === 0) return <Loading />;
@@ -103,7 +87,11 @@ export default function CardView({ data, loading }) {
     <div id="cardView">
       <Nav />
       <div id="testClassField">
-        <Sidebar onFilterChange={handleFilterChange} />
+        <Sidebar
+          onFilterChange={handleFilterChange}
+          cats={cats}
+          filters={Filters}
+        />
         <div className="card-container">
           <Instruments instruments={filteredInstruments} />
         </div>

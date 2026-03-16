@@ -9,11 +9,11 @@ function Option({ category, selectedCategory, onSelect }) {
       <input
         type="radio"
         name="category"
-        checked={selectedCategory === category.name}
-        onChange={() => onSelect(category.name)}
+        checked={selectedCategory === category}
+        onChange={() => onSelect(category)}
       />
       <span className="checkmark"></span>
-      {category.name.split(" ")[0]}
+      {category.split(" ")[0]}
     </label>
   );
 }
@@ -33,10 +33,14 @@ function Subcategory({ subcategory, selectedSubcategory, onSelect }) {
   );
 }
 
-function Category({ categories, onFilterChange }) {
+function Category({ categories, onFilterChange, filters }) {
   const [subcategories, setSubcategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(
+    filters?.category || null,
+  );
+  const [selectedSubcategory, setSelectedSubcategory] = useState(
+    filters?.subcategory || null,
+  );
 
   useEffect(() => {
     const fetchSubcategories = async () => {
@@ -57,18 +61,21 @@ function Category({ categories, onFilterChange }) {
     fetchSubcategories();
   }, [selectedCategory]);
 
+  useEffect(() => {
+    setSelectedCategory(filters?.category || null);
+    setSelectedSubcategory(filters?.subcategory || null);
+  }, [filters?.category, filters?.subcategory]);
+
   const handleCategorySelect = (name) => {
     setSelectedCategory(name);
     setSelectedSubcategory(null);
     onFilterChange("category", name);
-    onFilterChange("subcategory", null);
   };
 
   const handleCategoryAll = () => {
     setSelectedCategory(null);
     setSelectedSubcategory(null);
     onFilterChange("category", null);
-    onFilterChange("subcategory", null);
   };
 
   const handleSubcategorySelect = (name) => {
@@ -96,7 +103,7 @@ function Category({ categories, onFilterChange }) {
         </label>
         {categories.map((category) => (
           <Option
-            key={category.name}
+            key={category}
             category={category}
             selectedCategory={selectedCategory}
             onSelect={handleCategorySelect}
