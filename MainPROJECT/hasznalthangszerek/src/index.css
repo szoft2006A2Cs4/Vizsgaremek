@@ -306,7 +306,7 @@ button:hover > a {
 }
 
 #nav-spacing-loggedIn .middle:has(.inclicked) .input {
-  width: 30vw;
+  width: 35vw;
   min-width: none;
   height: 7vh;
   min-height: none;
@@ -746,20 +746,23 @@ button:hover > a {
   text-decoration: none;
 }
 
-.UserDropDown-Items:hover {
-  color: black;
+.UserDropDown-icons-cont:hover .UserDropDown-Items {
+  color: #e7bf6c;
   text-decoration: none;
   cursor: pointer;
 }
 
-.Logout:hover a {
-  color: #e7bf6c;
-}
-
-.Logout:hover img {
+#Logout:hover img {
   content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1771255781/logout_hover_lpacjr_ypxsux.svg");
 }
 
+#Upload:hover img {
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1773652529/upload_hover_cdibf3_wtnws1.svg");
+}
+
+#MyProfile:hover img {
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1773652529/person-standing_hover_ssdvpg_lxywnb.svg");
+}
 /*#endregion Avatar / Dropdown / Dropdown-elemek*/
 
 /*#region Drawer*/

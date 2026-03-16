@@ -36,12 +36,13 @@ export default function UserDropDown() {
         <Loading />
       ) : (
         <div className="UserDropDown">
-          <p className="UserDropDown-icons-cont">
+          <p className="UserDropDown-icons-cont" id="MyProfile">
             <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170213/person-standing_ssdvpg.svg" />
             <a className="UserDropDown-Items">Fiókom</a>
           </p>
           <p
-            className="UserDropDown-icons-cont Logout"
+            className="UserDropDown-icons-cont"
+            id="Logout"
             style={{ marginTop: "10px" }}
             onClick={handleLogout}
           >
@@ -50,6 +51,7 @@ export default function UserDropDown() {
           </p>
           <p
             className="UserDropDown-icons-cont"
+            id="Upload"
             style={{ marginTop: "10px" }}
             onClick={() => {
               window.location.href = "/upLoad";
