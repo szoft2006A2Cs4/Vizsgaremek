@@ -4,23 +4,12 @@ import axios from "../scripts/axios";
 import Sidebar from "./cardView/Sidebar";
 import Instruments from "./cardView/Instruments";
 import Loading from "./Loading";
-
-const INS_URL = "/api/Instrument";
+import { useSearchParams } from "react-router-dom";
 
 export default function CardView({ data, loading }) {
-  const [insList, setInsList] = useState([]);
   const [subcatList, setSubcatList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [filters, setFilters] = useState({
-    category: null,
-    subcategory: null,
-    price: null,
-    conditions: [],
-  });
 
-  const handleFilterChange = (filterType, value) => {
-    setFilters((prev) => ({ ...prev, [filterType]: value }));
-  };
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const nav = document.querySelector("nav");
@@ -39,21 +28,6 @@ export default function CardView({ data, loading }) {
   }, []);
 
   useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(INS_URL, { withCredentials: true });
-        setInsList(response.data);
-      } catch (err) {
-        console.log(err.response);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     async function fetchSubcats() {
       try {
         const response = await axios.get("/api/Subcategory", {
@@ -67,6 +41,30 @@ export default function CardView({ data, loading }) {
     fetchSubcats();
   }, []);
 
+  if (loading || !data || subcatList.length === 0) return <Loading />;
+
+  const Filters = {
+    category: searchParams.get("category"),
+    subcategory: searchParams.get("subcategory"),
+    price: searchParams.get("price"),
+    conditions: searchParams.get("conditions")?.split(",") || [],
+  };
+
+  const handleFilterChange = (filterType, value) => {
+    console.log("szuro valtozott:", filterType, value);
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+      if (filterType === "category") params.delete("subcategory");
+      if (value && (Array.isArray(value) ? value.length > 0 : true)) {
+        const formatValue = Array.isArray(value) ? value.join(",") : value;
+        params.set(filterType, formatValue);
+      } else {
+        params.delete(filterType);
+      }
+      return params;
+    });
+  };
+
   const priceRanges = {
     "0 - 50 000 Ft": [0, 50000],
     "50 001 - 150 000 Ft": [50001, 150000],
@@ -77,27 +75,32 @@ export default function CardView({ data, loading }) {
 
   const filteredInstruments = data.filter((ins) => {
     if (!ins) return false;
-    if (filters.category) {
+
+    if (Filters.category) {
       const subcat = subcatList.find((s) => s.name === ins.scName);
-      if (!subcat || subcat.cName !== filters.category) return false;
+      if (
+        !subcat ||
+        subcat.cName.toLowerCase() !== Filters.category.toLocaleLowerCase()
+      )
+        return false;
     }
-    if (filters.subcategory && ins.scName !== filters.subcategory) return false;
-    if (filters.price) {
-      const [min, max] = priceRanges[filters.price] ?? [0, Infinity];
+
+    if (Filters.subcategory && ins.scName !== Filters.subcategory) return false;
+
+    if (Filters.price) {
+      const [min, max] = priceRanges[Filters.price] ?? [0, Infinity];
       if (ins.cost < min || ins.cost > max) return false;
     }
-    if (filters.conditions.length > 0) {
-      if (!filters.conditions.includes(ins.condition?.toLowerCase()))
+
+    if (Filters.conditions.length > 0) {
+      if (!Filters.conditions.includes(ins.condition?.toLowerCase()))
         return false;
     }
     return true;
   });
 
-  if (loading) return null;
-
   return (
     <div id="cardView">
-      {isLoading && <Loading />}
       <Nav />
       <div id="testClassField">
         <Sidebar onFilterChange={handleFilterChange} />
