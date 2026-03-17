@@ -71,6 +71,18 @@ namespace HH_Api.Controllers
             else return NotFound("A megadott azonosítóval hangszer nem található!");
         }
 
+        [HttpGet("user{id}")]
+        public async Task<IActionResult> GetInstrumentByUser(int uid)
+        {
+            var instrument = await _context.Instruments
+                .Include(u => u.Seller)
+                .Include(sc => sc.SubCategory)
+                .ThenInclude(c => c!.Category)
+                .Where(i => i.UId == uid).ToListAsync();
+            if (instrument != null) return Ok(instrument);
+            else return NotFound("A megadott azonosítóval hangszer nem található!");
+        }
+        
         // POST: api/Instrument
         [Authorize(Policy = "Instrument.Create")]
         [HttpPost]
