@@ -1,22 +1,5 @@
 # Vizsgaremek
 
-
-Fejenkent: 11db hangszer legalabb 2db keppel 
-
+vinted szeru nincs kosar nincs vasarlas, kosar helyett kedveltek/erdekeltek vannak
 
 jelszavak: nev(elso nagybetu egyben) + 1 + !
-
-        users
-Czibi: Czibók Bence
-        Kovács János
-        Németh Béla
-        Kiss Imre
-        Para Zita
-
-
-Dodo: Simon Dominik
-      Nagy Péter
-      Horváth Ákos
-      Julian Xavier
-      Gipsz Jakab
-      
