@@ -3,8 +3,9 @@
     "",
     "\\HH_Api",
     "\\HH_Api\\HH_Api",
-    "\\HH_Api\\HH_Api\\Controllers"
+    "\\HH_Api\\HH_Api\\Controllers",
+    "\\HH_Api\\HH_Api\\DTOs"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
+  "SelectedNode": "\\HH_Api\\HH_Api\\Controllers\\ForYouController.cs",
   "PreviewInSolutionExplorer": false
 }
