@@ -13,13 +13,13 @@ import Loading from "./assets/Components/Loading";
 
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
-const catURL = "/api/Category";
+const scatURL = "/api/Subcategory";
 
 function App() {
   const [instruments, setInstruments] = useState([]);
-  const [scats, setCats] = useState([]);
+  const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [scats, setSCats] = useState([]);
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -28,7 +28,7 @@ function App() {
           withCredentials: true,
         });
 
-        const responseCats = await axios.get(catURL, {
+        const responseSCats = await axios.get(scatURL, {
           withCredentials: true,
         });
 
@@ -55,7 +55,10 @@ function App() {
           };
         });
 
-        setCats(responseCats.data);
+        const categories = new Set(responseSCats.data.map((c) => c.cName));
+
+        setSCats(responseSCats.data);
+        setCats(categories);
         setInstruments(insWithImgs);
       } catch (err) {
         console.log(err.response);
@@ -76,8 +79,9 @@ function App() {
             element={
               <Home
                 instruments={instruments}
-                scats={scats}
+                cats={cats}
                 isLoading={isLoading}
+                scats={scats}
               />
             }
           />
@@ -88,7 +92,14 @@ function App() {
           <Route path="/contactUs" element={<Contact />} />
           <Route
             path="/instruments"
-            element={<CardView data={instruments} loading={isLoading} />}
+            element={
+              <CardView
+                data={instruments}
+                loading={isLoading}
+                subcatList={scats}
+                cats={cats}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

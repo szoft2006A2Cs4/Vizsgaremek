@@ -1,7 +1,15 @@
 import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Drawer_ = ({ open, setOpen, sCatList = [] }) => {
+const Drawer_ = ({ open, setOpen, sCatList }) => {
+  const navigate = useNavigate();
+
+  const navigateTo = (e) => {
+    navigate(`\instruments?category=${e.cName}&subcategory=${e.name}`, {
+      replace: true,
+    });
+  };
+
   return (
     <Drawer.Root
       open={open}
@@ -27,7 +35,7 @@ const Drawer_ = ({ open, setOpen, sCatList = [] }) => {
             <Drawer.Body className="Drawer-body">
               {sCatList.map((e) => (
                 <div key={e.id}>
-                  <a className="Drawer-links">
+                  <a className="Drawer-links" onClick={() => navigateTo(e)}>
                     <h3>{e.name}</h3>
                   </a>
                 </div>

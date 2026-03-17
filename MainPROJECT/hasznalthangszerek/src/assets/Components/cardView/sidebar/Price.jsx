@@ -1,6 +1,6 @@
 import React from "react";
 
-function Price({ onFilterChange }) {
+function Price({ onFilterChange, filters }) {
   const handleChange = (e) => {
     const value = e.target.value === "all" ? null : e.target.value;
     onFilterChange("price", value);
@@ -23,7 +23,9 @@ function Price({ onFilterChange }) {
               type="radio"
               name="price"
               value={value}
-              defaultChecked={value === "all"}
+              checked={
+                value === "all" ? !filters.price : filters.price === value
+              }
               onChange={handleChange}
             />
             <span className="checkmark"></span>

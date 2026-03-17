@@ -5,35 +5,14 @@ import AuthContext from "../scripts/AuthProvider";
 import UserDropDown from "./UserDropDown";
 import Avatar from "./Avatar";
 import Drawer_ from "./CatDrawer";
-import axios from "../scripts/axios";
 
-export default function Nav() {
-  const { auth, loading } = useContext(AuthContext);
+export default function Nav({ cats, scats, loading }) {
+  const { auth } = useContext(AuthContext);
   const [openProf, setOpenProf] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const categoryURL = "api/Category";
-  const [isLoading, setIsLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
-
-  const handleGetCat = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(categoryURL, {
-        withCredentials: true,
-      });
-      setCategories(response.data);
-    } catch (err) {
-      console.log(err.response);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleDrawer = () => {
     setIsDrawerOpen(true);
-    if (categories.length === 0) {
-      handleGetCat();
-    }
   };
 
   if (loading) return null;
@@ -101,8 +80,9 @@ export default function Nav() {
       <Drawer_
         open={isDrawerOpen}
         setOpen={setIsDrawerOpen}
-        catList={categories}
-        //isLoading={isLoading}
+        catList={cats}
+        scats={scats}
+        loading={loading}
       />
     </nav>
   );
