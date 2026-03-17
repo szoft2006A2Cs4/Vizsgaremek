@@ -71,7 +71,7 @@ namespace HH_Api.Controllers
             else return NotFound("A megadott azonosítóval hangszer nem található!");
         }
 
-        [HttpGet("user{id}")]
+        [HttpGet("user/{id}")]
         public async Task<IActionResult> GetInstrumentByUser(int uid)
         {
             var instrument = await _context.Instruments
