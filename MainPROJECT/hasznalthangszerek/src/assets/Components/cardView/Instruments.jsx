@@ -3,12 +3,7 @@ import React from "react";
 function Card({ instrument }) {
   return (
     <section className="card">
-      <img
-        src={instrument.imageUrls[0]}
-        alt=""
-        className="card-img"
-        //    hangszer képe ide
-      />
+      <img src={instrument.imageUrls[0]} alt="" className="card-img" />
       <div className="card-details">
         <h3 className="card-title">{instrument.name}</h3>
         <section className="crad-price">

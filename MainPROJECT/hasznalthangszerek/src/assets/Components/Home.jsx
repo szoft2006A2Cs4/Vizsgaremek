@@ -17,13 +17,13 @@ function Home({ instruments, cats, scats, isLoading }) {
     <div>
       <Nav />
       <CatField cats={cats} />
-      <PseMain data={instruments} />
+      <PseMain ins={instruments} />
     </div>
   ) : (
     <div>
       <Nav cats={cats} scats={scats} loading={isLoading} />
       <Introduction />
-      <PseMain data={instruments} isLoading={isLoading} />
+      <PseMain ins={instruments} isLoading={isLoading} />
       <Drawer />
     </div>
   );

@@ -7,7 +7,7 @@ export default function catCard({ data }) {
     <div
       className="cat-card"
       onClick={() =>
-        navigte(`\instruments?category=${data.Name + "hangszerek"}`, {
+        navigte(`\instruments?category=${data.Name + " hangszerek"}`, {
           replace: true,
         })
       }

@@ -2,14 +2,14 @@ import Footer from "./Footer";
 import ArticleAds from "./ArticleAds";
 import SectionAds from "./SectionAds";
 
-export default function PseMain({ data, isLoading }) {
+export default function PseMain({ ins, isLoading }) {
   return (
     <main>
       <article style={{ overflowY: "none" }}>
-        <ArticleAds data={data} isLoading={isLoading} />
+        <ArticleAds data={ins} isLoading={isLoading} />
       </article>
       <section>
-        <SectionAds />
+        <SectionAds ins={ins} />
       </section>
       <Footer />
     </main>
