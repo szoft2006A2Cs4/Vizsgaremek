@@ -10,6 +10,7 @@ import CardView from "./assets/Components/CardView";
 import { useEffect, useState } from "react";
 import axios from "./assets/scripts/axios";
 import Loading from "./assets/Components/Loading";
+import ForgottenPassword from "./assets/Components/forgottenPassword";
 
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
@@ -101,6 +102,7 @@ function App() {
               />
             }
           />
+          <Route path="/forgotPassword" element={<ForgottenPassword/>}/>
         </Routes>
       </BrowserRouter>
     </>

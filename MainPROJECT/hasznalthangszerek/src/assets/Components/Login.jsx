@@ -51,9 +51,6 @@ const Login = () => {
       return;
     }
 
-    // emailInput.setAttribute("disabled", true);
-    // pwdInput.setAttribute("disabled", true);
-    // submitButton.setAttribute("disabled", true);
     setIsLoading(true);
 
     try {
@@ -183,8 +180,10 @@ const Login = () => {
               <button type="submit" className="uni-button">
                 Bejelentkezés
               </button>
+                  <Link to="/forgotPassword">Elfelejtett jelszó</Link>
             </form>
           </center>
+          
           <p>
             Új itt? <Link to="/register">Regisztráció</Link>
           </p>
