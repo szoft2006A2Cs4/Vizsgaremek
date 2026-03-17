@@ -26,7 +26,7 @@ namespace HH_Api.Controllers
             public async Task<IActionResult> Login(LoginData loginData)
             {
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginData.Email);
-                if (user == null || !PasswordHandler.VerifyPassword(loginData.Password, user.Password)) return Unauthorized();
+                if (user == null || string.IsNullOrEmpty(user.Password) ||!PasswordHandler.VerifyPassword(loginData.Password, user.Password)) return Unauthorized();
                 var token = _tokenManager.GenerateToken(user);
                 user.Token = token;
                 await _context.SaveChangesAsync();

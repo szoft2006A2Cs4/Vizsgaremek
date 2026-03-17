@@ -6,6 +6,6 @@
     "\\HH_Api\\HH_Api\\Controllers",
     "\\HH_Api\\HH_Api\\DTOs"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api\\Controllers\\ForYouController.cs",
+  "SelectedNode": "\\HH_Api\\HH_Api\\appsettings.Development.json",
   "PreviewInSolutionExplorer": false
 }

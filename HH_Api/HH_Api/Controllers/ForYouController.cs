@@ -22,6 +22,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/ForYou
+        [Authorize(Policy = "ForYou.Read")]
         [HttpGet]
         public async Task<IActionResult> GetForYouList()
         {
@@ -48,7 +49,7 @@ namespace HH_Api.Controllers
         }
 
         // GET: api/ForYou/5
-        [AllowAnonymous]
+        [Authorize(Policy = "ForYou.Read")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetForYouListByUser(int id)
         {
@@ -78,7 +79,7 @@ namespace HH_Api.Controllers
         }
 
         // POST: api/ForYou
-        [AllowAnonymous]
+        [Authorize(Policy = "ForYou.Create")]
         [HttpPost]
         public async Task<IActionResult> CreateForYou([FromBody] ForYouCreateDTO dto)
         {
