@@ -48,6 +48,18 @@ namespace HH_Api.Controllers
             return Ok("Adatok sikeres frissítése!");
         }
 
+        [Authorize(Policy = "User.Patch")]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> ResetPassword(int id, [FromBody] string pswd)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null) return NotFound("Ilyen azonosítóval felhasználó nem található!");
+            if (string.IsNullOrEmpty(pswd)) return BadRequest("Hibás adatok!");
+            user.Password = PasswordHandler.HashPassword(pswd);
+            await _context.SaveChangesAsync();
+            return Ok("A jelszó frissítése sikeres!");
+        }
+
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] User user)

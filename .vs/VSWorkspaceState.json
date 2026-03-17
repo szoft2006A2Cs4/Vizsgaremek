@@ -3,9 +3,8 @@
     "",
     "\\HH_Api",
     "\\HH_Api\\HH_Api",
-    "\\HH_Api\\HH_Api\\Controllers",
-    "\\HH_Api\\HH_Api\\DTOs"
+    "\\HH_Api\\HH_Api\\Controllers"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api\\appsettings.Development.json",
+  "SelectedNode": "\\HH_Api\\HH_Api.sln",
   "PreviewInSolutionExplorer": false
 }

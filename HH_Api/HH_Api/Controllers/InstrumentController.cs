@@ -93,9 +93,9 @@ namespace HH_Api.Controllers
             return Created($"{Request.GetDisplayUrl()}/{instrument.Id}", instrument);
         }
 
-
+        // PUT: api/Instrument
         [Authorize(Policy = "Instrument.Update")]
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
         {
             var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
@@ -109,12 +109,12 @@ namespace HH_Api.Controllers
         }
 
         [Authorize(Policy = "Instrument.Patch")]
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> PatchImageCount(int id, [FromBody] int count)
         {
             var ins = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
 
-            if (ins == null) return NotFound("Ilyen azonosítóval felhasználó nem található.");
+            if (ins == null) return NotFound("Ilyen azonosítóval hangszer nem található.");
 
             ins.ImageCount = count;
             await _context.SaveChangesAsync();
