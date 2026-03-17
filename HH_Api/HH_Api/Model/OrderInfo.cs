@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using HH_Api.DTOs;
+using System.ComponentModel.DataAnnotations.Schema;
 using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace HH_Api.Model
@@ -9,24 +10,28 @@ namespace HH_Api.Model
         [Column("oid")]
         public int Id { get; set; }
 
+        [Column("status")]
+        public string? status { get; set; }
+
         [Column("dateOfPurchase")]
         public DateTime DateOfPurchase { get; set; }
 
-        [Column("deliveryCity")]
-        public string? DeliveryCity { get; set; }
+        [Column("dateOfShipArrive")]
+        public DateTime DateOfShipArrive { get; set; }
 
-        [Column("deliveryStreet")]
-        public string? DeliveryStreet { get; set; }
+        [Column("dateOfShipStart")]
+        public DateTime DateOfShipStart { get; set; }
 
-        [Column("deliveryPC")]
-        public int DeliveryPC { get; set; }
+        [Column("cid")]
+        public int CId { get; set; }
+
+        [ForeignKey(nameof(CId))]
+        public UserDTO? Customer { get; set; }
 
         [Column("iid")]
         public int IId { get; set; }
 
-
-
         [ForeignKey(nameof(IId))]
-        public Instrument? Instrument { get; set; }
+        public InstrumentDTO? Instrument { get; set; }
     }
 }

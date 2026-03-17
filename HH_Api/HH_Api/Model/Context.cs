@@ -10,6 +10,7 @@ namespace HH_Api.Model
         public DbSet<Category> Categories { get; set; }
         public DbSet<OrderInfo> OrderInfos { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
+        public DbSet<ForYou> ForYous { get; set; }
 
         public Context(DbContextOptions options) : base(options) { }
     }

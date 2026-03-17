@@ -29,15 +29,16 @@ namespace HH_Api.Controllers
         // GET: api/OrderInfo/5
         [Authorize(Policy = "OrderInfo.Read")]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetOrderInfo(int id)
+        public async Task<IActionResult> GetOrderInfoListByInstrument(int id)
         {
-            var instrument = await _context.OrderInfos
+            var orderInfo = await _context.OrderInfos
                 .Include(i => i.Instrument)
-                .ThenInclude(u => u!.Seller)
+                .Include(s => s.Instrument!.Seller)
+                .Include(cu => cu.Customer)
                 .Include(sc => sc.Instrument!.SubCategory)
                 .ThenInclude(c => c!.Category)
-                .FirstOrDefaultAsync(o => o.Id == id);
-            if (instrument != null) return Ok(instrument);
+                .FirstOrDefaultAsync(o => o.IId == id);
+            if (orderInfo != null) return Ok(orderInfo);
             else return NotFound();
         }
         
