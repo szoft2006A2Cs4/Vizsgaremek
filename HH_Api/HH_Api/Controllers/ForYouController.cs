@@ -57,7 +57,7 @@ namespace HH_Api.Controllers
                 .Include(u => u.User)
                 .Include(c => c.Category)
                 .Where(x => x.UId == id)
-                .Select(y => new ForYouDTO
+                .Select(y => y.User == null ? null : new ForYouDTO
                 {
                     Id = y.Id,
                     CName = y.CName,
