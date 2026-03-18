@@ -677,22 +677,23 @@ button:hover > a {
 }
 
 #forgot-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  justify-items: center;
   gap: 1.65rem;
   justify-content: center;
-  justify-items: center;
   background-color: #ead7ce;
   width: 35%;
-  height: 50%;
-  border-radius: 8%;
+  height: 40%;
+  border-radius: 6%;
 }
 
 #forgot-styled-wrapper {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
+  align-content: center;
 }
+
 #forgot-label {
   flex-shrink: 0;
   height: 50px;
@@ -717,7 +718,6 @@ button:hover > a {
   padding: 1em;
   font: inherit;
   border-radius: 0 10px 10px 0;
-  border-left: none;
   border: 2px solid var(--input-color);
   background-color: var(--input-color);
   transition: 150ms ease;
@@ -730,6 +730,12 @@ button:hover > a {
 #forgot-styled-input:focus {
   outline: none;
   border-color: var(--text-color);
+}
+
+#forgot-btn-cont {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
 }
 /*#endregion Forgot password oldal  */
 
