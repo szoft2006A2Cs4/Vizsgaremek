@@ -689,6 +689,11 @@ button:hover > a {
 }
 
 #forgot-styled-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#forgot-label {
   flex-shrink: 0;
   height: 50px;
   width: 50px;
@@ -718,6 +723,14 @@ button:hover > a {
   transition: 150ms ease;
 }
 
+#forgot-styled-input:hover {
+  border-color: var(--accent-color);
+}
+
+#forgot-styled-input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
 /*#endregion Forgot password oldal  */
 
 /*#region Loading animáció*/

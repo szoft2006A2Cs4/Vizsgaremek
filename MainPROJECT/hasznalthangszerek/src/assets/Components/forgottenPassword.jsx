@@ -13,7 +13,7 @@ export default function ForgottenPassword() {
             elfelejtette a jelszavát!
           </h4>
           <div id="forgot-styled-wrapper">
-            <label htmlFor="email-input" className="register-label">
+            <label htmlFor="email-input" className="forgot-label">
               <span>@</span>
             </label>
             <input
