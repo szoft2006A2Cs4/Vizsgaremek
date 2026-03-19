@@ -1149,8 +1149,11 @@ button:hover > a {
 
 .card-price {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background-color: #d8d3cdb9;
+  border-radius: 15px;
 }
 
 .no-results {
@@ -1279,6 +1282,138 @@ button:hover > a {
 }
 
 /*#endregion Általános kártya -elemi beállítások / összesített nézet / szűrők*/
+
+/*#region Fiókom adatai oldal*/
+
+#profile-div {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 80%;
+  width: 90%;
+  margin: 5% auto;
+  border-width: 4px;
+  border-radius: 10px;
+  background-color: var(--input-color);
+  padding: 1rem 0;
+}
+
+#welcome-field {
+  border-right: solid var(--text-color) 2px;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
+}
+
+#detail-field {
+  grid-column: 2;
+}
+
+#flexstart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#flexend {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-button {
+  background-color: red;
+}
+
+.delete-button:hover {
+  background-color: red;
+}
+
+.profile-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: wheat;
+  padding: 0;
+}
+
+.profile-tabs div {
+  text-align: center;
+  background-color: wheat;
+  padding: 15px 5px;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 150ms ease-in;
+}
+
+.active-tab {
+  background-color: white;
+  border-bottom: solid var(--accent-color) 5px;
+}
+
+.edit-response-popup {
+  background-color: #fff;
+  z-index: 2;
+  text-align: center;
+  width: 20%;
+  border: none;
+  box-shadow: 1px 1px 15px #bcdafc;
+}
+.edit-response-popup button {
+  border: none;
+  color: white;
+}
+
+#general-details {
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-rows: min-content min-content min-content min-content min-content;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#security-details {
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.profile-input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  margin: auto 7rem auto 0;
+  font: inherit;
+  border-left: none;
+  border: 2px solid var(--text-color);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  justify-content: center;
+}
+
+.profile-label {
+  height: 50px;
+  width: 50px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-left: 7rem;
+}
+
+.confirm-button {
+  width: 100%;
+  align-items: center;
+}
+
+/*#endregion Fiókom adatai oldal*/
 
 /*#region Betűtípus beállítás */
 

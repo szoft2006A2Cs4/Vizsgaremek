@@ -33,6 +33,13 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
 
 const ArticleAds = ({ data, isLoading }) => {
   if (isLoading || !data || !Array.isArray(data)) return null;
+
+  for (var i of data) {
+    if (i.description.length > 55) {
+      i.description = i.description.substring(0, 56) + " . . .";
+    }
+  }
+
   return (
     <Box width="100%" mx="auto" px={{ base: 4, md: 8 }} py="0" mt="0">
       <Heading
@@ -110,7 +117,7 @@ const ArticleAds = ({ data, isLoading }) => {
                         fontSize="3vw"
                         mt="1"
                       >
-                        {item.cost}
+                        {item.cost} HUF
                       </Text>
                     </Box>
 
@@ -254,7 +261,7 @@ const ArticleAds = ({ data, isLoading }) => {
                 {item.description}
               </Card.Description>
               <Text fontWeight="medium" fontSize="3vw" mt="1">
-                {item.cost}
+                {item.cost} HUF
               </Text>
             </Card.Body>
           </Card.Root>

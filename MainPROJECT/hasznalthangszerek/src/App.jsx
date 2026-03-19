@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "./assets/scripts/axios";
 import Loading from "./assets/Components/Loading";
 import ForgottenPassword from "./assets/Components/forgottenPassword";
+import Profile from "./assets/Components/Profile";
 
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
@@ -102,7 +103,8 @@ function App() {
               />
             }
           />
-          <Route path="/forgotPassword" element={<ForgottenPassword/>}/>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/forgotPassword" element={<ForgottenPassword />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -6,8 +6,8 @@ function Card({ instrument }) {
       <img src={instrument.imageUrls[0]} alt="" className="card-img" />
       <div className="card-details">
         <h3 className="card-title">{instrument.name}</h3>
-        <section className="crad-price">
-          <div className="price">{instrument.cost}</div>
+        <section className="card-price">
+          <div className="price">{instrument.cost} HUF</div>
           <div className="details">
             <button className="uni-button">Részletek</button>
           </div>

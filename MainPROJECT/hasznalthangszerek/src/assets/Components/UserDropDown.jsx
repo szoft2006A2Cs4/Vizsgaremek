@@ -36,10 +36,29 @@ export default function UserDropDown() {
         <Loading />
       ) : (
         <div className="UserDropDown">
-          <p className="UserDropDown-icons-cont" id="MyProfile">
+          <p
+            className="UserDropDown-icons-cont"
+            id="MyProfile"
+            onClick={() => {
+              handlePageRoutes("/profile");
+            }}
+          >
             <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170213/person-standing_ssdvpg.svg" />
             <a className="UserDropDown-Items">Fiókom</a>
           </p>
+
+          <p
+            className="UserDropDown-icons-cont"
+            id="Upload"
+            style={{ marginTop: "10px" }}
+            onClick={() => {
+              handlePageRoutes("/upLoad");
+            }}
+          >
+            <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771923483/upload_cdibf3.svg" />
+            <a className="UserDropDown-Items">Új hirdetés</a>
+          </p>
+
           <p
             className="UserDropDown-icons-cont"
             id="Logout"
@@ -48,17 +67,6 @@ export default function UserDropDown() {
           >
             <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771021364/logout_lpacjr.svg" />
             <a className="UserDropDown-Items">Kilépés</a>
-          </p>
-          <p
-            className="UserDropDown-icons-cont"
-            id="Upload"
-            style={{ marginTop: "10px" }}
-            onClick={() => {
-              window.location.href = "/upLoad";
-            }}
-          >
-            <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771923483/upload_cdibf3.svg" />
-            <a className="UserDropDown-Items">Új hirdetés</a>
           </p>
         </div>
       )}
