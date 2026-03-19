@@ -684,7 +684,7 @@ button:hover > a {
   background-color: #ead7ce;
   width: 35%;
   height: 40%;
-  border-radius: 6%;
+  border-radius: 15px;
 }
 
 #forgot-styled-wrapper {
