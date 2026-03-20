@@ -68,7 +68,7 @@ export default function Nav({ cats, scats, loading }) {
 
           <img
             style={{ width: "3rem" }}
-            src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1773508709/shopping-cart_ueccam.svg"
+            src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1773988749/heart_vaax00.svg"
           />
 
           <button>
