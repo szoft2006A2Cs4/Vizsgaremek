@@ -17,6 +17,7 @@ import {
   FileUpload,
   Icon,
   DataList,
+  CloseButton,
 } from "@chakra-ui/react";
 import { InfoTip } from "@/components/ui/toggle-tip";
 import { LuUpload } from "react-icons/lu";
@@ -152,6 +153,7 @@ export default function UpLoad() {
   const [ins_IsPrem, setIns_IsPrem] = useState("Nem");
 
   const [isReady, setIsReady] = useState(false);
+  const [isFilesReady, setIsFilesReady] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const [isUpLoadSuccess, setIsUpLoadSuccess] = useState(false);
@@ -219,6 +221,11 @@ export default function UpLoad() {
     return imgCount;
   };
 
+  useEffect(() => {
+    setIsFilesReady(upLoadedFiles != []);
+  }, [upLoadedFiles]);
+
+  console.log(isFilesReady);
   const handleFinalSubmit = async () => {
     if (!userData) return console.log("felh. adatok hianyoznak");
     setIsLoading(true);
@@ -509,6 +516,7 @@ export default function UpLoad() {
                                 <b>Gyorsabb eladás:</b> A nagyobb figyelem több
                                 érdeklődőt és gyorsabb üzletkötést eredményez.
                               </li>
+                              <li>A kiemelés díja 1000Ft/Hét</li>
                             </ul>
                           </Dialog.Body>
                         </Dialog.Content>
@@ -578,14 +586,30 @@ export default function UpLoad() {
                       </FileUpload.DropzoneContent>
                     </FileUpload.Dropzone>
                     <FileUpload.List alignItems="center" />
+                    <FileUpload.ClearTrigger asChild>
+                      <CloseButton
+                        me="-1"
+                        size="xs"
+                        variant="plain"
+                        focusVisibleRing="inside"
+                        focusRingWidth="2px"
+                        pointerEvents="auto"
+                        onClick={() => {
+                          setUpLoadedFiles([]);
+                        }}
+                      >
+                        Fájlok törlése
+                      </CloseButton>
+                    </FileUpload.ClearTrigger>
                   </FileUpload.Root>
                 </Card.Body>
                 <Card.Footer justifyContent="flex-end">
                   <Button
                     className="uni-button"
-                    // disabled={upLoadFiles.length}
+                    disabled={!isFilesReady}
                     onClick={() => {
                       setIsLastAct(true);
+                      console.log(isFilesReady);
                     }}
                   >
                     Áttekintés
@@ -605,32 +629,50 @@ export default function UpLoad() {
               height="55vh"
             >
               <Card.Body>
-                <DataList.Root orientation="horizontal" divideY="1px" maxW="md">
+                <DataList.Root
+                  orientation="horizontal"
+                  maxW="md"
+                  className="UpLoad-checkOut-field"
+                >
                   <DataList.Item pt="4">
                     <DataList.ItemLabel>Név</DataList.ItemLabel>
                     <DataList.ItemValue>{insName}</DataList.ItemValue>
                   </DataList.Item>
 
-                  <DataList.Item>
+                  <DataList.Item pt="4">
                     <DataList.ItemLabel>Kategória</DataList.ItemLabel>
                     <DataList.ItemValue>{selectedCat}</DataList.ItemValue>
                   </DataList.Item>
 
-                  <DataList.Item>
+                  <DataList.Item pt="4">
                     <DataList.ItemLabel>Alkategória</DataList.ItemLabel>
                     <DataList.ItemValue>{ins_Scat}</DataList.ItemValue>
+                  </DataList.Item>
 
-                    <DataList.ItemLabel></DataList.ItemLabel>
-                    <DataList.ItemValue></DataList.ItemValue>
+                  <DataList.Item pt="4">
+                    <DataList.ItemLabel>Ár</DataList.ItemLabel>
+                    <DataList.ItemValue>{ins_Price}</DataList.ItemValue>
+                  </DataList.Item>
 
+                  <DataList.Item pt="4">
                     <DataList.ItemLabel>Állapot</DataList.ItemLabel>
                     <DataList.ItemValue>{ins_Condition}</DataList.ItemValue>
+                  </DataList.Item>
 
+                  <DataList.Item pt="4">
                     <DataList.ItemLabel>Prémium</DataList.ItemLabel>
                     <DataList.ItemValue>
                       {ins_IsPrem ? "Igen" : "Nem"}
                     </DataList.ItemValue>
                   </DataList.Item>
+                  {ins_IsPrem && (
+                    <DataList.Item pt="4">
+                      <DataList.ItemLabel>Költség</DataList.ItemLabel>
+                      <DataList.ItemValue>
+                        {ins_IsPrem ? 1000 + "Ft" : 0 + "Ft"}
+                      </DataList.ItemValue>
+                    </DataList.Item>
+                  )}
                 </DataList.Root>
               </Card.Body>
               <Card.Footer justifyContent="flex-end">

@@ -747,7 +747,7 @@ button:hover > a {
   background-color: white;
   opacity: 0.7;
   position: fixed;
-  z-index: 30;
+  z-index: 900;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -983,6 +983,20 @@ button:hover > a {
 
 .UpLoad-dialList {
   padding-top: 0.5rem;
+}
+
+.UpLoad-checkOut-field > div {
+  border-bottom: solid 1px transparent;
+  border-image: linear-gradient(
+    27deg,
+    rgba(112, 112, 112, 1) 10%,
+    rgba(209, 209, 209, 1) 100%
+  );
+  border-image-slice: 1;
+}
+
+.UpLoad-checkOut-field:last-child {
+  border: 0;
 }
 
 /*#endregion UpLoad oldal és elemei*/
