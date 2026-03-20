@@ -16,6 +16,7 @@ import {
   Box,
   FileUpload,
   Icon,
+  DataList,
 } from "@chakra-ui/react";
 import { InfoTip } from "@/components/ui/toggle-tip";
 import { LuUpload } from "react-icons/lu";
@@ -603,7 +604,35 @@ export default function UpLoad() {
               width="50vw"
               height="55vh"
             >
-              <Card.Body></Card.Body>
+              <Card.Body>
+                <DataList.Root orientation="horizontal" divideY="1px" maxW="md">
+                  <DataList.Item pt="4">
+                    <DataList.ItemLabel>Név</DataList.ItemLabel>
+                    <DataList.ItemValue>{insName}</DataList.ItemValue>
+                  </DataList.Item>
+
+                  <DataList.Item>
+                    <DataList.ItemLabel>Kategória</DataList.ItemLabel>
+                    <DataList.ItemValue>{selectedCat}</DataList.ItemValue>
+                  </DataList.Item>
+
+                  <DataList.Item>
+                    <DataList.ItemLabel>Alkategória</DataList.ItemLabel>
+                    <DataList.ItemValue>{ins_Scat}</DataList.ItemValue>
+
+                    <DataList.ItemLabel></DataList.ItemLabel>
+                    <DataList.ItemValue></DataList.ItemValue>
+
+                    <DataList.ItemLabel>Állapot</DataList.ItemLabel>
+                    <DataList.ItemValue>{ins_Condition}</DataList.ItemValue>
+
+                    <DataList.ItemLabel>Prémium</DataList.ItemLabel>
+                    <DataList.ItemValue>
+                      {ins_IsPrem ? "Igen" : "Nem"}
+                    </DataList.ItemValue>
+                  </DataList.Item>
+                </DataList.Root>
+              </Card.Body>
               <Card.Footer justifyContent="flex-end">
                 <Button
                   className="uni-button"
