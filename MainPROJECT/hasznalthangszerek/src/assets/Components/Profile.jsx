@@ -8,9 +8,8 @@ import ProfileGeneral from "./profile/ProfileGeneral";
 import ProfileSecurity from "./profile/ProfileSecurity";
 import ProfileUploads from "./profile/ProfileUploads";
 import { useNavigate } from "react-router-dom";
-import { HttpStatusCode } from "axios";
 
-const Profile = () => {
+const Profile = ({ mainLoading }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
@@ -89,13 +88,16 @@ const Profile = () => {
     }
   }
 
+  if (isLoading || mainLoading) {
+    return <Loading />;
+  }
+
   if (user === null) {
     return null;
   }
 
   return (
     <div>
-      {<Loading /> && isLoading}
       <Nav />
       <div id="profile-div">
         <div id="welcome-field">
@@ -110,10 +112,12 @@ const Profile = () => {
             <h2>Üdvözöljük, {user.name.split(" ")[1]} !</h2>
             <div>
               <RatingGroup.Root
+                allowHalf
                 readOnly
                 count={5}
                 defaultValue={user.review}
                 size="md"
+                colorPalette="yellow"
               >
                 <RatingGroup.HiddenInput />
                 <RatingGroup.Control />

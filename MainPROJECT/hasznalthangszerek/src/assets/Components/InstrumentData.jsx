@@ -116,7 +116,7 @@ const InstrumentData = ({ instrument }) => {
                 </DataList.ItemValue>
               </DataList.Item>
             </DataList.Root>
-            <div className="gmap-field">
+            <div className="map-field">
               <SimpleMap
                 postalCode={instrument.seller.postalCode}
                 city={instrument.seller.city}

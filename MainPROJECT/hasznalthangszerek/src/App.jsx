@@ -103,7 +103,10 @@ function App() {
               />
             }
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={<Profile mainLoading={isLoading} />}
+          />
           <Route path="/forgotPassword" element={<ForgottenPassword />} />
         </Routes>
       </BrowserRouter>

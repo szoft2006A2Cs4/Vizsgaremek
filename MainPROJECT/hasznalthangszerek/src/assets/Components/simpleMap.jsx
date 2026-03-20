@@ -39,21 +39,23 @@ function SimpleMap({ postalCode, city }) {
   if (!coords) return <p>Helyszín keresése...</p>;
 
   return (
-    <MapContainer
-      center={[coords.lat, coords.lng]}
-      zoom={13}
-      style={{ width: "100%", height: "400px" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      />
-      <Marker position={[coords.lat, coords.lng]}>
-        <Popup>
-          {city}, {postalCode}
-        </Popup>
-      </Marker>
-    </MapContainer>
+    <div style={{ borderRadius: "10px", overflow: "hidden", height: "400px" }}>
+      <MapContainer
+        center={[coords.lat, coords.lng]}
+        zoom={13}
+        style={{ width: "100%", height: "400px" }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        />
+        <Marker position={[coords.lat, coords.lng]}>
+          <Popup>
+            {city}, {postalCode}
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 }
 

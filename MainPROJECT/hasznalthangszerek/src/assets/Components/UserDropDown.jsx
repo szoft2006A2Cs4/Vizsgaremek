@@ -10,24 +10,25 @@ export default function UserDropDown() {
   const { setAuth } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
 
+  let navigate = useNavigate();
+
+  const handlePageRoutes = (route) => {
+    navigate(route, { replace: true });
+  };
+
   const handleLogout = async () => {
     setIsLoading(true);
     try {
       const response = await axios.delete(LOGOUT_URL, {
         withCredentials: true,
       });
+      handlePageRoutes("/");
     } catch (err) {
       console.log(err.response);
     } finally {
       setAuth({});
       setIsLoading(false);
     }
-  };
-
-  let navigate = useNavigate();
-
-  const handlePageRoutes = (route) => {
-    navigate(route);
   };
 
   return (

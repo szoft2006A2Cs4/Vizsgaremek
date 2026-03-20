@@ -1310,6 +1310,10 @@ button:hover > a {
   border-color: var(--base-color);
 }
 
+.card-button-link {
+  color: white;
+}
+
 /*#endregion Általános kártya -elemi beállítások / összesített nézet / szűrők*/
 
 /*#region Fiókom adatai oldal*/
@@ -1322,7 +1326,12 @@ button:hover > a {
   margin: 5% auto;
   border-width: 4px;
   border-radius: 10px;
-  background-color: var(--input-color);
+  background-color: #fff8ec;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 248, 236, 1) 0%,
+    rgba(245, 222, 179, 1) 60%
+  );
   padding: 1rem 0;
 }
 
@@ -1363,13 +1372,13 @@ button:hover > a {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: wheat;
+  background-color: transparent;
   padding: 0;
 }
 
 .profile-tabs div {
   text-align: center;
-  background-color: wheat;
+  background-color: transparent;
   padding: 15px 5px;
   font-weight: 500;
   font-size: 18px;
@@ -1454,6 +1463,7 @@ button:hover > a {
     rgb(119, 98, 92) 100%
   );
 }
+
 #image-field {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -1493,7 +1503,9 @@ button:hover > a {
 
 #datalist-field {
   background-color: var(--base-color);
-  padding-top: 4rem;
+  padding-top: 4.5rem;
+  border-radius: 10px;
+  margin: 0 2rem 2rem 2rem;
 }
 
 .datalist-item {
@@ -1506,6 +1518,13 @@ button:hover > a {
 #detail-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
+}
+
+.map-field {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0 2rem 2rem 2rem;
 }
 
 /*#endregion Egy kiválasztott hangszert megjelenítő oldal beállításai*/

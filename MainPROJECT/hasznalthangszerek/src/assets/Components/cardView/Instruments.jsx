@@ -11,7 +11,10 @@ function Card({ instrument }) {
           <div className="price">{instrument.cost} HUF</div>
           <div className="details">
             <button className="uni-button">
-              <Link to={`/instruments?ins=${instrument.id}`} color="white">
+              <Link
+                to={`/instruments?ins=${instrument.id}`}
+                className="card-button-link"
+              >
                 Részletek
               </Link>
             </button>
