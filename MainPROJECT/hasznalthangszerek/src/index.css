@@ -1444,6 +1444,72 @@ button:hover > a {
 
 /*#endregion Fiókom adatai oldal*/
 
+/*#region Egy kiválasztott hangszert megjelenítő oldal beállításai*/
+
+#data-field {
+  background: #c9a9a1;
+  background: linear-gradient(
+    114deg,
+    rgb(201, 169, 161) 15%,
+    rgb(119, 98, 92) 100%
+  );
+}
+#image-field {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+#seller-card {
+  margin: auto;
+  width: 32em;
+  height: 35em;
+}
+
+#seller-details {
+  font-size: 46px;
+}
+
+#card-price {
+  margin: 5rem auto;
+}
+
+#price {
+  font-size: 38px;
+}
+
+#seller {
+  font-size: 24px;
+}
+
+#description {
+  font-size: 24px;
+  text-align: justify;
+  margin: 4rem 15rem 4rem 15rem;
+  color: var(--text-color);
+  background-color: var(--base-color);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+#datalist-field {
+  background-color: var(--base-color);
+  padding-top: 4rem;
+}
+
+.datalist-item {
+  padding: 1rem;
+  width: 20vw;
+  font-size: 20px;
+  text-align: center;
+}
+
+#detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+/*#endregion Egy kiválasztott hangszert megjelenítő oldal beállításai*/
+
 /*#region Betűtípus beállítás */
 
 @font-face {

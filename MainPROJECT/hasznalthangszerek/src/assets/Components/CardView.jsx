@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Nav from "./Nav";
-import axios from "../scripts/axios";
 import Sidebar from "./cardView/Sidebar";
 import Instruments from "./cardView/Instruments";
 import Loading from "./Loading";
+import InstrumentData from "./InstrumentData";
 import { useSearchParams } from "react-router-dom";
 
 export default function CardView({ data, loading, subcatList, cats }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const selectedInsId = searchParams.get("ins");
 
   useEffect(() => {
     const nav = document.querySelector("nav");
@@ -26,6 +27,18 @@ export default function CardView({ data, loading, subcatList, cats }) {
   }, []);
 
   if (loading || !data || subcatList.length === 0) return <Loading />;
+
+  if (selectedInsId) {
+    const selectedInstrument = data.find(
+      (ins) => ins.id.toString() === selectedInsId,
+    );
+
+    if (selectedInstrument) {
+      return <InstrumentData instrument={selectedInstrument} />;
+    }
+    setSearchParams({});
+    return null;
+  }
 
   const Filters = {
     category: searchParams.get("category"),

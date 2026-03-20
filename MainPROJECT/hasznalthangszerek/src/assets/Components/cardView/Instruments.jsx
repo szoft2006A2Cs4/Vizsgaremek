@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Card({ instrument }) {
   return (
@@ -9,7 +10,11 @@ function Card({ instrument }) {
         <section className="card-price">
           <div className="price">{instrument.cost} HUF</div>
           <div className="details">
-            <button className="uni-button">Részletek</button>
+            <button className="uni-button">
+              <Link to={`/instruments?ins=${instrument.id}`} color="white">
+                Részletek
+              </Link>
+            </button>
           </div>
         </section>
       </div>
