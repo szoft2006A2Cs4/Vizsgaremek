@@ -222,10 +222,9 @@ export default function UpLoad() {
   };
 
   useEffect(() => {
-    setIsFilesReady(upLoadedFiles != []);
+    setIsFilesReady(upLoadedFiles.length > 0);
   }, [upLoadedFiles]);
 
-  console.log(isFilesReady);
   const handleFinalSubmit = async () => {
     if (!userData) return console.log("felh. adatok hianyoznak");
     setIsLoading(true);
@@ -609,7 +608,6 @@ export default function UpLoad() {
                     disabled={!isFilesReady}
                     onClick={() => {
                       setIsLastAct(true);
-                      console.log(isFilesReady);
                     }}
                   >
                     Áttekintés
@@ -620,7 +618,7 @@ export default function UpLoad() {
           ) : (
             <></>
           )}
-          {isLastAct ? (
+          {isLastAct && isFilesReady ? (
             <Card.Root
               className="UpLoad-thirdMain"
               size="md"
@@ -629,51 +627,80 @@ export default function UpLoad() {
               height="55vh"
             >
               <Card.Body>
-                <DataList.Root
-                  orientation="horizontal"
-                  maxW="md"
-                  className="UpLoad-checkOut-field"
-                >
-                  <DataList.Item pt="4">
-                    <DataList.ItemLabel>Név</DataList.ItemLabel>
-                    <DataList.ItemValue>{insName}</DataList.ItemValue>
-                  </DataList.Item>
-
-                  <DataList.Item pt="4">
-                    <DataList.ItemLabel>Kategória</DataList.ItemLabel>
-                    <DataList.ItemValue>{selectedCat}</DataList.ItemValue>
-                  </DataList.Item>
-
-                  <DataList.Item pt="4">
-                    <DataList.ItemLabel>Alkategória</DataList.ItemLabel>
-                    <DataList.ItemValue>{ins_Scat}</DataList.ItemValue>
-                  </DataList.Item>
-
-                  <DataList.Item pt="4">
-                    <DataList.ItemLabel>Ár</DataList.ItemLabel>
-                    <DataList.ItemValue>{ins_Price}</DataList.ItemValue>
-                  </DataList.Item>
-
-                  <DataList.Item pt="4">
-                    <DataList.ItemLabel>Állapot</DataList.ItemLabel>
-                    <DataList.ItemValue>{ins_Condition}</DataList.ItemValue>
-                  </DataList.Item>
-
-                  <DataList.Item pt="4">
-                    <DataList.ItemLabel>Prémium</DataList.ItemLabel>
-                    <DataList.ItemValue>
-                      {ins_IsPrem ? "Igen" : "Nem"}
-                    </DataList.ItemValue>
-                  </DataList.Item>
-                  {ins_IsPrem && (
+                <div id="UpLoad-thirdMain-grid">
+                  <DataList.Root
+                    orientation="horizontal"
+                    maxW="md"
+                    className="UpLoad-checkOut-field"
+                  >
                     <DataList.Item pt="4">
-                      <DataList.ItemLabel>Költség</DataList.ItemLabel>
+                      <DataList.ItemLabel>Név</DataList.ItemLabel>
+                      <DataList.ItemValue>{insName}</DataList.ItemValue>
+                    </DataList.Item>
+
+                    <DataList.Item pt="4">
+                      <DataList.ItemLabel>Kategória</DataList.ItemLabel>
+                      <DataList.ItemValue>{selectedCat}</DataList.ItemValue>
+                    </DataList.Item>
+
+                    <DataList.Item pt="4">
+                      <DataList.ItemLabel>Alkategória</DataList.ItemLabel>
+                      <DataList.ItemValue>{ins_Scat}</DataList.ItemValue>
+                    </DataList.Item>
+
+                    <DataList.Item pt="4">
+                      <DataList.ItemLabel>Ár</DataList.ItemLabel>
+                      <DataList.ItemValue>{ins_Price}</DataList.ItemValue>
+                    </DataList.Item>
+
+                    <DataList.Item pt="4">
+                      <DataList.ItemLabel>Állapot</DataList.ItemLabel>
+                      <DataList.ItemValue>{ins_Condition}</DataList.ItemValue>
+                    </DataList.Item>
+
+                    <DataList.Item pt="4">
+                      <DataList.ItemLabel>Prémium</DataList.ItemLabel>
                       <DataList.ItemValue>
-                        {ins_IsPrem ? 1000 + "Ft" : 0 + "Ft"}
+                        {ins_IsPrem ? "Igen" : "Nem"}
                       </DataList.ItemValue>
                     </DataList.Item>
-                  )}
-                </DataList.Root>
+
+                    {ins_IsPrem && (
+                      <DataList.Item pt="4">
+                        <DataList.ItemLabel>Költség</DataList.ItemLabel>
+                        <DataList.ItemValue>
+                          {ins_IsPrem == "Igen" ? 1000 + "Ft" : 0 + "Ft"}
+                        </DataList.ItemValue>
+                      </DataList.Item>
+                    )}
+                  </DataList.Root>
+
+                  <div id="UpLoad-thirdMain-imgList">
+                    <p id="UpLoad-thirdMain-imgList-title">Feltöltött képek</p>
+                    <ul
+                      className="chakra-file-upload__itemGroup css-1hdg0h2"
+                      style={{ alignItems: "flex-start" }}
+                    >
+                      {upLoadedFiles.map((file, index) => {
+                        return (
+                          <li
+                            key={index}
+                            className="chakra-file-upload__item css-13326kx"
+                            style={{ width: "20rem" }}
+                          >
+                            <div className="chakra-file-upload__itemPreview css-buqlve">
+                              <svg className="css-s3mb0o" viewBox="0 0 24 24">
+                                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                              </svg>
+                            </div>
+                            <div>{file.name}</div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </Card.Body>
               <Card.Footer justifyContent="flex-end">
                 <Button

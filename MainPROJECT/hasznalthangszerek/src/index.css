@@ -872,6 +872,7 @@ button:hover > a {
   position: relative;
   top: 4rem;
   z-index: 50;
+  margin-bottom: 5rem;
 }
 
 #UpLoad-layout {
@@ -997,6 +998,20 @@ button:hover > a {
 
 .UpLoad-checkOut-field:last-child {
   border: 0;
+}
+
+#UpLoad-thirdMain-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+}
+
+#UpLoad-thirdMain-imgList {
+  display: grid;
+  grid-template-rows: min-content max-content;
+}
+
+#UpLoad-thirdMain-imgList-title {
+  justify-self: center;
 }
 
 /*#endregion UpLoad oldal és elemei*/
