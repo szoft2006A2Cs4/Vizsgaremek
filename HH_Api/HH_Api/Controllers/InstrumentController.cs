@@ -154,14 +154,10 @@ namespace HH_Api.Controllers
         public async Task<IActionResult> DeleteInstrument(int id)
         {
             var ins = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
-            if (ins == null) NotFound("A megadott azonosítóval hangszer nem található!");
+            if (ins == null) return NotFound("A megadott azonosítóval hangszer nem található!");
             _context.Instruments.Remove(ins!);
             await _context.SaveChangesAsync();
             return NoContent();
         }
-
-        // TODO
-        // PATCH: api/Instrument
-        // GET: GetBySpecifiedAttribute
     }
 }

@@ -32,10 +32,10 @@ namespace HH_Api.Controllers
         public async Task<IActionResult> GetOrderInfoListByInstrument(int id)
         {
             var orderInfo = await _context.OrderInfos
-                .Include(i => i.Instrument)
-                .Include(s => s.Instrument!.Seller)
+                .Include(i => i._Instrument)
+                .Include(s => s._Instrument!.Seller)
                 .Include(cu => cu.Customer)
-                .Include(sc => sc.Instrument!.SubCategory)
+                .Include(sc => sc._Instrument!.SubCategory)
                 .ThenInclude(c => c!.Category)
                 .FirstOrDefaultAsync(o => o.IId == id);
             if (orderInfo != null) return Ok(orderInfo);

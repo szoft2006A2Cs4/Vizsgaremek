@@ -32,6 +32,6 @@ namespace HH_Api.Model
         public int IId { get; set; }
 
         [ForeignKey(nameof(IId))]
-        public InstrumentDTO? Instrument { get; set; }
+        public InstrumentDTO? _Instrument { get; set; }
     }
 }

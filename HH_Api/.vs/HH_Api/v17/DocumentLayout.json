@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\instrumentcontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\instrumentcontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\foryoucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\foryoucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\dbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\dbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Program.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
-              "RelativeToolTip": "HH_Api\\Program.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAIwMQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "InstrumentController.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
+              "RelativeDocumentMoniker": "HH_Api\\Controllers\\InstrumentController.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
+              "RelativeToolTip": "HH_Api\\Controllers\\InstrumentController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAwwJwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T20:20:24.798Z",
+              "WhenOpened": "2026-03-21T21:25:24.837Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.json",
-              "RelativeDocumentMoniker": "HH_Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.json",
-              "RelativeToolTip": "HH_Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-18T20:19:34.994Z",
+              "DocumentIndex": 0,
+              "Title": "InstrumentController.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
+              "RelativeDocumentMoniker": "TestProject1\\InstrumentController.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
+              "RelativeToolTip": "TestProject1\\InstrumentController.Test.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAAFQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-21T21:22:43.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "HH_Api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.Development.json",
-              "RelativeToolTip": "HH_Api\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-18T20:19:33.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ForYouController.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\ForYouController.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Controllers\\ForYouController.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\ForYouController.cs",
-              "RelativeToolTip": "HH_Api\\Controllers\\ForYouController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowDMAAAArAAAAAAAAAA==",
+              "Title": "DbContextHelper.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\DbContextHelper.cs",
+              "RelativeDocumentMoniker": "TestProject1\\DbContextHelper.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\DbContextHelper.cs",
+              "RelativeToolTip": "TestProject1\\DbContextHelper.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAkwOAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T20:11:56.247Z",
+              "WhenOpened": "2026-03-21T21:01:04.498Z",
               "EditorCaption": ""
             }
           ]
