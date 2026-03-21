@@ -18,7 +18,7 @@ const PasswordPopUp = ({ isopen, anchorRef }) => {
           <Popover.Content width="25rem">
             <Popover.Arrow />
             <Popover.Body>
-              <h2>Jelszó követelmények:</h2> <br />
+              <h2>Jelszó követelmények</h2> <br />
               <ul>
                 <li>Legalább 8 karakter hosszú legyen.</li>
                 <li>Legalább 1 nagy ÉS kisbetű.</li>

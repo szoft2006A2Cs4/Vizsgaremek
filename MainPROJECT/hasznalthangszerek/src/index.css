@@ -850,6 +850,10 @@ button:hover > a {
   justify-content: space-evenly;
 }
 
+.Drawer-body a:hover {
+  color: wheat;
+}
+
 .Drawer-links {
   color: black;
 }

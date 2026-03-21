@@ -427,6 +427,21 @@ const Register = () => {
                   onFocus={() => setCityFocus(true)}
                   onBlur={() => setCityFocus(false)}
                 />
+              </div>
+
+              <div>
+                <label htmlFor="x" className="register-label">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e3e3e3"
+                  >
+                    <path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z" />
+                  </svg>
+                </label>
+
                 <input
                   type="text"
                   name="address"
@@ -443,6 +458,7 @@ const Register = () => {
                   onBlur={() => setAddressFocus(false)}
                 />
               </div>
+
               <div style={{ position: "relative" }}>
                 <label
                   id="password-label"

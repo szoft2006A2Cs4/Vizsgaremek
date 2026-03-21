@@ -27,17 +27,17 @@ export default function AboutUs() {
           <AboutUsCard
             name="Czibók Bence"
             img="https://res.cloudinary.com/dknhbvrq9/image/upload/v1770717706/czibi_v0d1hd.jpg"
-            subTitle="Cigány"
+            instaLink="https://www.instagram.com/benceczibok/"
           />
           <AboutUsCard
             name="Németh Balázs"
             img="https://res.cloudinary.com/dknhbvrq9/image/upload/v1770717705/balazs_wvopjo.jpg"
-            subTitle="BodzaSzörpötIvó"
+            instaLink="https://www.instagram.com/nemeth_b095/"
           />
           <AboutUsCard
             name="Simon Dominik"
             img="https://res.cloudinary.com/dknhbvrq9/image/upload/v1770717707/B2517D2F-B470-4764-A85D-24C49023EFE9_1_105_c_cr7q8c.jpg"
-            subTitle="ÉlőSoundboard"
+            instaLink="https://www.instagram.com/simondominik1468/"
           />
         </div>
       </div>
