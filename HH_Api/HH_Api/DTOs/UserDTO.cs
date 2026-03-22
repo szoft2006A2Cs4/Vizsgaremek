@@ -10,6 +10,7 @@ namespace HH_Api.DTOs
         public float Review { get; set; }
         public int PostalCode { get; set; }
         public string? City { get; set; }
+        public string? StreetHouseNumber { get; set; }
         public string? ImageId { get; set; }
     }
 }

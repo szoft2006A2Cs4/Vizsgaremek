@@ -153,6 +153,7 @@ internal class DbContextHelper
                     PhoneNumber = userList[0].PhoneNumber,
                     PostalCode = userList[0].PostalCode,
                     Review = userList[0].Review,
+                    StreetHouseNumber = userList[0].StreetHouseNumber,
                 },
                 IId = 0,
                 _Instrument = new InstrumentDTO
@@ -174,6 +175,7 @@ internal class DbContextHelper
                         PhoneNumber = userList[1].PhoneNumber,
                         PostalCode = userList[1].PostalCode,
                         Review = userList[1].Review,
+                        StreetHouseNumber = userList[1].StreetHouseNumber,
                     },
                     Sold = instrumentList[0].Sold,
                     SubCategory = instrumentList[0].SubCategory,
@@ -196,6 +198,7 @@ internal class DbContextHelper
                     PhoneNumber = userList[1].PhoneNumber,
                     PostalCode = userList[1].PostalCode,
                     Review = userList[1].Review,
+                    StreetHouseNumber = userList[1].StreetHouseNumber,
                 },
                 IId = 1,
                 _Instrument = new InstrumentDTO
@@ -217,6 +220,7 @@ internal class DbContextHelper
                         PhoneNumber = userList[0].PhoneNumber,
                         PostalCode = userList[0].PostalCode,
                         Review = userList[0].Review,
+                        StreetHouseNumber = userList[0].StreetHouseNumber,
                     },
                     Sold = instrumentList[1].Sold,
                     SubCategory = instrumentList[1].SubCategory,
@@ -239,6 +243,7 @@ internal class DbContextHelper
                     PhoneNumber = userList[0].PhoneNumber,
                     PostalCode = userList[0].PostalCode,
                     Review = userList[0].Review,
+                    StreetHouseNumber = userList[0].StreetHouseNumber,
                 },
                 IId = 2,
                 _Instrument = new InstrumentDTO
@@ -260,6 +265,7 @@ internal class DbContextHelper
                         PhoneNumber = userList[2].PhoneNumber,
                         PostalCode = userList[2].PostalCode,
                         Review = userList[2].Review,
+                        StreetHouseNumber = userList[2].StreetHouseNumber,
                     },
                     Sold = instrumentList[2].Sold,
                     SubCategory = instrumentList[2].SubCategory,

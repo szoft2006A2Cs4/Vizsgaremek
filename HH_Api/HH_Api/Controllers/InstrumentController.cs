@@ -50,7 +50,9 @@ namespace HH_Api.Controllers
                         Review = i.Seller.Review,
                         PostalCode = i.Seller.PostalCode,
                         City = i.Seller.City,
-                        ImageId = i.Seller.ImageId
+                        ImageId = i.Seller.ImageId,
+                        StreetHouseNumber = i.Seller.StreetHouseNumber,
+                        
                     } : null
                 }).ToListAsync();
 
@@ -100,7 +102,8 @@ namespace HH_Api.Controllers
                         Review = i.Seller.Review,
                         PostalCode = i.Seller.PostalCode,
                         City = i.Seller.City,
-                        ImageId = i.Seller.ImageId
+                        ImageId = i.Seller.ImageId,
+                        StreetHouseNumber = i.Seller.StreetHouseNumber,
                     } : null
                     
                 })
