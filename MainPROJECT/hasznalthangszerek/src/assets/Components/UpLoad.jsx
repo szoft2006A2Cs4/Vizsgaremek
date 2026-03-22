@@ -258,7 +258,7 @@ export default function UpLoad() {
       }
 
       if (imageCount > 0) {
-        await axios.patch(`api/Instrument/${insId}`, imageCount, {
+        await axios.put(`api/Instrument/${insId}/imagecount`, imageCount, {
           withCredentials: true,
         });
       }

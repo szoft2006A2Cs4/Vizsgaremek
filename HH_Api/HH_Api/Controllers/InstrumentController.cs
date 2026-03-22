@@ -138,7 +138,7 @@ namespace HH_Api.Controllers
         }
 
         [Authorize(Policy = "Instrument.Patch")]
-        [HttpPut("{id}")]
+        [HttpPut("{id}/imagecount")]
         public async Task<IActionResult> PatchImageCount(int id, [FromBody] int count)
         {
             var ins = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
