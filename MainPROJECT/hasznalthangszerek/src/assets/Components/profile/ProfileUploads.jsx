@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Loading from "../Loading";
 import { Dialog, Portal, Table } from "@chakra-ui/react";
 import axios from "@/assets/scripts/axios";
 
 const insURL = "/api/Instrument";
 
-const ProfileUploads = ({ insList }) => {
+const ProfileUploads = ({ insList, onDelete }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUploadDeleteSure, setIsUploadDeleteSure] = useState(false);
   const [selectedInsData, setSelectedInsData] = useState({ name: "", id: "" });
@@ -17,6 +17,7 @@ const ProfileUploads = ({ insList }) => {
       const resp = await axios.delete(insURL + `/${iid}`, {
         withCredentials: true,
       });
+      onDelete(iid);
     } catch (error) {
       console.log(error);
     } finally {

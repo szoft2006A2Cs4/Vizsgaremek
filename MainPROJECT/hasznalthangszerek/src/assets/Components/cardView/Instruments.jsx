@@ -18,6 +18,10 @@ function Card({ instrument }) {
                 Részletek
               </Link>
             </button>
+
+            <button className="uni-button-sm" onClick={() => {}}>
+              Típus kedvelése
+            </button>
           </div>
         </section>
       </div>

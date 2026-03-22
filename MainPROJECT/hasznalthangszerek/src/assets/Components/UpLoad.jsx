@@ -260,6 +260,9 @@ export default function UpLoad() {
       if (imageCount > 0) {
         await axios.put(`api/Instrument/${insId}/imagecount`, imageCount, {
           withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
       }
 

@@ -19,6 +19,10 @@ const Profile = ({ mainLoading }) => {
 
   const INS_URL = "/api/Instrument";
 
+  const handleDeletedUpload = (deletedId) => {
+    setInsList((prev) => prev.filter((ins) => ins.id !== deletedId));
+  };
+
   const tabs = [
     {
       name: "Általános adatok",
@@ -30,7 +34,9 @@ const Profile = ({ mainLoading }) => {
     },
     {
       name: "Saját feltöltéseim",
-      component: <ProfileUploads insList={insList} />,
+      component: (
+        <ProfileUploads insList={insList} onDelete={handleDeletedUpload} />
+      ),
     },
   ];
 

@@ -66,11 +66,6 @@ export default function Nav({ cats, scats, loading }) {
         <div id="nav-end">
           <SearchInput></SearchInput>
 
-          <img
-            style={{ width: "3rem" }}
-            src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1773988749/heart_vaax00.svg"
-          />
-
           <button>
             <Link to="/login">Bejelentkezés</Link>
           </button>

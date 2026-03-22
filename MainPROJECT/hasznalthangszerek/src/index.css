@@ -63,6 +63,28 @@ body {
   background-color: var(--text-color);
 }
 
+.uni-button-sm {
+  margin-top: 5px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.42em 2em;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 300;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.uni-button-sm:hover {
+  background-color: var(--text-color);
+}
+
+.uni-button-sm:focus {
+  outline: none;
+  background-color: var(--text-color);
+}
+
 nav {
   background-color: #77625c;
   display: grid;
