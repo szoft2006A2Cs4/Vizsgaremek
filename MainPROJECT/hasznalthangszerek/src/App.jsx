@@ -51,6 +51,7 @@ function App() {
             }
           }
 
+          // console.log(imgs);
           return {
             ...ins,
             imageUrls: imgs,

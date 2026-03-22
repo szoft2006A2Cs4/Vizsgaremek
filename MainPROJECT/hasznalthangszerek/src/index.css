@@ -768,7 +768,7 @@ button:hover > a {
 
 .UserDropDown {
   position: absolute;
-  z-index: 550;
+  z-index: 999;
   top: calc(100% + 1rem);
   right: -10px;
   width: 10rem;
@@ -1455,6 +1455,10 @@ button:hover > a {
   align-items: center;
 }
 
+.ProfileUploads-settings:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
 /*#endregion Fiókom adatai oldal*/
 
 /*#region Egy kiválasztott hangszert megjelenítő oldal beállításai*/

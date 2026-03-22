@@ -12,6 +12,8 @@ import {
 import { forwardRef } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import "../../index.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ActionButton = forwardRef(function ActionButton(props, ref) {
   return (
@@ -34,7 +36,17 @@ const ActionButton = forwardRef(function ActionButton(props, ref) {
 const ArticleAds = ({ data, isLoading }) => {
   if (isLoading || !data || !Array.isArray(data)) return null;
 
+  const navigate = useNavigate();
+
+  var filteredList = [];
+
   for (var i of data) {
+    if (i.isPremium) {
+      filteredList.push(i);
+    }
+  }
+
+  for (var i of filteredList) {
     if (i.description.length > 55) {
       i.description = i.description.substring(0, 56) + " . . .";
     }
@@ -57,7 +69,7 @@ const ArticleAds = ({ data, isLoading }) => {
       <Box display={{ base: "none", lg: "block" }}>
         <Carousel.Root
           id="carousel-root"
-          slideCount={data.length}
+          slideCount={filteredList.length}
           width="100%"
           height="auto"
           gap="0"
@@ -75,7 +87,7 @@ const ArticleAds = ({ data, isLoading }) => {
             </Carousel.PrevTrigger>
 
             <Carousel.ItemGroup width="100%" height="100%">
-              {data.map((item, index) => (
+              {filteredList.map((item, index) => (
                 <Carousel.Item
                   key={index}
                   index={index}
@@ -193,6 +205,11 @@ const ArticleAds = ({ data, isLoading }) => {
                           color: "white",
                           fontSize: "2.4vw",
                         }}
+                        onClick={() => {
+                          navigate(`/instruments?ins=${item.id}`, {
+                            replace: true,
+                          });
+                        }}
                       >
                         Részletek
                       </Button>
@@ -246,7 +263,7 @@ const ArticleAds = ({ data, isLoading }) => {
         gridTemplateColumns="1fr 1fr"
         gap="4"
       >
-        {data.map((item, index) => (
+        {filteredList.map((item, index) => (
           <Card.Root key={index} overflow="hidden">
             <Image
               src={item.imageUrls[0]}

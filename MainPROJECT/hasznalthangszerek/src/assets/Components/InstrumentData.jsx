@@ -13,7 +13,6 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import SimpleMap from "./simpleMap";
 
 const InstrumentData = ({ instrument }) => {
-  console.log(instrument);
   const images = instrument.imageUrls;
 
   if (instrument == null) return null;
@@ -112,7 +111,8 @@ const InstrumentData = ({ instrument }) => {
                   Termék helyszíne
                 </DataList.ItemLabel>
                 <DataList.ItemValue className="datalist-item">
-                  {instrument.seller.postalCode}, {instrument.seller.city}
+                  {instrument.seller.postalCode}, {instrument.seller.city},{" "}
+                  {instrument.seller.streetHouseNumber}
                 </DataList.ItemValue>
               </DataList.Item>
             </DataList.Root>
@@ -120,6 +120,7 @@ const InstrumentData = ({ instrument }) => {
               <SimpleMap
                 postalCode={instrument.seller.postalCode}
                 city={instrument.seller.city}
+                address={instrument.seller.streetHouseNumber}
               />
             </div>
           </div>

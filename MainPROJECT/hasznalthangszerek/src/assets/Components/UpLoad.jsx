@@ -661,7 +661,7 @@ export default function UpLoad() {
                     <DataList.Item pt="4">
                       <DataList.ItemLabel>Prémium</DataList.ItemLabel>
                       <DataList.ItemValue>
-                        {ins_IsPrem ? "Igen" : "Nem"}
+                        {ins_IsPrem == "Igen" ? "Igen" : "Nem"}
                       </DataList.ItemValue>
                     </DataList.Item>
 

@@ -11,7 +11,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-function SimpleMap({ postalCode, city }) {
+function SimpleMap({ postalCode, city, address }) {
   const [coords, setCoords] = useState(null);
   const [error, setError] = useState(null);
 
@@ -19,7 +19,7 @@ function SimpleMap({ postalCode, city }) {
     if (!postalCode || !city) return;
 
     fetch(
-      `https://nominatim.openstreetmap.org/search?postalcode=${postalCode}&city=${encodeURIComponent(city)}&country=Hungary&format=json`,
+      `https://nominatim.openstreetmap.org/search?postalcode=${postalCode}&city=${encodeURIComponent(city)}&street=${address}&country=Hungary&format=json`,
     )
       .then((res) => res.json())
       .then((data) => {
