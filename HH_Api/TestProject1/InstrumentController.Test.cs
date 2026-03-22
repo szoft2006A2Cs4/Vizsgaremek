@@ -3,6 +3,7 @@ using HH_Api.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HH_Api.DTOs;
+using System.Diagnostics;
 
 namespace TestProject1;
 
@@ -72,9 +73,8 @@ public class InstrumentController_Test
     public async Task GetInstrument_ReturnWrong()
     {
         var result = await _sut!.GetInstrument(999) as NotFoundObjectResult;
-        Assert.IsNull(result);
-        var ins = result?.Value as Instrument;
-        Assert.IsFalse(_db?.instrumentList!.Contains(ins!));
+
+        Assert.AreEqual("A megadott azonosítóval hangszer nem található!", result?.Value);
     }
     #endregion
 
@@ -82,25 +82,49 @@ public class InstrumentController_Test
         [TestMethod]
         public async Task GetInstrumentByUser_ReturnOk()
         {
-            var result = await _sut!.GetInstrumentByUser(2) as OkObjectResult;
+            var result = await _sut!.GetInstrumentByUser(1) as OkObjectResult;
             Assert.IsNotNull(result);
 
-            var ins = result.Value as InstrumentDTO;
-            Assert.IsNotNull(ins);
+            var insList = result.Value as IEnumerable<InstrumentDTO>;
+            Assert.IsNotNull(insList);
 
             var iids = _db?.instrumentList!.Select(i => i.Id).ToList();
+
+            foreach(var ins in insList)
+            {
+                Assert.IsTrue(iids!.Contains(ins!.Id!));
+            }
             
-            Assert.IsTrue(iids!.Contains(ins!.Id!));
         }
         [TestMethod]
         public async Task GetInstrumentByUser_ReturnWrong()
         {
             var result = await _sut!.GetInstrumentByUser(999) as NotFoundObjectResult;
-            Assert.IsNull(result);
-            var ins = result?.Value as Instrument;
-            Assert.IsFalse(_db?.instrumentList!.Contains(ins!));
+            Assert.AreEqual("A megadott azonosítóval hangszer nem található!", result!.Value);
         }
-    #endregion 
+    #endregion
+
+    #region PatchImageCount
+
+    [TestMethod]
+    public async Task PatchImageCount_ReturnOk()
+    {
+        var result = await _sut!.PatchImageCount(1, 3) as OkObjectResult;
+        Assert.IsNotNull(result);
+
+        Assert.AreEqual("Képek száma sikeresen frissítve.", result.Value);
+    }
+
+    [TestMethod]
+    public async Task PatchImageCount_ReturnWrong()
+    {
+        var result = await _sut!.PatchImageCount(999, 3) as NotFoundObjectResult;
+        Assert.IsNotNull(result);
+
+        Assert.AreEqual("Ilyen azonosítóval hangszer nem található.", result.Value);
+    }
+
+    #endregion
 
     #region Delete & Create & Update
     [TestMethod]

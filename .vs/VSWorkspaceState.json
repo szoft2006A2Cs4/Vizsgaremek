@@ -3,8 +3,9 @@
     "",
     "\\HH_Api",
     "\\HH_Api\\HH_Api",
-    "\\HH_Api\\HH_Api\\Controllers"
+    "\\HH_Api\\HH_Api\\Controllers",
+    "\\HH_Api\\TestProject1"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api\\Program.cs",
+  "SelectedNode": "\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
   "PreviewInSolutionExplorer": false
 }

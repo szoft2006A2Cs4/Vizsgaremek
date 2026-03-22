@@ -99,6 +99,7 @@ namespace HH_Api.Controllers
         public async Task<IActionResult> DeleteForYou(int id)
         {
             var fy = _context.ForYous.FirstOrDefault(f => f.Id == id);
+            if(fy == null) return NotFound("A megadott azonosítóval elem nem található!");
             _context.ForYous.Remove(fy!);
             await _context.SaveChangesAsync();
             return Ok();

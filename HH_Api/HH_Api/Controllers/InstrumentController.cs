@@ -105,7 +105,7 @@ namespace HH_Api.Controllers
                     
                 })
                 .ToListAsync();
-            if (instrument != null) return Ok(instrument);
+            if (instrument != null && instrument.Any()) return Ok(instrument);
             else return NotFound("A megadott azonosítóval hangszer nem található!");
         }
         

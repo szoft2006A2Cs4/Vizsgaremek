@@ -47,6 +47,12 @@ namespace HH_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrderInfo([FromBody] OrderInfo orderinfo)
         {
+            var user = await _context.Users.FindAsync(orderinfo.CId);
+            if (user == null) return NotFound("A megadott felhasználó nem található!");
+
+            var ins = await _context.Instruments.FindAsync(orderinfo.IId);
+            if (ins == null) return NotFound("A megadott hangszer nem található!");
+
             _context.OrderInfos.Add(orderinfo);
             await _context.SaveChangesAsync();
             return Created($"{Request.GetDisplayUrl()}/{orderinfo.Id}", orderinfo);

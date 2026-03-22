@@ -17,6 +17,7 @@ internal class DbContextHelper
     public List<Subcategory>? subcategoryList;
     public List<OrderInfo>? orderInfoList;
     public List<Instrument>? instrumentList;
+    public List<ForYou>? forYouList;
 
 
     public DbContextHelper()
@@ -31,7 +32,7 @@ internal class DbContextHelper
                 PostalCode = 0000,
                 PhoneNumber = 123456789,
                 Review = 5,
-                Role ="Guest",
+                Role ="User",
                 StreetHouseNumber = "TestStreetHouseNumber",
                 Token = ""
             },
@@ -44,7 +45,7 @@ internal class DbContextHelper
                 PostalCode = 0000,
                 PhoneNumber = 123456789,
                 Review = 5,
-                Role ="Guest",
+                Role ="User",
                 StreetHouseNumber = "TestStreetHouseNumber",
                 Token = ""
             },
@@ -57,7 +58,7 @@ internal class DbContextHelper
                 PostalCode = 0000,
                 PhoneNumber = 123456789,
                 Review = 5,
-                Role ="Guest",
+                Role ="User",
                 StreetHouseNumber = "TestStreetHouseNumber",
                 Token = ""
             }];
@@ -267,6 +268,29 @@ internal class DbContextHelper
             }
                
            ];
+        forYouList = [
+            new ForYou 
+            {
+                UId = 0,
+                User = userList[0],
+                CName = "test1",
+                Category = categoryList[0]
+            },
+            new ForYou
+            {
+                UId = 1,
+                User = userList[1],
+                CName = "test2",
+                Category = categoryList[1]
+            }, 
+            new ForYou
+            {
+                UId = 2,
+                User = userList[2],
+                CName = "test3",
+                Category = categoryList[2]
+            }
+            ]; 
 
     }
 
@@ -287,6 +311,7 @@ internal class DbContextHelper
         _context.SubCategories.AddRange(subcategoryList!);
         _context.OrderInfos.AddRange(orderInfoList!);
         _context.Instruments.AddRange(instrumentList!);
+        _context.ForYous.AddRange(forYouList!);
 
         _context.SaveChanges();
 
@@ -318,6 +343,10 @@ internal class DbContextHelper
         foreach (var instrument in _context!.Instruments)
         {
             _context.Instruments.Remove(instrument);
+        }
+        foreach (var forYou in _context!.ForYous)
+        {
+            _context.ForYous.Remove(forYou);
         }
         _context.SaveChanges();
     }

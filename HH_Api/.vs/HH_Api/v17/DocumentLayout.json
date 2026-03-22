@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\instrumentcontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\instrumentcontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\dbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\dbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\orderinfocontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\orderinfocontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InstrumentController.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Controllers\\InstrumentController.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
-              "RelativeToolTip": "HH_Api\\Controllers\\InstrumentController.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAwwJwAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-21T21:25:24.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InstrumentController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\InstrumentController.Test.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
-              "RelativeToolTip": "TestProject1\\InstrumentController.Test.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAAAFQAAAA6AAAAAAAAAA==",
+              "Title": "OrderInfoController.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\OrderInfoController.Test.cs",
+              "RelativeDocumentMoniker": "TestProject1\\OrderInfoController.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\OrderInfoController.Test.cs",
+              "RelativeToolTip": "TestProject1\\OrderInfoController.Test.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-21T21:22:43.721Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DbContextHelper.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\DbContextHelper.cs",
-              "RelativeDocumentMoniker": "TestProject1\\DbContextHelper.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\DbContextHelper.cs",
-              "RelativeToolTip": "TestProject1\\DbContextHelper.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAkwOAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-21T21:01:04.498Z",
+              "WhenOpened": "2026-03-22T10:48:28.181Z",
               "EditorCaption": ""
             }
           ]

@@ -1,106 +1,127 @@
-//using HH_Api.Controllers;
-//using HH_Api.Model;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
-//using Mysqlx.Crud;
-//using System.Security.Cryptography;
+using HH_Api.Controllers;
+using HH_Api.DTOs;
+using HH_Api.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Mysqlx.Crud;
+using System.Security.Cryptography;
 
-//namespace TestProject1;
+namespace TestProject1;
 
-//[TestClass]
-//public sealed class OrderInfoController_Test
-//{
-//    OrderInfoController? _sut;
-//    DbContextHelper? _db;
+[TestClass]
+public sealed class OrderInfoController_Test
+{
+    OrderInfoController? _sut;
+    DbContextHelper? _db;
 
-//    [TestInitialize]
-//    public void Initialize()
-//    {
-//        _db = new DbContextHelper();
+    [TestInitialize]
+    public void Initialize()
+    {
+        _db = new DbContextHelper();
 
-//        var httpContext = new DefaultHttpContext();
+        var httpContext = new DefaultHttpContext();
 
-//        _sut = new OrderInfoController(_db.CreateDbContext());
-//        _sut.ControllerContext = new ControllerContext()
-//        {
-//            HttpContext = httpContext
-//        };
-//    }
+        _sut = new OrderInfoController(_db.CreateDbContext());
+        _sut.ControllerContext = new ControllerContext()
+        {
+            HttpContext = httpContext
+        };
+    }
 
-//    [TestMethod]
-//    public async Task ChainTest_ReturnOk()
-//    {
-//        #region Get
-//        var result = await _sut!.GetOrderInfo(1) as OkObjectResult;
-//        Assert.IsNotNull(result);
-//        var orderInf = result.Value as OrderInfo;
-//        Assert.IsTrue(_db?.orderInfoList!.Contains(orderInf!));
-//        #endregion
+    #region GetList
+    [TestMethod]
+    public async Task GetOrderInfoList_ReturnOk()
+    {
+        var result = await _sut!.GetOrderInfoList() as OkObjectResult;
+        Assert.IsNotNull(result);
 
-//        #region Create
-//        var newOInfo = new OrderInfo
-//        {
-//            DateOfPurchase = DateTime.Now,
-//            DeliveryCity = "Szombathely",
-//            DeliveryStreet = "Bogáti út 70",
-//            DeliveryPC = 9700,
-//            IId = 0,
-//            Instrument = _db!.instrumentList![1]
-//        };
+        var list = result.Value as IEnumerable<OrderInfo>;
+        Assert.IsNotNull(list);
 
+        var ids = _db?.orderInfoList!.Select(f => f.Id).ToList();
+        foreach (var order in list)
+        {
+            Assert.IsTrue(ids!.Contains(order.Id));
+        }
+        Assert.AreEqual(_db?.orderInfoList?.Count, list.Count());
+    }
+    [TestMethod]
+    public async Task GetOrderInfoList_ReturnWrong()
+    {
+        _db?.ClearAll();
 
-//        var created = await _sut!.CreateOrderInfo(newOInfo) as CreatedResult;
-//        Assert.IsNotNull(created);
+        var result = await _sut!.GetOrderInfoList() as OkObjectResult;
+        Assert.IsNotNull(result);
 
-//        var orderI = created.Value as OrderInfo;
-//        Assert.IsNotNull(orderI);
-//        #endregion
-//    }
+        var list = result.Value as IEnumerable<OrderInfo>;
+        Assert.IsNotNull(list);
 
-//    #region GetList
-//    [TestMethod]
-//    public async Task GetOrderInfoList_ReturnOk()
-//    {
-//        var result = await _sut!.GetOrderInfoList() as OkObjectResult;
-//        Assert.IsNotNull(result);
+        Assert.AreEqual(0, list.Count());
+    }
 
-//        var orderInfList = result.Value as IEnumerable<OrderInfo>;
-//        Assert.IsNotNull(orderInfList);
+    #endregion
 
-//        foreach (var orderInf in orderInfList)
-//        {
-//            Assert.IsTrue(_db?.orderInfoList!.Contains(orderInf));
-//        }
-//        Assert.AreEqual(orderInfList.Count(), _db?.orderInfoList?.Count());
-//    }
-//    [TestMethod]
-//    public async Task GetEmptyOrderInfoList_ReturnWrong()
-//    {
-//        _db?.ClearAll();
+    #region Get
+    [TestMethod]
+    public async Task GetOrderInfoListByInstrument_ReturnOk()
+    {
+        var result = await _sut!.GetOrderInfoListByInstrument(_db!.orderInfoList![0].IId) as OkObjectResult;
+        Assert.IsNotNull(result);
 
-//        var result = await _sut!.GetOrderInfoList() as OkObjectResult;
-//        Assert.IsNotNull(result);
+        var order = result.Value as OrderInfo;
+        Assert.IsNotNull(order);
 
-//        var orderInfList = result.Value as IEnumerable<OrderInfo>;
-//        Assert.IsNotNull(orderInfList);
+        var ids = _db?.orderInfoList!.Select(o => o.Id).ToList();
+        Assert.IsTrue(ids!.Contains(order.Id));
+    }
 
-//        Assert.AreEqual(0, orderInfList.Count());
-//    }
-//    #endregion
+    [TestMethod]
+    public async Task GetOrderInfoListByInstrument_ReturnWrong()
+    {
+        var result = await _sut!.GetOrderInfoListByInstrument(999) as NotFoundResult;
+        Assert.IsNotNull(result);
+    }
+    #endregion
 
-//    #region Get
-//    //[TestMethod]
-//    //public void GetOrderInfo_ReturnOk()
-//    //{
+    #region Create
+    [TestMethod]
+    public async Task CreateOrderInfo_ReturnOk()
+    {
+        var newOrder = new OrderInfo
+        {
+            status = "shipped",
+            DateOfPurchase = DateTime.Now,
+            DateOfShipArrive = DateTime.Now,
+            DateOfShipStart = DateTime.Now,
+            CId = _db!.userList![0].Id,
+            IId = _db!.instrumentList![0].Id
+        };
 
-//    //}
-//    [TestMethod]
-//    public async Task GetOrderInfo_ReturnWrong()
-//    {
-//        var result = await _sut!.GetOrderInfo(999) as OkObjectResult;
-//        Assert.IsNull(result);
-//        var orderInf = result?.Value as OrderInfo;
-//        Assert.IsFalse(_db?.orderInfoList!.Contains(orderInf!));
-//    }
-//    #endregion
-//}
+        var result = await _sut!.CreateOrderInfo(newOrder) as CreatedResult;
+        Assert.IsNotNull(result);
+
+        var created = result.Value as OrderInfo;
+        Assert.IsNotNull(created);
+        Assert.AreEqual(newOrder.status, created.status);
+        Assert.AreEqual(newOrder.CId, created.CId);
+        Assert.AreEqual(newOrder.IId, created.IId);
+    }
+
+    [TestMethod]
+    public async Task CreateOrderInfo_ReturnWrong()
+    {
+        var newOrder = new OrderInfo
+        {
+            status = "shipped",
+            DateOfPurchase = DateTime.Now,
+            DateOfShipArrive = DateTime.Now,
+            DateOfShipStart = DateTime.Now,
+            CId = 999,  
+            IId = 999   
+        };
+
+        var result = await _sut!.CreateOrderInfo(newOrder) as CreatedResult;
+        Assert.IsNull(result); 
+    }
+    #endregion
+}

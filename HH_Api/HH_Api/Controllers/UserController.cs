@@ -82,7 +82,7 @@ namespace HH_Api.Controllers
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-            if (user == null) NotFound("A megadott azonosítóval felhasználó nem található!");
+            if (user == null) return NotFound("A megadott azonosítóval felhasználó nem található!");
             _context.Users.Remove(user!);
             await _context.SaveChangesAsync();
             return NoContent();
