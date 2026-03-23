@@ -16,12 +16,15 @@ import Profile from "./assets/Components/Profile";
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
 const scatURL = "/api/Subcategory";
+const forYouURL = "/api/ForYou";
 
 function App() {
   const [instruments, setInstruments] = useState([]);
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [scats, setSCats] = useState([]);
+  const [forYouList, setForYouList] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -33,6 +36,8 @@ function App() {
         const responseSCats = await axios.get(scatURL, {
           withCredentials: true,
         });
+
+        // const responseForYou = await axios.get(`${forYouURL}/${}`)
 
         const insWithImgs = responseIns.data.map((ins) => {
           const cleanName = ins.name.split(" ").join("");
