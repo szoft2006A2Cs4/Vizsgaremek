@@ -38,7 +38,10 @@ function App() {
           withCredentials: true,
         });
 
-        const responseCurrent = await axios.get(`/api/User/${auth.user}`);
+        if (auth.user) {
+          const responseCurrent = await axios.get(`/api/User/${auth.user}`);
+          setCurrentUser(responseCurrent.data);
+        }
 
         const insWithImgs = responseIns.data.map((ins) => {
           const cleanName = ins.name.split(" ").join("");
@@ -68,7 +71,6 @@ function App() {
         setSCats(responseSCats.data);
         setCats(categories);
         setInstruments(insWithImgs);
-        setCurrentUser(responseCurrent.data);
       } catch (err) {
         console.log(err.response);
       } finally {
