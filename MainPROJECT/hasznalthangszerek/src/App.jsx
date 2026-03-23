@@ -17,14 +17,12 @@ import AuthContext from "./assets/scripts/AuthProvider";
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
 const scatURL = "/api/Subcategory";
-const forYouURL = "/api/ForYou";
 
 function App() {
   const [instruments, setInstruments] = useState([]);
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [scats, setSCats] = useState([]);
-  const [forYouList, setForYouList] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const { auth } = useContext(AuthContext);
 
@@ -39,8 +37,6 @@ function App() {
         const responseSCats = await axios.get(scatURL, {
           withCredentials: true,
         });
-
-        const responseForYou = await axios.get(`${forYouURL}/${auth.user}`);
 
         const responseCurrent = await axios.get(`/api/User/${auth.user}`);
 
@@ -61,7 +57,6 @@ function App() {
             }
           }
 
-          // console.log(imgs);
           return {
             ...ins,
             imageUrls: imgs,
@@ -73,7 +68,6 @@ function App() {
         setSCats(responseSCats.data);
         setCats(categories);
         setInstruments(insWithImgs);
-        setForYouList(responseForYou.data);
         setCurrentUser(responseCurrent.data);
       } catch (err) {
         console.log(err.response);
@@ -114,7 +108,6 @@ function App() {
                 subcatList={scats}
                 cats={cats}
                 user={currentUser}
-                forYouList={forYouList}
               />
             }
           />

@@ -61,7 +61,6 @@ export default function Nav({ cats, scats, loading }) {
       </div>
       {isForYouOpen && (
         <ForYou
-          loading={loading}
           open={isForYouOpen}
           onClose={() => setIsForYouOpen(false)}
         ></ForYou>

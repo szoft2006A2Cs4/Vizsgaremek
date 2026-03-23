@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "../scripts/axios";
 import AuthContext from "../scripts/AuthProvider";
 
-export default function ForYou({ open, onClose, loading }) {
+export default function ForYou({ open, onClose }) {
   const { auth } = useContext(AuthContext);
   const [forYouList, setForYouList] = useState([]);
 
@@ -30,7 +30,6 @@ export default function ForYou({ open, onClose, loading }) {
     }
   }
 
-  if (loading && forYouList) return null;
   return (
     <Dialog.Root open={open} onOpenChange={(e) => !e.open && onClose()}>
       <Portal>
@@ -41,7 +40,7 @@ export default function ForYou({ open, onClose, loading }) {
               <Dialog.Title>Kedvelt típusok</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body pb="8">
-              {forYouList == undefined ? (
+              {forYouList.length === 0 ? (
                 "Még nincs kedvelt kategóriája!"
               ) : (
                 <DataList.Root orientation="horizontal">
