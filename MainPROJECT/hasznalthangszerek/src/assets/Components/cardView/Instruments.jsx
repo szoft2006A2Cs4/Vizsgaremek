@@ -1,22 +1,33 @@
 import axios from "@/assets/scripts/axios";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Dialog, Portal, CloseButton } from "@chakra-ui/react";
 
-function Card({ instrument }) {
+function Card({ instrument, user }) {
+  const [dialogState, setDialogState] = useState({
+    open: false,
+    success: false,
+  });
+
   async function HandleCreateForYou() {
     try {
       const resp = await axios.post(
         "/api/ForYou",
         {
-          uId: instrument.seller.Id,
+          uId: user.id,
           cName: instrument.subCategory.cName,
         },
         {
           withCredentials: true,
         },
       );
+      if (resp.status == 201) {
+        setDialogState({ open: true, success: true });
+      }
     } catch (error) {
-      console.log(error);
+      if (error.response?.status == 409) {
+        setDialogState({ open: true, success: false });
+      }
     }
   }
 
@@ -48,11 +59,36 @@ function Card({ instrument }) {
           </div>
         </section>
       </div>
+
+      <Dialog.Root
+        open={dialogState.open}
+        onOpenChange={(e) =>
+          !e.open && setDialogState({ open: false, success: false })
+        }
+      >
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.Header justifyContent="center">
+                <Dialog.Title>
+                  {dialogState.success
+                    ? "Sikeresen hozzáadva!"
+                    : "Ez a típus már kedvelt!"}
+                </Dialog.Title>
+              </Dialog.Header>
+              <Dialog.CloseTrigger asChild>
+                <CloseButton />
+              </Dialog.CloseTrigger>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
     </section>
   );
 }
 
-function Instruments({ instruments }) {
+function Instruments({ instruments, user }) {
   if (instruments.length === 0) {
     return (
       <section className="card-container">
@@ -66,7 +102,7 @@ function Instruments({ instruments }) {
   return (
     <section className="card-container">
       {instruments.map((instrument) => (
-        <Card key={instrument.id} instrument={instrument} />
+        <Card key={instrument.id} instrument={instrument} user={user} />
       ))}
     </section>
   );

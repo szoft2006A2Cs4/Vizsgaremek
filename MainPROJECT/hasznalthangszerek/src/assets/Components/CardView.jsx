@@ -6,7 +6,14 @@ import Loading from "./Loading";
 import InstrumentData from "./InstrumentData";
 import { useSearchParams } from "react-router-dom";
 
-export default function CardView({ data, loading, subcatList, cats }) {
+export default function CardView({
+  data,
+  loading,
+  subcatList,
+  cats,
+  user,
+  forYouList,
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedInsId = searchParams.get("ins");
 
@@ -98,7 +105,12 @@ export default function CardView({ data, loading, subcatList, cats }) {
 
   return (
     <div id="cardView">
-      <Nav />
+      <Nav
+        cats={cats}
+        scats={subcatList}
+        forYouList={forYouList}
+        loading={loading}
+      />
       <div id="testClassField">
         <Sidebar
           onFilterChange={handleFilterChange}
@@ -106,7 +118,7 @@ export default function CardView({ data, loading, subcatList, cats }) {
           filters={Filters}
         />
         <div className="card-container">
-          <Instruments instruments={filteredInstruments} />
+          <Instruments instruments={filteredInstruments} user={user} />
         </div>
       </div>
     </div>

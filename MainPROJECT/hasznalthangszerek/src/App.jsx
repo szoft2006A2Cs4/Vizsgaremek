@@ -25,7 +25,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [scats, setSCats] = useState([]);
   const [forYouList, setForYouList] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const { auth } = useContext(AuthContext);
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -39,6 +41,8 @@ function App() {
         });
 
         const responseForYou = await axios.get(`${forYouURL}/${auth.user}`);
+
+        const responseCurrent = await axios.get(`/api/User/${auth.user}`);
 
         const insWithImgs = responseIns.data.map((ins) => {
           const cleanName = ins.name.split(" ").join("");
@@ -70,6 +74,7 @@ function App() {
         setCats(categories);
         setInstruments(insWithImgs);
         setForYouList(responseForYou.data);
+        setCurrentUser(responseCurrent.data);
       } catch (err) {
         console.log(err.response);
       } finally {
@@ -92,7 +97,6 @@ function App() {
                 cats={cats}
                 isLoading={isLoading}
                 scats={scats}
-                forYouList={forYouList}
               />
             }
           />
@@ -109,6 +113,8 @@ function App() {
                 loading={isLoading}
                 subcatList={scats}
                 cats={cats}
+                user={currentUser}
+                forYouList={forYouList}
               />
             }
           />
