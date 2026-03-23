@@ -2,9 +2,9 @@ import { Dialog, DataList, CloseButton, Portal } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "../scripts/axios";
 
-export default function ForYou() {
+export default function ForYou({ forYouList, open, onClose }) {
   return (
-    <Dialog.Root open>
+    <Dialog.Root open={open} onOpenChange={(e) => !e.open && onClose()}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
@@ -13,21 +13,20 @@ export default function ForYou() {
               <Dialog.Title>Kedvelt típusok</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body pb="8">
-              <DataList.Root orientation="horizontal">
-                {forYouList.map((item, index) => (
-                  <DataList.Item key={index}>
-                    <DataList.ItemValue>{item}</DataList.ItemValue>
-                  </DataList.Item>
-                ))}
-              </DataList.Root>
+              {forYouList == undefined ? (
+                "Még nincs kedvelt kategóriája!"
+              ) : (
+                <DataList.Root orientation="horizontal">
+                  {forYouList.map((item, index) => (
+                    <DataList.Item key={index}>
+                      <DataList.ItemValue>{item}</DataList.ItemValue>
+                    </DataList.Item>
+                  ))}
+                </DataList.Root>
+              )}
             </Dialog.Body>
             <Dialog.CloseTrigger asChild>
-              <CloseButton
-                size="sm"
-                onClick={() => {
-                  open = false;
-                }}
-              />
+              <CloseButton size="sm" />
             </Dialog.CloseTrigger>
           </Dialog.Content>
         </Dialog.Positioner>

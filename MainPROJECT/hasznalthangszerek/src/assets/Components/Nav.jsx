@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 import Drawer_ from "./CatDrawer";
 import ForYou from "./ForYou";
 
-export default function Nav({ cats, scats, loading }) {
+export default function Nav({ cats, scats, loading, forYouList }) {
   const { auth } = useContext(AuthContext);
   const [openProf, setOpenProf] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -59,7 +59,13 @@ export default function Nav({ cats, scats, loading }) {
           {openProf && <UserDropDown />}
         </div>
       </div>
-      {isForYouOpen && <ForYou></ForYou>}
+      {isForYouOpen && (
+        <ForYou
+          forYouList={forYouList}
+          open={isForYouOpen}
+          onClose={() => setIsOpen(false)}
+        ></ForYou>
+      )}
     </nav>
   ) : (
     <nav>

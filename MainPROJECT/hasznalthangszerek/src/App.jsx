@@ -7,11 +7,12 @@ import AboutUs from "./assets/Components/aboutUs";
 import UpLoad from "./assets/Components/UpLoad";
 import Contact from "./assets/Components/Contact";
 import CardView from "./assets/Components/CardView";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "./assets/scripts/axios";
 import Loading from "./assets/Components/Loading";
 import ForgottenPassword from "./assets/Components/forgottenPassword";
 import Profile from "./assets/Components/Profile";
+import AuthContext from "./assets/scripts/AuthProvider";
 
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
@@ -24,7 +25,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [scats, setSCats] = useState([]);
   const [forYouList, setForYouList] = useState([]);
-
+  const { auth } = useContext(AuthContext);
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -37,7 +38,7 @@ function App() {
           withCredentials: true,
         });
 
-        // const responseForYou = await axios.get(`${forYouURL}/${}`)
+        const responseForYou = await axios.get(`${forYouURL}/${auth.user}`);
 
         const insWithImgs = responseIns.data.map((ins) => {
           const cleanName = ins.name.split(" ").join("");
@@ -68,6 +69,7 @@ function App() {
         setSCats(responseSCats.data);
         setCats(categories);
         setInstruments(insWithImgs);
+        setForYouList(responseForYou.data);
       } catch (err) {
         console.log(err.response);
       } finally {
@@ -90,6 +92,7 @@ function App() {
                 cats={cats}
                 isLoading={isLoading}
                 scats={scats}
+                forYouList={forYouList}
               />
             }
           />

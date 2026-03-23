@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../scripts/AuthProvider";
 import CatField from "./CatField";
 
-function Home({ instruments, cats, scats, isLoading }) {
+function Home({ instruments, cats, scats, isLoading, forYouList }) {
   const { auth } = useContext(AuthContext);
 
   const loggedIn = !auth.user;
@@ -21,7 +21,12 @@ function Home({ instruments, cats, scats, isLoading }) {
     </div>
   ) : (
     <div>
-      <Nav cats={cats} scats={scats} loading={isLoading} />
+      <Nav
+        cats={cats}
+        scats={scats}
+        loading={isLoading}
+        forYouList={forYouList}
+      />
       <Introduction />
       <PseMain ins={instruments} isLoading={isLoading} />
       <Drawer />
