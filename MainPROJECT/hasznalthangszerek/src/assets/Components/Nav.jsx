@@ -5,11 +5,13 @@ import AuthContext from "../scripts/AuthProvider";
 import UserDropDown from "./UserDropDown";
 import Avatar from "./Avatar";
 import Drawer_ from "./CatDrawer";
+import ForYou from "./ForYou";
 
 export default function Nav({ cats, scats, loading }) {
   const { auth } = useContext(AuthContext);
   const [openProf, setOpenProf] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isForYouOpen, setIsForYouOpen] = useState(false)
 
   const handleDrawer = () => {
     setIsDrawerOpen(true);
@@ -32,6 +34,8 @@ export default function Nav({ cats, scats, loading }) {
         <img
           style={{ width: "3rem" }}
           src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1773988749/heart_vaax00.svg"
+          onClick={() => {setIsForYouOpen(!isForYouOpen)}}
+          id="ForYou-icon"
         />
 
         <div className="avatar-drop-wrapper">
@@ -79,6 +83,10 @@ export default function Nav({ cats, scats, loading }) {
         scats={scats}
         loading={loading}
       />
+
+      {isForYouOpen &&
+      <ForYou isOpen={isForYouOpen}></ForYou>
+      }
     </nav>
   );
 }

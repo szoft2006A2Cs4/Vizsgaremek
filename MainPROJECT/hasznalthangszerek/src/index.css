@@ -372,6 +372,12 @@ button:hover > a {
   opacity: 0.6;
 }
 
+#nav-spacing-loggedIn #ForYou-icon:hover{
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1774252939/heart_vaax00_hover_bjdocc.svg");
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
 #nav-spacing-loggedIn .btn {
   position: absolute;
   right: 0;
@@ -817,6 +823,10 @@ button:hover > a {
   align-items: center;
   font-size: 0.9375vw;
   transform: scale(1.3);
+}
+
+.UserDropDown-icons-cont:hover img{
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1774253445/list-music_xwhp8v_hover_h6rnbp.svg");
 }
 
 .UserDropDown::before {
