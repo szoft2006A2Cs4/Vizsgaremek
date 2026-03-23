@@ -63,7 +63,7 @@ export default function Nav({ cats, scats, loading, forYouList }) {
         <ForYou
           forYouList={forYouList}
           open={isForYouOpen}
-          onClose={() => setIsOpen(false)}
+          onClose={() => setIsForYouOpen(false)}
         ></ForYou>
       )}
     </nav>

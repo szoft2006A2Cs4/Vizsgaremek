@@ -83,6 +83,13 @@ namespace HH_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateForYou([FromBody] ForYouCreateDTO dto)
         {
+             var exists = await _context.ForYous
+        .AnyAsync(f => f.UId == dto.UId && f.CName == dto.CName);
+
+    if (exists)
+        return Conflict("Ez a kategória már kedvelt!");
+
+
             var fy = new ForYou
             {
                 UId = dto.UId,

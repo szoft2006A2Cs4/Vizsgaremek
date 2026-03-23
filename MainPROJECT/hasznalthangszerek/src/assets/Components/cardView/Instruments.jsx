@@ -1,7 +1,25 @@
+import axios from "@/assets/scripts/axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Card({ instrument }) {
+  async function HandleCreateForYou() {
+    try {
+      const resp = await axios.post(
+        "/api/ForYou",
+        {
+          uId: instrument.seller.Id,
+          cName: instrument.subCategory.cName,
+        },
+        {
+          withCredentials: true,
+        },
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <section className="card">
       <img src={instrument.imageUrls[0]} alt="" className="card-img" />
@@ -19,7 +37,12 @@ function Card({ instrument }) {
               </Link>
             </button>
 
-            <button className="uni-button-sm" onClick={() => {}}>
+            <button
+              className="uni-button-sm"
+              onClick={() => {
+                HandleCreateForYou();
+              }}
+            >
               Típus kedvelése
             </button>
           </div>
