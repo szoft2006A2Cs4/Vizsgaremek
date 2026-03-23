@@ -50,7 +50,7 @@ public class ForYouController_Test
     [TestMethod]
     public async Task GetForYouListByUser_ReturnOk()
     {
-        var result = await _sut!.GetForYouListByUser(_db!.userList![0].Id) as OkObjectResult;
+        var result = await _sut!.GetForYouListByUser(_db!.userList![0].Email) as OkObjectResult;
         Assert.IsNotNull(result);
 
         var list = result.Value as IEnumerable<ForYouDTO>;
@@ -61,7 +61,7 @@ public class ForYouController_Test
     [TestMethod]
     public async Task GetForYouListByUser_ReturnWrong()
     {
-        var result = await _sut!.GetForYouListByUser(999) as OkObjectResult;
+        var result = await _sut!.GetForYouListByUser("asfaspfjasagsiop") as OkObjectResult;
         Assert.IsNotNull(result);
 
         var list = result.Value as IEnumerable<ForYouDTO>;

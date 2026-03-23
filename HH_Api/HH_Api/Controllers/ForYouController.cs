@@ -48,15 +48,15 @@ namespace HH_Api.Controllers
                 .ToListAsync());
         }
 
-        // GET: api/ForYou/5
+        // GET: api/ForYou/pelda@email.com
         [Authorize(Policy = "ForYou.Read")]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetForYouListByUser(int id)
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetForYouListByUser(string email)
         {
             var foryou = await _context.ForYous
                 .Include(u => u.User)
                 .Include(c => c.Category)
-                .Where(x => x.UId == id)
+                .Where(x => x.User!.Email == email)
                 .Select(y => y.User == null ? null : new ForYouDTO
                 {
                     Id = y.Id,
