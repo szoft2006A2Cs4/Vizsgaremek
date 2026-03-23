@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import CatCard from "./CatCard";
 import { HStack } from "@chakra-ui/react";
-import axios from "../scripts/axios";
 
 class CatsData {
   Name;

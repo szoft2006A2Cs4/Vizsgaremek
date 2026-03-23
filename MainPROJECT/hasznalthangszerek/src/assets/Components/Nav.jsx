@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../scripts/AuthProvider";
 import UserDropDown from "./UserDropDown";
 import Avatar from "./Avatar";

@@ -12,7 +12,6 @@ import {
 import { forwardRef } from "react";
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 import "../../index.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const ActionButton = forwardRef(function ActionButton(props, ref) {

@@ -18,27 +18,15 @@ const Register = () => {
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
 
   const [phone, setPhone] = useState("");
-  const [validPhone, setValidPhone] = useState(false);
-  const [phoneFocus, setPhoneFocus] = useState(false);
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
 
   const [postal, setpostal] = useState("");
-  const [validPostal, setValidPostal] = useState(false);
-  const [postalFocus, setPostalFocus] = useState(false);
-
   const [city, setCity] = useState("");
-  const [validCity, setValidCity] = useState(false);
-  const [cityFocus, setCityFocus] = useState(false);
-
   const [address, setAddress] = useState("");
-  const [validAddress, setValidAddress] = useState(false);
-  const [addressFocus, setAddressFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
@@ -46,11 +34,9 @@ const Register = () => {
 
   const [matchPwd, setMatchPwd] = useState("");
   const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -58,40 +44,16 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    const result = USER_REGEX.test(user);
-    setValidName(result);
+    setValidName(USER_REGEX.test(user));
   }, [user]);
 
   useEffect(() => {
-    const result = EMAIL_REGEX.test(email);
-    setValidEmail(result);
+    setValidEmail(EMAIL_REGEX.test(email));
   }, [email]);
 
   useEffect(() => {
-    const result = phone;
-    setValidPhone(result);
-  }, [phone]);
-
-  useEffect(() => {
-    const result = postal;
-    setValidPostal(result);
-  }, [postal]);
-
-  useEffect(() => {
-    const result = city;
-    setValidCity(result);
-  }, [city]);
-
-  useEffect(() => {
-    const result = address;
-    setValidAddress(result);
-  }, [address]);
-
-  useEffect(() => {
-    const result = PWD_REGEX.test(pwd);
-    setValidPwd(result);
-    const match = pwd === matchPwd;
-    setValidMatch(match);
+    setValidPwd(PWD_REGEX.test(pwd));
+    setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd]);
 
   useEffect(() => {
@@ -99,6 +61,8 @@ const Register = () => {
   }, [user, email, phone, postal, city, address, pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+
     const usernameInput = document.getElementById("username-input");
     const emailInput = document.getElementById("email-input");
     const phoneInput = document.getElementById("phone-input");
@@ -107,154 +71,110 @@ const Register = () => {
     const addressInput = document.getElementById("address-input");
     const passwordInput = document.getElementById("password-input");
     const repasswordInput = document.getElementById("repassword-input");
-    const allInputs = [
-      usernameInput,
-      emailInput,
-      phoneInput,
-      postalInput,
-      cityInput,
-      addressInput,
-      passwordInput,
-      repasswordInput,
-    ];
-    //const errors = 0;
 
-    e.preventDefault();
-
-    if (user === "" || user == null) {
-      setErrMsg(`Hiba történt: A név szükséges!`);
-      //errosr++;
+    if (!user) {
+      setErrMsg("Hiba történt: A név szükséges!");
       usernameInput.parentElement.classList.add("incorrect");
       return;
     }
     if (!user.match(USER_REGEX)) {
-      setErrMsg(`Hiba történt: A név nem megfelelő formátumú!`);
-      //errosr++;
+      setErrMsg("Hiba történt: A név nem megfelelő formátumú!");
       usernameInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (email === "" || email == null) {
+    if (!email) {
       setErrMsg("Hiba történt: Az email szükséges!");
-      //errors++;
       emailInput.parentElement.classList.add("incorrect");
       return;
     }
     if (!email.match(EMAIL_REGEX)) {
       setErrMsg("Nem megfelelő email cím formátum!");
-      //errors++;
       emailInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (phone === "" || phone == null) {
+    if (!phone) {
       setErrMsg("Hiba történt: A telefonszám szükséges!");
-      //errors++;
       phoneInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (postal === "" || postal == null) {
+    if (!postal) {
       setErrMsg("Hiba történt: Az irányítószám szükséges!");
-      //errors++;
       postalInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (city === "" || city == null) {
+    if (!city) {
       setErrMsg("Hiba történt: A város szükséges!");
-      //errors++;
       cityInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (address === "" || address == null) {
-      setErrMsg("Hiba történt: A lakcímet kötelező megadni");
-      //errors++;
+    if (!address) {
+      setErrMsg("Hiba történt: A lakcímet kötelező megadni!");
       addressInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (pwd === "" || pwd == null) {
+    if (!pwd) {
       setErrMsg("Hiba történt: A jelszó szükséges!");
-      //errors++;
       passwordInput.parentElement.classList.add("incorrect");
       return;
     }
     if (!PWD_REGEX.test(pwd)) {
       setErrMsg("Hiba történt: A jelszó nem felel meg a követelményeknek!");
-      //errors++;
       passwordInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (matchPwd === "" || matchPwd == null) {
+    if (!matchPwd) {
       setErrMsg("Hiba történt: A jelszó megerősítése szükséges!");
-      //errors++;
       repasswordInput.parentElement.classList.add("incorrect");
       return;
     }
-    if (matchPwd != pwd) {
+    if (matchPwd !== pwd) {
       setErrMsg(
         "Hiba történt: A megerősítő jelszó nem egyezik az eredeti jelszóval!",
       );
-      //errors++;
       passwordInput.parentElement.classList.add("incorrect");
       repasswordInput.parentElement.classList.add("incorrect");
-    } else {
-      setIsLoading(true);
-      try {
-        const userData = {
-          Name: user,
-          Email: email,
-          PhoneNumber: Number(phone),
-          Password: pwd,
-          PostalCode: parseInt(postal),
-          City: city,
-          StreetHouseNumber: address,
-          Role: "User",
-        };
-        const response = await axios.post(REGISTER_URL, userData);
-        setSuccess(true);
-      } catch (err) {
-        if (err.response?.status === 409) {
-          setErrMsg("Ezzel az email-címmel már létezik felhasználó!");
-          for (let x of allInputs) {
-            x.removeAttribute("disabled");
-          }
-          submitButton.removeAttribute("disabled");
-        } else if (err.response?.status === 400) {
-          setErrMsg("Hibás vagy hiányzó adatok!");
-          for (let x of allInputs) {
-            x.removeAttribute("disabled");
-          }
-          submitButton.removeAttribute("disabled");
-        } else {
-          setErrMsg("Hálózati hiba vagy a szerver nem elérhető.");
-          for (let x of allInputs) {
-            x.removeAttribute("disabled");
-          }
-          submitButton.removeAttribute("disabled");
-        }
-        errRef.current.focus();
-      } finally {
-        setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const userData = {
+        Name: user,
+        Email: email,
+        PhoneNumber: Number(phone),
+        Password: pwd,
+        PostalCode: parseInt(postal),
+        City: city,
+        StreetHouseNumber: address,
+        Role: "User",
+      };
+      await axios.post(REGISTER_URL, userData);
+      setSuccess(true);
+    } catch (err) {
+      if (err.response?.status === 409) {
+        setErrMsg("Ezzel az email-címmel már létezik felhasználó!");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Hibás vagy hiányzó adatok!");
+      } else {
+        setErrMsg("Hálózati hiba vagy a szerver nem elérhető.");
       }
+      errRef.current.focus();
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const setIncorrectClass = () => {
-    const usernameInput = document.getElementById("username-input");
-    const emailInput = document.getElementById("email-input");
-    const phoneInput = document.getElementById("phone-input");
-    const postalInput = document.getElementById("postal-input");
-    const cityInput = document.getElementById("city-input");
-    const addressInput = document.getElementById("address-input");
-    const passwordInput = document.getElementById("password-input");
-    const repasswordInput = document.getElementById("repassword-input");
     const allInputs = [
-      usernameInput,
-      emailInput,
-      phoneInput,
-      postalInput,
-      cityInput,
-      addressInput,
-      passwordInput,
-      repasswordInput,
-    ];
+      "username-input",
+      "email-input",
+      "phone-input",
+      "postal-input",
+      "city-input",
+      "address-input",
+      "password-input",
+      "repassword-input",
+    ].map((id) => document.getElementById(id));
 
     allInputs.forEach((input) => {
       input.addEventListener("input", () => {
@@ -266,15 +186,13 @@ const Register = () => {
   };
 
   function showPassword() {
-    let x = document.getElementById("password-input");
-    const type = x.type === "password" ? "text" : "password";
-    x.type = type;
+    const x = document.getElementById("password-input");
+    x.type = x.type === "password" ? "text" : "password";
   }
 
   function showRePassword() {
-    let x = document.getElementById("repassword-input");
-    const type = x.type === "password" ? "text" : "password";
-    x.type = type;
+    const x = document.getElementById("repassword-input");
+    x.type = x.type === "password" ? "text" : "password";
   }
 
   return (
@@ -330,10 +248,7 @@ const Register = () => {
                     setIncorrectClass();
                     setUser(e.target.value);
                   }}
-                  aria-invalid={validName ? "false" : true}
-                  aria-describedby="uidnote"
-                  onFocus={() => setUserFocus(true)}
-                  onBlur={() => setUserFocus(false)}
+                  aria-invalid={validName ? "false" : "true"}
                 />
               </div>
               <div>
@@ -350,10 +265,7 @@ const Register = () => {
                     setIncorrectClass();
                     setEmail(e.target.value);
                   }}
-                  aria-invalid={validEmail ? "false" : true}
-                  aria-describedby="emailnote"
-                  onFocus={() => setEmailFocus(true)}
-                  onBlur={() => setEmailFocus(false)}
+                  aria-invalid={validEmail ? "false" : "true"}
                 />
               </div>
               <div>
@@ -378,10 +290,6 @@ const Register = () => {
                     setIncorrectClass();
                     setPhone(e.target.value);
                   }}
-                  aria-invalid={validPhone ? "false" : true}
-                  aria-describedby="phonenote"
-                  onFocus={() => setPhoneFocus(true)}
-                  onBlur={() => setPhoneFocus(false)}
                 />
               </div>
               <div>
@@ -407,10 +315,6 @@ const Register = () => {
                     setIncorrectClass();
                     setpostal(e.target.value);
                   }}
-                  aria-invalid={validPostal ? "false" : true}
-                  aria-describedby="addressnote"
-                  onFocus={() => setPostalFocus(true)}
-                  onBlur={() => setPostalFocus(false)}
                 />
                 <input
                   type="text"
@@ -422,13 +326,8 @@ const Register = () => {
                     setIncorrectClass();
                     setCity(e.target.value);
                   }}
-                  aria-invalid={validCity ? "false" : true}
-                  aria-describedby="addressnote"
-                  onFocus={() => setCityFocus(true)}
-                  onBlur={() => setCityFocus(false)}
                 />
               </div>
-
               <div>
                 <label htmlFor="x" className="register-label">
                   <svg
@@ -441,7 +340,6 @@ const Register = () => {
                     <path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z" />
                   </svg>
                 </label>
-
                 <input
                   type="text"
                   name="address"
@@ -452,13 +350,8 @@ const Register = () => {
                     setIncorrectClass();
                     setAddress(e.target.value);
                   }}
-                  aria-invalid={validAddress ? "false" : true}
-                  aria-describedby="addressnote"
-                  onFocus={() => setAddressFocus(true)}
-                  onBlur={() => setAddressFocus(false)}
                 />
               </div>
-
               <div style={{ position: "relative" }}>
                 <label
                   id="password-label"
@@ -490,7 +383,6 @@ const Register = () => {
                     setPwd(e.target.value);
                   }}
                   aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby="pwdnote"
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
@@ -522,9 +414,6 @@ const Register = () => {
                     setMatchPwd(e.target.value);
                   }}
                   aria-invalid={validMatch ? "false" : "true"}
-                  aria-describedby="confirmnote"
-                  onFocus={() => setMatchFocus(true)}
-                  onBlur={() => setMatchFocus(false)}
                 />
               </div>
               <button className="uni-button" type="submit">

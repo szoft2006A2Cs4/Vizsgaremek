@@ -1,7 +1,6 @@
-import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
-import React, { useContext, useEffect, useState } from "react";
+import { CloseButton, Drawer, Portal } from "@chakra-ui/react";
+import React, { useState } from "react";
 import SCatDrawer from "./SCatDrawer";
-import axios from "../scripts/axios";
 
 const Drawer_ = ({ open, setOpen, catList, scats, loading }) => {
   const [isSDrawerOpen, setIsSDrawerOpen] = useState(false);
