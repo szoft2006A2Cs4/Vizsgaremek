@@ -1,16 +1,29 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ForgottenPassword() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  function HandleResetEmail() {}
+  function HandleResetEmail() {
+    if (!email) return;
+    setLoading(true);
+
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <div id="forgot-page">
-      <div id="forgot-card">
-        <h2>Elfelejtett jelszó</h2>
+    <div className="wrapper">
+      <h1 className="register-h1">Elfelejtett jelszó</h1>
 
-        <h4>
+      <center>
+        <h4 className="forgot-subtitle">
           Adja meg azt az email-címét amivel regisztrált az oldalon és
           elfelejtette a jelszavát!
         </h4>
@@ -27,7 +40,7 @@ export default function ForgottenPassword() {
           />
         </div>
 
-        <div id="forgot-btn-cont">
+        <div className="forgot-btn-cont">
           <button
             className="uni-button"
             onClick={() => {
@@ -45,7 +58,7 @@ export default function ForgottenPassword() {
             Küldés
           </button>
         </div>
-      </div>
+      </center>
     </div>
   );
 }
