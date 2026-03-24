@@ -80,5 +80,48 @@ namespace HH_Api.Auth
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public string GeneratePWDResetToken(string email)
+        {
+            var claims = new[] {new Claim(ClaimTypes.Name, email)};
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms .HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _issuer,
+                audience: _audience,
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(1),
+                signingCredentials: creds
+                );
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public string? ValidatePWDResetToken(string token)
+        {
+            try
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+
+                handler.ValidateToken(token, new TokenValidationParameters 
+                { 
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = key,
+                    ValidateIssuer = true,
+                    ValidIssuer = _issuer,
+                    ValidateAudience = true,
+                    ValidAudience = _audience,
+                    ClockSkew = TimeSpan.Zero
+                }, out var validatedToken);
+
+                var jwt = (JwtSecurityToken)validatedToken;
+                return jwt.Claims.First(c => c.Type == ClaimTypes.Name).Value;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

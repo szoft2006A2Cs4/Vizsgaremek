@@ -1,5 +1,6 @@
 ﻿using HH_Api.Auth;
 using HH_Api.Data;
+using HH_Api.DTOs;
 using HH_Api.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -82,5 +83,30 @@ namespace HH_Api.Controllers
 					permissions = permissions 
 				});
 			}
+
+        [AllowAnonymous]
+        [HttpPost("forgot-pwd")]
+        public async Task<IActionResult> ForgotPWD([FromBody] string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u =>u.Email == email);
+            if(user == null) return Ok(new {token = ""});
+            var token = _tokenManager.GeneratePWDResetToken(user.Email!);
+            return Ok(new {token});
+        }
+
+        [AllowAnonymous]
+        [HttpPatch("reset-pwd")]
+        public async Task<IActionResult> ResetPWD([FromBody] ResetPWDDTO dto)
+        {
+            var email = _tokenManager.ValidatePWDResetToken(dto.Token!);
+            if (email == null) return BadRequest("Érvénytelen vagy lejárt azonosító!");
+
+            var user= await _context.Users.FirstOrDefaultAsync(u => u.Email==email);
+            if (user == null) return BadRequest("Ilyen azonosítóval felhasználó nem található");
+
+            user.Password = PasswordHandler.HashPassword(dto.newPWD!);
+            await _context.SaveChangesAsync();
+            return Ok("A jelszó sikeresen frissült!");
         }
     }
+}

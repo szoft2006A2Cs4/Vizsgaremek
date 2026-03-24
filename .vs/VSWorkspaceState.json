@@ -6,6 +6,6 @@
     "\\HH_Api\\HH_Api\\Controllers",
     "\\HH_Api\\TestProject1"
   ],
-  "SelectedNode": "\\HH_Api\\TestProject1\\DbContextHelper.cs",
+  "SelectedNode": "\\HH_Api\\HH_Api\\Controllers\\LoginController.cs",
   "PreviewInSolutionExplorer": false
 }
