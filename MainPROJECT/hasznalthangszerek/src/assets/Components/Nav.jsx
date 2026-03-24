@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 import Drawer_ from "./CatDrawer";
 import ForYou from "./ForYou";
 
-export default function Nav({ cats, scats, loading }) {
+export default function Nav({ cats, scats, loading, ins }) {
   const { auth } = useContext(AuthContext);
   const [openProf, setOpenProf] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Nav({ cats, scats, loading }) {
       </Link>
 
       <div id="nav-spacing-loggedIn">
-        <SearchInput></SearchInput>
+        <SearchInput ins={ins}></SearchInput>
         <div
           style={{
             display: "flex",
@@ -85,7 +85,7 @@ export default function Nav({ cats, scats, loading }) {
         </button>
 
         <div id="nav-end">
-          <SearchInput></SearchInput>
+          <SearchInput ins={ins}></SearchInput>
 
           <button>
             <Link to="/login">Bejelentkezés</Link>

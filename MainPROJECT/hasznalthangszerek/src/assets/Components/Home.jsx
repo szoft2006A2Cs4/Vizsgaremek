@@ -14,13 +14,13 @@ function Home({ instruments, cats, scats, isLoading }) {
 
   return !loggedIn ? (
     <div>
-      <Nav cats={cats} scats={scats} loading={isLoading} />
+      <Nav cats={cats} scats={scats} loading={isLoading} ins={instruments} />
       <CatField cats={cats} />
       <PseMain ins={instruments} />
     </div>
   ) : (
     <div>
-      <Nav cats={cats} scats={scats} loading={isLoading} />
+      <Nav cats={cats} scats={scats} loading={isLoading} ins={instruments} />
       <Introduction />
       <PseMain ins={instruments} isLoading={isLoading} />
       <Drawer />

@@ -45,13 +45,14 @@ export default function CardView({ data, loading, subcatList, cats, user }) {
     subcategory: searchParams.get("subcategory"),
     price: searchParams.get("price"),
     conditions: searchParams.get("conditions")?.split(",") || [],
+    name: searchParams.get("name") || "",
   };
 
   const handleFilterChange = (filterType, value) => {
-    console.log("szuro valtozott:", filterType, value);
     setSearchParams((prev) => {
       const params = new URLSearchParams(prev);
       if (filterType === "category") params.delete("subcategory");
+      params.delete("name");
       if (value && (Array.isArray(value) ? value.length > 0 : true)) {
         const formatValue = Array.isArray(value) ? value.join(",") : value;
         params.set(filterType, formatValue);
@@ -93,12 +94,21 @@ export default function CardView({ data, loading, subcatList, cats, user }) {
       if (!Filters.conditions.includes(ins.condition?.toLowerCase()))
         return false;
     }
+
+    if (Filters.name.length > 0) {
+      if (
+        !ins.name.toLocaleLowerCase().includes(Filters.name.toLocaleLowerCase())
+      ) {
+        return false;
+      }
+    }
+
     return true;
   });
 
   return (
     <div id="cardView">
-      <Nav cats={cats} scats={subcatList} loading={loading} />
+      <Nav cats={cats} scats={subcatList} loading={loading} ins={data} />
       <div id="testClassField">
         <Sidebar
           onFilterChange={handleFilterChange}

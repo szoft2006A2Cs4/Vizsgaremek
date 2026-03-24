@@ -309,6 +309,43 @@ button:hover > a {
   height: 50%;
 }
 
+.results-list {
+  position: absolute;
+  top: 3rem;
+  z-index: 999;
+  width: 100%;
+  background-color: var(--base-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  max-height: 18.75rem;
+  overflow-y: scroll;
+}
+
+.resultList-loggedIn {
+  position: absolute;
+  top: 3rem;
+  z-index: 999;
+  width: 100%;
+  background-color: var(--base-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  max-height: 18.75rem;
+  overflow-y: scroll;
+}
+
+.search-result {
+  padding: 0.625rem 1.25rem;
+}
+
+.search-result:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
 /*#region Bejelentkezett kereso */
 
 #nav-spacing-loggedIn .middle {
