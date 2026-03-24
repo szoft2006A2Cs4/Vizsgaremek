@@ -41,6 +41,10 @@ body {
   min-height: 100vh;
 }
 
+.error-msg {
+  color: red;
+}
+
 .uni-button {
   margin-top: 10px;
   border: none;
@@ -83,6 +87,12 @@ body {
 .uni-button-sm:focus {
   outline: none;
   background-color: var(--text-color);
+}
+
+.uni-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 nav {
