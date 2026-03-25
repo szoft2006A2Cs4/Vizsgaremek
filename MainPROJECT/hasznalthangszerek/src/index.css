@@ -742,7 +742,7 @@ button:hover > a {
 /*#endregion AboutUs oldal*/
 
 /*#region Forgot password oldal  */
-#forgot-styled-wrapper {
+.forgot-styled-wrapper {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -755,7 +755,7 @@ button:hover > a {
   text-transform: uppercase;
 }
 
-#forgot-label {
+.forgot-label {
   flex-shrink: 0;
   height: 50px;
   width: 50px;
@@ -771,7 +771,7 @@ button:hover > a {
   font-weight: 500;
 }
 
-#forgot-styled-input {
+.forgot-styled-input {
   box-sizing: border-box;
   flex-grow: 1;
   min-width: 0;
@@ -784,15 +784,15 @@ button:hover > a {
   transition: 150ms ease;
 }
 
-#forgot-styled-wrapper:has(#forgot-styled-input:focus) #forgot-label {
+.forgot-styled-wrapper:has(.forgot-styled-input:focus) .forgot-label {
   background-color: var(--text-color);
 }
 
-#forgot-styled-input:hover {
+.forgot-styled-input:hover {
   border-color: var(--accent-color);
 }
 
-#forgot-styled-input:focus {
+.forgot-styled-input:focus {
   outline: none;
   border-color: var(--text-color);
 }
@@ -804,6 +804,15 @@ button:hover > a {
   gap: 0.25rem;
   width: 35%;
 }
+
+.forgot-mismatch .forgot-styled-input {
+  border-color: red;
+}
+
+.forgot-mismatch .forgot-label {
+  background-color: red;
+}
+
 /*#endregion Forgot password oldal  */
 
 /*#region Loading animáció*/

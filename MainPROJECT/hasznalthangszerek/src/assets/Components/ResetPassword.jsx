@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "../scripts/axios";
+import PasswordPopUp from "./PasswordPopUp";
 
 export default function ResetPWD() {
   const navigate = useNavigate();
@@ -11,8 +12,17 @@ export default function ResetPWD() {
   const [confirm, setConfirm] = useState("");
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isPWDFocus, setIsPWDFocus] = useState(false);
+  const pwdRef = useRef();
+
+  const PWD_REGEX =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$!%*#?&_-]).{8,24}$/;
 
   async function HandleReset() {
+    if (!PWD_REGEX.test(password)) {
+      setStatus("invalid");
+      return;
+    }
     if (!password || password !== confirm) {
       setStatus("mismatch");
       return;
@@ -54,25 +64,59 @@ export default function ResetPWD() {
           <p>A jelszó sikeresen megváltozotatva, átirányítjuk . . .</p>
         ) : (
           <>
-            <div id="forgot-styled-wrapper">
+            <div
+              className={`forgot-styled-wrapper ${status === "mismatch" ? "forgot-mismatch" : ""}`}
+            >
+              <label className="forgot-label">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#e8e3eD"
+                >
+                  <path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+                </svg>
+              </label>
               <input
+                ref={pwdRef}
                 type="password"
                 placeholder="Új jelszó"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
+                  setStatus("");
+                  setIsPWDFocus(true);
                 }}
+                onBlur={setIsPWDFocus(false)}
                 className="forgot-styled-input"
               />
+              <PasswordPopUp isopen={isPWDFocus} anchorRef={pwdRef} />
             </div>
 
-            <div id="forgot-styled-wrapper">
+            <br />
+
+            <div
+              className={`forgot-styled-wrapper ${status === "mismatch" ? "forgot-mismatch" : ""}`}
+            >
+              <label className="forgot-label">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#e8e3eD"
+                >
+                  <path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+                </svg>
+              </label>
               <input
                 type="password"
                 placeholder="Új jelszó megerősítése"
                 value={confirm}
                 onChange={(e) => {
                   setConfirm(e.target.value);
+                  setStatus("");
                 }}
                 className="forgot-styled-input"
               />
@@ -83,6 +127,11 @@ export default function ResetPWD() {
             )}
             {status === "error" && (
               <p className="error-msg">Érvénytelen vagy lejárt link!</p>
+            )}
+            {status === "invalid" && (
+              <p className="error-msg">
+                A jelszó nem felel meg a kritériumoknak!
+              </p>
             )}
 
             <div className="forgot-btn-cont">
