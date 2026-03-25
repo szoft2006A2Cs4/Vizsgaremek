@@ -65,7 +65,7 @@ export default function ResetPWD() {
         ) : (
           <>
             <div
-              className={`forgot-styled-wrapper ${status === "mismatch" ? "forgot-mismatch" : ""}`}
+              className={`forgot-styled-wrapper ${status === "mismatch" || ("invalid" && status !== "") ? "forgot-mismatch" : ""}`}
             >
               <label className="forgot-label">
                 <svg
@@ -86,9 +86,9 @@ export default function ResetPWD() {
                 onChange={(e) => {
                   setPassword(e.target.value);
                   setStatus("");
-                  setIsPWDFocus(true);
                 }}
-                onBlur={setIsPWDFocus(false)}
+                onFocus={() => setIsPWDFocus(true)}
+                onBlur={() => setIsPWDFocus(false)}
                 className="forgot-styled-input"
               />
               <PasswordPopUp isopen={isPWDFocus} anchorRef={pwdRef} />

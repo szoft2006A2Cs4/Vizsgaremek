@@ -12,7 +12,7 @@ const PasswordPopUp = ({ isopen, anchorRef }) => {
       closeOnBlur={false}
       positioning={{ placement: "right", gutter: 10 }}
     >
-      <Popover.Anchor virtualRef={anchorRef} />
+      <Popover.Anchor ref={anchorRef} />
       <Portal>
         <Popover.Positioner>
           <Popover.Content width="25rem">
