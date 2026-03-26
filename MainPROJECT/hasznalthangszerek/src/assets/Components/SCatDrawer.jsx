@@ -5,7 +5,7 @@ const Drawer_ = ({ open, setOpen, sCatList }) => {
   const navigate = useNavigate();
 
   const navigateTo = (e) => {
-    navigate(`\instruments?category=${e.cName}&subcategory=${e.name}`, {
+    navigate(`/instruments?category=${e.cName}&subcategory=${e.name}`, {
       replace: true,
     });
   };

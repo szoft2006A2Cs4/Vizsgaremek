@@ -3,10 +3,10 @@ import Footer from "./Footer";
 import AboutUsCard from "./aboutUsCard";
 import "../../index.css";
 
-export default function AboutUs() {
+export default function AboutUs({ ins, cats, scats, loading }) {
   return (
     <div id="aboutUs">
-      <Nav></Nav>
+      <Nav cats={cats} scats={scats} ins={ins} loading={loading}></Nav>
       <div id="aboutUs-main">
         <div id="aboutUs-Introtext">
           <h1>Rólunk</h1>

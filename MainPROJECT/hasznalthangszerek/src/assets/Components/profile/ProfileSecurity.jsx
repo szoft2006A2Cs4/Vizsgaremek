@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "../../scripts/axios";
 import Loading from "../Loading";
-import { Link } from "react-router-dom";
+import { Dialog } from "@chakra-ui/react";
 
 const ProfileSecurity = ({ user }) => {
   const [email, setEmail] = useState(user.email);
@@ -10,6 +10,7 @@ const ProfileSecurity = ({ user }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [pwdDialogShow, setPwdDialogShow] = useState(true);
 
   const PUT_URL = `/api/User/${user.id}`;
 
@@ -92,30 +93,71 @@ const ProfileSecurity = ({ user }) => {
           </button>
         )}
       </div>
-      <button className="uni-button">
-        <Link to="/resetPassword" style={{ color: "white" }}>
-          Jelszó módosítása
-        </Link>
+      <button className="uni-button" onClick={() => setPwdDialogShow(true)}>
+        Jelszó módosítása
       </button>
-      {showDialog ? (
-        <dialog open className="edit-response-popup rounded-3">
-          {success ? (
-            <h6 className="text-center">Profil frissítése sikeres</h6>
-          ) : (
-            <h6 className="text-center">Profil frissítése sikertelen</h6>
-          )}
-          <button
-            className="rounded-2 py-1 px-4 mt-3 uni-button"
-            onClick={(e) => {
-              setShowDialog(false);
-              setEditEnabled(false);
-            }}
+      {showDialog && (
+        <Dialog.Root
+          open={showDialog}
+          onOpenChange={(e) => setShowDialog(e.open)}
+          placement="center"
+        >
+          <Dialog.Positioner
+            style={{ alignItems: "center", justifyContent: "center" }}
           >
-            RENDBEN
-          </button>
-        </dialog>
-      ) : (
-        <></>
+            <Dialog.Content>
+              <Dialog.Header justifyContent="center" fontSize="2xl">
+                {success
+                  ? "Profil frissítése sikeres"
+                  : "Profil frissítése sikertelen"}
+              </Dialog.Header>
+
+              <Dialog.Body>
+                <button
+                  className="rounded-2 py-1 px-4 mt-3 uni-button"
+                  onClick={(e) => {
+                    setShowDialog(false);
+                    setEditEnabled(false);
+                  }}
+                >
+                  RENDBEN
+                </button>
+              </Dialog.Body>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Dialog.Root>
+      )}
+
+      {pwdDialogShow && (
+        <Dialog.Root
+          open={pwdDialogShow}
+          onOpenChange={(e) => setPwdDialogShow(e.open)}
+          placement="center"
+          size="lg"
+        >
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.Header fontSize="2xl" justifyContent="center">
+                <Dialog.Title>Jelszó módosítás</Dialog.Title>
+              </Dialog.Header>
+              <Dialog.Body>
+                <div id="profile-sec-pwdUpdate">
+                  <label className="profile-sec-label">Új jelszó</label>
+                  <input className="profile-sec-input"></input>
+                </div>
+                <br />
+                <div id="profile-sec-pwdUpdate">
+                  <label className="profile-sec-label">Megerősítés</label>
+                  <input className="profile-sec-input"></input>
+                </div>
+              </Dialog.Body>
+              <Dialog.Footer>
+                <button className="uni-button-sm">Mégsem</button>
+                <button className="uni-button-sm">Mentés</button>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Dialog.Root>
       )}
     </>
   );

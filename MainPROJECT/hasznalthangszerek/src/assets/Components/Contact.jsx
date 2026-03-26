@@ -3,20 +3,32 @@ import emailjs from "@emailjs/browser";
 import Loading from "./Loading";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import { Button } from "@chakra-ui/react";
+import { Button, Dialog } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const form = useRef();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     setIsEmpty(name === "" || email === "" || msg === "");
   }, [name, email, msg]);
+
+  useEffect(() => {
+    if (showDialog) {
+      const timer = setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [showDialog]);
 
   const sendEmail = async (e) => {
     e.preventDefault();
@@ -28,7 +40,7 @@ const Contact = () => {
       })
       .then(
         () => {
-          alert("Sikerült :)");
+          setShowDialog(true);
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -79,6 +91,20 @@ const Contact = () => {
             Küldés
           </Button>
         </form>
+        <Dialog.Root
+          open={showDialog}
+          onOpenChange={(e) => setShowDialog(e.open)}
+          placement="center"
+        >
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.Header justifyContent="center" fontSize="2xl">
+                <Dialog.Title> Az üzeneted elküldtük!</Dialog.Title>
+              </Dialog.Header>
+              <Dialog.Body>Átirányítunk . . .</Dialog.Body>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Dialog.Root>
       </div>
       <Footer />
     </div>

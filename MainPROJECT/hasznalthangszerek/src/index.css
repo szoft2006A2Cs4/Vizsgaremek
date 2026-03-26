@@ -1539,6 +1539,37 @@ button:hover > a {
   cursor: pointer;
   text-decoration: none;
 }
+
+#profile-sec-pwdUpdate {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  justify-content: center;
+}
+
+.profile-sec-label {
+  grid-column: 1;
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+.profile-sec-input {
+  grid-column: 2;
+  box-sizing: border-box;
+  flex-grow: 1;
+  font: inherit;
+  border: 2px solid var(--text-color);
+  background-color: var(--base-color);
+  color: var(--text-color);
+  height: 3.125rem;
+}
+
+.profile-sec-input:focus {
+  outline: none;
+  border: 2px solid var(--input-color);
+}
 /*#endregion Fiókom adatai oldal*/
 
 /*#region Egy kiválasztott hangszert megjelenítő oldal beállításai*/

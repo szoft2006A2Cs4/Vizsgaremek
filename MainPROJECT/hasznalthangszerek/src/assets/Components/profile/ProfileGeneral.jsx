@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "@/assets/scripts/axios";
 import Loading from "../Loading";
+import { Dialog, DialogRoot } from "@chakra-ui/react";
 
 const ProfileGeneral = ({ user }) => {
   const [name, setName] = useState(user.name);
@@ -155,22 +156,35 @@ const ProfileGeneral = ({ user }) => {
         )}
       </div>
       {showDialog ? (
-        <dialog open className="edit-response-popup rounded-3">
-          {success ? (
-            <h6 className="text-center">Profil frissítése sikeres</h6>
-          ) : (
-            <h6 className="text-center">Profil frissítése sikertelen</h6>
-          )}
-          <button
-            className="rounded-2 py-1 px-4 mt-3 uni-button"
-            onClick={(e) => {
-              setShowDialog(false);
-              setEditEnabled(false);
-            }}
+        <Dialog.Root
+          open={showDialog}
+          onOpenChange={(e) => setShowDialog(e.open)}
+          placement="center"
+        >
+          <Dialog.Positioner
+            style={{ alignItems: "center", justifyContent: "center" }}
           >
-            RENDBEN
-          </button>
-        </dialog>
+            <Dialog.Content>
+              <Dialog.Header justifyContent="center" fontSize="2xl">
+                {success
+                  ? "Profil frissítése sikeres"
+                  : "Profil frissítése sikertelen"}
+              </Dialog.Header>
+
+              <Dialog.Body>
+                <button
+                  className="rounded-2 py-1 px-4 mt-3 uni-button"
+                  onClick={(e) => {
+                    setShowDialog(false);
+                    setEditEnabled(false);
+                  }}
+                >
+                  RENDBEN
+                </button>
+              </Dialog.Body>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Dialog.Root>
       ) : (
         <></>
       )}

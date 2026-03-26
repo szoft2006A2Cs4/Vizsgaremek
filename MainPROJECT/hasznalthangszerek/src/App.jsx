@@ -99,7 +99,17 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/aboutUs" element={<AboutUs />} />
+          <Route
+            path="/aboutUs"
+            element={
+              <AboutUs
+                ins={instruments}
+                cats={cats}
+                scats={scats}
+                loading={isLoading}
+              />
+            }
+          />
           <Route path="/upLoad" element={<UpLoad />} />
           <Route path="/contactUs" element={<Contact />} />
           <Route

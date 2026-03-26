@@ -67,14 +67,14 @@ export default function ForgottenPassword() {
           </p>
         ) : (
           <>
-            <div id="forgot-styled-wrapper">
-              <label htmlFor="email-input" id="forgot-label">
+            <div className="forgot-styled-wrapper">
+              <label htmlFor="email-input" className="forgot-label">
                 <span>@</span>
               </label>
               <input
                 type="text"
                 name="email"
-                id="forgot-styled-input"
+                className="forgot-styled-input"
                 placeholder="Email"
                 autoComplete="off"
                 value={email}
