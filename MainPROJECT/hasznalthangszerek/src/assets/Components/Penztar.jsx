@@ -29,6 +29,7 @@ export default function CheckOut() {
     fetchData();
   }, []);
 
+  console.log(ins);
   return (
     <div id="checkOut-page-cont">
       {isLoading && <Loading />}
