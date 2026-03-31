@@ -95,6 +95,10 @@ body {
   pointer-events: none;
 }
 
+.uni-button a {
+  color: white;
+}
+
 nav {
   background-color: #77625c;
   display: grid;
@@ -814,6 +818,30 @@ button:hover > a {
 }
 
 /*#endregion Forgot password oldal  */
+
+/*#region Penztar oldal es elemei*/
+
+#checkOut-page-cont {
+  display: flex;
+  flex-direction: column;
+  min-height: 115vh;
+}
+
+#checkOut-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#checkOut-field {
+  background-color: #ead7ce;
+  height: 42rem;
+  width: 65rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/*#endregion Penztar oldal es elemei*/
 
 /*#region Loading animáció*/
 

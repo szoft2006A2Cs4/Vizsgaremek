@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import SimpleMap from "./simpleMap";
+import { Link } from "react-router-dom";
 
 const InstrumentData = ({ instrument }) => {
   const images = instrument.imageUrls;
@@ -71,7 +72,11 @@ const InstrumentData = ({ instrument }) => {
                   <div className="seller" id="seller" fontSize={20}>
                     +{instrument.seller.phoneNumber}
                   </div>
-                  <button className="uni-button">Vásárlás most</button>
+                  <button className="uni-button">
+                    <Link to={`/checkOut?ins=${instrument.id}`}>
+                      Vásárlás most
+                    </Link>
+                  </button>
                   <button className="uni-button">Ajánlattétel</button>
                 </div>
               </section>

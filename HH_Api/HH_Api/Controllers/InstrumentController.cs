@@ -69,10 +69,34 @@ namespace HH_Api.Controllers
         public async Task<IActionResult> GetInstrument(int id)
         {
             var instrument = await _context.Instruments
-                .Include(u => u.Seller)
-                .Include(sc => sc.SubCategory)
-                .ThenInclude(c => c!.Category)
-                .FirstOrDefaultAsync(i => i.Id == id);
+                .Where(i => i.Id == id)
+                .Select(i => new InstrumentDTO
+                {
+                    Cost = i.Cost,
+                    Description = i.Description,
+                    Sold = i.Sold,
+                    UId = i.UId,
+                    SCName = i.SCName,
+                    IsPremium = i.IsPremium,
+                    Condition = i.Condition,
+                    SubCategory = i.SubCategory,
+                    Id =  i.Id,
+                    ImageCount = i.ImageCount,
+                    Name = i.Name,
+                    Seller = i.Seller   != null ? new UserDTO
+                    {
+                        Id = i.Seller.Id,
+                        Name = i.Seller.Name,
+                        PhoneNumber = i.Seller.PhoneNumber,
+                        Review = i.Seller.Review,
+                        PostalCode = i.Seller.PostalCode,
+                        City = i.Seller.City,
+                        ImageId = i.Seller.ImageId,
+                        StreetHouseNumber = i.Seller.StreetHouseNumber,
+                    } : null
+                    
+                })
+                .FirstOrDefaultAsync();
             if (instrument != null) return Ok(instrument);
             else return NotFound("A megadott azonosítóval hangszer nem található!");
         }

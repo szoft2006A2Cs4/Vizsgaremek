@@ -14,6 +14,7 @@ import ForgottenPassword from "./assets/Components/forgottenPassword";
 import Profile from "./assets/Components/Profile";
 import AuthContext from "./assets/scripts/AuthProvider";
 import ResetPWD from "./assets/Components/ResetPassword";
+import CheckOut from "./assets/Components/Penztar";
 
 const cloudName = "dknhbvrq9";
 const instURL = "/api/Instrument";
@@ -130,6 +131,7 @@ function App() {
           />
           <Route path="/forgotPassword" element={<ForgottenPassword />} />
           <Route path="/resetPWD" element={<ResetPWD />} />
+          <Route path="checkOut" element={<CheckOut />} />
         </Routes>
       </BrowserRouter>
     </>
