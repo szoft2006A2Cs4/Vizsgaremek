@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HH_Api.DTOs;
+using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
 
 namespace HH_Api.Controllers
 {
@@ -14,10 +16,12 @@ namespace HH_Api.Controllers
     public class InstrumentController : ControllerBase
     {
         private readonly Context _context;
+        private readonly Cloudinary _cloudinary;
 
-        public InstrumentController(Context context)
+        public InstrumentController(Context context, Cloudinary cloudinary)
         {
             _context = context;
+            _cloudinary = cloudinary;
         }
 
         // GET: api/Instrument
@@ -156,8 +160,31 @@ namespace HH_Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInstrument(int id)
         {
-            var ins = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+            var ins = await _context.Instruments.Include(i => i.Seller).FirstOrDefaultAsync(i => i.Id == id);
             if (ins == null) return NotFound("A megadott azonosítóval hangszer nem található!");
+
+            try
+            {
+                if (ins.ImageCount > 0)
+                {
+                    string cleanName = ins.Name!.Replace(" ", "");
+                    string sellerImgId = ins.Seller!.ImageId!;
+
+                    for (var i = 0; i < ins.ImageCount; i++)
+                    {
+                        string publicId = $"{cleanName}_{sellerImgId}_{i}";
+
+                        var delParams = new DeletionParams(publicId);
+                        await _cloudinary.DestroyAsync(delParams);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+
             _context.Instruments.Remove(ins!);
             await _context.SaveChangesAsync();
             return NoContent();

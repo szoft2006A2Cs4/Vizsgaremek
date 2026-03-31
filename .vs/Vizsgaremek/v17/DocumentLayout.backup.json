@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HH_Api\\TestProject1\\UserController.Test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HH_Api\\HH_Api\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UserController.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
+              "RelativeDocumentMoniker": "HH_Api\\TestProject1\\UserController.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
+              "RelativeToolTip": "HH_Api\\TestProject1\\UserController.Test.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAHQAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T17:19:55.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InProfilePWDResetDTO.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
+              "RelativeDocumentMoniker": "HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
+              "RelativeToolTip": "HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T17:19:28.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "HH_Api\\HH_Api\\Controllers\\UserController.cs",

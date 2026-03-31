@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\usercontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2684889F-52BD-4A73-8883-B8D46D15F7FD}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\usercontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\dtos\\inprofilepwdresetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\dtos\\inprofilepwdresetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\dtos\\resetpwddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\dtos\\resetpwddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\auth\\tokenmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\auth\\tokenmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,81 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\UserController.Test.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
-              "RelativeToolTip": "TestProject1\\UserController.Test.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwIAAAABuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T17:20:35.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InProfilePWDResetDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
-              "RelativeDocumentMoniker": "HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
-              "RelativeToolTip": "HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T17:14:54.155Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ResetPWDDTO.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\ResetPWDDTO.cs",
-              "RelativeDocumentMoniker": "HH_Api\\DTOs\\ResetPWDDTO.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\DTOs\\ResetPWDDTO.cs",
-              "RelativeToolTip": "HH_Api\\DTOs\\ResetPWDDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T17:39:49.483Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "HH_Api\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T17:30:16.031Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "HH_Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAywDoAAABCAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
+              "RelativeDocumentMoniker": "HH_Api\\Program.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
+              "RelativeToolTip": "HH_Api\\Program.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAwwL8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T17:30:11.571Z",
+              "WhenOpened": "2026-03-31T19:21:05.332Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TokenManager.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Auth\\TokenManager.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Auth\\TokenManager.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Auth\\TokenManager.cs",
-              "RelativeToolTip": "HH_Api\\Auth\\TokenManager.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHEAAAAuAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "InstrumentController.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
+              "RelativeDocumentMoniker": "HH_Api\\Controllers\\InstrumentController.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
+              "RelativeToolTip": "HH_Api\\Controllers\\InstrumentController.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAwwLQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T17:13:40.725Z"
+              "WhenOpened": "2026-03-31T19:09:54.332Z",
+              "EditorCaption": ""
             }
           ]
         },

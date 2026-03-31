@@ -1,3 +1,4 @@
+using CloudinaryDotNet;
 using HH_Api.Auth;
 using HH_Api.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,8 +17,16 @@ namespace HH_Api
 {
     public class Program
     {
+
+        const string cloudName = "dknhbvrq9";
+        const string APIKey = "299914551751983";
+        const string APISecret = "hm8OXqwnUdm_0Kows3OXccaOmqk";
+
         public static void Main(string[] args)
         {
+            Account account = new Account(cloudName, APIKey, APISecret);
+            Cloudinary cloudinary = new Cloudinary(account);
+
             var builder = WebApplication.CreateBuilder(args);
             var connectionString = builder.Configuration
                         .GetConnectionString("HH")
@@ -30,6 +39,8 @@ namespace HH_Api
                      dbBuilder.UseMySQL(connectionString);
                  });
             AddJwtAuthentication(builder);
+
+            builder.Services.AddSingleton(cloudinary);
 
             builder.Services.AddCors(options =>
             {
