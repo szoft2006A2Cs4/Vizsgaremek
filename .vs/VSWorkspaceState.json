@@ -4,8 +4,9 @@
     "\\HH_Api",
     "\\HH_Api\\HH_Api",
     "\\HH_Api\\HH_Api\\Controllers",
+    "\\HH_Api\\HH_Api\\DTOs",
     "\\HH_Api\\TestProject1"
   ],
-  "SelectedNode": "\\HH_Api\\HH_Api\\Controllers\\LoginController.cs",
+  "SelectedNode": "\\HH_Api\\HH_Api\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -3,7 +3,6 @@ import axios from "../../scripts/axios";
 import Loading from "../Loading";
 import { Dialog } from "@chakra-ui/react";
 import PasswordPopUp from "../PasswordPopUp";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileSecurity = ({ user }) => {
   const [email, setEmail] = useState(user.email);

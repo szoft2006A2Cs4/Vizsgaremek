@@ -2,6 +2,6 @@
 {
     public class InProfilePWDResetDTO
     {
-        public string Pswd { get; set; }
+        public required string Pswd { get; set; }
     }
 }

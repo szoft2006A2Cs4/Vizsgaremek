@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 using System.Linq;
 using System.Threading.Tasks;
+using HH_Api.DTOs;
 
 namespace TestProject1;
 
@@ -114,18 +115,18 @@ public sealed class UserController_Test
     [TestMethod]
     public async Task ResetPassword_ReturnOk()
     {
-        var result = await _sut!.ResetPassword(_db!.userList![0].Id, "EgyFrissitettErosJelszo1!") as OkObjectResult;
+        var result = await _sut!.ResetPassword(_db!.userList![0].Id, new InProfilePWDResetDTO { Pswd = "EgyFrissitettErosJelszo1!"}) as OkObjectResult;
         Assert.IsNotNull(result);
         Assert.AreEqual("A jelszó frissítése sikeres!", result.Value);
     }
     [TestMethod]
     public async Task ResetPassword_ReturnWrong()
     {
-        var resultNotFound = await _sut!.ResetPassword(999, "EgyFrissitettErosJelszo1!") as NotFoundObjectResult;
+        var resultNotFound = await _sut!.ResetPassword(999, new InProfilePWDResetDTO { Pswd = "EgyFrissitettErosJelszo1!" }) as NotFoundObjectResult;
         Assert.IsNotNull(resultNotFound);
         Assert.AreEqual("Ilyen azonosítóval felhasználó nem található!", resultNotFound.Value);
 
-        var resultBadReq = await _sut!.ResetPassword(_db!.userList![0].Id, "") as BadRequestObjectResult;
+        var resultBadReq = await _sut!.ResetPassword(_db!.userList![0].Id, new InProfilePWDResetDTO { Pswd = "" }) as BadRequestObjectResult;
         Assert.IsNotNull(resultBadReq);
         Assert.AreEqual("Hibás adatok!", resultBadReq.Value);
     }
