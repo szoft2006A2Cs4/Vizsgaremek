@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HH_Api.Auth;
+using HH_Api.DTOs;
 
 namespace HH_Api.Controllers
 {
@@ -50,12 +51,12 @@ namespace HH_Api.Controllers
 
         [Authorize(Policy = "User.Patch")]
         [HttpPatch("{id}")]
-        public async Task<IActionResult> ResetPassword(int id, [FromBody] string pswd)
+        public async Task<IActionResult> ResetPassword(int id, [FromBody] InProfilePWDResetDTO data)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if (user == null) return NotFound("Ilyen azonosítóval felhasználó nem található!");
-            if (string.IsNullOrEmpty(pswd)) return BadRequest("Hibás adatok!");
-            user.Password = PasswordHandler.HashPassword(pswd);
+            if (string.IsNullOrEmpty(data.Pswd)) return BadRequest("Hibás adatok!");
+            user.Password = PasswordHandler.HashPassword(data.Pswd);
             await _context.SaveChangesAsync();
             return Ok("A jelszó frissítése sikeres!");
         }
