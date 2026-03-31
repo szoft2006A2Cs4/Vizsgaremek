@@ -841,6 +841,23 @@ button:hover > a {
   border-bottom-right-radius: 10px;
 }
 
+#checkOut-field-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+#checkOut-field-grid-first {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  border-right: solid 1px black;
+}
+
+.checkOut-field-grid-elements {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
 /*#endregion Penztar oldal es elemei*/
 
 /*#region Loading animáció*/

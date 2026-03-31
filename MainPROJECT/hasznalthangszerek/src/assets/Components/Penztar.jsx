@@ -16,7 +16,7 @@ export default function CheckOut() {
     async function fetchData() {
       setIsLoading(true);
       try {
-        const resp = axios.get(`/api/Instrument/${selectedInsId}`, {
+        const resp = await axios.get(`/api/Instrument/${selectedInsId}`, {
           withCredentials: true,
         });
         setIns(resp.data);
@@ -29,7 +29,8 @@ export default function CheckOut() {
     fetchData();
   }, []);
 
-  console.log(ins);
+  if (!ins) return;
+
   return (
     <div id="checkOut-page-cont">
       {isLoading && <Loading />}
@@ -37,6 +38,14 @@ export default function CheckOut() {
       <div id="checkOut-content">
         <div id="checkOut-field">
           <h1>Pénztár</h1>
+          <div id="checkOut-field-grid">
+            <div id="checkOut-field-grid-first">
+              <div className="checkOut-field-grid-elements">
+                <h3>Név: </h3>
+                <h3>{ins.name}</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
