@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "HH_Api\\TestProject1\\UserController.Test.cs",
               "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
               "RelativeToolTip": "HH_Api\\TestProject1\\UserController.Test.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAHQAAABkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-31T17:19:55.762Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "HH_Api\\HH_Api\\DTOs\\InProfilePWDResetDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T17:19:28.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-31T17:19:28.441Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "HH_Api\\HH_Api\\Controllers\\UserController.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T21:11:05.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T21:11:05.533Z"
             }
           ]
         },
