@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "../../scripts/axios";
 import Loading from "../Loading";
 import { Dialog } from "@chakra-ui/react";
+import PasswordPopUp from "../PasswordPopUp";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileSecurity = ({ user }) => {
   const [email, setEmail] = useState(user.email);
@@ -10,9 +12,26 @@ const ProfileSecurity = ({ user }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [pwdDialogShow, setPwdDialogShow] = useState(true);
+  const [pwdDialogShow, setPwdDialogShow] = useState(false);
+
+  const [pwdStatus, setPwdStatus] = useState(null);
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [isPWDFocus, setIsPWDFocus] = useState(false);
+  const pwdRef = useRef();
 
   const PUT_URL = `/api/User/${user.id}`;
+  const RESET_URL = `/api/User/${user.id}`;
+
+  const PWD_REGEX =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@$!%*#?&_-]).{8,24}$/;
+
+  const closePwdDial = () => {
+    setPwdDialogShow(false);
+    setPassword("");
+    setConfirm("");
+    setPwdStatus(null);
+  };
 
   async function handleUpdate() {
     const updatedUser = {
@@ -46,6 +65,36 @@ const ProfileSecurity = ({ user }) => {
     }
   }
 
+  async function handlePwdReset() {
+    if (!PWD_REGEX.test(password)) {
+      setPwdStatus("invalid");
+      return;
+    }
+
+    if (!password || password !== confirm) {
+      setPwdStatus("mismatch");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const resp = await axios.patch(
+        RESET_URL,
+        { pswd: confirm },
+        {
+          withCredentials: true,
+        },
+      );
+      setPwdStatus("success");
+      setTimeout(() => closePwdDial(), 1500);
+    } catch (error) {
+      setPwdStatus("error");
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   return (
     <>
       {isLoading ? <Loading /> : <></>}
@@ -131,29 +180,87 @@ const ProfileSecurity = ({ user }) => {
       {pwdDialogShow && (
         <Dialog.Root
           open={pwdDialogShow}
-          onOpenChange={(e) => setPwdDialogShow(e.open)}
+          onOpenChange={(e) => {
+            setPwdDialogShow(e.open);
+            if (!e.open) {
+              closePwdDial();
+            } else {
+              setPwdDialogShow(true);
+            }
+          }}
           placement="center"
           size="lg"
         >
           <Dialog.Positioner>
             <Dialog.Content>
               <Dialog.Header fontSize="2xl" justifyContent="center">
-                <Dialog.Title>Jelszó módosítás</Dialog.Title>
+                <Dialog.Title>
+                  Jelszó módosítás
+                  {pwdStatus === "invalid" ? (
+                    <h4 className="error-msg">
+                      A jelszó nem felel meg a kritériumoknak!
+                    </h4>
+                  ) : (
+                    <></>
+                  )}
+                  {pwdStatus === "mismatch" ? (
+                    <h4 className="error-msg">A két jelszó nem egyezik meg!</h4>
+                  ) : (
+                    <></>
+                  )}
+                </Dialog.Title>
               </Dialog.Header>
               <Dialog.Body>
-                <div id="profile-sec-pwdUpdate">
+                <div className="profile-sec-pwdUpdate">
                   <label className="profile-sec-label">Új jelszó</label>
-                  <input className="profile-sec-input"></input>
+                  <div id="profile-sec-input-wrapper">
+                    <input
+                      ref={pwdRef}
+                      className={`profile-sec-input ${
+                        pwdStatus === "mismatch" || pwdStatus === "invalid"
+                          ? "profile-sec-input-wrong"
+                          : ""
+                      }`}
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPwdStatus(null);
+                      }}
+                      onFocus={() => setIsPWDFocus(true)}
+                      onBlur={() => setIsPWDFocus(false)}
+                    />
+                    <PasswordPopUp isopen={isPWDFocus} anchorRef={pwdRef} />
+                  </div>
                 </div>
+
                 <br />
-                <div id="profile-sec-pwdUpdate">
+                <div className="profile-sec-pwdUpdate">
                   <label className="profile-sec-label">Megerősítés</label>
-                  <input className="profile-sec-input"></input>
+                  <input
+                    className={`profile-sec-input ${
+                      pwdStatus === "mismatch" ? "profile-sec-input-wrong" : ""
+                    }`}
+                    value={confirm}
+                    onChange={(e) => {
+                      setConfirm(e.target.value);
+                      setPwdStatus(null);
+                    }}
+                  />
                 </div>
               </Dialog.Body>
               <Dialog.Footer>
-                <button className="uni-button-sm">Mégsem</button>
-                <button className="uni-button-sm">Mentés</button>
+                <button
+                  className="uni-button-sm"
+                  onClick={() => closePwdDial()}
+                >
+                  Mégsem
+                </button>
+                <button
+                  className="uni-button-sm"
+                  onClick={() => handlePwdReset()}
+                >
+                  Mentés
+                </button>
               </Dialog.Footer>
             </Dialog.Content>
           </Dialog.Positioner>
