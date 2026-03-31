@@ -86,7 +86,7 @@ const ProfileSecurity = ({ user }) => {
         },
       );
       setPwdStatus("success");
-      setTimeout(() => closePwdDial(), 1500);
+      setTimeout(() => closePwdDial(), 3500);
     } catch (error) {
       setPwdStatus("error");
       console.log(error);
@@ -204,6 +204,13 @@ const ProfileSecurity = ({ user }) => {
                   )}
                   {pwdStatus === "mismatch" ? (
                     <h4 className="error-msg">A két jelszó nem egyezik meg!</h4>
+                  ) : (
+                    <></>
+                  )}
+                  {pwdStatus === "success" ? (
+                    <h4 style={{ color: "lawngreen" }}>
+                      A két jelszó nem egyezik meg!
+                    </h4>
                   ) : (
                     <></>
                   )}
