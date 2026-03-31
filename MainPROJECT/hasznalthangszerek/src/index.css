@@ -1570,6 +1570,32 @@ button:hover > a {
   outline: none;
   border: 2px solid var(--input-color);
 }
+
+#update-container {
+  display: grid;
+  grid-template-rows: min-content min-content;
+}
+
+#update-container-first {
+  display: grid;
+  grid-template-rows: min-content min-content min-content;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+#update-container-first label {
+  justify-content: right;
+}
+
+#update-container-first > input {
+  border-color: var(--text-color);
+  height: 3.125rem;
+  width: 100%;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  border-radius: 10px;
+}
+
 /*#endregion Fiókom adatai oldal*/
 
 /*#region Egy kiválasztott hangszert megjelenítő oldal beállításai*/
