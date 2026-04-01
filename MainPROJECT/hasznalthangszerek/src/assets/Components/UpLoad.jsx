@@ -28,6 +28,8 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import axios from "../scripts/axios";
 import Loading from "./Loading";
+import { useContext } from "react";
+import AuthContext from "../scripts/AuthProvider";
 
 const allCategories = {
   Billentyűs: [
@@ -158,7 +160,10 @@ export default function UpLoad() {
 
   const [isUpLoadSuccess, setIsUpLoadSuccess] = useState(false);
 
+  const { auth } = useContext(AuthContext);
+
   useEffect(() => {
+    if (!auth.user) return navigate("/", { replace: true });
     const getCurrentUser = async () => {
       setIsLoading(true);
       try {

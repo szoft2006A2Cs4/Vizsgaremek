@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import {
@@ -8,13 +8,29 @@ import {
   Image,
   DataList,
   AspectRatio,
+  Dialog,
+  Portal,
 } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import SimpleMap from "./simpleMap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../scripts/AuthProvider";
 
 const InstrumentData = ({ instrument }) => {
   const images = instrument.imageUrls;
+  const { auth } = useContext(AuthContext);
+  const [BuyNowIsLogIn, setBuyNowIsLogIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    if (!auth.user) return setBuyNowIsLogIn(true);
+    else navigate(`/checkOut?ins=${instrument.id}`, { replace: true });
+  };
+
+  useEffect(() => {
+    console.log(BuyNowIsLogIn);
+  }, [BuyNowIsLogIn]);
 
   if (instrument == null) return null;
   return (
@@ -72,10 +88,8 @@ const InstrumentData = ({ instrument }) => {
                   <div className="seller" id="seller" fontSize={20}>
                     +{instrument.seller.phoneNumber}
                   </div>
-                  <button className="uni-button">
-                    <Link to={`/checkOut?ins=${instrument.id}`}>
-                      Vásárlás most
-                    </Link>
+                  <button className="uni-button" onClick={() => handleBuyNow()}>
+                    Vásárlás most
                   </button>
                   <button className="uni-button">Ajánlattétel</button>
                 </div>
@@ -130,6 +144,41 @@ const InstrumentData = ({ instrument }) => {
             </div>
           </div>
         </div>
+
+        {BuyNowIsLogIn && (
+          <Dialog.Root
+            open={BuyNowIsLogIn}
+            onOpenChange={(e) => setBuyNowIsLogIn(e.open)}
+          >
+            <Portal>
+              <Dialog.Backdrop />
+              <Dialog.Positioner>
+                <Dialog.Content>
+                  <Dialog.CloseTrigger />
+                  <Dialog.Header justifyContent="center">
+                    <Dialog.Title fontSize="xl">
+                      Vásárolni szeretnél? <br /> A biztonságos eladás és
+                      vásárlás érdekében jelentkezzbe!
+                    </Dialog.Title>
+                  </Dialog.Header>
+                  <Dialog.Body fontSize="large">
+                    <div>
+                      <button className="uni-button-sm">
+                        <Link to={`/login`}>Bejelentkezés</Link>
+                      </button>
+                      <br />
+                      <br />
+                      <p>
+                        Nincs még felhasználód? <br />
+                        <Link to={`/register`}>Regisztrálj itt!</Link>
+                      </p>
+                    </div>
+                  </Dialog.Body>
+                </Dialog.Content>
+              </Dialog.Positioner>
+            </Portal>
+          </Dialog.Root>
+        )}
       </div>
       <Footer />
     </div>

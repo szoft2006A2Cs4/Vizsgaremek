@@ -131,7 +131,7 @@ function App() {
           />
           <Route path="/forgotPassword" element={<ForgottenPassword />} />
           <Route path="/resetPWD" element={<ResetPWD />} />
-          <Route path="checkOut" element={<CheckOut />} />
+          <Route path="checkOut" element={<CheckOut user={currentUser} />} />
         </Routes>
       </BrowserRouter>
     </>
