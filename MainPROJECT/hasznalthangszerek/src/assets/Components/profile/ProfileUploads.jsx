@@ -18,6 +18,18 @@ const ProfileUploads = ({ insList, onDelete }) => {
   const [isUploadDeleteSure, setIsUploadDeleteSure] = useState(false);
   const [isUploadModifySure, setIsUploadModifySure] = useState(false);
   const [selectedInsData, setSelectedInsData] = useState({});
+  const [modifiedInstrument, setModifiedInstrument] = useState({
+    id: "",
+    name: "",
+    cost: 0,
+    description: "",
+    sold: null,
+    uId: "",
+    scName: "",
+    isPremium: null,
+    condition: "",
+    imageCount: 0,
+  });
 
   const radioOptions = [
     {
@@ -91,7 +103,7 @@ const ProfileUploads = ({ insList, onDelete }) => {
                 <Table.Cell>{item.name}</Table.Cell>
                 <Table.Cell>{item.subCategory.cName}</Table.Cell>
                 <Table.Cell>{item.cost}</Table.Cell>
-                <Table.Cell>{item.sold ? "ELadva" : "Nincs eladva"}</Table.Cell>
+                <Table.Cell>{item.sold ? "Eladva" : "Nincs eladva"}</Table.Cell>
                 <Table.Cell>
                   <a
                     className="ProfileUploads-settings"
@@ -183,11 +195,36 @@ const ProfileUploads = ({ insList, onDelete }) => {
                 <div id="update-container">
                   <div id="update-container-first">
                     <label>Név</label>
-                    <input value={selectedInsData.name} />
+                    <input
+                      value={selectedInsData.name}
+                      onChange={(e) => {
+                        console.log(e.target.value);
+                        setModifiedInstrument({
+                          ...modifiedInstrument,
+                          name: e.target.value,
+                        });
+                      }}
+                    />
                     <label>Ár</label>
-                    <input value={selectedInsData.cost} />
+                    <input
+                      value={selectedInsData.cost}
+                      onChange={(e) =>
+                        setModifiedInstrument({
+                          ...modifiedInstrument,
+                          cost: parseInt(e.target.value),
+                        })
+                      }
+                    />
                     <label>Leírás</label>
-                    <input value={selectedInsData.description} />
+                    <input
+                      value={selectedInsData.description}
+                      onChange={(e) =>
+                        setModifiedInstrument({
+                          ...modifiedInstrument,
+                          description: e.target.value,
+                        })
+                      }
+                    />
                   </div>
                   <label>Állapot</label>
                   <RadioGroup.Root
@@ -200,6 +237,13 @@ const ProfileUploads = ({ insList, onDelete }) => {
                           key={opt.value}
                           value={opt.value}
                           size="md"
+                          onChange={(e) => {
+                            console.log(e.target.value);
+                            setModifiedInstrument({
+                              ...modifiedInstrument,
+                              condition: e.target.value,
+                            });
+                          }}
                         >
                           <RadioGroup.ItemHiddenInput />
                           <RadioGroup.ItemIndicator />
