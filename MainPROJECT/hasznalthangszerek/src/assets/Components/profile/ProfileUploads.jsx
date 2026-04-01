@@ -13,23 +13,11 @@ import axios from "@/assets/scripts/axios";
 
 const insURL = "/api/Instrument";
 
-const ProfileUploads = ({ insList, onDelete }) => {
+const ProfileUploads = ({ insList, onDelete, onModify }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUploadDeleteSure, setIsUploadDeleteSure] = useState(false);
   const [isUploadModifySure, setIsUploadModifySure] = useState(false);
   const [selectedInsData, setSelectedInsData] = useState({});
-  const [modifiedInstrument, setModifiedInstrument] = useState({
-    id: "",
-    name: "",
-    cost: 0,
-    description: "",
-    sold: null,
-    uId: "",
-    scName: "",
-    isPremium: null,
-    condition: "",
-    imageCount: 0,
-  });
 
   const radioOptions = [
     {
@@ -75,6 +63,35 @@ const ProfileUploads = ({ insList, onDelete }) => {
     } catch (error) {
       console.log(error);
     } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function updateIns(iid) {
+    const data = {
+      Id: selectedInsData.id,
+      Name: selectedInsData.name,
+      Cost: selectedInsData.cost,
+      Description: selectedInsData.description,
+      Sold: selectedInsData.sold,
+      UId: selectedInsData.uId,
+      SCName: selectedInsData.scName,
+      IsPremium: selectedInsData.isPremium,
+      Condition: selectedInsData.condition,
+      ImageCount: selectedInsData.ImageCount,
+      Seller: selectedInsData.seller,
+      SubCategory: selectedInsData.subCategory,
+    };
+    try {
+      setIsLoading(true);
+      await axios.put(`${insURL}/${iid}`, data, {
+        withCredentials: true,
+      });
+      onModify();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      onModify();
       setIsLoading(false);
     }
   }
@@ -199,8 +216,8 @@ const ProfileUploads = ({ insList, onDelete }) => {
                       value={selectedInsData.name}
                       onChange={(e) => {
                         console.log(e.target.value);
-                        setModifiedInstrument({
-                          ...modifiedInstrument,
+                        setSelectedInsData({
+                          ...selectedInsData,
                           name: e.target.value,
                         });
                       }}
@@ -208,22 +225,24 @@ const ProfileUploads = ({ insList, onDelete }) => {
                     <label>Ár</label>
                     <input
                       value={selectedInsData.cost}
-                      onChange={(e) =>
-                        setModifiedInstrument({
-                          ...modifiedInstrument,
-                          cost: parseInt(e.target.value),
-                        })
-                      }
+                      onChange={(e) => {
+                        console.log(e.target.value);
+                        setSelectedInsData({
+                          ...selectedInsData,
+                          cost: e.target.value,
+                        });
+                      }}
                     />
                     <label>Leírás</label>
                     <input
                       value={selectedInsData.description}
-                      onChange={(e) =>
-                        setModifiedInstrument({
-                          ...modifiedInstrument,
+                      onChange={(e) => {
+                        console.log(e.target.value);
+                        setSelectedInsData({
+                          ...selectedInsData,
                           description: e.target.value,
-                        })
-                      }
+                        });
+                      }}
                     />
                   </div>
                   <label>Állapot</label>
@@ -239,8 +258,8 @@ const ProfileUploads = ({ insList, onDelete }) => {
                           size="md"
                           onChange={(e) => {
                             console.log(e.target.value);
-                            setModifiedInstrument({
-                              ...modifiedInstrument,
+                            setSelectedInsData({
+                              ...selectedInsData,
                               condition: e.target.value,
                             });
                           }}
@@ -262,7 +281,16 @@ const ProfileUploads = ({ insList, onDelete }) => {
                   <label>Kiemelt</label>
                   <SegmentGroup.Root>
                     <SegmentGroup.Indicator />
-                    <SegmentGroup.Items items={["Nem", "Igen"]} />
+                    <SegmentGroup.Items
+                      items={["Nem", "Igen"]}
+                      onChange={(e) => {
+                        console.log(e.target.value);
+                        setSelectedInsData({
+                          ...selectedInsData,
+                          isPremium: e.target.value == "Igen",
+                        });
+                      }}
+                    />
                   </SegmentGroup.Root>
                 </div>
                 <span
