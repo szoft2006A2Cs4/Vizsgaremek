@@ -28,10 +28,6 @@ const InstrumentData = ({ instrument }) => {
     else navigate(`/checkOut?ins=${instrument.id}`, { replace: true });
   };
 
-  useEffect(() => {
-    console.log(BuyNowIsLogIn);
-  }, [BuyNowIsLogIn]);
-
   if (instrument == null) return null;
   return (
     <div>

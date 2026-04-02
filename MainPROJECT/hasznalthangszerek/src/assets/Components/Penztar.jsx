@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import axios from "../scripts/axios";
 import { useContext } from "react";
 import AuthContext from "../scripts/AuthProvider";
-import { DataList } from "@chakra-ui/react";
+import { DataList, Dialog, Portal } from "@chakra-ui/react";
 
 export default function CheckOut({ user }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,6 +14,8 @@ export default function CheckOut({ user }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [ins, setIns] = useState(null);
+
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
 
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -133,6 +135,23 @@ export default function CheckOut({ user }) {
               </div>
             </div>
           </div>
+
+          <Dialog.Root>
+            <Portal>
+              <Dialog.Backdrop/>
+              <Dialog.Positioner>
+                <Dialog.Content>
+                  <Dialog.CloseTrigger/>
+                  <Dialog.Header>
+                    <Dialog.Title fontSize="xl">
+                      
+                    </Dialog.Title>
+                  </Dialog.Header>
+                </Dialog.Content>
+              </Dialog.Positioner>
+            </Portal>
+          </Dialog.Root>
+
         </div>
       </div>
       <Footer />
