@@ -7,6 +7,7 @@ import axios from "../scripts/axios";
 import { useContext } from "react";
 import AuthContext from "../scripts/AuthProvider";
 import { DataList, Dialog, Portal } from "@chakra-ui/react";
+import PaymentInputs from "./PaymentInputs";
 
 export default function CheckOut({ user }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +17,8 @@ export default function CheckOut({ user }) {
   const [ins, setIns] = useState(null);
 
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [paymentData, setPaymentData] = useState({});
+  const [paymentSaved, setPaymentSaved] = useState(false);
 
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -38,8 +41,13 @@ export default function CheckOut({ user }) {
     fetchData();
   }, []);
 
-  if (!ins) return;
-  if (!user) return;
+  const handlePaymentSave = () => {
+    setPaymentSaved(true);
+    setIsPaymentOpen(false);
+  };
+
+  if (!ins) return null;
+  if (!user) return null;
   return (
     <div id="checkOut-page-cont">
       {isLoading && <Loading />}
@@ -119,39 +127,94 @@ export default function CheckOut({ user }) {
                 <DataList.Item>
                   <DataList.ItemLabel>Email</DataList.ItemLabel>
                   <DataList.ItemValue>{user.email}</DataList.ItemValue>
+                </DataList.Item>
 
-                  <DataList.Item>
-                    <DataList.ItemLabel>Telefonszám</DataList.ItemLabel>
-                    <DataList.ItemValue>{user.phoneNumber}</DataList.ItemValue>
-                  </DataList.Item>
+                <DataList.Item>
+                  <DataList.ItemLabel>Telefonszám</DataList.ItemLabel>
+                  <DataList.ItemValue>{user.phoneNumber}</DataList.ItemValue>
                 </DataList.Item>
               </DataList.Root>
 
-              <div></div>
+              <div>
+                <br />
+                <button
+                  className="uni-button-sm"
+                  onClick={() => {
+                    setIsPaymentOpen(true);
+                    setPaymentData(false);
+                  }}
+                >
+                  Vásárlási mód hozzáadása
+                </button>
+                <br />
+                <br />
+                {paymentSaved && (
+                  <DataList.Root orientation="horizontal">
+                    <DataList.Item gap="-96">
+                      <DataList.ItemLabel>
+                        <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1775311619/credit-card_issq6i.svg" />
+                      </DataList.ItemLabel>
+                      <DataList.ItemValue>
+                        {paymentData.number
+                          ? `**** **** **** ${paymentData.number.replace(/\s/g, "").slice(-4)}`
+                          : ""}
+                      </DataList.ItemValue>
+                    </DataList.Item>
+                  </DataList.Root>
+                )}
+              </div>
 
               <div id="checkOut-grid-sec-footer">
                 <button className="uni-button-sm">Vásárlás</button>
-                <button className="uni-button-sm">Mégsem</button>
+                <button
+                  className="uni-button-sm"
+                  onClick={() =>
+                    navigate(`/instruments?ins=${selectedInsId}`, {
+                      replace: true,
+                    })
+                  }
+                >
+                  Mégsem
+                </button>
               </div>
             </div>
           </div>
 
-          <Dialog.Root>
+          <Dialog.Root
+            open={isPaymentOpen}
+            onOpenChange={(e) => setIsPaymentOpen(e.open)}
+          >
             <Portal>
-              <Dialog.Backdrop/>
+              <Dialog.Backdrop />
               <Dialog.Positioner>
                 <Dialog.Content>
-                  <Dialog.CloseTrigger/>
+                  <Dialog.CloseTrigger />
                   <Dialog.Header>
                     <Dialog.Title fontSize="xl">
-                      
+                      Fizetési mód hozzáadása
                     </Dialog.Title>
                   </Dialog.Header>
+                  <Dialog.Body>
+                    <PaymentInputs onChange={(data) => setPaymentData(data)} />
+                  </Dialog.Body>
+                  <Dialog.Footer>
+                    <button
+                      className="uni-button-sm"
+                      onClick={() => setIsPaymentOpen(false)}
+                    >
+                      Mégsem
+                    </button>
+                    <button
+                      className="uni-button-sm"
+                      onClick={() => handlePaymentSave()}
+                    >
+                      Mentés
+                    </button>
+                  </Dialog.Footer>
                 </Dialog.Content>
               </Dialog.Positioner>
             </Portal>
           </Dialog.Root>
-
         </div>
       </div>
       <Footer />
