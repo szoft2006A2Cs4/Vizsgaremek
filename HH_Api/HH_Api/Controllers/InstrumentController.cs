@@ -150,20 +150,26 @@ namespace HH_Api.Controllers
             return Created($"{Request.GetDisplayUrl()}/{instrument.Id}", instrument);
         }
 
-        // PUT: api/Instrument
-        [Authorize(Policy = "Instrument.Update")]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
+[Authorize(Policy = "Instrument.Update")]
+[HttpPut("{id}")]
+public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
+{
+    var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+    if (oldIns == null) return NotFound("A keresett hangszer nem található!");
+
+    foreach (var propinfo in typeof(Instrument).GetProperties())
+    {
+        if (propinfo.Name != "Id" && 
+            (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
         {
-            var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
-            if (oldIns == null) return NotFound("A keresett hangszer nem található!");
-            foreach (var propinfo in typeof(Instrument).GetProperties())
-            {
-                propinfo.SetValue(oldIns, propinfo.GetValue(ins));
-            }
-            await _context.SaveChangesAsync();
-            return Ok("Adatok sikeres frissítése!");
+            var newValue = propinfo.GetValue(ins);
+            propinfo.SetValue(oldIns, newValue);
         }
+    } 
+
+    await _context.SaveChangesAsync();
+    return Ok("Adatok sikeres frissítése!");
+}
 
         [Authorize(Policy = "Instrument.Patch")]
         [HttpPut("{id}/imagecount")]
