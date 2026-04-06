@@ -18,6 +18,10 @@ namespace HH_Api.Controllers
         private readonly Context _context;
         private readonly Cloudinary _cloudinary;
 
+        const string cloudName = "dknhbvrq9";
+        const string APIKey = "299914551751983";
+        const string APISecret = "hm8OXqwnUdm_0Kows3OXccaOmqk";
+
         public InstrumentController(Context context, Cloudinary cloudinary)
         {
             _context = context;
@@ -150,33 +154,33 @@ namespace HH_Api.Controllers
             return Created($"{Request.GetDisplayUrl()}/{instrument.Id}", instrument);
         }
 
-[Authorize(Policy = "Instrument.Update")]
-[HttpPut("{id}")]
-public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
-{
-    var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
-    if (oldIns == null) return NotFound("A keresett hangszer nem található!");
-
-    string oldNameBase = oldIns.Name; 
-    string newNameBase = ins.Name;    
-
-
-    foreach (var propinfo in typeof(Instrument).GetProperties())
-    {
-        if (propinfo.Name != "Id" && (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
+        [Authorize(Policy = "Instrument.Update")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
         {
-            propinfo.SetValue(oldIns, propinfo.GetValue(ins));
+            var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+            if (oldIns == null) return NotFound("A keresett hangszer nem található!");
+
+            string oldNameBase = oldIns.Name; 
+            string newNameBase = ins.Name;    
+
+
+            foreach (var propinfo in typeof(Instrument).GetProperties())
+            {
+                if (propinfo.Name != "Id" && (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
+                {
+                    propinfo.SetValue(oldIns, propinfo.GetValue(ins));
+                }
+            }
+
+            if (oldNameBase != newNameBase)
+            {
+                await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.UId);
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok("Adatok és képek sikeresen frissítve!");
         }
-    }
-
-    if (oldNameBase != newNameBase)
-    {
-        await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.UId);
-    }
-
-    await _context.SaveChangesAsync();
-    return Ok("Adatok és képek sikeresen frissítve!");
-}
 
         [Authorize(Policy = "Instrument.Patch")]
         [HttpPut("{id}/imagecount")]
@@ -227,25 +231,25 @@ public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument 
             return NoContent();
         }
 
-        private async Task RenameCloudinaryImages(string oldName, string newName, int count, string userId)
-{
-
-    var account = new Account("cloud_name", "api_key", "api_secret");
-    var cloudinary = new Cloudinary(account);
-
-    for (int i = 0; i < count; i++)
-    {
-
-        string oldPublicId = $"{userId}/{oldName}_{i}";
-        string newPublicId = $"{userId}/{newName}_{i}";
-
-        var renameParams = new RenameParams(oldPublicId, newPublicId)
+        private async Task RenameCloudinaryImages(string oldName, string newName, int count, int userId)
         {
-            Overwrite = true
-        };
 
-        await cloudinary.RenameAsync(renameParams);
-    }
-}
+            var account = new Account(cloudName, APIKey, APISecret);
+            var cloudinary = new Cloudinary(account);
+
+            for (int i = 0; i < count; i++)
+            {
+
+                string oldPublicId = $"{userId}/{oldName}_{i}";
+                string newPublicId = $"{userId}/{newName}_{i}";
+
+                var renameParams = new RenameParams(oldPublicId, newPublicId)
+                {
+                    Overwrite = true
+                };
+
+                await cloudinary.RenameAsync(renameParams);
+            }
+        }
     }
 }
