@@ -100,7 +100,9 @@ const Profile = ({ mainLoading }) => {
 
   async function handleModifyUpload() {
     try {
-      const resp = await axios.get(INS_URL, { withCredentials: true });
+      const resp = await axios.get(INS_URL + `/user/${user.id}`, {
+        withCredentials: true,
+      });
       setInsList(resp.data);
     } catch (err) {
       console.log(err);
