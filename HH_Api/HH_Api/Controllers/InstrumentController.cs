@@ -171,9 +171,17 @@ namespace HH_Api.Controllers
 
             foreach (var propinfo in typeof(Instrument).GetProperties())
             {
-                if (propinfo.Name != "Id" && (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
+                
+                if (propinfo.Name != "Id" && 
+                    propinfo.Name != "ImageCount" && 
+                    (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
                 {
-                    propinfo.SetValue(oldIns, propinfo.GetValue(ins));
+                    var newValue = propinfo.GetValue(ins);
+                    
+                    if (newValue != null) 
+                    {
+                        propinfo.SetValue(oldIns, newValue);
+                    }
                 }
             }
 
