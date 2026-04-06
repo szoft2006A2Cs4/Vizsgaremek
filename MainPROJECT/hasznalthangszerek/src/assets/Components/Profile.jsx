@@ -35,7 +35,11 @@ const Profile = ({ mainLoading }) => {
     {
       name: "Saját feltöltéseim",
       component: (
-        <ProfileUploads insList={insList} onDelete={handleDeletedUpload} />
+        <ProfileUploads
+          onModify={handleModifyUpload}
+          insList={insList}
+          onDelete={handleDeletedUpload}
+        />
       ),
     },
   ];
@@ -91,6 +95,15 @@ const Profile = ({ mainLoading }) => {
       console.log(err);
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function handleModifyUpload() {
+    try {
+      const resp = await axios.get(INS_URL, { withCredentials: true });
+      setInsList(resp.data);
+    } catch (err) {
+      console.log(err);
     }
   }
 

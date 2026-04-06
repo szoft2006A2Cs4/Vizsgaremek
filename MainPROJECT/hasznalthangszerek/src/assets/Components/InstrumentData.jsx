@@ -154,7 +154,7 @@ const InstrumentData = ({ instrument }) => {
                   <Dialog.Header justifyContent="center">
                     <Dialog.Title fontSize="xl">
                       Vásárolni szeretnél? <br /> A biztonságos eladás és
-                      vásárlás érdekében jelentkezzbe!
+                      vásárlás érdekében jelentkezz be!
                     </Dialog.Title>
                   </Dialog.Header>
                   <Dialog.Body fontSize="large">
