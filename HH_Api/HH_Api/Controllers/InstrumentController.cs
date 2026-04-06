@@ -157,18 +157,25 @@ public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument 
     var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
     if (oldIns == null) return NotFound("A keresett hangszer nem található!");
 
+    string oldNameBase = oldIns.Name; 
+    string newNameBase = ins.Name;    
+
+
     foreach (var propinfo in typeof(Instrument).GetProperties())
     {
-        if (propinfo.Name != "Id" && 
-            (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
+        if (propinfo.Name != "Id" && (propinfo.PropertyType.IsValueType || propinfo.PropertyType == typeof(string)))
         {
-            var newValue = propinfo.GetValue(ins);
-            propinfo.SetValue(oldIns, newValue);
+            propinfo.SetValue(oldIns, propinfo.GetValue(ins));
         }
-    } 
+    }
+
+    if (oldNameBase != newNameBase)
+    {
+        await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.UId);
+    }
 
     await _context.SaveChangesAsync();
-    return Ok("Adatok sikeres frissítése!");
+    return Ok("Adatok és képek sikeresen frissítve!");
 }
 
         [Authorize(Policy = "Instrument.Patch")]
@@ -219,5 +226,26 @@ public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument 
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        private async Task RenameCloudinaryImages(string oldName, string newName, int count, string userId)
+{
+
+    var account = new Account("cloud_name", "api_key", "api_secret");
+    var cloudinary = new Cloudinary(account);
+
+    for (int i = 0; i < count; i++)
+    {
+
+        string oldPublicId = $"{userId}/{oldName}_{i}";
+        string newPublicId = $"{userId}/{newName}_{i}";
+
+        var renameParams = new RenameParams(oldPublicId, newPublicId)
+        {
+            Overwrite = true
+        };
+
+        await cloudinary.RenameAsync(renameParams);
+    }
+}
     }
 }
