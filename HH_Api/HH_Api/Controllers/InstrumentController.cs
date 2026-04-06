@@ -160,7 +160,7 @@ namespace HH_Api.Controllers
         {
 
             var oldIns = await _context.Instruments
-                .Include(i => i.User) 
+                .Include(i => i.Seller) 
                 .FirstOrDefaultAsync(i => i.Id == id);
 
             if (oldIns == null) return NotFound("A keresett hangszer nem található!");
@@ -180,7 +180,7 @@ namespace HH_Api.Controllers
             if (oldNameBase != newNameBase)
             {
 
-                await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.User.ImageId);
+                await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.Seller.ImageId);
             }
 
             await _context.SaveChangesAsync();
