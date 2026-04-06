@@ -154,15 +154,19 @@ namespace HH_Api.Controllers
             return Created($"{Request.GetDisplayUrl()}/{instrument.Id}", instrument);
         }
 
-        [Authorize(Policy = "Instrument.Update")]
+       [Authorize(Policy = "Instrument.Update")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInstrument(int id, [FromBody] Instrument ins)
         {
-            var oldIns = await _context.Instruments.FirstOrDefaultAsync(i => i.Id == id);
+
+            var oldIns = await _context.Instruments
+                .Include(i => i.User) 
+                .FirstOrDefaultAsync(i => i.Id == id);
+
             if (oldIns == null) return NotFound("A keresett hangszer nem található!");
 
             string oldNameBase = oldIns.Name; 
-            string newNameBase = ins.Name;    
+            string newNameBase = ins.Name;
 
 
             foreach (var propinfo in typeof(Instrument).GetProperties())
@@ -175,7 +179,8 @@ namespace HH_Api.Controllers
 
             if (oldNameBase != newNameBase)
             {
-                await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.UId);
+
+                await RenameCloudinaryImages(oldNameBase, newNameBase, oldIns.ImageCount, oldIns.User.ImageId);
             }
 
             await _context.SaveChangesAsync();
@@ -231,24 +236,33 @@ namespace HH_Api.Controllers
             return NoContent();
         }
 
-        private async Task RenameCloudinaryImages(string oldName, string newName, int count, int userId)
+        private async Task RenameCloudinaryImages(string oldName, string newName, int count, string imageId)
         {
-
             var account = new Account(cloudName, APIKey, APISecret);
             var cloudinary = new Cloudinary(account);
+
+
+            string cleanOldName = oldName.Replace(" ", "");
+            string cleanNewName = newName.Replace(" ", "");
 
             for (int i = 0; i < count; i++)
             {
 
-                string oldPublicId = $"{userId}/{oldName}_{i}";
-                string newPublicId = $"{userId}/{newName}_{i}";
+                string oldPublicId = $"{cleanOldName}_{imageId}_{i}";
+                string newPublicId = $"{cleanNewName}_{imageId}_{i}";
 
                 var renameParams = new RenameParams(oldPublicId, newPublicId)
                 {
                     Overwrite = true
                 };
 
-                await cloudinary.RenameAsync(renameParams);
+                var result = await cloudinary.RenameAsync(renameParams);
+
+                if (result.Error != null)
+                {
+
+                    Console.WriteLine($"Hiba: {result.Error.Message} | Ezt kerestem: {oldPublicId}");
+                }
             }
         }
     }
