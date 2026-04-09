@@ -1,0 +1,67 @@
+src
+ ┣ assets
+ ┃ ┣ Components
+ ┃ ┃ ┣ cardView
+ ┃ ┃ ┃ ┣ sidebar
+ ┃ ┃ ┃ ┃ ┣ Category.jsx
+ ┃ ┃ ┃ ┃ ┣ Condition.jsx
+ ┃ ┃ ┃ ┃ ┗ Price.jsx
+ ┃ ┃ ┃ ┣ Instruments.jsx
+ ┃ ┃ ┃ ┗ Sidebar.jsx
+ ┃ ┃ ┣ profile
+ ┃ ┃ ┃ ┣ ProfileGeneral.jsx
+ ┃ ┃ ┃ ┣ ProfileOrders.jsx
+ ┃ ┃ ┃ ┣ ProfileSecurity.jsx
+ ┃ ┃ ┃ ┗ ProfileUploads.jsx
+ ┃ ┃ ┣ aboutUs.jsx
+ ┃ ┃ ┣ aboutUsCard.jsx
+ ┃ ┃ ┣ ArticleAds.jsx
+ ┃ ┃ ┣ Avatar.jsx
+ ┃ ┃ ┣ CardView.jsx
+ ┃ ┃ ┣ CatCard.jsx
+ ┃ ┃ ┣ CatDrawer.jsx
+ ┃ ┃ ┣ CatField.jsx
+ ┃ ┃ ┣ Contact.jsx
+ ┃ ┃ ┣ Footer.jsx
+ ┃ ┃ ┣ forgottenPassword.jsx
+ ┃ ┃ ┣ ForYou.jsx
+ ┃ ┃ ┣ Home.jsx
+ ┃ ┃ ┣ InstrumentData.jsx
+ ┃ ┃ ┣ Introduction.jsx
+ ┃ ┃ ┣ Loading.jsx
+ ┃ ┃ ┣ Login.jsx
+ ┃ ┃ ┣ Nav.jsx
+ ┃ ┃ ┣ PasswordPopUp.jsx
+ ┃ ┃ ┣ PaymentInputs.jsx
+ ┃ ┃ ┣ Penztar.jsx
+ ┃ ┃ ┣ Profile.jsx
+ ┃ ┃ ┣ pseMain.jsx
+ ┃ ┃ ┣ Register.jsx
+ ┃ ┃ ┣ ResetPassword.jsx
+ ┃ ┃ ┣ SCatDrawer.jsx
+ ┃ ┃ ┣ SearchInput.jsx
+ ┃ ┃ ┣ SectionAds.jsx
+ ┃ ┃ ┣ simpleMap.jsx
+ ┃ ┃ ┣ UpLoad.jsx
+ ┃ ┃ ┗ UserDropDown.jsx
+ ┃ ┣ fonts
+ ┃ ┃ ┣ Calligraphy.ttf
+ ┃ ┃ ┣ Celinda.otf
+ ┃ ┃ ┗ Naervik.otf
+ ┃ ┣ scripts
+ ┃ ┃ ┣ adCardTemp.jsx
+ ┃ ┃ ┣ AuthProvider.jsx
+ ┃ ┃ ┗ axios.js
+ ┃ ┗ style
+ ┃ ┃ ┗ register.css
+ ┣ components
+ ┃ ┗ ui
+ ┃ ┃ ┣ color-mode.jsx
+ ┃ ┃ ┣ provider.jsx
+ ┃ ┃ ┣ toaster.jsx
+ ┃ ┃ ┣ toggle-tip.jsx
+ ┃ ┃ ┗ tooltip.jsx
+ ┣ App.jsx
+ ┣ index.css
+ ┣ main.jsx
+ ┗ theme.js
