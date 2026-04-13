@@ -657,6 +657,10 @@ button:hover > a {
   opacity: 0.7;
 }
 
+#footer-aSzF:hover {
+  cursor: pointer;
+}
+
 /*#endregion Footer*/
 
 /*#region AboutUs oldal*/
