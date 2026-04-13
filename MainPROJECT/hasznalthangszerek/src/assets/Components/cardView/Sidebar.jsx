@@ -59,7 +59,7 @@ function Sidebar({ onFilterChange, subcatList, cats, filters }) {
       >
         <Category
           categories={catList}
-          subcategories={subcatList} // ← már propból jön
+          subcategories={subcatList}
           onFilterChange={onFilterChange}
           filters={filters}
         />
