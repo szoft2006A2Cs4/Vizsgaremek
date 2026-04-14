@@ -561,10 +561,17 @@ button:hover > a {
   flex: 1;
 }
 
-#mobil-menu-div {
+#mobile-menu-div {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+}
+
+#mobile-menu-div a {
+  display: block;
+  color: wheat;
+  padding: 8px 0;
+  text-decoration: none;
 }
 
 /*#endregion Telefonos class-id-k*/
@@ -2160,7 +2167,7 @@ button:hover > a {
 
   /* Bevezetés */
   #introduction {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
 
   .introduction-text {

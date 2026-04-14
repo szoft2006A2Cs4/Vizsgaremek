@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
-import { useContext, useState, useEffect, useCallback, useRef } from "react";
+import { useContext, useState, useEffect } from "react";
 import AuthContext from "../scripts/AuthProvider";
 import UserDropDown from "./UserDropDown";
 import Avatar from "./Avatar";
 import Drawer_ from "./CatDrawer";
 import ForYou from "./ForYou";
+import axios from "axios";
 import {
   Box,
   Flex,
@@ -16,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Nav({ cats, scats, loading, ins }) {
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const [openProf, setOpenProf] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isForYouOpen, setIsForYouOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Nav({ cats, scats, loading, ins }) {
     () => window.matchMedia("(max-width: 1024px)").matches,
   );
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const LOGOUT_URL = "api/login";
 
@@ -45,18 +47,15 @@ export default function Nav({ cats, scats, loading, ins }) {
   const handleLogout = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.delete(LOGOUT_URL, {
-        withCredentials: true,
-      });
-      handlePageRoutes("/");
+      await axios.delete(LOGOUT_URL, { withCredentials: true });
     } catch (err) {
       console.log(err.response);
     } finally {
       setAuth({});
+      setIsLoading(false);
     }
   };
 
-  // ─── Mobil menüpanel ──────────────────────────────────────────────
   const MobileMenu = ({ isLoggedIn }) => (
     <Drawer.Root open={menuOpen} onOpenChange={(e) => setMenuOpen(e.open)}>
       <Drawer.Trigger asChild>
@@ -100,9 +99,7 @@ export default function Nav({ cats, scats, loading, ins }) {
     </Drawer.Root>
   );
 
-  // ─── Render ───────────────────────────────────────────────────────
   return !loggedIn ? (
-    // ════ BEJELENTKEZETT ════
     <nav>
       <Link to="/" id="logo">
         <img
@@ -111,7 +108,6 @@ export default function Nav({ cats, scats, loading, ins }) {
         />
       </Link>
 
-      {/* Asztali nav */}
       {!isMobile && (
         <div id="nav-spacing-loggedIn">
           <SearchInput ins={ins} />
@@ -138,24 +134,21 @@ export default function Nav({ cats, scats, loading, ins }) {
         </div>
       )}
 
-      {/* Mobil nav */}
       {isMobile && (
         <div id="phone">
           <Box id="mobile-search" flex={1}>
             <SearchInput ins={ins} />
           </Box>
-          {/* <HamburgerButton /> */}
         </div>
       )}
 
-      <MobileMenu isLoggedIn={true} />
+      {isMobile && <MobileMenu isLoggedIn={true} />}
 
       {isForYouOpen && (
         <ForYou open={isForYouOpen} onClose={() => setIsForYouOpen(false)} />
       )}
     </nav>
   ) : (
-    // ════ KIJELENTKEZETT ════
     <nav>
       <Link to="/" id="logo">
         <img
@@ -164,7 +157,6 @@ export default function Nav({ cats, scats, loading, ins }) {
         />
       </Link>
 
-      {/* Asztali nav */}
       {!isMobile && (
         <div id="nav-spacing">
           <button onClick={handleDrawer}>
@@ -182,17 +174,15 @@ export default function Nav({ cats, scats, loading, ins }) {
         </div>
       )}
 
-      {/* Mobil nav */}
       {isMobile && (
         <div id="phone">
           <Box id="mobile-search" flex={1}>
             <SearchInput ins={ins} />
           </Box>
-          {/* <HamburgerButton /> */}
         </div>
       )}
 
-      <MobileMenu isLoggedIn={false} />
+      {isMobile && <MobileMenu isLoggedIn={false} />}
 
       <Drawer_
         open={isDrawerOpen}
