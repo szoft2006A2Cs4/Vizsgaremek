@@ -6,7 +6,7 @@ import UserDropDown from "./UserDropDown";
 import Avatar from "./Avatar";
 import Drawer_ from "./CatDrawer";
 import ForYou from "./ForYou";
-import { Box, Flex, IconButton, Divider, Text } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Separator, Text } from "@chakra-ui/react";
 
 const HamburgerIcon = () => (
   <svg
@@ -107,7 +107,7 @@ export default function Nav({ cats, scats, loading, ins }) {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      color="white"
+      color="black"
       fontSize="1.25rem"
       flexShrink={0}
       _hover={{ color: "wheat" }}
@@ -211,7 +211,7 @@ export default function Nav({ cats, scats, loading, ins }) {
               icon="♡"
               label="Neked ajánljuk"
             />
-            <Divider borderColor="whiteAlpha.300" my={1} />
+            <Separator borderColor="whiteAlpha.300" my={1} />
             <MobileMenuItem
               as={Link}
               to="/profile"
@@ -226,7 +226,7 @@ export default function Nav({ cats, scats, loading, ins }) {
               icon="⬆"
               label="Hirdetés feladása"
             />
-            <Divider borderColor="whiteAlpha.300" my={1} />
+            <Separator borderColor="whiteAlpha.300" my={1} />
             <MobileMenuItem
               as={Link}
               to="/aboutUs"
@@ -241,7 +241,7 @@ export default function Nav({ cats, scats, loading, ins }) {
               icon="✉"
               label="Kapcsolat"
             />
-            <Divider borderColor="whiteAlpha.300" my={1} />
+            <Separator borderColor="whiteAlpha.300" my={1} />
             <MobileMenuItem
               onClick={() => {
                 handleDrawer();
@@ -274,7 +274,7 @@ export default function Nav({ cats, scats, loading, ins }) {
               icon="✉"
               label="Kapcsolat"
             />
-            <Divider borderColor="whiteAlpha.300" my={1} />
+            <Separator borderColor="whiteAlpha.300" my={1} />
             <MobileMenuItem
               onClick={() => {
                 handleDrawer();
