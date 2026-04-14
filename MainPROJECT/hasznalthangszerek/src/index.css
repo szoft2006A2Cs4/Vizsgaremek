@@ -1713,6 +1713,19 @@ button:hover > a {
 }
 /*#endregion Fiókom adatai oldal*/
 
+/*#region Adatkezelési Tájékoztató*/
+
+.aszf_div {
+  margin-bottom: 24px;
+}
+
+.aszf_cim {
+  color: #2c3e50; 
+  margin-bottom: 8px;
+}
+
+/*#endregion*/
+
 /*#region Egy kiválasztott hangszert megjelenítő oldal beállításai*/
 
 #data-field {
