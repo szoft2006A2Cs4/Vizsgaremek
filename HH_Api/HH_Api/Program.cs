@@ -15,7 +15,7 @@ using System.Text.Json.Serialization;
 
 namespace HH_Api
 {
-    public class Program
+    public partial class Program
     {
 
         const string cloudName = "dknhbvrq9";
@@ -203,5 +203,7 @@ namespace HH_Api
                     });
             });
         }
+
     }
+    public partial class Program { }
 }
