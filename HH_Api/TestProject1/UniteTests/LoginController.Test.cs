@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-namespace TestProject1;
+namespace TestProject1.UniteTests;
 
 [TestClass]
 public class LoginController_Test

@@ -6,7 +6,7 @@ using HH_Api.DTOs;
 using System.Diagnostics;
 using CloudinaryDotNet;
 
-namespace TestProject1;
+namespace TestProject1.UniteTests;
 
 [TestClass]
 public class InstrumentController_Test

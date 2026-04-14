@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TestProject1;
+namespace TestProject1.UniteTests;
 
 internal class DbContextHelper
 {

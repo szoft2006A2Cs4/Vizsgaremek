@@ -3,7 +3,7 @@ using HH_Api.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TestProject1
+namespace TestProject1.UniteTests
 {
     [TestClass]
     public sealed class CategoryController_Test
