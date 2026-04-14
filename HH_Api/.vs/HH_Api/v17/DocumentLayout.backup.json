@@ -1,34 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\",
+  "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\instrumentcontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\instrumentcontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\usercontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\usercontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\subcategorycontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\subcategorycontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\orderinfocontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\orderinfocontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\orderinfocontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\logincontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\logincontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\dbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\dbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\foryoucontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\foryoucontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\usercontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\usercontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\sd_szoft2006\\documents\\github\\vizsgaremek\\hh_api\\testproject1\\categorycontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\categorycontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\subcategorycontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\subcategorycontroller.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\UserController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
-              "RelativeToolTip": "TestProject1\\UserController.Test.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "DbContextHelper.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\DbContextHelper.cs",
+              "RelativeDocumentMoniker": "TestProject1\\DbContextHelper.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\DbContextHelper.cs",
+              "RelativeToolTip": "TestProject1\\DbContextHelper.cs",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAxwFABAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:20:01.361Z",
+              "WhenOpened": "2026-04-14T15:55:32.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SubCategoryController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\SubCategoryController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\SubCategoryController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\SubCategoryController.Test.cs",
-              "RelativeToolTip": "TestProject1\\SubCategoryController.Test.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "UserController.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
+              "RelativeDocumentMoniker": "TestProject1\\UserController.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\UserController.Test.cs",
+              "RelativeToolTip": "TestProject1\\UserController.Test.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:20:00.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-14T10:20:01.361Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "OrderInfoController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\OrderInfoController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\OrderInfoController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\OrderInfoController.Test.cs",
-              "RelativeToolTip": "TestProject1\\OrderInfoController.Test.cs",
+              "Title": "SubCategoryController.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\SubCategoryController.Test.cs",
+              "RelativeDocumentMoniker": "TestProject1\\SubCategoryController.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\SubCategoryController.Test.cs",
+              "RelativeToolTip": "TestProject1\\SubCategoryController.Test.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:20:00.199Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\LoginController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\LoginController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\LoginController.Test.cs",
-              "RelativeToolTip": "TestProject1\\LoginController.Test.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:19:59.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-14T10:20:00.815Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InstrumentController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\InstrumentController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\InstrumentController.Test.cs",
-              "RelativeToolTip": "TestProject1\\InstrumentController.Test.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAATAAAAAAAAAA==",
+              "Title": "OrderInfoController.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\OrderInfoController.Test.cs",
+              "RelativeDocumentMoniker": "TestProject1\\OrderInfoController.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\OrderInfoController.Test.cs",
+              "RelativeToolTip": "TestProject1\\OrderInfoController.Test.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAIwHUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:19:59.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ForYouController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\ForYouController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\ForYouController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\ForYouController.Test.cs",
-              "RelativeToolTip": "TestProject1\\ForYouController.Test.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:19:58.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoryController.Test.cs",
-              "DocumentMoniker": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\CategoryController.Test.cs",
-              "RelativeDocumentMoniker": "TestProject1\\CategoryController.Test.cs",
-              "ToolTip": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\CategoryController.Test.cs",
-              "RelativeToolTip": "TestProject1\\CategoryController.Test.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:19:57.776Z",
+              "WhenOpened": "2026-04-14T10:20:00.199Z",
               "EditorCaption": ""
             }
           ]

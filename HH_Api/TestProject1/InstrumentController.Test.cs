@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HH_Api.DTOs;
 using System.Diagnostics;
+using CloudinaryDotNet;
 
 namespace TestProject1;
 
@@ -20,7 +21,10 @@ public class InstrumentController_Test
 
         var httpContext = new DefaultHttpContext();
 
-        _sut = new InstrumentController(_db.CreateDbContext());
+        var account = new Account("cloud", "key", "secret");
+        var cloudinary = new Cloudinary(account);
+
+        _sut = new InstrumentController(_db.CreateDbContext(), cloudinary);
         _sut.ControllerContext = new ControllerContext()
         {
             HttpContext = httpContext
@@ -66,8 +70,8 @@ public class InstrumentController_Test
     {
         var result = await _sut!.GetInstrument(1) as OkObjectResult;
         Assert.IsNotNull(result);
-        var ins = result.Value as Instrument;
-        Assert.IsTrue(_db?.instrumentList!.Contains(ins!));
+        var ins = result.Value as InstrumentDTO;
+        Assert.IsTrue(_db?.instrumentList!.Any(i => i.Id == ins.Id));
     }
     [TestMethod]
     public async Task GetInstrument_ReturnWrong()

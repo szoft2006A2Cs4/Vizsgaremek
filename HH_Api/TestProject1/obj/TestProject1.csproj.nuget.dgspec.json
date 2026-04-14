@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj": {}
+    "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
+    "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+        "projectUniqueName": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
         "projectName": "HH_Api",
-        "projectPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
-        "packagesPath": "C:\\Users\\sd_szoft2006\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\obj\\",
+        "projectPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj",
+        "packagesPath": "C:\\Users\\dodo3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\MicrosoftVisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\sd_szoft2006\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dodo3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -121,24 +121,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj": {
+    "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj",
+        "projectUniqueName": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj",
         "projectName": "TestProject1",
-        "projectPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj",
-        "packagesPath": "C:\\Users\\sd_szoft2006\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\TestProject1\\obj\\",
+        "projectPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\TestProject1.csproj",
+        "packagesPath": "C:\\Users\\dodo3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\MicrosoftVisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\sd_szoft2006\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dodo3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -154,8 +154,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
-                "projectPath": "C:\\Users\\sd_szoft2006\\Documents\\GitHub\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj"
+              "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj": {
+                "projectPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\HH_Api.csproj"
               }
             }
           }
@@ -221,7 +221,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
