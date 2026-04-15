@@ -65,7 +65,7 @@ export default function Footer() {
   <div className="aszf_div">
     <h4 className="aszf_cim">2. A kezelt adatok köre és az adatkezelés célja:</h4>
     <p>A weboldal látogatása során az alábbi esetekben történik adatkezelés:</p>
-    <ul style={{ paddingLeft: '20px' }}>
+    <ul style={{ listStyle: 'none', paddingLeft: '20px' }}>
       <li><strong>Kapcsolatfelvételi űrlap:</strong> Ha üzenetet küldesz, a megadott nevet és e-mail címet kizárólag a válaszadáshoz használom fel.</li>
       <li><strong>Sütik (Cookies):</strong> A honlap technikai okokból és statisztikai célból (pl. Google Analytics) apró adatfájlokat helyezhet el a gépeden.</li>
     </ul>
@@ -73,7 +73,7 @@ export default function Footer() {
 
   <div className="aszf_div">
     <h4 className="aszf_cim">3. Az adatkezelés jogalapja:</h4>
-    <p style={{ margin: 0 }}>
+    <p>
       Az adatkezelés a felhasználó önkéntes hozzájárulásán alapul (<strong>GDPR 6. cikk (1) bek. a) pont</strong>. 
       Az űrlap kitöltésével és az üzenet elküldésével hozzájárulsz az adatok kezeléséhez.
     </p>
@@ -96,7 +96,7 @@ export default function Footer() {
   <div className="aszf_div">
     <h4 className="aszf_cim">6. Az érintettek jogai:</h4>
     <p>Neked, mint látogatónak, jogod van:</p>
-    <ul style={{ paddingLeft: '20px' }}>
+    <ul style={{ listStyle: 'none'}}>
       <li>Tájékoztatást kérni az adataid kezeléséről.</li>
       <li>Kérni az adataid helyesbítését vagy törlését.</li>
       <li>Tiltakozni az adatkezelés ellen.</li>
