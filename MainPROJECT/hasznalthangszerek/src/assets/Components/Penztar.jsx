@@ -24,6 +24,7 @@ export default function CheckOut({ user }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (auth.loading) return;
     if (!auth.user) return navigate("/", { replace: true });
     setIsLoading(true);
     async function fetchData() {

@@ -136,3 +136,16 @@ a:hover {
   position: absolute;
   left: -9999px;
 }
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 100vw;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-h1 {
+    font-size: 2rem;
+  }
+}

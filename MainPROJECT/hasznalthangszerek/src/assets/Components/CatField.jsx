@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import CatCard from "./CatCard";
 import { HStack } from "@chakra-ui/react";
 
@@ -20,6 +21,19 @@ const logos = [
 ];
 
 export default function catField({ cats }) {
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 1024px)").matches,
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1024px)");
+    const handler = (e) => {
+      setIsMobile(e.matches);
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const catList = new Array();
   for (var c of cats) {
     catList.push(c);
@@ -31,7 +45,13 @@ export default function catField({ cats }) {
     }) || [];
 
   return (
-    <HStack id="catField" paddingTop="11" paddingBottom="11">
+    <HStack
+      id="catField"
+      paddingTop="11"
+      paddingBottom="11"
+      overflow="auto"
+      gap={isMobile ? "5" : "0"}
+    >
       {formedDataList.map((cat, index) => {
         return <CatCard data={cat} key={cat.Name} index={index} />;
       })}
