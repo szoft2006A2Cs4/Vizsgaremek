@@ -21,7 +21,7 @@ public class Integration_Test
     private WebApplicationFactory<Program> _factory = null!;
     private HttpClient _client = null!;
 
-    private static readonly JsonSerializerOptions _jsonOpt = new();
+    private static readonly JsonSerializerOptions _jsonOpt = new() { PropertyNameCaseInsensitive = true};
 
     [TestInitialize]
     public void Initialize()
@@ -143,8 +143,9 @@ public class Integration_Test
             SCName = subcat.Name,
             IsPremium = false,
             Condition = "Jó",
-            Seller = user,
-            SubCategory = subcat
+            ImageCount = 0,
+            Seller = null,
+            SubCategory = null
         };
 
         var response = await _client.PostAsJsonAsync("/api/Instrument", newIns);
@@ -173,8 +174,9 @@ public class Integration_Test
             SCName = subcat.Name,
             IsPremium = false,
             Condition = "Jó",
-            Seller = user,
-            SubCategory = subcat
+            ImageCount = 0,
+            Seller = null,
+            SubCategory = null
         };
 
         var createResponse = await _client.PostAsJsonAsync("/api/Instrument", newIns);
@@ -245,7 +247,6 @@ public class Integration_Test
     [TestMethod]
     public async Task DeleteInstrument_ReturnsNoContent()
     {
-        // Elõször létrehozunk egyet amit törölni fogunk
         using var scope = _factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<Context>();
         var user = db.Users.First();
@@ -261,8 +262,9 @@ public class Integration_Test
             SCName = subcat.Name,
             IsPremium = false,
             Condition = "Jó",
-            Seller = user,
-            SubCategory = subcat
+            ImageCount = 0,
+            Seller = null,
+            SubCategory = null
         };
 
         var createResponse = await _client.PostAsJsonAsync("/api/Instrument", newIns);

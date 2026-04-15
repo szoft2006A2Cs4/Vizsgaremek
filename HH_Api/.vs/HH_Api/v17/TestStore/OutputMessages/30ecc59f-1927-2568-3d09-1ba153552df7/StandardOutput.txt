@@ -1,0 +1,216 @@
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "category" (
+          "cname" TEXT NOT NULL CONSTRAINT "PK_category" PRIMARY KEY
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "user" (
+          "uid" INTEGER NOT NULL CONSTRAINT "PK_user" PRIMARY KEY AUTOINCREMENT,
+          "uname" TEXT NOT NULL,
+          "email" TEXT NULL,
+          "pnumber" INTEGER NOT NULL,
+          "password" TEXT NULL,
+          "review" REAL NOT NULL,
+          "postalcode" INTEGER NOT NULL,
+          "city" TEXT NULL,
+          "streetHnum" TEXT NULL,
+          "role" TEXT NULL,
+          "token" TEXT NULL,
+          "ImageId" TEXT NULL
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "UserDTO" (
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_UserDTO" PRIMARY KEY AUTOINCREMENT,
+          "Name" TEXT NOT NULL,
+          "PhoneNumber" INTEGER NOT NULL,
+          "Review" REAL NOT NULL,
+          "PostalCode" INTEGER NOT NULL,
+          "City" TEXT NULL,
+          "StreetHouseNumber" TEXT NULL,
+          "ImageId" TEXT NULL
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "subcategory" (
+          "scname" TEXT NOT NULL CONSTRAINT "PK_subcategory" PRIMARY KEY,
+          "cname" TEXT NULL,
+          CONSTRAINT "FK_subcategory_category_cname" FOREIGN KEY ("cname") REFERENCES "category" ("cname")
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "foryou" (
+          "fid" INTEGER NOT NULL CONSTRAINT "PK_foryou" PRIMARY KEY AUTOINCREMENT,
+          "uid" INTEGER NOT NULL,
+          "cname" TEXT NULL,
+          CONSTRAINT "FK_foryou_category_cname" FOREIGN KEY ("cname") REFERENCES "category" ("cname"),
+          CONSTRAINT "FK_foryou_user_uid" FOREIGN KEY ("uid") REFERENCES "user" ("uid") ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "instrument" (
+          "iid" INTEGER NOT NULL CONSTRAINT "PK_instrument" PRIMARY KEY AUTOINCREMENT,
+          "iname" TEXT NULL,
+          "cost" INTEGER NOT NULL,
+          "description" TEXT NULL,
+          "sold" INTEGER NOT NULL,
+          "uid" INTEGER NOT NULL,
+          "scname" TEXT NULL,
+          "IsPremium" INTEGER NOT NULL,
+          "condition" TEXT NULL,
+          "imageCount" INTEGER NOT NULL,
+          CONSTRAINT "FK_instrument_subcategory_scname" FOREIGN KEY ("scname") REFERENCES "subcategory" ("scname"),
+          CONSTRAINT "FK_instrument_user_uid" FOREIGN KEY ("uid") REFERENCES "user" ("uid") ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "InstrumentDTO" (
+          "Id" INTEGER NOT NULL CONSTRAINT "PK_InstrumentDTO" PRIMARY KEY AUTOINCREMENT,
+          "Name" TEXT NULL,
+          "Cost" INTEGER NOT NULL,
+          "Description" TEXT NULL,
+          "Sold" INTEGER NOT NULL,
+          "UId" INTEGER NOT NULL,
+          "SCName" TEXT NULL,
+          "IsPremium" INTEGER NOT NULL,
+          "Condition" TEXT NULL,
+          "ImageCount" INTEGER NOT NULL,
+          "SellerId" INTEGER NULL,
+          "SubCategoryName" TEXT NULL,
+          CONSTRAINT "FK_InstrumentDTO_UserDTO_SellerId" FOREIGN KEY ("SellerId") REFERENCES "UserDTO" ("Id"),
+          CONSTRAINT "FK_InstrumentDTO_subcategory_SubCategoryName" FOREIGN KEY ("SubCategoryName") REFERENCES "subcategory" ("scname")
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "orderinfo" (
+          "oid" INTEGER NOT NULL CONSTRAINT "PK_orderinfo" PRIMARY KEY AUTOINCREMENT,
+          "status" TEXT NULL,
+          "dateOfPurchase" TEXT NOT NULL,
+          "dateOfShipArrive" TEXT NOT NULL,
+          "dateOfShipStart" TEXT NOT NULL,
+          "cid" INTEGER NOT NULL,
+          "iid" INTEGER NOT NULL,
+          CONSTRAINT "FK_orderinfo_InstrumentDTO_iid" FOREIGN KEY ("iid") REFERENCES "InstrumentDTO" ("Id") ON DELETE CASCADE,
+          CONSTRAINT "FK_orderinfo_UserDTO_cid" FOREIGN KEY ("cid") REFERENCES "UserDTO" ("Id") ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_foryou_cname" ON "foryou" ("cname");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_foryou_uid" ON "foryou" ("uid");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_instrument_scname" ON "instrument" ("scname");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_instrument_uid" ON "instrument" ("uid");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_InstrumentDTO_SellerId" ON "InstrumentDTO" ("SellerId");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_InstrumentDTO_SubCategoryName" ON "InstrumentDTO" ("SubCategoryName");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_orderinfo_cid" ON "orderinfo" ("cid");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_orderinfo_iid" ON "orderinfo" ("iid");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_subcategory_cname" ON "subcategory" ("cname");
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 5)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "category" ("cname")
+      VALUES (@p0);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "category" ("cname")
+      VALUES (@p0);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "category" ("cname")
+      VALUES (@p0);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 8), @p1='?' (Size = 19), @p2='?', @p3='?' (Size = 9), @p4='?' (Size = 9), @p5='?' (DbType = Int64), @p6='?' (DbType = Int32), @p7='?' (DbType = Single), @p8='?' (Size = 4), @p9='?' (Size = 21), @p10='?'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "user" ("city", "email", "ImageId", "uname", "password", "pnumber", "postalcode", "review", "role", "streetHnum", "token")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+      RETURNING "uid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 8), @p1='?' (Size = 20), @p2='?', @p3='?' (Size = 10), @p4='?' (Size = 10), @p5='?' (DbType = Int64), @p6='?' (DbType = Int32), @p7='?' (DbType = Single), @p8='?' (Size = 4), @p9='?' (Size = 21), @p10='?'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "user" ("city", "email", "ImageId", "uname", "password", "pnumber", "postalcode", "review", "role", "streetHnum", "token")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+      RETURNING "uid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 8), @p1='?' (Size = 20), @p2='?', @p3='?' (Size = 10), @p4='?' (Size = 10), @p5='?' (DbType = Int64), @p6='?' (DbType = Int32), @p7='?' (DbType = Single), @p8='?' (Size = 4), @p9='?' (Size = 21), @p10='?'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "user" ("city", "email", "ImageId", "uname", "password", "pnumber", "postalcode", "review", "role", "streetHnum", "token")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10)
+      RETURNING "uid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p11='?' (Size = 5), @p12='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "foryou" ("cname", "uid")
+      VALUES (@p11, @p12)
+      RETURNING "fid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "foryou" ("cname", "uid")
+      VALUES (@p0, @p1)
+      RETURNING "fid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "foryou" ("cname", "uid")
+      VALUES (@p0, @p1)
+      RETURNING "fid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 5)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "subcategory" ("scname", "cname")
+      VALUES (@p0, @p1);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 5)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "subcategory" ("scname", "cname")
+      VALUES (@p0, @p1);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 5)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "subcategory" ("scname", "cname")
+      VALUES (@p0, @p1);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 2), @p1='?' (DbType = Int32), @p2='?' (Size = 10), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (Size = 12), @p6='?' (Size = 5), @p7='?' (DbType = Boolean), @p8='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "instrument" ("condition", "cost", "description", "imageCount", "IsPremium", "iname", "scname", "sold", "uid")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+      RETURNING "iid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 2), @p1='?' (DbType = Int32), @p2='?' (Size = 10), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (Size = 12), @p6='?' (Size = 5), @p7='?' (DbType = Boolean), @p8='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "instrument" ("condition", "cost", "description", "imageCount", "IsPremium", "iname", "scname", "sold", "uid")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+      RETURNING "iid";
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 2), @p1='?' (DbType = Int32), @p2='?' (Size = 10), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (Size = 12), @p6='?' (Size = 5), @p7='?' (DbType = Boolean), @p8='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "instrument" ("condition", "cost", "description", "imageCount", "IsPremium", "iname", "scname", "sold", "uid")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+      RETURNING "iid";
+warn: Microsoft.EntityFrameworkCore.Query[10103]
+      The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "u"."uid", "u"."city", "u"."email", "u"."ImageId", "u"."uname", "u"."password", "u"."pnumber", "u"."postalcode", "u"."review", "u"."role", "u"."streetHnum", "u"."token"
+      FROM "user" AS "u"
+      LIMIT 1
+warn: Microsoft.EntityFrameworkCore.Query[10103]
+      The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "s"."scname", "s"."cname"
+      FROM "subcategory" AS "s"
+      LIMIT 1
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 2), @p1='?' (DbType = Int32), @p2='?' (Size = 24), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (Size = 24), @p6='?' (Size = 5), @p7='?' (DbType = Boolean), @p8='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "instrument" ("condition", "cost", "description", "imageCount", "IsPremium", "iname", "scname", "sold", "uid")
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+      RETURNING "iid";

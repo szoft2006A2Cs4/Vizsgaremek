@@ -101,11 +101,13 @@ namespace HH_Api
             var secretKey = builder.Configuration["Auth:Jwt:Key"];
             var issuer = builder.Configuration["Auth:Jwt:Issuer"];
             var audience = builder.Configuration["Auth:Jwt:Audience"];
+
             if (string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(issuer) || string.IsNullOrEmpty(audience))
             {
-                throw new ApplicationException("Authentication konfiguráció hiányzik");
+                builder.Services.AddAuthentication();
+                builder.Services.AddAuthorization();
+                return;
             }
-
 
             var tokenManager = new TokenManager(builder.Configuration);
             builder.Services.AddSingleton(tokenManager);
