@@ -62,7 +62,7 @@ export default function Nav({ cats, scats, loading, ins }) {
         <Button variant="outline" size="sm">
           <img
             src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
-            style={{ height: "4.5vh", marginLeft: "1rem" }}
+            style={{ height: "4.5vh" }}
           />
         </Button>
       </Drawer.Trigger>
@@ -82,7 +82,6 @@ export default function Nav({ cats, scats, loading, ins }) {
                       style={{ marginTop: "10px" }}
                       onClick={handleLogout}
                     >
-                      <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771021364/logout_lpacjr.svg" />
                       <a className="UserDropDown-Items">Kilépés</a>
                     </p>
                   </>
@@ -91,6 +90,14 @@ export default function Nav({ cats, scats, loading, ins }) {
                 )}
                 <Link to="/aboutUs">Rólunk</Link>
                 <Link to="/contactUs">Üzenj nekünk!</Link>
+                <p
+                  onClick={() => {
+                    setMenuOpen(false);
+                    handleDrawer();
+                  }}
+                >
+                  Összes kategória
+                </p>
               </div>
             </Drawer.Body>
             <Drawer.CloseTrigger asChild>

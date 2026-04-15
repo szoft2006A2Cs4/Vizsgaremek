@@ -13,10 +13,6 @@ export default function SearchBox({ ins, isMobile }) {
   const { auth } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(isMobile);
-  }, [isMobile]);
-
-  useEffect(() => {
     if (isOpen) inputRef.current?.focus();
   }, [isOpen]);
 

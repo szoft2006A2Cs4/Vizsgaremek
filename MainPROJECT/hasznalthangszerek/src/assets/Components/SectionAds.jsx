@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Badge,
   Box,
@@ -14,8 +15,44 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import "../../index.css";
 
 const SectionAds = ({ ins }) => {
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 768px)").matches,
+  );
+  const [isTablet, setIsTablet] = useState(
+    () => window.matchMedia("(max-width: 1024px)").matches,
+  );
+  const [slides, setSlides] = useState(3);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1024px)");
+    const handler = (e) => {
+      setIsTablet(e.matches);
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    const mx = window.matchMedia("(max-width: 768px)");
+    const handler = (e) => {
+      setIsMobile(e.matches);
+    };
+    mx.addEventListener("change", handler);
+    return () => mx.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setSlides(1);
+    } else if (isTablet) {
+      setSlides(2);
+    } else {
+      setSlides(3);
+    }
+  }, [isMobile, isTablet]);
+
   return (
-    <Carousel.Root slideCount={ins.length} slidesPerPage={3} gap="4">
+    <Carousel.Root slideCount={ins.length} slidesPerPage={slides} gap="4">
       <HStack justify="space-between" mb="3">
         <Span fontWeight="medium" fontSize="xl">
           További ajánlataink
