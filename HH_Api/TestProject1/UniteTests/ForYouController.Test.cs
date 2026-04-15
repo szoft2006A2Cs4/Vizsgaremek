@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mysqlx.Crud;
 using System.Security.Cryptography;
 
-namespace TestProject1;
+namespace TestProject1.UniteTests;
 
 [TestClass]
 public class ForYouController_Test
@@ -78,7 +78,7 @@ public class ForYouController_Test
         var dto = new ForYouCreateDTO
         {
             UId = _db!.userList![0].Id,
-            CName = "test1"
+            CName = "test2"
         };
 
         var result = await _sut!.CreateForYou(dto) as CreatedResult;

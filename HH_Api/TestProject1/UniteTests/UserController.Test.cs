@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HH_Api.DTOs;
 
-namespace TestProject1;
+namespace TestProject1.UniteTests;
 
 [TestClass]
 public sealed class UserController_Test

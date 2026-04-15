@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\controllers\\instrumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\testproject1\\integrationtest\\integration.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}|TestProject1\\TestProject1.csproj|solutionrelative:testproject1\\integrationtest\\integration.test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|c:\\users\\dodo3\\desktop\\projects\\vizsgaremek\\hh_api\\hh_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{625CE092-B3A9-4527-801D-3DAD87F0D608}|HH_Api\\HH_Api.csproj|solutionrelative:hh_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.json",
+              "RelativeDocumentMoniker": "HH_Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\appsettings.json",
+              "RelativeToolTip": "HH_Api\\appsettings.json",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-15T12:45:40.295Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,22 +45,22 @@
               "RelativeDocumentMoniker": "HH_Api\\Program.cs",
               "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Program.cs",
               "RelativeToolTip": "HH_Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAqwHIAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T19:21:05.332Z",
+              "WhenOpened": "2026-04-14T21:33:08.752Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InstrumentController.cs",
-              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
-              "RelativeDocumentMoniker": "HH_Api\\Controllers\\InstrumentController.cs",
-              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\HH_Api\\Controllers\\InstrumentController.cs",
-              "RelativeToolTip": "HH_Api\\Controllers\\InstrumentController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAA9wOwAAABCAAAAAAAAAA==",
+              "Title": "Integration.Test.cs",
+              "DocumentMoniker": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\IntegrationTest\\Integration.Test.cs",
+              "RelativeDocumentMoniker": "TestProject1\\IntegrationTest\\Integration.Test.cs",
+              "ToolTip": "C:\\Users\\dodo3\\Desktop\\projects\\Vizsgaremek\\HH_Api\\TestProject1\\IntegrationTest\\Integration.Test.cs",
+              "RelativeToolTip": "TestProject1\\IntegrationTest\\Integration.Test.cs",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAIwAgBAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T19:09:54.332Z",
+              "WhenOpened": "2026-04-14T16:07:40.673Z",
               "EditorCaption": ""
             }
           ]

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mysqlx.Crud;
 using System.Security.Cryptography;
 
-namespace TestProject1;
+namespace TestProject1.UniteTests;
 
 [TestClass]
 public sealed class OrderInfoController_Test
