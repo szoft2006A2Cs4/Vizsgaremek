@@ -516,53 +516,33 @@ button:hover > a {
 
 /*#region Mobil kereső*/
 
-.mobile-search-wrapper {
-  position: relative;
+#search-mobile-container {
   display: flex;
-  align-items: center;
-  gap: 4px;
-  width: 100%;
-}
-
-.mobile-search-input {
-  flex: 1;
-  height: 2.2rem;
-  padding: 0 0.75rem;
-  border-radius: 6px;
-  border: 2px solid black;
-  background: transparent;
-  color: #f5e6c8;
-  font: inherit;
-  font-size: 1rem;
-  outline: none;
-  caret-color: #f5e6c8;
-  box-sizing: border-box;
-}
-
-.mobile-search-input::placeholder {
-  color: #f5e6c8;
-  opacity: 0.7;
-}
-
-.mobile-search-btn {
-  display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 6px;
-  cursor: pointer;
-  color: #f5e6c8;
-  flex-shrink: 0;
-  line-height: 1;
-  font-size: 1rem; /* felülírja az alap button:hover font-size növelést */
 }
 
-.mobile-search-btn:hover {
-  opacity: 0.7;
-  font-size: 1rem; /* megakadályozza az alap button:hover ugrást */
-  color: wheat;
+#search-input-mobile {
+  width: 30vw;
+  border-radius: 4px;
+  padding: 0 3vw 0 1vw;
+  border: 0.3vw solid black;
+  outline: none;
+  background: transparent;
+  box-sizing: border-box;
+  transition:
+    width 0.4s ease-in-out,
+    border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  color: #f5e6c8;
+  font-size: 1.2rem;
+  padding: 0;
+  caret-color: #f5e6c8;
+}
+
+#search-input-mobile::placeholder {
+  color: #f5e6c8;
+  opacity: 0.6;
 }
 
 /*#endregion Mobil kereső*/

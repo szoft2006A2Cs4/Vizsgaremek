@@ -110,7 +110,7 @@ export default function Nav({ cats, scats, loading, ins }) {
 
       {!isMobile && (
         <div id="nav-spacing-loggedIn">
-          <SearchInput ins={ins} />
+          <SearchInput ins={ins} isMobile={isMobile} />
           <Flex
             justify="center"
             align="center"
@@ -137,7 +137,7 @@ export default function Nav({ cats, scats, loading, ins }) {
       {isMobile && (
         <div id="phone">
           <Box id="mobile-search" flex={1}>
-            <SearchInput ins={ins} />
+            <SearchInput ins={ins} isMobile={isMobile} />
           </Box>
         </div>
       )}
@@ -166,7 +166,7 @@ export default function Nav({ cats, scats, loading, ins }) {
             <Link to="/aboutUs">Rólunk</Link>
           </button>
           <div id="nav-end">
-            <SearchInput ins={ins} />
+            <SearchInput ins={ins} isMobile={isMobile} />
             <button>
               <Link to="/login">Bejelentkezés</Link>
             </button>
@@ -177,7 +177,7 @@ export default function Nav({ cats, scats, loading, ins }) {
       {isMobile && (
         <div id="phone">
           <Box id="mobile-search" flex={1}>
-            <SearchInput ins={ins} />
+            <SearchInput ins={ins} isMobile={isMobile} />
           </Box>
         </div>
       )}
