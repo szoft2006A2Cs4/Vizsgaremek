@@ -519,11 +519,13 @@ button:hover > a {
 #search-mobile-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 #search-input-mobile {
   width: 30vw;
+  height: 4.5vh;
   border-radius: 4px;
   padding: 0 3vw 0 1vw;
   border: 0.3vw solid black;
@@ -543,6 +545,12 @@ button:hover > a {
 #search-input-mobile::placeholder {
   color: #f5e6c8;
   opacity: 0.6;
+}
+
+#search-mobile-btn {
+  display: flex;
+  min-height: min-content;
+  align-items: center;
 }
 
 /*#endregion Mobil kereső*/

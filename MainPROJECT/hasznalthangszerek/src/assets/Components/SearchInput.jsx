@@ -57,8 +57,13 @@ export default function SearchBox({ ins, isMobile }) {
     }
   };
 
-  const _handleTouch = (e) => {
-    console.log();
+  const _handleTouch = () => {
+    if (input.trim()) {
+      setNavigated(true);
+      navigate(
+        `/instruments?name=${encodeURIComponent((selectedRef.current || input).trim())}`,
+      );
+    }
   };
 
   return (
@@ -75,7 +80,7 @@ export default function SearchBox({ ins, isMobile }) {
               handleChange(e.target.value);
             }}
           />
-          <button onTouchEnd={_handleTouch()}>
+          <button id="search-mobile-btn" onTouchEnd={() => _handleTouch()}>
             <svg
               fill="#000000"
               height="50px"

@@ -60,7 +60,10 @@ export default function Nav({ cats, scats, loading, ins }) {
     <Drawer.Root open={menuOpen} onOpenChange={(e) => setMenuOpen(e.open)}>
       <Drawer.Trigger asChild>
         <Button variant="outline" size="sm">
-          <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg" />
+          <img
+            src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1771170318/list-music_xwhp8v.svg"
+            style={{ height: "4.5vh", marginLeft: "1rem" }}
+          />
         </Button>
       </Drawer.Trigger>
       <Portal>
