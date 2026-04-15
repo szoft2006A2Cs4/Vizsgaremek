@@ -1820,16 +1820,13 @@ button:hover > a {
 
 /*#region Reszponzív nézetek / tablet, telefon, laptop*/
 
-/* ============================================================
-   RESZPONZÍV STYLESHEET
+/* RESZPONZÍV STYLESHEET
    Laptop:  max-width: 1280px
    Tablet:  max-width: 1024px
-   Telefon: max-width: 768px  /  max-width: 480px
-   ============================================================ */
+   Telefon: max-width: 768px  /  max-width: 480px */
 
 /*#region Laptop (≤ 1280px)*/
 @media (max-width: 1280px) {
-  /* Navigáció */
   #logo-icon {
     width: 12em;
   }
@@ -1844,12 +1841,10 @@ button:hover > a {
     padding-right: 2rem;
   }
 
-  /* Főoldal rácsok */
   .home {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Kártyák */
   .card {
     width: 24em;
     height: 32em;
@@ -1859,7 +1854,6 @@ button:hover > a {
     height: 15rem;
   }
 
-  /* Részletes nézet */
   #description {
     font-size: 1.25rem;
     margin: 3rem 8rem;
@@ -1873,7 +1867,6 @@ button:hover > a {
     font-size: 2rem;
   }
 
-  /* Profil oldal */
   .profile-label {
     margin-left: 3rem;
     font-size: 1.25rem;
@@ -1883,12 +1876,10 @@ button:hover > a {
     margin: auto 3rem auto 0;
   }
 
-  /* Pénztár */
   #checkOut-field {
     width: 55rem;
   }
 
-  /* AboutUs */
   .aboutUs-card {
     width: 20em;
     height: 26em;
@@ -1898,12 +1889,59 @@ button:hover > a {
     width: 13em;
     height: 18em;
   }
+
+  .UpLoad-firstMain {
+    width: 90vw;
+  }
+
+  .UpLoad-secondMain {
+    width: 90vw !important;
+    height: min-content !important;
+  }
+
+  .UpLoad-thirdMain {
+    width: 90vw !important;
+    height: min-content !important;
+  }
+
+  #UpLoad-field {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .UpLoad-description {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .UpLoad-isPremium {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .UpLoad-footer {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  #UpLoad-thirdMain-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+  }
+
+  #UpLoad-thirdMain-imgList {
+    display: grid;
+    grid-template-rows: min-content max-content;
+  }
+
+  #UpLoad-thirdMain-imgList-title {
+    justify-self: center;
+  }
 }
 /*#endregion Laptop (≤ 1280px)*/
 
 /*#region Tablet (≤ 1024px)*/
 @media (max-width: 1024px) {
-  /* Navigáció – asztali nav elrejt, mobil megjelenik */
   #logo-icon {
     width: 10em;
   }
@@ -1940,12 +1978,10 @@ button:hover > a {
     max-width: 20rem;
   }
 
-  /* Főoldal rácsok */
   .home {
     grid-template-columns: 1fr;
   }
 
-  /* Bevezetés */
   #introduction {
     font-size: 1.5rem;
     background-attachment: scroll;
@@ -1956,12 +1992,10 @@ button:hover > a {
     width: 85%;
   }
 
-  /* Cikkek, szekciók */
   article {
     padding: 1.5rem 0;
   }
 
-  /* Kártyák */
   .card {
     width: 20em;
     height: 30em;
@@ -1976,7 +2010,6 @@ button:hover > a {
     width: 100vw;
   }
 
-  /* Oldalsáv szűrők → felülre kerülnek */
   #testClassField {
     flex-direction: column;
   }
@@ -2086,7 +2119,6 @@ button:hover > a {
     display: none;
   }
 
-  /* Részletes nézet */
   #image-field {
     grid-template-columns: 1fr;
   }
@@ -2133,7 +2165,6 @@ button:hover > a {
     margin: 0 1rem 1.5rem;
   }
 
-  /* Pénztár */
   #checkOut-field {
     width: 95vw;
     height: auto;
@@ -2149,7 +2180,6 @@ button:hover > a {
     border-top: solid 2px black;
   }
 
-  /* AboutUs */
   #aboutUs-Introtext {
     margin-top: 6rem;
   }
@@ -2170,13 +2200,11 @@ button:hover > a {
     height: 16em;
   }
 
-  /* Footer */
   .footer-container {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
-  /* Profil */
   #profile-div {
     grid-template-columns: 1fr;
     width: 95%;
@@ -2211,9 +2239,18 @@ button:hover > a {
     gap: 0.75rem;
   }
 
-  /* Upload */
   .UpLoad-firstMain {
-    width: 90vw;
+    width: 100vw;
+  }
+
+  .UpLoad-secondMain {
+    width: 100vw !important;
+    height: min-content !important;
+  }
+
+  .UpLoad-thirdMain {
+    width: 100vw !important;
+    height: min-content !important;
   }
 
   #UpLoad-field {
@@ -2237,16 +2274,23 @@ button:hover > a {
   }
 
   #UpLoad-thirdMain-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  /* Keresőmező loggedIn */
+  #UpLoad-thirdMain-imgList {
+    display: grid;
+    grid-template-rows: min-content max-content;
+    width: 100%;
+    justify-content: center;
+  }
+
   #nav-spacing-loggedIn .middle:has(.inclicked) .input {
     width: 60vw;
     height: 6vh;
   }
 
-  /* Contact */
   #contact-div {
     width: 80%;
     max-width: none;
@@ -2257,7 +2301,6 @@ button:hover > a {
     font-size: 2.25rem;
   }
 
-  /* Forgot password */
   .forgot-btn-cont {
     width: 55%;
   }
@@ -2266,7 +2309,6 @@ button:hover > a {
 
 /*#region Telefon (≤ 768px)*/
 @media (max-width: 768px) {
-  /* Gombok */
   .uni-button {
     padding: 0.7em 2.5em;
     font-size: 0.9rem;
@@ -2282,7 +2324,6 @@ button:hover > a {
     font-size: 0.8rem;
   }
 
-  /* Bevezetés */
   #introduction {
     font-size: 1.25rem;
   }
@@ -2291,7 +2332,6 @@ button:hover > a {
     width: 90%;
   }
 
-  /* Kártyák */
   .card {
     width: 16em;
     height: 26em;
@@ -2305,7 +2345,6 @@ button:hover > a {
     font-size: 0.95rem;
   }
 
-  /* Részletes nézet */
   #description {
     font-size: 1rem;
     margin: 1.5rem 1.25rem;
@@ -2328,13 +2367,11 @@ button:hover > a {
     margin: 2.5rem auto;
   }
 
-  /* Pénztár */
   #checkOut-field {
     width: 100vw;
     border-radius: 0;
   }
 
-  /* AboutUs */
   #aboutUs-Introtext {
     margin-top: 4rem;
   }
@@ -2358,7 +2395,6 @@ button:hover > a {
     height: 14em;
   }
 
-  /* Footer */
   .footer-container {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -2368,7 +2404,6 @@ button:hover > a {
     padding: 2.5rem 1rem 1rem;
   }
 
-  /* Profil */
   #profile-div {
     width: 100%;
     border-radius: 0;
@@ -2405,7 +2440,6 @@ button:hover > a {
     font-size: 0.9rem;
   }
 
-  /* Upload */
   #UpLoad-page {
     top: 3rem;
     margin-bottom: 3rem;
@@ -2424,7 +2458,6 @@ button:hover > a {
     width: 100%;
   }
 
-  /* Contact */
   #contact-div {
     width: 95%;
     padding: 5% 4%;
@@ -2446,7 +2479,6 @@ button:hover > a {
     margin-bottom: 1rem;
   }
 
-  /* Forgot password */
   .forgot-btn-cont {
     width: 90%;
   }
@@ -2455,23 +2487,19 @@ button:hover > a {
     width: 100%;
   }
 
-  /* Drawer */
   .Drawer-title {
     font-size: 1.5rem;
   }
 
-  /* UserDropDown */
   .UserDropDown {
     right: 0;
     width: 9rem;
   }
 
-  /* Avatar */
   .userAvatar {
     width: 2.5rem;
   }
 
-  /* Keresőmező */
   .middle:has(.inclicked) {
     width: 55vw;
   }
@@ -2479,12 +2507,14 @@ button:hover > a {
   .inclicked {
     width: 55vw;
   }
+  .UpLoad-FileUploadFiled {
+    width: 80vw !important;
+  }
 }
 /*#endregion Telefon (≤ 768px)*/
 
 /*#region Kis telefon (≤ 480px)*/
 @media (max-width: 480px) {
-  /* Gombok */
   .uni-button {
     padding: 0.65em 1.75em;
     font-size: 0.82rem;
@@ -2500,12 +2530,10 @@ button:hover > a {
     font-size: 0.75rem;
   }
 
-  /* Bevezetés */
   #introduction {
     font-size: 1rem;
   }
 
-  /* Kártyák */
   .card {
     width: 90vw;
     max-width: 18em;
@@ -2517,7 +2545,6 @@ button:hover > a {
     height: 10rem;
   }
 
-  /* Részletes nézet */
   #seller-details {
     font-size: 1.15rem;
   }
@@ -2532,12 +2559,10 @@ button:hover > a {
     padding: 1rem;
   }
 
-  /* AboutUs */
   .aboutUs-card {
     width: 92vw;
   }
 
-  /* Contact */
   #contact-h1 {
     font-size: 1.5rem;
   }
@@ -2546,25 +2571,21 @@ button:hover > a {
     font-size: 1.1rem;
   }
 
-  /* Logo */
   #logo-icon {
     width: 8em;
   }
 
-  /* UserDropDown */
   .UserDropDown {
     width: 8rem;
     padding: 0.75rem;
     font-size: 0.9rem;
   }
 
-  /* Profil */
   .profile-tabs div {
     font-size: 0.8rem;
     padding: 8px 2px;
   }
 
-  /* Keresőmező */
   .middle:has(.inclicked) {
     width: 70vw;
   }

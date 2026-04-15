@@ -583,7 +583,10 @@ export default function UpLoad() {
                     }}
                   >
                     <FileUpload.HiddenInput />
-                    <FileUpload.Dropzone width="xl">
+                    <FileUpload.Dropzone
+                      width="xl"
+                      className="UpLoad-FileUploadFiled"
+                    >
                       <Icon size="lg" color="fg.muted">
                         <LuUpload />
                       </Icon>
