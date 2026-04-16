@@ -266,7 +266,7 @@ const ArticleAds = ({ data, isLoading }) => {
           <Card.Root
             key={index}
             overflow="hidden"
-            onTouchEnd={() => {
+            onClick={() => {
               navigate(`/instruments?ins=${item.id}`, {
                 replace: true,
               });

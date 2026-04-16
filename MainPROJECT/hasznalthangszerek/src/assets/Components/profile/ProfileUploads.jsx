@@ -99,15 +99,68 @@ const ProfileUploads = ({ insList, onDelete, onModify }) => {
   return (
     <>
       {isLoading ? <Loading /> : <></>}
-      <Table.ScrollArea borderWidth="1px" rounded="md" height="160px">
-        <Table.Root size="sm" stickyHeader>
+      <Table.ScrollArea
+        borderWidth="1px"
+        rounded="md"
+        height="160px"
+        overflowX="auto"
+      >
+        <Table.Root
+          size="sm"
+          stickyHeader
+          className="profile-uploads-table"
+          style={{ tableLayout: "fixed", width: "100%" }}
+        >
           <Table.Header>
             <Table.Row bg="bg.subtle">
-              <Table.ColumnHeader>Termék neve</Table.ColumnHeader>
-              <Table.ColumnHeader>Kategória</Table.ColumnHeader>
-              <Table.ColumnHeader>Ár</Table.ColumnHeader>
-              <Table.ColumnHeader>Állapot</Table.ColumnHeader>
-              <Table.ColumnHeader>
+              <Table.ColumnHeader
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  maxWidth: "80px",
+                }}
+              >
+                Termék neve
+              </Table.ColumnHeader>
+              <Table.ColumnHeader
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  maxWidth: "80px",
+                }}
+              >
+                Kategória
+              </Table.ColumnHeader>
+              <Table.ColumnHeader
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  maxWidth: "80px",
+                }}
+              >
+                Ár
+              </Table.ColumnHeader>
+              <Table.ColumnHeader
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  maxWidth: "80px",
+                }}
+              >
+                Állapot
+              </Table.ColumnHeader>
+              <Table.ColumnHeader
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  maxWidth: "80px",
+                }}
+              >
                 <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1774189743/settings-2_bcp8ge.svg" />
               </Table.ColumnHeader>
               <Table.ColumnHeader />
@@ -117,11 +170,54 @@ const ProfileUploads = ({ insList, onDelete, onModify }) => {
           <Table.Body>
             {insList.map((item) => (
               <Table.Row key={item.id}>
-                <Table.Cell>{item.name}</Table.Cell>
-                <Table.Cell>{item.subCategory.cName}</Table.Cell>
-                <Table.Cell>{item.cost}</Table.Cell>
-                <Table.Cell>{item.sold ? "ELadva" : "Nincs eladva"}</Table.Cell>
-                <Table.Cell>
+                <Table.Cell
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxWidth: "80px",
+                  }}
+                >
+                  {item.name}
+                </Table.Cell>
+                <Table.Cell
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxWidth: "80px",
+                  }}
+                >
+                  {item.subCategory.cName}
+                </Table.Cell>
+                <Table.Cell
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxWidth: "80px",
+                  }}
+                >
+                  {item.cost}
+                </Table.Cell>
+                <Table.Cell
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxWidth: "80px",
+                  }}
+                >
+                  {item.sold ? "ELadva" : "Nincs eladva"}
+                </Table.Cell>
+                <Table.Cell
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxWidth: "80px",
+                  }}
+                >
                   <a
                     className="ProfileUploads-settings"
                     onClick={() => {
@@ -132,7 +228,14 @@ const ProfileUploads = ({ insList, onDelete, onModify }) => {
                     Törlés
                   </a>
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    maxWidth: "80px",
+                  }}
+                >
                   <a
                     className="ProfileUploads-settings"
                     onClick={() => {
@@ -155,8 +258,8 @@ const ProfileUploads = ({ insList, onDelete, onModify }) => {
       >
         <Portal>
           <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
+          <Dialog.Positioner alignItems="center" px="2">
+            <Dialog.Content maxW="95vw" maxH="90vh" overflowY="auto">
               <Dialog.CloseTrigger />
               <Dialog.Header justifyContent="center">
                 <Dialog.Title fontSize="xl">Hírdetés törlése</Dialog.Title>
@@ -208,8 +311,14 @@ const ProfileUploads = ({ insList, onDelete, onModify }) => {
       >
         <Portal>
           <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
+          <Dialog.Positioner alignItems="center" px="2">
+            <Dialog.Content
+              maxW={{ sm: "95vw" }}
+              maxH={{ sm: "90vh" }}
+              overflowY="auto"
+              position={{ sm: "0px" }}
+              margin="1rem"
+            >
               <Dialog.CloseTrigger />
               <Dialog.Header justifyContent="center">
                 <Dialog.Title fontSize="xl">Hírdetés Módosítása</Dialog.Title>
@@ -255,6 +364,8 @@ const ProfileUploads = ({ insList, onDelete, onModify }) => {
                   <RadioGroup.Root
                     defaultValue={selectedInsData.condition}
                     variant="subtle"
+                    id="modify-radio"
+                    marginleft={{ sm: "5rem" }}
                   >
                     <Stack gap="1.5">
                       {radioOptions.map((opt) => (

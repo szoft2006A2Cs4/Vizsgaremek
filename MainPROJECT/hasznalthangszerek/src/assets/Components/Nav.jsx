@@ -79,7 +79,7 @@ export default function Nav({ cats, scats, loading, ins }) {
                     <p
                       className="UserDropDown-icons-cont"
                       id="Logout"
-                      style={{ marginTop: "10px" }}
+                      style={{ fontSize: "1.5rem" }}
                       onClick={handleLogout}
                     >
                       <a className="UserDropDown-Items">Kilépés</a>
@@ -90,14 +90,9 @@ export default function Nav({ cats, scats, loading, ins }) {
                 )}
                 <Link to="/aboutUs">Rólunk</Link>
                 <Link to="/contactUs">Üzenj nekünk!</Link>
-                <p
-                  onClick={() => {
-                    setMenuOpen(false);
-                    handleDrawer();
-                  }}
-                >
-                  Összes kategória
-                </p>
+                <button onClick={handleDrawer}>
+                  <a>Összes kategória</a>
+                </button>
               </div>
             </Drawer.Body>
             <Drawer.CloseTrigger asChild>
@@ -193,6 +188,10 @@ export default function Nav({ cats, scats, loading, ins }) {
       )}
 
       {isMobile && <MobileMenu isLoggedIn={false} />}
+
+      {isForYouOpen && (
+        <ForYou open={isForYouOpen} onClose={() => setIsForYouOpen(false)} />
+      )}
 
       <Drawer_
         open={isDrawerOpen}

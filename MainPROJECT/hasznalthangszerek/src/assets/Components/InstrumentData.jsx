@@ -17,7 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../scripts/AuthProvider";
 
-const InstrumentData = ({ instrument }) => {
+const InstrumentData = ({ instrument, cat, scat, ins }) => {
   const images = instrument.imageUrls;
   const { auth } = useContext(AuthContext);
   const [BuyNowIsLogIn, setBuyNowIsLogIn] = useState(false);
@@ -31,7 +31,7 @@ const InstrumentData = ({ instrument }) => {
   if (instrument == null) return null;
   return (
     <div>
-      <Nav />
+      <Nav cats={cat} scats={scat} ins={ins} />
       <div id="data-field">
         <div id="image-field">
           <Carousel.Root slideCount={images.length} padding="1rem">

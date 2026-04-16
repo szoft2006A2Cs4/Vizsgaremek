@@ -1723,14 +1723,21 @@ button:hover > a {
   justify-content: right;
 }
 
-#update-container-first > input {
+#update-container-first input {
   border-color: var(--text-color);
   height: 3.125rem;
-  width: 100%;
+  width: 80%;
   padding: 0.25rem;
   margin: 0.25rem;
   border-radius: 10px;
 }
+
+#modify-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*#endregion Fiókom adatai oldal*/
 
 /*#region Egy kiválasztott hangszert megjelenítő oldal beállításai*/
@@ -1792,7 +1799,14 @@ button:hover > a {
   padding: 1rem;
   width: 20vw;
   font-size: 1.25rem;
-  text-align: center;
+}
+
+dd.datalist-item {
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 1rem;
+  width: 22vw;
+  text-align: left;
 }
 
 #detail-grid {
@@ -1943,7 +1957,7 @@ button:hover > a {
 /*#region Tablet (≤ 1024px)*/
 @media (max-width: 1024px) {
   #logo-icon {
-    width: 10em;
+    width: 16em;
   }
 
   nav {
@@ -1952,7 +1966,7 @@ button:hover > a {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    min-height: 4rem;
+    min-height: 8rem;
   }
 
   #logo {
@@ -1976,6 +1990,18 @@ button:hover > a {
   #mobile-search {
     flex: 1;
     max-width: 20rem;
+  }
+
+  #mobile-menu-div {
+    font-size: 1.5rem;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .menu-close {
+    width: 2rem;
+    height: 2rem;
+    padding-right: 1rem;
   }
 
   .home {
@@ -2148,13 +2174,23 @@ button:hover > a {
   }
 
   #datalist-field {
-    padding-top: 2.5rem;
-    margin: 0 1rem 1.5rem;
+    margin: 1rem 1.5rem;
+    padding: 0;
   }
 
   .datalist-item {
     width: auto;
     font-size: 1rem;
+    padding-left: 5rem;
+  }
+
+  #datalist-field .chakra-data-list__item:nth-child(4) dd.datalist-item {
+    padding-left: 2.75rem;
+    text-align: left;
+  }
+
+  dd.datalist-item {
+    padding-left: 3.75rem;
   }
 
   #detail-grid {
@@ -2201,13 +2237,15 @@ button:hover > a {
   }
 
   .footer-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
   }
 
   #profile-div {
     grid-template-columns: 1fr;
-    width: 95%;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
   }
 
   #welcome-field {
@@ -2294,7 +2332,7 @@ button:hover > a {
   #contact-div {
     width: 80%;
     max-width: none;
-    margin: 8% auto;
+    margin: 11% auto;
   }
 
   #contact-h1 {
@@ -2389,6 +2427,12 @@ button:hover > a {
   .datalist-item {
     text-align: left;
     font-size: 0.88rem;
+    padding: 1rem;
+  }
+
+  #datalist-field .chakra-data-list__item:nth-child(4) dd.datalist-item {
+    padding-left: 3.75rem;
+    text-align: left;
   }
 
   #checkOut-field {
@@ -2430,9 +2474,22 @@ button:hover > a {
 
   #profile-div {
     width: 100%;
-    border-radius: 0;
-    margin: 0;
-    padding: 0.75rem 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    align-self: center;
+  }
+
+  #profile-div table {
+    table-layout: fixed;
+    width: 100%;
+    word-break: break-word;
+  }
+
+  .profile-uploads-table th:nth-child(2),
+  .profile-uploads-table td:nth-child(2),
+  .profile-uploads-table th:nth-child(4),
+  .profile-uploads-table td:nth-child(4) {
+    display: none;
   }
 
   .profile-tabs div {
@@ -2482,10 +2539,14 @@ button:hover > a {
     width: 100%;
   }
 
+  #update-container {
+    width: 80vw;
+  }
+
   #contact-div {
     width: 95%;
     padding: 5% 4%;
-    margin: 5% auto;
+    margin: 7rem auto;
     border-width: 4px;
   }
 
@@ -2539,6 +2600,10 @@ button:hover > a {
 
 /*#region Kis telefon (≤ 480px)*/
 @media (max-width: 480px) {
+  nav {
+    height: 0.2rem;
+  }
+
   .uni-button {
     padding: 0.65em 1.75em;
     font-size: 0.82rem;
@@ -2596,7 +2661,7 @@ button:hover > a {
   }
 
   #logo-icon {
-    width: 8em;
+    width: 6em;
   }
 
   .UserDropDown {

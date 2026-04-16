@@ -9,7 +9,7 @@ import ProfileSecurity from "./profile/ProfileSecurity";
 import ProfileUploads from "./profile/ProfileUploads";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ mainLoading }) => {
+const Profile = ({ mainLoading, cat, scat, ins }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
@@ -54,13 +54,16 @@ const Profile = ({ mainLoading }) => {
         const response = await axios.get(`api/User/${email}`, {
           withCredentials: true,
         });
+        setUser(response.data);
         const responseins = await axios.get(
           INS_URL + `/user/${response.data.id}`,
           {
             withCredentials: true,
           },
         );
-        setUser(response.data);
+        if (responseins.status == "404") {
+          return;
+        }
         setInsList(responseins.data);
       } catch (err) {
         console.log(err);
@@ -119,7 +122,7 @@ const Profile = ({ mainLoading }) => {
 
   return (
     <div>
-      <Nav />
+      <Nav cats={cat} scats={scat} ins={ins} />
       <div id="profile-div">
         <div id="welcome-field">
           <div id="flexstart">

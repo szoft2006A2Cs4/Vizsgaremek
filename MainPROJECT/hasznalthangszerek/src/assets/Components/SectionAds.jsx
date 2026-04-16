@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Badge,
   Box,
   Carousel,
   HStack,
-  Icon,
   IconButton,
   Image,
   Span,
   Stack,
 } from "@chakra-ui/react";
-import { FaStar } from "react-icons/fa";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import "../../index.css";
 
@@ -22,6 +21,8 @@ const SectionAds = ({ ins }) => {
     () => window.matchMedia("(max-width: 1024px)").matches,
   );
   const [slides, setSlides] = useState(3);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1024px)");
@@ -72,7 +73,15 @@ const SectionAds = ({ ins }) => {
       </HStack>
       <Carousel.ItemGroup>
         {ins.map((i, index) => (
-          <Carousel.Item key={i.id} index={index}>
+          <Carousel.Item
+            key={i.id}
+            index={index}
+            onClick={() => {
+              navigate(`/instruments?ins=${i.id}`, {
+                replace: true,
+              });
+            }}
+          >
             <PropertyCard data={i} />
           </Carousel.Item>
         ))}
@@ -94,22 +103,27 @@ const PropertyCard = ({ data }) => (
         objectPosition="center"
         draggable={false}
       />
-      {data.seller.review > 3.5 && (
+      {data.seller.review > 3.8 && (
         <Badge pos="absolute" top="3" insetStart="3" size="md" fontSize="sm">
           Megbízható eladó
         </Badge>
       )}
     </Box>
-    <Stack gap="2" px="1">
+    <Stack
+      onClick={() => {
+        navigate(`/instruments?ins=${item.id}`, {
+          replace: true,
+        });
+      }}
+      gap="2"
+      px="1"
+    >
       <Span fontWeight="semibold" fontSize="md">
         {data.name}
       </Span>
       <HStack color="fg.muted" fontSize="sm">
         <Span>${data.cost} HUF</Span>
         <HStack gap="1">
-          <Icon color="orange.solid" boxSize="4">
-            <FaStar />
-          </Icon>
           <Span fontWeight="medium">{data.review}</Span>
         </HStack>
       </HStack>

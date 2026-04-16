@@ -34,7 +34,14 @@ export default function CardView({ data, loading, subcatList, cats, user }) {
     );
 
     if (selectedInstrument) {
-      return <InstrumentData instrument={selectedInstrument} />;
+      return (
+        <InstrumentData
+          instrument={selectedInstrument}
+          cat={cats}
+          scat={subcatList}
+          ins={data}
+        />
+      );
     }
     setSearchParams({});
     return null;

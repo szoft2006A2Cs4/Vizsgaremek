@@ -127,7 +127,14 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile mainLoading={isLoading} />}
+            element={
+              <Profile
+                mainLoading={isLoading}
+                cat={cats}
+                scat={scats}
+                ins={instruments}
+              />
+            }
           />
           <Route path="/forgotPassword" element={<ForgottenPassword />} />
           <Route path="/resetPWD" element={<ResetPWD />} />
