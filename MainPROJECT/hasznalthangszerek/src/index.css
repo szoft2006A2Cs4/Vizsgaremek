@@ -2036,8 +2036,8 @@ button:hover > a {
 
   .mobile-sidebar-wrapper {
     position: fixed;
-    left: -80%;
     top: 0;
+    left: -80%;
     width: 40%;
     height: 100%;
     z-index: 100;
@@ -2345,6 +2345,25 @@ button:hover > a {
     font-size: 0.95rem;
   }
 
+  .mobile-sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: -80%;
+    width: 75%;
+    height: 100%;
+    z-index: 100;
+    background-color: var(--base-color);
+    border-right: 2px solid var(--text-color);
+    transition: left 300ms ease;
+    overflow-y: auto;
+    padding-top: 4rem;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-container {
+    padding: 0px;
+  }
+
   #description {
     font-size: 1rem;
     margin: 1.5rem 1.25rem;
@@ -2365,6 +2384,11 @@ button:hover > a {
 
   #card-price {
     margin: 2.5rem auto;
+  }
+
+  .datalist-item {
+    text-align: left;
+    font-size: 0.88rem;
   }
 
   #checkOut-field {

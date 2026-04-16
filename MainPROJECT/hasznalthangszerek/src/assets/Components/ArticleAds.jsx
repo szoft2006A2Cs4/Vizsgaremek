@@ -263,7 +263,15 @@ const ArticleAds = ({ data, isLoading }) => {
         gap="4"
       >
         {filteredList.map((item, index) => (
-          <Card.Root key={index} overflow="hidden">
+          <Card.Root
+            key={index}
+            overflow="hidden"
+            onTouchEnd={() => {
+              navigate(`/instruments?ins=${item.id}`, {
+                replace: true,
+              });
+            }}
+          >
             <Image
               src={item.imageUrls[0]}
               alt={item.name}
