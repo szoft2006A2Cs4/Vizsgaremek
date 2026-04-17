@@ -1045,6 +1045,14 @@ button:hover > a {
 #MyProfile:hover img {
   content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1773652529/person-standing_hover_ssdvpg_lxywnb.svg");
 }
+
+#AboutUs:hover img {
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1776414293/contact-round__hover_asf9l8.svg");
+}
+
+#ContactUs:hover img {
+  content: url("https://res.cloudinary.com/dknhbvrq9/image/upload/v1776414440/mail-plus_hover_tsbl4q.svg");
+}
 /*#endregion Avatar / Dropdown / Dropdown-elemek*/
 
 /*#region Drawer*/

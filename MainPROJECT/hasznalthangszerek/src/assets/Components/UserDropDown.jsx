@@ -62,6 +62,30 @@ export default function UserDropDown() {
 
           <p
             className="UserDropDown-icons-cont"
+            id="AboutUs"
+            style={{ marginTop: "10px" }}
+            onClick={() => {
+              handlePageRoutes("/aboutUs");
+            }}
+          >
+            <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1776414292/contact-round_gqjn87.svg" />
+            <a className="UserDropDown-Items">Rólunk</a>
+          </p>
+
+          <p
+            className="UserDropDown-icons-cont"
+            id="ContactUs"
+            style={{ marginTop: "10px" }}
+            onClick={() => {
+              handlePageRoutes("/contactUs");
+            }}
+          >
+            <img src="https://res.cloudinary.com/dknhbvrq9/image/upload/v1776414439/mail-plus_xxaga8.svg" />
+            <a className="UserDropDown-Items">Üzenj nekünk</a>
+          </p>
+
+          <p
+            className="UserDropDown-icons-cont"
             id="Logout"
             style={{ marginTop: "10px" }}
             onClick={handleLogout}
