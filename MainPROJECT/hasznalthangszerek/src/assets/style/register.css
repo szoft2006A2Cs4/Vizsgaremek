@@ -137,7 +137,7 @@ a:hover {
   left: -9999px;
 }
 
-#ASzF-field{
+#ASzF-field {
   display: grid;
   grid-template-columns: min-content max-content;
   grid-template-rows: max-content;
@@ -146,22 +146,23 @@ a:hover {
   align-items: center;
 }
 
-#ASzF-input{
+#ASzF-input {
   grid-column: 1;
-  grid-row: 1; 
+  grid-row: 1;
   width: auto;
 }
 
-#ASzF-label{
+#ASzF-label {
   grid-column: 2;
   grid-row: 1;
   background-color: transparent;
   color: var(--accent-color);
   text-align: left;
   width: 100%;
+  font-size: large;
 }
 
-#ASzF-label:hover{
+#ASzF-label:hover {
   color: var(--input-color);
   cursor: pointer;
 }

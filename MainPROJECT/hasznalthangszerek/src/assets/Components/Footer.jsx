@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
+import { useState } from "react";
+import ASzF from "./ASzF";
 
 export default function Footer() {
+  const [isOpen, setisOpen] = useState(false);
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -28,7 +31,9 @@ export default function Footer() {
         <div className="footer-column">
           <h3>Információ</h3>
 
-          <p>Általános Szerződési Feltételek</p>
+          <p onClick={() => setisOpen(true)} id="footer-aszf">
+            Adatkezelési tájékoztató
+          </p>
           <p>Visszaküldési szabályzat</p>
         </div>
       </div>
@@ -36,6 +41,8 @@ export default function Footer() {
       <div className="footer-bottom">
         © {new Date().getFullYear()} Használt Hangszerek – Minden jog fenntartva
       </div>
+
+      <ASzF value={isOpen} setter={setisOpen} />
     </footer>
   );
 }

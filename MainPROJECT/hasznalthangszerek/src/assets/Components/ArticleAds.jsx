@@ -41,7 +41,7 @@ const ArticleAds = ({ data, isLoading }) => {
 
   for (var i of data) {
     if (i.isPremium) {
-      filteredList.push(i);
+      filteredList.push({ ...i });
     }
   }
 

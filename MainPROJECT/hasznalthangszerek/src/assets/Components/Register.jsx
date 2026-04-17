@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import "../style/register.css";
 import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
@@ -16,6 +16,7 @@ const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
   const pwdInputRef = useRef();
+  const AszfRef = useRef();
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -40,7 +41,7 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isAszfOpen, setIsAszfOpen] = useState(false)
+  const [isAszfOpen, setIsAszfOpen] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -139,6 +140,11 @@ const Register = () => {
       return;
     }
 
+    if (!AszfRef.current.checked) {
+      setErrMsg("A felhasználói feltételek elfogadása kötelező!");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const userData = {
@@ -197,6 +203,16 @@ const Register = () => {
     const x = document.getElementById("repassword-input");
     x.type = x.type === "password" ? "text" : "password";
   }
+
+  const AszfCallback = useCallback(
+    (value) => {
+      if (typeof value !== "boolean") {
+        return;
+      }
+      setIsAszfOpen(value);
+    },
+    [isAszfOpen],
+  );
 
   return (
     <>
@@ -418,11 +434,21 @@ const Register = () => {
                   }}
                   aria-invalid={validMatch ? "false" : "true"}
                 />
-
               </div>
               <div id="ASzF-field">
-                <input type="checkbox" name="ASzF" id="ASzF-input"/>
-                <label htmlFor="ASzF" id="ASzF-label" onClick={() => {setIsAszfOpen(true); return(<ASzF value={isAszfOpen} setter={setIsAszfOpen}/>)}}>Á.Sz.F elfogadása</label>
+                <input
+                  type="checkbox"
+                  name="ASzF"
+                  id="ASzF-input"
+                  ref={AszfRef}
+                />
+                <label
+                  htmlFor="ASzF-input"
+                  id="ASzF-label"
+                  onClick={() => setIsAszfOpen(true)}
+                >
+                  Elolvastam és elfogadom az Adatkezelési tájékoztatót
+                </label>
               </div>
               <button className="uni-button" type="submit">
                 Regisztráció
@@ -434,6 +460,7 @@ const Register = () => {
           </p>
         </div>
       )}
+      <ASzF value={isAszfOpen} setter={AszfCallback} />
     </>
   );
 };
