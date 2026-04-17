@@ -137,6 +137,35 @@ a:hover {
   left: -9999px;
 }
 
+#ASzF-field{
+  display: grid;
+  grid-template-columns: min-content max-content;
+  grid-template-rows: max-content;
+  gap: 2rem;
+  width: 25rem;
+  align-items: center;
+}
+
+#ASzF-input{
+  grid-column: 1;
+  grid-row: 1; 
+  width: auto;
+}
+
+#ASzF-label{
+  grid-column: 2;
+  grid-row: 1;
+  background-color: transparent;
+  color: var(--accent-color);
+  text-align: left;
+  width: 100%;
+}
+
+#ASzF-label:hover{
+  color: var(--input-color);
+  cursor: pointer;
+}
+
 @media (max-width: 1024px) {
   .wrapper {
     width: 100vw;

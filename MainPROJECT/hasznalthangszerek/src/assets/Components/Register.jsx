@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "../scripts/axios";
 import Loading from "./Loading";
 import PasswordPopUp from "./PasswordPopUp";
+import ASzF from "./ASzF";
 
 const USER_REGEX =
   /^[A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*([ -][A-ZÁÉÍÓÖŐÚÜŰ][a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)+$/;
@@ -38,6 +39,8 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [isAszfOpen, setIsAszfOpen] = useState(false)
 
   useEffect(() => {
     userRef.current.focus();
@@ -415,6 +418,11 @@ const Register = () => {
                   }}
                   aria-invalid={validMatch ? "false" : "true"}
                 />
+
+              </div>
+              <div id="ASzF-field">
+                <input type="checkbox" name="ASzF" id="ASzF-input"/>
+                <label htmlFor="ASzF" id="ASzF-label" onClick={() => {setIsAszfOpen(true); return(<ASzF value={isAszfOpen} setter={setIsAszfOpen}/>)}}>Á.Sz.F elfogadása</label>
               </div>
               <button className="uni-button" type="submit">
                 Regisztráció
