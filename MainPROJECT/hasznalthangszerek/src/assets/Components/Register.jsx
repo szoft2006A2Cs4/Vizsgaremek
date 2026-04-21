@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import "../style/register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../scripts/axios";
 import Loading from "./Loading";
 import PasswordPopUp from "./PasswordPopUp";
@@ -42,6 +42,8 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [isAszfOpen, setIsAszfOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     userRef.current.focus();
@@ -150,7 +152,7 @@ const Register = () => {
       const userData = {
         Name: user,
         Email: email,
-        PhoneNumber: Number(phone),
+        PhoneNumber: Number(`36${phone}`),
         Password: pwd,
         PostalCode: parseInt(postal),
         City: city,
@@ -229,6 +231,23 @@ const Register = () => {
       ) : (
         <div className="wrapper">
           {isLoading ? <Loading /> : <></>}
+          <button id="back-to-main" onClick={() => navigate("/")}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ opacity: 1 }}
+            >
+              <path fill="none" d="m12 19l-7-7l7-7m7 7H5" />
+            </svg>
+          </button>
+
           <h1 className="register-h1">Regisztráció</h1>
           <p
             ref={errRef}
@@ -299,6 +318,7 @@ const Register = () => {
                     <path d="M162-120q-18 0-30-12t-12-30v-162q0-13 9-23.5t23-14.5l138-28q14-2 28.5 2.5T342-374l94 94q38-22 72-48.5t65-57.5q33-32 60.5-66.5T681-524l-97-98q-8-8-11-19t-1-27l26-140q2-13 13-22.5t25-9.5h162q18 0 30 12t12 30q0 125-54.5 247T631-329Q531-229 409-174.5T162-120Z" />
                   </svg>
                 </label>
+                <span id="phone-span">+36</span>
                 <input
                   type="tel"
                   name="phone"

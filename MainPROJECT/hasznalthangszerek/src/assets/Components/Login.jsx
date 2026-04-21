@@ -115,6 +115,23 @@ const Login = () => {
       ) : (
         <div className="wrapper">
           {isLoading ? <Loading /> : <></>}
+          <button id="back-to-main" onClick={() => navigate("/")}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ opacity: 1 }}
+            >
+              <path fill="none" d="m12 19l-7-7l7-7m7 7H5" />
+            </svg>
+          </button>
+
           <h1 className="register-h1">Bejelentkezés</h1>
           <p
             id="error-message"
@@ -180,10 +197,10 @@ const Login = () => {
               <button type="submit" className="uni-button">
                 Bejelentkezés
               </button>
-                  <Link to="/forgotPassword">Elfelejtett jelszó</Link>
+              <Link to="/forgotPassword">Elfelejtett jelszó</Link>
             </form>
           </center>
-          
+
           <p>
             Új itt? <Link to="/register">Regisztráció</Link>
           </p>
