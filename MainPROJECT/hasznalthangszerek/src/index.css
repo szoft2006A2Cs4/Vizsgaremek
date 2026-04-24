@@ -1123,7 +1123,7 @@ button:hover > a {
 
 #UpLoad-field {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: max-content max-content;
   grid-template-rows: min-content min-content min-content min-content min-content;
   gap: 0px;
   height: 100%;
@@ -1865,6 +1865,12 @@ dd.datalist-item {
    Tablet:  max-width: 1024px
    Telefon: max-width: 768px  /  max-width: 480px */
 
+@media (max-width: 1500px){
+  #UpLoad-comboField{
+    flex-direction: column;
+  }
+}
+
 /*#region Laptop (≤ 1280px)*/
 @media (max-width: 1280px) {
   #logo-icon {
@@ -1947,6 +1953,10 @@ dd.datalist-item {
   #UpLoad-field {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+  }
+
+  #UpLoad-comboField{
+    flex-direction: column;
   }
 
   .UpLoad-description {
