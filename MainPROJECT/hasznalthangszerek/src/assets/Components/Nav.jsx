@@ -152,6 +152,13 @@ export default function Nav({ cats, scats, loading, ins }) {
       {isForYouOpen && (
         <ForYou open={isForYouOpen} onClose={() => setIsForYouOpen(false)} />
       )}
+      <Drawer_
+        open={isDrawerOpen}
+        setOpen={setIsDrawerOpen}
+        catList={cats}
+        scats={scats}
+        loading={loading}
+      />
     </nav>
   ) : (
     <nav>

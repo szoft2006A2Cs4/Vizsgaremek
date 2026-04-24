@@ -1107,7 +1107,7 @@ button:hover > a {
 
 .UpLoad-firstMain {
   grid-row: 1;
-  width: 62vw;
+  width: min-content;
   height: auto;
   min-height: 64vh;
   background-color: #ead7ce;
@@ -1115,6 +1115,7 @@ button:hover > a {
 
 .UpLoad-secondMain {
   grid-row: 2;
+  height: min-content !important;
 }
 
 .UpLoad-thirdMain {
@@ -1865,9 +1866,57 @@ dd.datalist-item {
    Tablet:  max-width: 1024px
    Telefon: max-width: 768px  /  max-width: 480px */
 
-@media (max-width: 1500px){
-  #UpLoad-comboField{
+@media (max-width: 1500px) {
+  .UpLoad-firstMain {
+    width: 90vw;
+  }
+
+  .UpLoad-secondMain {
+    width: 90vw !important;
+    height: min-content !important;
+  }
+
+  .UpLoad-thirdMain {
+    width: 90vw !important;
+    height: min-content !important;
+  }
+
+  #UpLoad-field {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  #UpLoad-comboField {
     flex-direction: column;
+  }
+
+  .UpLoad-description {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .UpLoad-isPremium {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .UpLoad-footer {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  #UpLoad-thirdMain-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+  }
+
+  #UpLoad-thirdMain-imgList {
+    display: grid;
+    grid-template-rows: min-content max-content;
+  }
+
+  #UpLoad-thirdMain-imgList-title {
+    justify-self: center;
   }
 }
 
@@ -1955,7 +2004,7 @@ dd.datalist-item {
     grid-template-rows: auto;
   }
 
-  #UpLoad-comboField{
+  #UpLoad-comboField {
     flex-direction: column;
   }
 
