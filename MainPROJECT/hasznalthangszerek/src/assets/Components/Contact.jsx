@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import { Button, Dialog } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const Contact = () => {
+const Contact = ({ cats, scats, ins }) => {
   const form = useRef();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +50,7 @@ const Contact = () => {
   };
   return (
     <div id="contact-page">
-      <Nav />
+      <Nav cats={cats} scats={scats} ins={ins} />
       <div id="contact-div">
         {isLoading ? <Loading /> : <></>}
         <h1 id="contact-h1">ÜZENJEN NEKÜNK!</h1>

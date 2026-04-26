@@ -112,7 +112,10 @@ function App() {
             }
           />
           <Route path="/upLoad" element={<UpLoad />} />
-          <Route path="/contactUs" element={<Contact />} />
+          <Route
+            path="/contactUs"
+            element={<Contact cats={cats} scats={scats} ins={instruments} />}
+          />
           <Route
             path="/instruments"
             element={
